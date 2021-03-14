@@ -5,7 +5,7 @@
         position="top center"
         group="foo">
         </notifications>
-    <genshin/>
+    <genshin></genshin>
   </div>
 </template>
 

@@ -24,9 +24,8 @@
 
                 <button
                 type="button"
-                class="btn btn-link text-light d-inline rounded-0 my-1"
+                class="btn btn-link btn-sm text-light d-inline rounded-0 my-1"
                 style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
-                :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                 :disabled="removed || current_artifact.info.level === current_artifact.info.max_level"
                 @click="current_artifact.info.level!=current_artifact.info.max_level && upgrade()">
                     <i class="fas fa-arrow-up fa-sm"></i> Upgrade
@@ -34,9 +33,8 @@
 
                 <button
                 type="button"
-                class="btn btn-link text-light d-inline rounded-0 my-1"
+                class="btn btn-link btn-sm text-light d-inline rounded-0 my-1"
                 style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
-                :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                 :disabled="removed || current_artifact.info.rerolls.main.count != 0 || ['Flower of Life','Plume of Death'].includes(current_artifact.info.piece.type)"
                 @click="current_artifact.info.rerolls.main.count === 0 && rerollMainStat()">
                     <i class="fas fa-redo fa-sm mr-1"></i>Reroll main
@@ -44,9 +42,8 @@
 
                 <button
                 type="button"
-                class="btn btn-link text-light d-inline rounded-0 my-1"
+                class="btn btn-link btn-sm text-light d-inline rounded-0 my-1"
                 style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
-                :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                 :disabled="removed || current_artifact.info.rerolls.subs.count != 0"
                 @click="current_artifact.info.rerolls.subs.count === 0 && rerollSubStats()">
                     <i class="fas fa-redo fa-sm mr-1"></i>Reroll subs
@@ -54,9 +51,8 @@
 
                 <button
                 type="button"
-                class="btn btn-link text-light d-inline rounded-0 my-1"
+                class="btn btn-link btn-sm text-light d-inline rounded-0 my-1"
                 style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
-                :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                 :disabled="removed"
                 @click="confirm_remove = !confirm_remove">
                     <i class="fas fa-times fa-sm mr-1"></i> Remove
@@ -100,8 +96,7 @@
     export default{
         name: 'artifactModal',
         props: {
-            artifacts: Array,
-            screen: Number
+            artifacts: Array
         },
         components: {
             artifact

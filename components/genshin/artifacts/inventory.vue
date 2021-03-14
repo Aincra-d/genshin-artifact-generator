@@ -2,14 +2,12 @@
     <div>
         <artifact-modal
         ref="artifactModal"
-        :screen="screen"
         :artifacts="artifacts"
         @update-inventory="resetInventory()">    
         </artifact-modal>
 
         <div class="text-left manage-inventory">
             <manage-inventory
-            :screen="screen"
             @sort-inventory="sortInventory"
             @set-stack-filters="setStackFilters"
             @reset-inventory="resetInventory"
@@ -22,7 +20,6 @@
         class="ml-0 ml-md-3 mb-2"
         :filters="filters"
         :stack="stack_filters"
-        :screen="screen"
         @filter-by-stars="filterByStars"
         @filter-by-types="filterByTypes"
         @filter-by-main-stats="filterByMainStats"
@@ -73,8 +70,7 @@
                 },
                 sub_filter_type: 'Contain',
                 sub_stats: [],
-                stack_filters: false,
-                screen: process.client && window.innerWidth
+                stack_filters: false
             }
         },
         methods: {
@@ -184,13 +180,7 @@
             },
             openModal(ref,id) {
                 this.$refs.artifactModal.openModal(ref,id)
-            },
-            onResize(){
-                if(process.client)this.screen=window.innerWidth
             }
-        },
-        mounted(){
-            if(process.client) window.addEventListener('resize',this.onResize)
         }
     }
 </script>

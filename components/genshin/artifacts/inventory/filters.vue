@@ -11,7 +11,7 @@
                 buttons
                 @input="!stack && $emit('filter-by-stars',stars)"
                 button-variant="outline-light"
-                size="md"
+                size="sm"
                 name="buttons-2">
                 </b-form-checkbox-group>
             </b-form-group>
@@ -26,7 +26,7 @@
                 buttons
                 @input="!stack && $emit('filter-by-types',types)"
                 button-variant="outline-light"
-                :size="screen < 991 ? 'sm' :'md'"
+                size="sm"
                 name="buttons-2">
                 </b-form-checkbox-group>
             </b-form-group>
@@ -104,7 +104,7 @@
                             buttons
                             @input="!stack && $emit('set-sub-filter-type',sub_filter_type)"
                             button-variant="outline-light"
-                            size="  "
+                            size="md"
                             name="buttons-2">
                             </b-form-checkbox-group>
                         </b-form-group>
@@ -203,8 +203,7 @@
         name: 'inventoryFilters',
         props: {
             filters: Object,
-            stack: Boolean,
-            screen: Number
+            stack: Boolean
         },
         data(){
             return {
