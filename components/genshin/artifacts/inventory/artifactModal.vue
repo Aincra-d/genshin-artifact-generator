@@ -131,6 +131,7 @@
                 if(this.client) this.current_artifact=JSON.parse(localStorage.artifacts).filter(artifact => artifact.id === id)[0];
                 this.modal_bg_class='stars-'+this.artifacts[this.artifacts.findIndex(artifact => artifact.id === this.artifact_id)].info.stars;
                 this.$refs[ref].open();
+                this.ref=ref;
             },
             rerollMainStat(){
                 let artifact=this.artifacts[this.artifacts.findIndex(artifact => artifact.id === this.artifact_id)];
@@ -230,6 +231,8 @@
                     type: 'success',
                     title: '<h6>Removed artifact from inventory!</h6>'
                 });
+
+                this.$refs[this.ref].close();
             },
             upgrade(){
                 let artifact=this.artifacts[this.artifacts.findIndex(artifact => artifact.id === this.artifact_id)];
