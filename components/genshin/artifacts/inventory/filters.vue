@@ -26,7 +26,7 @@
                 buttons
                 @input="!stack && $emit('filter-by-types',types)"
                 button-variant="outline-light"
-                size="sm"
+                :size="$root.screen < 991 ? 'sm' :'md'"
                 name="buttons-2">
                 </b-form-checkbox-group>
             </b-form-group>
@@ -104,7 +104,7 @@
                             buttons
                             @input="!stack && $emit('set-sub-filter-type',sub_filter_type)"
                             button-variant="outline-light"
-                            size="md"
+                            size="  "
                             name="buttons-2">
                             </b-form-checkbox-group>
                         </b-form-group>

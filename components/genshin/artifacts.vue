@@ -1,12 +1,15 @@
 <template>
     <div>
         <b-tabs
-        class="d-block d-md-none text-light font-weight-bold"
+        class="text-light font-weight-bold"
         active-nav-item-class="btn-light border-0"
+        v-if="$root.screen <= 776"
         align="center"
         content-class="mt-3">
             <b-tab title="Artifact roll" active>
-                <div class="position-relative roll-container p-0 text-center col-12">
+                <div
+                :class="$root.screen < 776 ? 'position-relative d-block' : 'position-absolute top-0 left-0 d-inline-block'"
+                class="roll-container p-3 text-center col-12">
                     <artifact-roll
                     style="max-height:85vh; overflow-y: auto;"
                     @update-inventory="updateInventory">
@@ -15,7 +18,9 @@
             </b-tab>
 
             <b-tab title="Inventory">
-                <div class="position-relative inventory-container p-0 text-center col-12">
+                <div
+                :class="$root.screen < 776 ? 'position-relative d-block' : 'position-absolute top-0 right-0 d-inline-block'"
+                class="inventory-container p-0 text-center col-12">
                     <artifact-inventory
                     style="max-height:90vh; overflow-y: auto;"
                     :artifacts="artifacts">
@@ -24,16 +29,19 @@
             </b-tab>
         </b-tabs>
 
-        <div class="d-none d-md-block">
+        <div v-else>
             <div
             style="height:100vh; overflow-y: auto;"
-            class="position-absolute top-0 left-0 d-inline-block roll-container p-0 text-center col-12 col-sm-12 col-md-5 col-lg-4 col-xl-5">
+            :class="$root.screen < 776 ? 'position-relative d-block' : 'position-absolute top-0 left-0 d-inline-block'"
+            class="roll-container p-0 text-center col-12 col-sm-12 col-md-5 col-lg-4 col-xl-5">
                 <artifact-roll
                 @update-inventory="updateInventory">
                 </artifact-roll>
             </div>
 
-            <div class="position-absolute top-0 right-0 d-inline-block inventory-container p-0 text-left col-12 col-sm-12 col-md-7 col-lg-8 col-xl-7">
+            <div
+            :class="$root.screen < 776 ? 'position-relative d-block' : 'position-absolute top-0 right-0 d-inline-block'"
+            class="inventory-container p-0 text-left col-12 col-sm-12 col-md-7 col-lg-8 col-xl-7">
                 <artifact-inventory
                 style="max-height:100vh; overflow-y: auto;"
                 :artifacts="artifacts">
