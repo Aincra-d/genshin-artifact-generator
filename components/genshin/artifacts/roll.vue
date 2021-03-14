@@ -14,12 +14,13 @@
             @click="rollArtifact()"
             class="btn text-light btn-link d-inline mx-1 rounded-0"
             style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
-            :class="$root.screen < 576 ? 'btn-sm' : 'btn-md'">
+            :class="screen < 576 ? 'btn-sm' : 'btn-md'">
                 <i class="fas fa-redo fa-sm mr-1"></i> Roll artifact
             </button>
 
             <artifact-actions
             v-else
+            :screen="screen"
             :artifact="current_artifact"
             @upgrade="upgrade"
             @roll-artifact="rollArtifact"
@@ -41,7 +42,8 @@
             </div> -->
 
             <artifact
-            class="p-3"
+            style="max-width:500px"
+            class="p-3 mx-auto"
             :key="artifact.id"
             v-for="artifact in artifacts"
             :desired_subs="desired_subs"
@@ -95,7 +97,8 @@
                 desired_subs: [],
                 selected_domain: '',
                 max_sub_counts: [1,2,4,4,4],
-                include_low_stars: true
+                include_low_stars: true,
+                screen: process.client && window.innerWidth
                 // roll_count: 0
             }
         },
@@ -445,10 +448,16 @@
                     }
                 }
             ];
+            },
+            onResize(){
+                if(process.client) this.screen=window.innerWidth
             }
         },
         created(){
             this.setSubs();
+        },
+        mounted(){
+            if(process.client) window.addEventListener('resize',this.onResize)
         }
     }
 </script>
