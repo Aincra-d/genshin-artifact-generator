@@ -1,0 +1,1038 @@
+[
+    {
+        "name": "Adventurer",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Item_Adventurer_3-star.png",
+        "pieces": [
+            {
+                "name": "Adventurer's Flower",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ec/Item_Adventurer%27s_Flower.png"
+            },
+            {
+                "name": "Adventurer's Tail Feather",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/30/Item_Adventurer%27s_Tail_Feather.png"
+            },
+            {
+                "name": "Adventurer's Pocket Watch",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Adventurer%27s_Pocket_Watch.png"
+            },
+            {
+                "name": "Adventurer's Golden Goblet",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ae/Item_Adventurer%27s_Golden_Goblet.png"
+            },
+            {
+                "name": "Adventurer's Bandana",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Item_Adventurer%27s_Bandana.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Max HP increased by 1,000.",
+            "4_piece": "Opening chest regenerates 30% Max HP over 5s."
+        },
+        "stars": [1,2,3]
+    },
+    {
+        "name": "Lucky Dog",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Item_Lucky_Dog_3-star.png",
+        "pieces": [
+            {
+                "name": "Lucky Dog's Clover",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e0/Item_Lucky_Dog%27s_Clover.png"
+            },
+            {
+                "name": "Lucky Dog's Eagle Feather",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ac/Item_Lucky_Dog%27s_Eagle_Feather.png"
+            },
+            {
+                "name": "Lucky Dog's Hourglass",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/50/Item_Lucky_Dog%27s_Hourglass.png"
+            },
+            {
+                "name": "Lucky Dog's Goblet",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c1/Item_Lucky_Dog%27s_Goblet.png"
+            },
+            {
+                "name": "Lucky Dog's Silver Circlet",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Item_Lucky_Dog%27s_Silver_Circlet.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "DEF increased by 100.",
+            "4_piece": "Picking up Mora restores 300 HP."
+        },
+        "stars": [1,2,3]
+    },
+    {
+        "name": "Traveling Doctor",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Item_Traveling_Doctor_3-star.png",
+        "pieces": [
+            {
+                "name": "Traveling Doctor's Medicine Pot",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Item_Traveling_Doctor%27s_Silver_Lotus.png"
+            },
+            {
+                "name": "Traveling Doctor's Handkerchief",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/01/Item_Traveling_Doctor%27s_Owl_Feather.png"
+            },
+            {
+                "name": "Traveling Doctor's Pocket Watch",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Item_Traveling_Doctor%27s_Pocket_Watch.png"
+            },
+            {
+                "name": "Traveling Doctor's Silver Lotus",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Item_Traveling_Doctor%27s_Medicine_Pot.png"
+            },
+            {
+                "name": "Traveling Doctor's Owl Feather",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Traveling_Doctor%27s_Handkerchief.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Increases incoming healing by 20%.",
+            "4_piece": "Using Elemental Burst restores 20% HP."
+        },
+        "stars": [1,2,3]
+    },
+    {
+        "name": "Instructor",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Instructor_4-star.png",
+        "pieces": [
+            {
+                "name": "Instructor's Brooch",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Item_Instructor%27s_Brooch.png"
+            },
+            {
+                "name": "Instructor's Feathered Accessory",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/af/Item_Instructor%27s_Feather_Accessory.png"
+            },
+            {
+                "name": "Instructor's Pocket Watch",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Item_Instructor%27s_Pocket_Watch.png"
+            },
+            {
+                "name": "Instructor's Tea Cup",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Item_Instructor%27s_Tea_Cup.png"
+            },
+            {
+                "name": "Instructor's Cap",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/da/Item_Instructor%27s_Cap.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Increases Elemental Mastery by 80.",
+            "4_piece": "After using Elemental Skill, increases all party members' Elemental Mastery by 120 for 8s."
+        },
+        "stars": [3,4]
+    },
+    {
+        "name": "Berserker",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Item_Berserker_4-star.png",
+        "pieces": [
+            {
+                "name": "Berserker's Rose",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c1/Item_Berserker%27s_Rose.png"
+            },
+            {
+                "name": "Berserker's Indigo Feather",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/10/Item_Berserker%27s_Indigo_Feather.png"
+            },
+            {
+                "name": "Berserker's Timepiece",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5c/Item_Berserker%27s_Timepiece.png"
+            },
+            {
+                "name": "Berserker's Bone Goblet",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/da/Item_Berserker%27s_Bone_Goblet.png"
+            },
+            {
+                "name": "Berserker's Battle Mask",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5e/Item_Berserker%27s_Battle_Mask.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "CRIT Rate +12%",
+            "4_piece": "When HP is below 70%, CRIT Rate increases by an additional 24%."
+        },
+        "stars": [3,4]
+    },
+    {
+        "name": "The Exile",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Item_The_Exile_4-star.png",
+        "pieces": [
+            {
+                "name": "Exile's Flower",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f9/Item_Exile%27s_Flower.png"
+            },
+            {
+                "name": "Exile's Feather",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Item_Exile%27s_Feather.png"
+            },
+            {
+                "name": "Exile's Pocket Watch",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e4/Item_Exile%27s_Pocket_Watch.png"
+            },
+            {
+                "name": "Exile's Goblet",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Item_Exile%27s_Goblet.png"
+            },
+            {
+                "name": "Exile's Circlet",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Exile%27s_Circlet.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Energy Recharge +20%",
+            "4_piece": "Using an Elemental Burst regenerates 2 Energy for other party members every 2s for 6s. This effect cannot stack."
+        },
+        "stars": [3,4]
+    },
+    {
+        "name": "Resolution of Sojourner",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Item_Resolution_of_Sojourner_4-star.png",
+        "pieces": [
+            {
+                "name": "Heart of Comradeship",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Item_Heart_of_Comradeship.png"
+            },
+            {
+                "name": "Feather of Homecoming",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f0/Item_Feather_of_Homecoming.png"
+            },
+            {
+                "name": "Sundial of the Sojourner",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/93/Item_Sundial_of_the_Sojourner.png"
+            },
+            {
+                "name": "Goblet of the Sojourner",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/06/Item_Goblet_of_the_Sojourner.png"
+            },
+            {
+                "name": "Crown of Parting",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Item_Crown_of_Parting.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "ATK +18%",
+            "4_piece": "Increases Charged Attack CRIT Rate by 30%."
+        },
+        "stars": [3,4]
+    },
+    {
+        "name": "Martial Artist",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e4/Item_Martial_Artist_4-star.png",
+        "pieces": [
+            {
+                "name": "Martial Artist's Red Flower",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a7/Item_Martial_Artist%27s_Red_Flower.png"
+            },
+            {
+                "name": "Martial Artist's Feathered Accessory",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Item_Martial_Artist%27s_Feather_Accessory.png"
+            },
+            {
+                "name": "Martial Artist's Water Hourglass",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/06/Item_Martial_Artist%27s_Water_Hourglass.png"
+            },
+            {
+                "name": "Martial Artist's Wine Cup",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8d/Item_Martial_Artist%27s_Wine_Cup.png"
+            },
+            {
+                "name": "Martial Artist's Bandana",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Item_Martial_Artist%27s_Bandana.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Increases Normal Attack and Charged Attack DMG by 15%.",
+            "4_piece": "After using Elemental Skill, increases Normal Attack and Charged Attack DMG by 25% for 8s."
+        },
+        "stars": [3,4]
+    },
+    {
+        "name": "Defender's Will",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Item_Defender%27s_Will_4-star.png",
+        "pieces": [
+            {
+                "name": "Guardian's Flower",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Item_Guardian%27s_Flower.png"
+            },
+            {
+                "name": "Guardian's Sigil",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Item_Guardian%27s_Sigil.png"
+            },
+            {
+                "name": "Guardian's Clock",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Item_Guardian%27s_Clock.png"
+            },
+            {
+                "name": "Guardian's Vessel",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Item_Guardian%27s_Vessel.png"
+            },
+            {
+                "name": "Guardian's Band",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c4/Item_Guardian%27s_Band.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Base DEF +30%",
+            "4_piece": "Increases Elemental RES by 30% for each element present in the party."
+        },
+        "stars": [3,4]
+    },
+    {
+        "name": "Tiny Miracle",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e8/Item_Tiny_Miracle_4-star.png",
+        "pieces": [
+            {
+                "name": "Tiny Miracle's Flower",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/68/Item_Tiny_Miracle%27s_Flower.png"
+            },
+            {
+                "name": "Tiny Miracle's Feather",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/89/Item_Tiny_Miracle%27s_Feather.png"
+            },
+            {
+                "name": "Tiny Miracle's Hourglass",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Tiny_Miracle%27s_Hourglass.png"
+            },
+            {
+                "name": "Tiny Miracle's Goblet",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Item_Tiny_Miracle%27s_Goblet.png"
+            },
+            {
+                "name": "Tiny Miracle's Earrings",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/73/Item_Tiny_Miracle%27s_Earrings.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "All Elemental RES increased by 20%",
+            "4_piece": "Incoming elemental DMG increases corresponding Elemental RES by 30% for 10s. Can only occur once every 10s."
+        },
+        "stars": [3,4]
+    },
+    {
+        "name": "Brave Heart",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/21/Item_Heart_of_Bravery_4-star.png",
+        "pieces": [
+            {
+                "name": "Medal of the Brave",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9e/Item_Medal_of_the_Brave.png"
+            },
+            {
+                "name": "Prospect of the Brave",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2f/Item_Prospect_of_the_Brave.png"
+            },
+            {
+                "name": "Fortitude of the Brave",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ed/Item_Fortitude_of_the_Brave.png"
+            },
+            {
+                "name": "Outset of the Brave",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/49/Item_Outset_of_the_Brave.png"
+            },
+            {
+                "name": "Crown of the Brave",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Crown_of_the_Brave.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "ATK +18%",
+            "4_piece": "Increases DMG by 30% against enemies with more than 50% HP."
+        },
+        "stars": [3,4]
+    },
+    {
+        "name": "Gambler",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Item_Gambler_4-star.png",
+        "pieces": [
+            {
+                "name": "Gambler's Brooch",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Item_Gambler%27s_Brooch.png"
+            },
+            {
+                "name": "Gambler's Feathered Accessory",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/bf/Item_Gambler%27s_Feather_Accessory.png"
+            },
+            {
+                "name": "Gambler's Pocket Watch",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Item_Gambler%27s_Pocket_Watch.png"
+            },
+            {
+                "name": "Gambler's Dice Cup",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Item_Gambler%27s_Dice_Cup.png"
+            },
+            {
+                "name": "Gambler's Earrings",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/43/Item_Gambler%27s_Earrings.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Elemental Skill DMG increased by 20%",
+            "4_piece": "Defeating an enemy has 100% chance to remove Elemental Skill CD. Can only occur once every 15s."
+        },
+        "stars": [3,4]
+    },
+    {
+        "name": "Scholar",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/be/Item_Scholar_4-star.png",
+        "pieces": [
+            {
+                "name": "Scholar's Bookmark",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e5/Item_Scholar%27s_Bookmark.png"
+            },
+            {
+                "name": "Scholar's Quill Pen",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Item_Scholar%27s_Quill_Pen.png"
+            },
+            {
+                "name": "Scholar's Clock",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/01/Item_Scholar%27s_Clock.png"
+            },
+            {
+                "name": "Scholar's Ink Cup",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Item_Scholar%27s_Ink_Cup.png"
+            },
+            {
+                "name": "Scholar's Lens",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/93/Item_Scholar%27s_Lens.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Energy Recharge +20%",
+            "4_piece": "Gaining Energy gives 3 Energy to all party members who have a bow or a catalyst equipped. Can only occur once every 3s."
+        },
+        "stars": [3,4]
+    },
+    {
+        "name": "Gladiator's Finale",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Item_Gladiator%27s_Finale_5-star.png",
+        "pieces": [
+            {
+                "name": "Gladiator's Nostalgia",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Item_Gladiator%27s_Nostalgia.png"
+            },
+            {
+                "name": "Gladiator's Destiny",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/94/Item_Gladiator%27s_Destiny.png"
+            },
+            {
+                "name": "Gladiator's Longing",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Item_Gladiator%27s_Longing.png"
+            },
+            {
+                "name": "Gladiator's Intoxication",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6d/Item_Gladiator%27s_Intoxication.png"
+            },
+            {
+                "name": "Gladiator's Triumphus",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9b/Item_Gladiator%27s_Triumphus.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "ATK +18%",
+            "4_piece": "If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35%."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Wanderer's Troupe",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Item_Wanderer%27s_Troupe_5-star.png",
+        "pieces": [
+            {
+                "name": "Troupe's Dawnlight",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Item_Troupe%27s_Dawnlight.png"
+            },
+            {
+                "name": "Bard's Arrow Feather",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4e/Item_Bard%27s_Arrow_Feather.png"
+            },
+            {
+                "name": "Concert's Final Hour",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9e/Item_Concert%27s_Final_Hour.png"
+            },
+            {
+                "name": "Wanderer's String-Kettle",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9b/Item_Wanderer%27s_String_Kettle.png"
+            },
+            {
+                "name": "Conductor's Top Hat",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/81/Item_Conductor%27s_Top_Hat.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Elemental Mastery +80",
+            "4_piece": "Increases Charged Attack DMG by 35% if the character uses a Catalyst or Bow."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Viridescent Venerer",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Item_Viridescent_Venerer_5-star.png",
+        "pieces": [
+            {
+                "name": "In Remembrance of Viridescent Fields",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/90/Item_In_Remembrance_of_Viridescent_Fields.png"
+            },
+            {
+                "name": "Viridescent Arrow Feather",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Item_Viridescent_Arrow_Feather.png"
+            },
+            {
+                "name": "Viridescent Venerer's Determination",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8f/Item_Viridescent_Venerer%27s_Determination.png"
+            },
+            {
+                "name": "Viridescent Venerer's Vessel",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/ff/Item_Viridescent_Venerer%27s_Vessel.png"
+            },
+            {
+                "name": "Viridescent Venerer's Diadem",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8b/Item_Viridescent_Venerer%27s_Diadem.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Anemo DMG Bonus +15%",
+            "4_piece": "Increases Swirl DMG by 60%. Decreases opponent's Elemental RES to the element infused in the Swirl by 40% for 10s."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Thundering Fury",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Item_Thundering_Fury_5-star.png",
+        "pieces": [
+            {
+                "name": "Thunderbird's Mercy",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/57/Item_Thunderbird%27s_Mercy.png"
+            },
+            {
+                "name": "Survivor of Catastrophe",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Item_Survivor_of_Catastrophe.png"
+            },
+            {
+                "name": "Hourglass of Thunder",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/94/Item_Hourglass_of_Thunder.png"
+            },
+            {
+                "name": "Omen of Thunderstorm",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Item_Omen_of_Thunderstorm.png"
+            },
+            {
+                "name": "Thunder Summoner's Crown",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Item_Thunder_Summoner%27s_Crown.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Electro DMG Bonus +15%",
+            "4_piece": "Increases damage caused by Overloaded, Electro-Charged, and Superconduct DMG by 40%. Triggering such effects decreases Elemental Skill CD by 1s. Can only occur once every 0.8s."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Thundersoother",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Item_Thundersoother_5-star.png",
+        "pieces": [
+            {
+                "name": "Thundersoother's Heart",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ef/Item_Thundersoother%27s_Heart.png"
+            },
+            {
+                "name": "Thundersoother's Plume",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Item_Thundersoother%27s_Plume.png"
+            },
+            {
+                "name": "Hour of Soothing Thunder",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b7/Item_Hour_of_Soothing_Thunder.png"
+            },
+            {
+                "name": "Thundersoother's Goblet",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/87/Item_Thundersoother%27s_Goblet.png"
+            },
+            {
+                "name": "Thundersoother's Diadem",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Thundersoother%27s_Diadem.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Electro RES increased by 40%",
+            "4_piece": "Increases DMG against enemies affected by Electro by 35%."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Crimson Witch of Flames",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Item_Crimson_Witch_of_Flames_5-star.png",
+        "pieces": [
+            {
+                "name": "Witch's Flower of Blaze",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0f/Item_Witch%27s_Flower_of_Blaze.png"
+            },
+            {
+                "name": "Witch's Ever-Burning Plume",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Item_Witch%27s_Ever-Burning_Plume.png"
+            },
+            {
+                "name": "Witch's End Time",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Witch%27s_End_Time.png"
+            },
+            {
+                "name": "Witch's Heart Flames",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/ba/Item_Witch%27s_Heart_Flames.png"
+            },
+            {
+                "name": "Witch's Scorching Hat",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ea/Item_Witch%27s_Scorching_Hat.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Pyro DMG Bonus +15%",
+            "4_piece": "Increases Overloaded and Burning DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using an Elemental Skill increases 2-Piece Set effects by 50% for 10s. Max 3 stacks."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Lavawalker",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/53/Item_Lavawalker_5-star.png",
+        "pieces": [
+            {
+                "name": "Lavawalker's Resolution",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Item_Lavawalker%27s_Resolution.png"
+            },
+            {
+                "name": "Lavawalker's Salvation",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Item_Lavawalker%27s_Salvation.png"
+            },
+            {
+                "name": "Lavawalker's Torment",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/3f/Item_Lavawalker%27s_Torment.png"
+            },
+            {
+                "name": "Lavawalker's Epiphany",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1b/Item_Lavawalker%27s_Epiphany.png"
+            },
+            {
+                "name": "Lavawalker's Wisdom",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Item_Lavawalker%27s_Wisdom.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Pyro RES increased by 40%",
+            "4_piece": "Increases DMG against enemies that are Burning or affected by Pyro by 35%."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Archaic Petra",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ae/Item_Archaic_Petra_5-star.png",
+        "pieces": [
+            {
+                "name": "Flower of Creviced Cliff",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Item_Flower_of_Creviced_Cliff.png"
+            },
+            {
+                "name": "Feather of Jagged Peaks",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Item_Feather_of_Jagged_Peaks.png"
+            },
+            {
+                "name": "Sundial of Enduring Jade",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Item_Sundial_of_Enduring_Jade.png"
+            },
+            {
+                "name": "Goblet of Chiseled Crag",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/02/Item_Goblet_of_Chiseled_Crag.png"
+            },
+            {
+                "name": "Mask of Solitude Basalt",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Item_Mask_of_Solitude_Basalt.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Gain a 15% Geo DMG Bonus",
+            "4_piece": "Upon obtaining a crystal created through a Geo Elemental Reaction, all party members gain 35% RES to that particular element for 10s. Only one form of Elemental RES can be gained in this manner at any one time."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Retracing Bolide",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/87/Item_Retracing_Bolide_5-star.png",
+        "pieces": [
+            {
+                "name": "Summer Night's Bloom",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Item_Summer_Night%27s_Bloom.png"
+            },
+            {
+                "name": "Summer Night's Finale",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ec/Item_Summer_Night%27s_Finale.png"
+            },
+            {
+                "name": "Summer Night's Moment",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/34/Item_Summer_Night%27s_Moment.png"
+            },
+            {
+                "name": "Summer Night's Waterballoon",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/10/Item_Summer_Night%27s_Waterballoon.png"
+            },
+            {
+                "name": "Summer Night's Mask",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Item_Summer_Night%27s_Mask.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Increases the effectiveness of shields by 35%",
+            "4_piece": "Gain an additional 40% Normal and Charged Attack DMG while under the protection of a shield."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Maiden Beloved",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Item_Maiden_Beloved_5-star.png",
+        "pieces": [
+            {
+                "name": "Maiden's Distant Love",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Item_Maiden%27s_Distant_Love.png"
+            },
+            {
+                "name": "Maiden's Heart-stricken Infatuation",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5f/Item_Maiden%27s_Heart-stricken_Infatuation.png"
+            },
+            {
+                "name": "Maiden's Passing Youth",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/93/Item_Maiden%27s_Passing_Youth.png"
+            },
+            {
+                "name": "Maiden's Fleeting Leisure",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Item_Maiden%27s_Fleeting_Leisure.png"
+            },
+            {
+                "name": "Maiden's Fading Beauty",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Item_Maiden%27s_Fading_Beauty.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Character Healing Effectiveness +15%",
+            "4_piece": "Using an Elemental Skill or Burst increases healing received by all party members by 20% for 10s."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Noblesse Oblige",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c4/Item_Noblesse_Oblige_5-star.png",
+        "pieces": [
+            {
+                "name": "Royal Flora",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/71/Item_Royal_Flora.png"
+            },
+            {
+                "name": "Royal Plume",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Item_Royal_Plume.png"
+            },
+            {
+                "name": "Royal Pocket Watch",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Item_Royal_Pocket_Watch.png"
+            },
+            {
+                "name": "Royal Silver Urn",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Item_Royal_Silver_Urn.png"
+            },
+            {
+                "name": "Royal Masque",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/eb/Item_Royal_Masque.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Elemental Burst DMG +20%",
+            "4_piece": "Using an Elemental Burst increase all party members' ATK by 20% for 12s. This effect cannot stack."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Bloodstained Chivalry",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/32/Item_Bloodstained_Chivalry_5-star.png",
+        "pieces": [
+            {
+                "name": "Bloodstained Flower of Iron",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Item_Bloodstained_Flower_of_Iron.png"
+            },
+            {
+                "name": "Bloodstained Black Plume",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5c/Item_Bloodstained_Black_Plume.png"
+            },
+            {
+                "name": "Bloodstained Final Hour",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8c/Item_Bloodstained_Final_Hour.png"
+            },
+            {
+                "name": "Bloodstained Chevalier's Goblet",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4f/Item_Bloodstained_Chevalier%27s_Goblet.png"
+            },
+            {
+                "name": "Bloodstained Iron Mask",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Item_Bloodstained_Iron_Mask.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Physical DMG +25%",
+            "4_piece": "After defeating an opponent, increases Charged Attack DMG by 50%, and reduces its Stamina cost to 0 for 10s."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Icebreaker",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d8/Item_Icebreaker_5-star.png",
+        "pieces": [
+            {
+                "name": "Snowswept Memory",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Item_Snowswept_Memory.png"
+            },
+            {
+                "name": "Icebreaker's Resolve",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Item_Icebreaker%27s_Resolve.png"
+            },
+            {
+                "name": "Frozen Homeland's Demise",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/58/Item_Frozen_Homeland%27s_Demise.png"
+            },
+            {
+                "name": "Frost-Weaved Dignity",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Item_Frost-Weaved_Dignity.png"
+            },
+            {
+                "name": "Broken Rime's Echo",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/df/Item_Broken_Rime%27s_Echo.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Cryo DMG Bonus +15%",
+            "4_piece": "When a character attacks an enemy affected by Cryo, their CRIT Rate is increased by 20%. If the enemy is Frozen, CRIT Rate is increased by an additional 20%."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Ocean Conqueror",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cc/Item_Ocean_Conqueror_5-star.png",
+        "pieces": [
+            {
+                "name": "Gilded Corsage",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Item_Gilded_Corsage.png"
+            },
+            {
+                "name": "Gust of Nostalgia",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_Gust_of_Nostalgia.png"
+            },
+            {
+                "name": "Copper Compass",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Item_Copper_Compass.png"
+            },
+            {
+                "name": "Goblet of Thundering Deep",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Item_Goblet_of_Thundering_Deep.png"
+            },
+            {
+                "name": "Wine-Stained Tricorne",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Item_Wine-Stained_Tricorne.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Hydro DMG Bonus +15%",
+            "4_piece": "After using Elemental Skill, increases Normal Attack and Charged Attack DMG by 30% for 15s."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Prayers for Wisdom",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/26/Item_Prayers_for_Wisdom_4-star.png",
+        "pieces": [
+            {
+                "name": "Tiara of Thunder",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Tiara_of_Thunder.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Affected by Electro for 40% less time.",
+            "4_piece": "None"
+        },
+        "stars": [4,4]
+    },
+    {
+        "name": "Prayers to Springtime",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Prayers_to_Springtime_4-star.png",
+        "pieces": [
+            {
+                "name": "Tiara of Frost",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Tiara_of_Frost.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Affected by Cryo for 40% less time.",
+            "4_piece": "None"
+        },
+        "stars": [4,4]
+    },
+    {
+        "name": "Prayers for Illumination",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a7/Item_Prayers_for_Illumination_4-star.png",
+        "pieces": [
+            {
+                "name": "Tiara of Flame",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Tiara_of_Flame.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Affected by Pyro for 40% less time.",
+            "4_piece": "None"
+        },
+        "stars": [4,4]
+    },
+    {
+        "name": "Prayers for Destiny",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/20/Item_Prayers_for_Destiny_4-star.png",
+        "pieces": [
+            {
+                "name": "Tiara of Torrents",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Item_Tiara_of_Torrents.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Affected by Hydro for 40% less time.",
+            "4_piece": "None"
+        },
+        "stars": [4,4]
+    }
+]

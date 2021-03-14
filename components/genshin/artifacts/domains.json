@@ -1,0 +1,26 @@
+[
+	{
+		"name": "Domain of Guyun",
+		"sets": ["Lucky Dog","Brave Heart","Archaic Petra","Retracing Bolide"]
+	},
+	{
+		"name": "Midsummer Courtyard",
+		"sets": ["Adventurer","Resolution of Sojourner","Thundering Fury","Thundersoother"]
+	},
+	{
+		"name": "Valley of Remembrance",
+		"sets": ["Traveling Doctor","Tiny Miracle","Viridescent Venerer","Maiden Beloved"]
+	},
+	{
+		"name": "Hidden Palace of Zhou Formula",
+		"sets": ["Defender's Will","Martial Artist","Crimson Witch of Flames","Lavawalker"]
+	},
+	{
+		"name": "Peak of Vindagnyr",
+		"sets": ["Defender's Will","Gambler","Icebreaker","Ocean Conqueror"]
+	},
+	{
+		"name": "Clear Pool and Mountain Cavern",
+		"sets": ["Gambler","Scholar","Bloodstained Chivalry","Noblesse Oblige"]
+	}
+]
