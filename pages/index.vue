@@ -29,7 +29,7 @@
                     {
                         hid: 'description',
                         name: 'description',
-                        content: 'Generate artifacts from the popular Genshin Impact game, upgrade them, add to your inventory, play with RNG' 
+                        content: 'Generate artifacts from the popular Genshin Impact game, upgrade them, add to your inventory, play with RNG.' 
                     },
                     {
                         hid: 'og:title',
@@ -44,12 +44,12 @@
                     {
                         hid: 'og:url',
                         property: 'og:url',
-                        content: 'https://genshinartifactgenerator.netlify.app/'
+                        content: 'https://genshin-artifacts.netlify.app/'
                     },
                     {
                         hid: 'og:image',
                         property: 'og:image',
-                        content: `https://genshinartifactgenerator.netlify.app/og-site-icon.png`
+                        content: `https://genshin-artifacts.netlify.app/og-site-icon.png`
                     },
                     {
                         hid: 'og:type',
@@ -59,6 +59,36 @@
                     {
                         hid: 'og:description',
                         property: 'og:description',
+                        content: 'Experience the RNG hell of artifacts.'
+                    },
+                    {
+                        hid: 'twitter:title',
+                        property: 'twitter:title',
+                        content: 'Genshin Impact Artifact Generator'
+                    },
+                    {
+                        hid: 'twitter:site_name',
+                        property: 'twitter:site_name',
+                        content: 'Genshin Impact Artifact Generator'
+                    },
+                    {
+                        hid: 'twitter:url',
+                        property: 'twitter:url',
+                        content: 'https://genshin-artifacts.netlify.app/'
+                    },
+                    {
+                        hid: 'twitter:image',
+                        property: 'twitter:image',
+                        content: `https://genshin-artifacts.netlify.app/og-site-icon.png`
+                    },
+                    {
+                        hid: 'twitter:type',
+                        property: 'twitter:type',
+                        content: 'website'
+                    },
+                    {
+                        hid: 'twitter:description',
+                        property: 'twitter:description',
                         content: 'Experience the RNG hell of artifacts.'
                     }
                 ],
