@@ -91,7 +91,7 @@ title: 'Genshin Impact Artifact Generator',
                     {
                         rel: 'icon',
                         type: 'image/x-icon',
-                        href: '/site-icon.png'
+                        href: '/favicon.ico'
                     }
                 ]
             }
