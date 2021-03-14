@@ -9,6 +9,23 @@
   </div>
 </template>
 
+
+title: 'Genshin Impact Artifact Generator',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Generate artifacts from the popular Genshin Impact game, upgrade them, add to your inventory, play with RNG' },
+      { hid: 'og:title', property: 'og:title', content: 'Genshin Impact Artifact Generator'},
+      { hid: 'og:url', property: 'og:url', content: 'https://genshin-artifact-generator.netlify.app/'},
+      { hid: 'og:image', property: 'og:image', content: `https://genshinartifacts.netlify.app/site-icon.png`},
+      { hid: 'og:type', property: 'og:type', content: 'website'},
+      { hid: 'og:description', property: 'og:description', content: 'Experience the RNG hell of artifacts.'}
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/site-icon.png' }
+    ]
+
+
 <script>
     import genshin from '@/components/genshin.vue';
     export default {
@@ -17,6 +34,51 @@
         },
         head () {
             return {
+                title: 'Genshin Impact Artifact Generator',
+                meta: [
+                    {
+                        charset: 'utf-8'
+                    },
+                    {
+                        name: 'viewport',
+                        content: 'width=device-width, initial-scale=1' 
+                    },
+                    {
+                        hid: 'description',
+                        name: 'description',
+                        content: 'Generate artifacts from the popular Genshin Impact game, upgrade them, add to your inventory, play with RNG' 
+                    },
+                    {
+                        hid: 'og:title',
+                        property: 'og:title',
+                        content: 'Genshin Impact Artifact Generator'
+                    },
+                    {
+                        hid: 'og:site_name',
+                        property: 'og:site_name',
+                        content: 'Genshin Impact Artifact Generator'
+                    },
+                    {
+                        hid: 'og:url',
+                        property: 'og:url',
+                        content: 'https://genshinartifacts.netlify.app/'
+                    },
+                    {
+                        hid: 'og:image',
+                        property: 'og:image',
+                        content: `https://genshinartifacts.netlify.app/site-icon.png`
+                    },
+                    {
+                        hid: 'og:type',
+                        property: 'og:type',
+                        content: 'website'
+                    },
+                    {
+                        hid: 'og:description',
+                        property: 'og:description',
+                        content: 'Experience the RNG hell of artifacts.'
+                    }
+                ],
                 link: [
                     {
                         rel: 'stylesheet',
@@ -25,6 +87,11 @@
                     {
                         rel: 'stylesheet',
                         href: '/positioning.css'
+                    },
+                    {
+                        rel: 'icon',
+                        type: 'image/x-icon',
+                        href: '/site-icon.png'
                     }
                 ]
             }
