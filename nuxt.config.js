@@ -35,6 +35,10 @@ export default {
     {
       src: '~/plugins/vue-notification.js',
       mode: 'client'
+    },
+    {
+      src: '~/plugins/bootstrap-vue.js',
+      mode: 'client'
     }
   ],
 
