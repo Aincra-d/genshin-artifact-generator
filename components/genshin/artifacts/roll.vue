@@ -5,16 +5,15 @@
             <b-form-checkbox
             class="text-light mb-3 include-low-stars"
             v-model="include_low_stars"
-            size="lg">
+            size="md">
                 Include 1-3 <i class="fas fa-star fa-xs"></i> artifacts
             </b-form-checkbox>
 
             <button
             v-if="artifacts.length === 0"
             @click="rollArtifact()"
-            class="btn text-light btn-link d-inline mx-1 rounded-0"
-            style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
-            :class="$root.screen < 576 ? 'btn-sm' : 'btn-md'">
+            class="btn btn-sm text-light btn-link d-inline mx-1 rounded-0"
+            style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;">
                 <i class="fas fa-redo fa-sm mr-1"></i> Roll artifact
             </button>
 

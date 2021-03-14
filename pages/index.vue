@@ -44,12 +44,12 @@
                     {
                         hid: 'og:url',
                         property: 'og:url',
-                        content: 'https://genshinartifacts.netlify.app/'
+                        content: 'https://genshinartifactgenerator.netlify.app/'
                     },
                     {
                         hid: 'og:image',
                         property: 'og:image',
-                        content: `https://genshinartifacts.netlify.app/og-site-icon.png`
+                        content: `https://genshinartifactgenerator.netlify.app/og-site-icon.png`
                     },
                     {
                         hid: 'og:type',

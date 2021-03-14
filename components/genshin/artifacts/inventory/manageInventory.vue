@@ -1,10 +1,8 @@
 <template>
     <div>
         <b-dropdown
-        :dropright="$root.screen < 576"
-        :dropleft="$root.screen > 576"
         class="m-0 sort-inventory"
-        :size="$root.screen < 576 ? 'md' : 'lg'"
+        size="md"
         variant="link">
             <template v-slot:button-content>
                 <i class="fas fa-sort sort-icon"></i>
@@ -33,10 +31,8 @@
         </b-dropdown>
 
         <b-dropdown
-        :dropright="$root.screen < 576"
-        :dropleft="$root.screen > 576"
         class="m-0"
-        :size="$root.screen < 576 ? 'md' : 'lg'"
+        size="md"
         variant="link">
             <template v-slot:button-content>
                 <i class="fas fa-filter filter-icon"></i>
@@ -56,7 +52,7 @@
         class="text-light d-inline-block"
         v-model="stack_filters"
         @input="$emit('set-stack-filters',stack_filters)"
-        :size="$root.screen < 576 ? 'md' : 'lg'">
+        size="md">
             Stack filters
         </b-form-checkbox>
 

@@ -3,9 +3,8 @@
 		<div class="mb-3">
             <button
             type="button"
-            class="btn btn-link text-light d-inline rounded-0 mx-1"
+            class="btn btn-link btn-sm text-light d-inline rounded-0 mx-1"
             style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
-            :class="$root.screen < 576 ? 'btn-sm' : 'btn-md'"
             :disabled="artifact.info.level == artifact.info.max_level"
             @click="artifact.info.level!=artifact.info.max_level && $emit('upgrade')">
                 <i class="fas fa-arrow-up fa-sm"></i> Upgrade
@@ -13,27 +12,25 @@
 
             <button
             type="button"
-            class="btn btn-link text-light d-inline rounded-0 mx-1"
+            class="btn btn-link btn-sm text-light d-inline rounded-0 mx-1"
             style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
-            :class="$root.screen < 576 ? 'btn-sm' : 'btn-md'"
             @click="$emit('roll-artifact')">
                 <i class="fas fa-redo fa-sm mr-1"></i> Reroll
             </button>
 
             <button
             type="button"
-            class="btn btn-link text-light d-inline rounded-0 mx-1"
+            class="btn btn-link btn-sm text-light d-inline rounded-0 mx-1"
             style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
-            :class="$root.screen < 576 ? 'btn-sm' : 'btn-md'"
             @click="$emit('add')">
                 <i class="fas fa-plus fa-sm mr-1"></i>Add
             </button>
 
             <b-dropdown
             id="dropdown-left"
-            text="Reroll stats"
+            text="Reroll"
             style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
-            :size="$root.screen < 576 ? 'sm' : 'md'"
+            size="sm"
             variant="link"
             class="m-2">
                 <b-dropdown-item
