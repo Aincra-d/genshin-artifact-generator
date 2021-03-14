@@ -14,14 +14,28 @@
     export default {
         components: {
             genshin
+        },
+        head () {
+            return {
+                link: [
+                    {
+                        rel: 'stylesheet',
+                        href: 'https://use.fontawesome.com/releases/v5.11.2/css/all.css'
+                    },
+                    {
+                        rel: 'stylesheet',
+                        href: '/positioning.css'
+                    }
+                ]
+            }
         }
     }
 </script>
 
-<style lang="css">
+<!-- <style lang="css">
 @import 'static/positioning.css';
 @import 'https://use.fontawesome.com/releases/v5.11.2/css/all.css';
-</style>
+</style> -->
 
 <style>
   *,
