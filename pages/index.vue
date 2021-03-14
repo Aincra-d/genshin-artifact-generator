@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="w-100 mx-auto p-0 m-0">
     <notifications
         width="350"
         position="top center"

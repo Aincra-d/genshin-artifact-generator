@@ -1,6 +1,6 @@
 <template>
     <div>
-        <client-only><artifacts></artifacts></client-only>
+        <artifacts></artifacts>
     </div>
 </template>
 
