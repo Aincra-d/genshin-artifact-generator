@@ -3,13 +3,13 @@
         <b-tabs
         class="text-light font-weight-bold"
         active-nav-item-class="btn-light border-0"
-        v-if="screen <= 776"
+        v-if="$root.screen <= 776"
         align="center"
         content-class="mt-3">
             <b-tab title="Artifact roll" active>
                 <div
-                :class="screen < 776 ? 'position-relative d-block' : 'position-absolute top-0 left-0 d-inline-block'"
-                class="roll-container p-0 text-center col-12">
+                :class="$root.screen < 776 ? 'position-relative d-block' : 'position-absolute top-0 left-0 d-inline-block'"
+                class="roll-container p-3 text-center col-12">
                     <artifact-roll
                     style="max-height:85vh; overflow-y: auto;"
                     @update-inventory="updateInventory">
@@ -19,7 +19,7 @@
 
             <b-tab title="Inventory">
                 <div
-                :class="screen < 776 ? 'position-relative d-block' : 'position-absolute top-0 right-0 d-inline-block'"
+                :class="$root.screen < 776 ? 'position-relative d-block' : 'position-absolute top-0 right-0 d-inline-block'"
                 class="inventory-container p-0 text-center col-12">
                     <artifact-inventory
                     style="max-height:90vh; overflow-y: auto;"
@@ -32,7 +32,7 @@
         <div v-else>
             <div
             style="height:100vh; overflow-y: auto;"
-            :class="screen < 776 ? 'position-relative d-block' : 'position-absolute top-0 left-0 d-inline-block'"
+            :class="$root.screen < 776 ? 'position-relative d-block' : 'position-absolute top-0 left-0 d-inline-block'"
             class="roll-container p-0 text-center col-12 col-sm-12 col-md-5 col-lg-4 col-xl-5">
                 <artifact-roll
                 @update-inventory="updateInventory">
@@ -40,7 +40,7 @@
             </div>
 
             <div
-            :class="screen < 776 ? 'position-relative d-block' : 'position-absolute top-0 right-0 d-inline-block'"
+            :class="$root.screen < 776 ? 'position-relative d-block' : 'position-absolute top-0 right-0 d-inline-block'"
             class="inventory-container p-0 text-left col-12 col-sm-12 col-md-7 col-lg-8 col-xl-7">
                 <artifact-inventory
                 style="max-height:100vh; overflow-y: auto;"
@@ -62,25 +62,18 @@
          },
          data(){
             return {
-                artifacts: process.client && JSON.parse(localStorage.artifacts),
-                screen: process.client && window.innerWidth
+                artifacts: process.client && JSON.parse(localStorage.artifacts)
             }
          },
          methods: {
             updateInventory(){
                 if(process.client)
                     this.artifacts=JSON.parse(localStorage.artifacts)
-            },
-            onResize(){
-                if(process.client)this.screen=window.innerWidth
             }
          },
          created(){
             console.log(this.artifacts)
-         },
-         mounted(){
-            if(process.client) window.addEventListener('resize',this.onResize)
-        }
+         }
     }
 </script>
 
