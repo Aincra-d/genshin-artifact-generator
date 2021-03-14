@@ -40,7 +40,8 @@
             </div> -->
 
             <artifact
-            class="p-3"
+            style="max-width:500px"
+            class="p-3 mx-auto"
             :key="artifact.id"
             v-for="artifact in artifacts"
             :desired_subs="desired_subs"
