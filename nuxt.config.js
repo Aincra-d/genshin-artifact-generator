@@ -1,3 +1,4 @@
+import siteImage from '@/static/site-icon.png';
 export default {
   target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -9,7 +10,7 @@ export default {
       { hid: 'description', name: 'description', content: 'Generate artifacts from the popular Genshin Impact game, upgrade them, add to your inventory, play with RNG' },
       { hid: 'og:title', property: 'og:title', content: 'Genshin Impact Artifact Generator'},
       { hid: 'og:url', property: 'og:url', content: 'https://genshin-artifact-generator.netlify.app/'},
-      { hid: 'og:image', property: 'og:image', content: '/site-icon.png'},
+      { hid: 'og:image', property: 'og:image', content: this.BASE_URL+ siteImage},
       { hid: 'og:type', property: 'og:type', content: 'website'},
       { hid: 'og:description', property: 'og:description', content: 'Experience the RNG hell of artifacts.'}
     ],
