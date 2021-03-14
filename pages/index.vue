@@ -66,7 +66,7 @@ title: 'Genshin Impact Artifact Generator',
                     {
                         hid: 'og:image',
                         property: 'og:image',
-                        content: `https://genshinartifacts.netlify.app/site-icon.png`
+                        content: `https://genshinartifacts.netlify.app/og-site-icon.png`
                     },
                     {
                         hid: 'og:type',
