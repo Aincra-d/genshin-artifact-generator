@@ -52,12 +52,12 @@
                     {
                         hid: 'og:url',
                         property: 'og:url',
-                        content: 'https://genshin-artifacts.netlify.app/'
+                        content: 'https://genshin-artifact-generator.netlify.app/'
                     },
                     {
                         hid: 'og:image',
                         property: 'og:image',
-                        content: `https://genshin-artifacts.netlify.app/og-site-icon.png`
+                        content: `https://genshin-artifact-generator.netlify.app/og-site-icon.png`
                     },
                     {
                         hid: 'og:type',
@@ -82,12 +82,12 @@
                     {
                         hid: 'twitter:url',
                         property: 'twitter:url',
-                        content: 'https://genshin-artifacts.netlify.app/'
+                        content: 'https://genshin-artifact-generator.netlify.app/'
                     },
                     {
                         hid: 'twitter:image',
                         property: 'twitter:image',
-                        content: `https://genshin-artifacts.netlify.app/og-site-icon.png`
+                        content: `https://genshin-artifact-generator.netlify.app/og-site-icon.png`
                     },
                     {
                         hid: 'twitter:type',
