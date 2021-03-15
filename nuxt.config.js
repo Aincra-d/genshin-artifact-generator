@@ -18,24 +18,6 @@ export default {
   //   ]
   // },
 
-  pwa: {
-    icon: {
-        source: 'https://genshin-artifacts.netlify.app/app-icon.png',
-        fileName: 'app-icon.png',
-        // sizes: [64, 120, 144, 152, 192, 384, 512]
-    },
-    manifest: {
-        name: 'Genshin Impact Artifact Generator',
-        short_name: 'Genshin Artifacts',
-        description: 'Experience the RNG hell of artifacts.',
-        background_color: '#1c1c22',
-        theme_color: '#1c1c22'
-    },
-    workboxOptions: {
-        skipWaiting: true
-    }
-  },
-
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -84,7 +66,24 @@ export default {
   axios: {},
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
-
+  pwa: {
+    icon: {
+        source: 'https://genshin-artifacts.netlify.app/app-icon.png',
+        fileName: 'app-icon.png',
+        // sizes: [64, 120, 144, 152, 192, 384, 512]
+    },
+    manifest: {
+        name: 'Genshin Impact Artifact Generator - Experience The RNG Hell of Artifacts.',
+        short_name: 'Genshin Artifacts',
+        description: 'Experience the RNG hell of artifacts.',
+        background_color: '#1c1c22',
+        theme_color: '#1c1c22'
+    },
+    workboxOptions: {
+        skipWaiting: true
+    }
+  },
+  
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
 
