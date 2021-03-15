@@ -73,7 +73,7 @@ export default {
         // sizes: [64, 120, 144, 152, 192, 384, 512]
     },
     manifest: {
-        name: 'Genshin Impact Artifact Generator - Experience The RNG Hell of Artifacts.',
+        name: 'Genshin Impact Artifact Generator',
         short_name: 'Genshin Artifacts',
         description: 'Experience the RNG hell of artifacts.',
         background_color: '#1c1c22',
@@ -83,7 +83,7 @@ export default {
         skipWaiting: true
     }
   },
-  
+
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
 

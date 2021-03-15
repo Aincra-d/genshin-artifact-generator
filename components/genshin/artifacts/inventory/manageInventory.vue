@@ -1,8 +1,6 @@
 <template>
     <div>
         <b-dropdown
-        :dropright="screen < 576"
-        :dropleft="screen > 576"
         class="m-0 sort-inventory"
         :size="screen < 576 ? 'md' : 'lg'"
         variant="link">
@@ -33,8 +31,6 @@
         </b-dropdown>
 
         <b-dropdown
-        :dropright="screen < 576"
-        :dropleft="screen > 576"
         class="m-0"
         :size="screen < 576 ? 'md' : 'lg'"
         variant="link">
