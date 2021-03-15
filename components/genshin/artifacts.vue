@@ -57,7 +57,7 @@
          },
          data(){
             return {
-                artifacts: process.client && JSON.parse(localStorage.artifacts),
+                artifacts: process.client && (localStorage.artifacts ? JSON.parse(localStorage.artifacts) : []),
                 screen: process.client && window.innerWidth
             }
          },

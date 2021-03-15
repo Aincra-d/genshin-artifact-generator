@@ -128,7 +128,9 @@
             openModal(ref,id) {
                 this.setSubs();
                 this.artifact_id=id;
-                if(this.client) this.current_artifact=JSON.parse(localStorage.artifacts).filter(artifact => artifact.id === id)[0];
+                if(this.client){
+                    this.current_artifact=(localStorage.artifacts ? JSON.parse(localStorage.artifacts).filter(artifact => artifact.id === id)[0] : []);
+                }
                 this.modal_bg_class='stars-'+this.artifacts[this.artifacts.findIndex(artifact => artifact.id === this.artifact_id)].info.stars;
                 this.$refs[ref].open();
                 this.ref=ref;

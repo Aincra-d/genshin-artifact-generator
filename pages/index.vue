@@ -116,7 +116,11 @@
                     }
                 ]
             }
-        }
+        },
+        // beforeMount(){
+        //     if(process.client) localStorage.setItem('artifacts',[]);
+        //     if(process.client) localStorage.setItem('roll_counter',0);
+        // },
     }
 </script>
 

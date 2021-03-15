@@ -1,6 +1,7 @@
 <template>
     <div>
         <artifact-modal
+        v-if="artifacts.length!=0"
         :screen="screen"
         ref="artifactModal"
         :artifacts="artifacts"
