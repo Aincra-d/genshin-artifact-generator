@@ -22,7 +22,7 @@ export default {
     icon: {
         // source: 'https://genshin-artifacts.netlify.app/icon.png',
         fileName: 'icon.png',
-        sizes: [64, 120, 144, 152, 192, 384, 512]
+        // sizes: [64, 120, 144, 152, 192, 384, 512]
     },
     manifest: {
         name: 'Genshin Impact Artifact Generator',
@@ -65,7 +65,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -84,11 +84,6 @@ export default {
   axios: {},
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
-  pwa: {
-    manifest: {
-      lang: 'en'
-    }
-  },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
