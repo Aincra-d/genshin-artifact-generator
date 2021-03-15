@@ -18,6 +18,19 @@ export default {
   //   ]
   // },
 
+  pwa: {
+    icon: {
+      filename: 'pwa-icon.png'
+    },
+    manifest: {
+        name: 'Genshin Impact Artifact Generator',
+        short_name: 'Genshin Artifacts',
+        description: 'Experiene the RNG hell of artifacts.',
+        background_color: '#1c1c22',
+        theme_color: '#1c1c22'
+    }
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -47,6 +60,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/pwa'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -58,7 +72,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
-    '@nuxt/content',
+    '@nuxt/content'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
