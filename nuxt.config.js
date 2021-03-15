@@ -30,6 +30,9 @@ export default {
         description: 'Experiene the RNG hell of artifacts.',
         background_color: '#1c1c22',
         theme_color: '#1c1c22'
+    },
+    workboxOptions: {
+        skipWaiting: true
     }
   },
 
