@@ -27,7 +27,7 @@ export default {
     manifest: {
         name: 'Genshin Impact Artifact Generator',
         short_name: 'Genshin Artifacts',
-        description: 'Experiene the RNG hell of artifacts.',
+        description: 'Experience the RNG hell of artifacts.',
         background_color: '#1c1c22',
         theme_color: '#1c1c22'
     },
