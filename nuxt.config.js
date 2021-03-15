@@ -76,7 +76,7 @@ export default {
         name: 'Genshin Impact Artifact Generator',
         short_name: 'Genshin Artifacts',
         description: 'Experience the RNG hell of artifacts.',
-        background_color: '#1c1c22',
+        background_color: '#000000',
         theme_color: '#1c1c22'
     },
     workboxOptions: {
