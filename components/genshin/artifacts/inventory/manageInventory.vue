@@ -60,7 +60,7 @@
         type="button"
         class="btn btn-light btn-sm d-inline-block ml-2 py-0"
         @click="$emit('reset-inventory')">
-            <i class="fas fa-redo mr-1"></i> Reset inventory
+            <i class="fas fa-redo mr-1"></i> Reset
         </button>
     </div>
 </template>
