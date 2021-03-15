@@ -20,7 +20,7 @@ export default {
 
   pwa: {
     icon: {
-        source: 'https://genshin-artifacts.netlify.app/app-icon.png',
+        source: 'app-icon.png',
         fileName: 'app-icon.png',
         sizes: [64, 120, 144, 152, 192, 384, 512]
     },
