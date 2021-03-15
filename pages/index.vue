@@ -6,6 +6,10 @@
         group="foo">
         </notifications>
     <genshin/>
+
+    <noscript>
+        Genshin Impact Artifact Generator <b>requires</b> Javascript to work. Please enable it.
+    </noscript>
   </div>
 </template>
 
@@ -25,6 +29,10 @@
                     {
                         name: 'viewport',
                         content: 'width=device-width, initial-scale=1' 
+                    },
+                    {
+                        name: 'theme-color',
+                        content: '#1c1c22'
                     },
                     {
                         hid: 'description',
