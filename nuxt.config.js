@@ -20,7 +20,9 @@ export default {
 
   pwa: {
     icon: {
-      filename: 'pwa-icon.png'
+        source: 'https://genshin-artifacts.netlify.app/icon.png',
+        filename: 'icon.png',
+        sizes: [64, 120, 144, 152, 192, 384, 512]
     },
     manifest: {
         name: 'Genshin Impact Artifact Generator',
