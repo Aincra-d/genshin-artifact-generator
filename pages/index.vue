@@ -27,6 +27,10 @@
                         charset: 'utf-8'
                     },
                     {
+                        name: 'google-site-verification',
+                        content: '4u8ejyeDpEKLjrGw47QLWOik7IsGDyCLk4gLbd6yY-c'
+                    },
+                    {
                         name: 'viewport',
                         content: 'width=device-width, initial-scale=1' 
                     },
