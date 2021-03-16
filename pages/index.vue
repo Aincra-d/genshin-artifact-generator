@@ -15,7 +15,7 @@
 
         <button
         type="button"
-        class="btn btn-light position-fixed bottom-2 left-2 rounded-circle"
+        class="btn btn-light position-fixed bottom-2 left-2 px-3 rounded-circle"
         @click="$refs.infoModal.openModal()">
             <i class="fas fa-info fa-md"></i>
         </button>

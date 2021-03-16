@@ -9,7 +9,7 @@
         title="About"
         ref="infoModal"
         class="text-dark text-center info-modal">
-            <div class="w-100 text-left text-dark">
+            <div class="w-100 text-left text-dark p-1">
                 <p class="font-15">
                     Genshin Impact Artifact Generator is a hobby project of mine, which is the result of me loving Genshin Impact, and having programming knowledge with too much free time on my hands.
 
@@ -29,7 +29,7 @@
                         </li>
 
                         <li>
-                            By choosing one, the algorithm will generate artifacts only available in the selected domain
+                            By choosing one, the algorithm will generate artifacts only available in the selected domain.
                         </li>
 
                         <li>
@@ -85,7 +85,7 @@
 
                         <li>
                             By clicking the button at the top-right corner of each artifact, you can edit your artifacts, just like when you roll them, or choose to remove them from your inventory. <br>
-                            <b>Note:</b> if you have already rerolled either the main or sub stats before adding to your inventory, those options will be kept, thus disabling those buttons.
+                            <b>Note:</b> if you have already rerolled either the main or sub stats before adding to your inventory, those actions will be stored, thus disabling those options.
                         </li>
                     </ul>
 
@@ -93,7 +93,19 @@
                         Welcome to RNG hell, and have fun!
                     </h4>
 
-                    <b>© 2021 Copyright: <i class="fab fa-discord"></i> Mommy Beidou❤️</b>
+                    <b>© 2021 Copyright: <i class="fab fa-discord"></i> Mommy Beidou❤️#3271 at
+                        <a href="https://discord.gg/genshinimpact" target="blank">
+                            Genshin Impact Official
+                        </a>
+                        <br>
+
+                        <i class="fas fa-envelope"></i>
+
+                        <a href="mailto:aincrad.mb@gmail.com" target="blank">
+                            aincrad.mb@gmail.com
+                        </a>
+                    </b>
+
                     <br>
                     Beidou best girl btw
                 </p>
