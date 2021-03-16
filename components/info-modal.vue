@@ -107,7 +107,7 @@
                     </b>
 
                     <br>
-                    Beidou best girl btw
+                    Beidou best waifu btw
                 </p>
             </div>
         </ui-modal>
