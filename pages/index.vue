@@ -81,7 +81,7 @@
                     {
                         hid: 'og:image',
                         property: 'og:image',
-                        content: `https://https://genshin-impact-artifacts.netlify.app/og-app-icon.png`
+                        content: `https://https://genshin-impact-artifacts.netlify.app/og-site-icon.png`
                     },
                     {
                         hid: 'og:type',
@@ -111,7 +111,7 @@
                     {
                         hid: 'twitter:image',
                         property: 'twitter:image',
-                        content: `https://https://genshin-impact-artifacts.netlify.app/og-app-icon.png`
+                        content: `https://https://genshin-impact-artifacts.netlify.app/og-site-icon.png`
                     },
                     {
                         hid: 'twitter:type',
