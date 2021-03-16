@@ -22,5 +22,9 @@
 	{
 		"name": "Clear Pool and Mountain Cavern",
 		"sets": ["Gambler","Scholar","Bloodstained Chivalry","Noblesse Oblige"]
+	},
+	{
+		"name": "No domain",
+		"sets": ["Gladiator's Finale","Wanderer's Troupe","Instructor"]
 	}
 ]

@@ -1,23 +1,43 @@
 <template>
-  <div class="w-100 mx-auto p-0 m-0">
-    <notifications
+    <div class="w-100 mx-auto p-0 m-0">
+        <notifications
         width="350"
         position="top center"
-        group="foo">
+        group="foo">      
         </notifications>
-    <genshin/>
 
-    <noscript>
-        Genshin Impact Artifact Generator <b>requires</b> Javascript to work. Please enable it.
-    </noscript>
-  </div>
+        <genshin/>
+
+        <info-modal
+        v-if="loaded"
+        ref="infoModal">
+        </info-modal>
+
+        <button
+        type="button"
+        class="btn btn-light position-fixed bottom-2 left-2 rounded-circle"
+        @click="$refs.infoModal.openModal()">
+            <i class="fas fa-info fa-md"></i>
+        </button>
+
+        <noscript>
+            Genshin Impact Artifact Generator <b>requires</b> Javascript to work. Please enable it.
+        </noscript>
+    </div>
 </template>
 
 <script>
     import genshin from '@/components/genshin.vue';
+    import infoModal from '@/components/info-modal.vue';
     export default {
         components: {
-            genshin
+            genshin,
+            'info-modal': infoModal
+        },
+        data(){
+            return {
+                loaded: false
+            }
         },
         head () {
             return {
@@ -120,6 +140,12 @@
                     }
                 ]
             }
+        },
+        created(){
+            let self=this;
+            setTimeout(function() {
+                self.loaded=true;
+            }, 2000);
         },
         // beforeMount(){
         //     if(process.client) localStorage.setItem('artifacts',[]);

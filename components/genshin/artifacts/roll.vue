@@ -76,6 +76,10 @@
 <script>
     import artifact from '@/components/genshin/artifacts/artifact.vue';
     import artifactActions from '@/components/genshin/artifacts/roll/artifact-actions.vue';
+    import substatsJ from '~/static/substats.json';
+    import domainsJ from '~/static/domains.json';
+    import mainstatsJ from '~/static/mainstats.json';
+    import setsJ from '~/static/sets.json';
     import { uuid } from 'vue-uuid';
     export default{
         name: 'roll',
@@ -89,11 +93,12 @@
                 current_artifact: {},
                 roll_counter: process.client && (localStorage.roll_counter || 0),
                 all_subs: [],
-                sub_stats: require('../artifacts/substats.json'),
-                domains: require('../artifacts/domains.json'),
-                main_stats: require('../artifacts/mainstats.json'),
-                sub_stat_names: require('../artifacts/substats.json').map(sub => sub.name),
-                domain_names: require('../artifacts/domains.json').map(domain => domain.name),
+                sub_stats: substatsJ,
+                domains: domainsJ,
+                main_stats: mainstatsJ,
+                sub_stat_names: substatsJ.map(sub => sub.name),
+                domain_names: domainsJ.map(domain => domain.name),
+                sets: setsJ,
                 desired_subs: [],
                 selected_domain: '',
                 max_sub_counts: [1,2,4,4,4],
@@ -111,7 +116,7 @@
                 this.artifacts=[];
                 this.sub_stats=this.all_subs;
                 this.setSubs();
-                let sets = require('../artifacts/sets.json');
+                let sets = this.sets;
 
                 if(!this.include_low_stars) sets=sets.filter(set => set.stars.includes(5));
 

@@ -97,6 +97,8 @@
 
 <script>
     import artifact from '@/components/genshin/artifacts/artifact.vue';
+    import substatsJ from '~/static/substats.json';
+    import mainstatsJ from '~/static/mainstats.json';
     export default{
         name: 'artifactModal',
         props: {
@@ -116,8 +118,8 @@
                 modal_bg_class: '',
                 roll_counter: process.client && (localStorage.roll_counter || 0),
                 all_subs: [],
-                main_stats: require('../mainstats.json'),
-                sub_stats: require('../substats.json'),
+                main_stats: mainstatsJ,
+                sub_stats: substatsJ,
                 max_sub_counts: [1,2,4,4,4],
                 removed: false,
                 confirm_remove: false,

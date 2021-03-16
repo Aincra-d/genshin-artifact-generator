@@ -199,6 +199,9 @@
 </template>
 
 <script>
+    import substatsJ from '~/static/substats.json';
+    import mainstatsJ from '~/static/mainstats.json';
+    import setsJ from '~/static/sets.json';
     export default{
         name: 'inventoryFilters',
         props: {
@@ -215,9 +218,9 @@
                 types: [],
                 sets: [],
                 artifact_types: ["Flower of Life","Plume of Death","Sands of Eon","Goblet of Eonothem","Circlet of Logos"],
-                artifact_main_stats: require('../mainstats.json').map(main => main.name),
-                artifact_sets: require('../sets.json').map(set => set.name),
-                artifact_sub_stats: require('../substats.json').map(sub => sub.name)
+                artifact_main_stats: mainstatsJ.map(main => main.name),
+                artifact_sets: setsJ.map(set => set.name),
+                artifact_sub_stats: substatsJ.map(sub => sub.name)
             }
         },
         methods: {
