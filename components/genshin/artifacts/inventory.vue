@@ -12,6 +12,7 @@
             <manage-inventory
             :screen="screen"
             @sort-inventory="sortInventory"
+            @change-view="changeView"
             @set-stack-filters="setStackFilters"
             @reset-inventory="resetInventory"
             @filter-inventory="filterInventory">
@@ -37,7 +38,10 @@
 
         <artifact
         :inventory="true"
-        class="d-inline-block col-12 col-sm-8 col-md-9 col-lg-6 col-xl-4"
+        :view="view"
+        :class="view != 'images'
+        ? 'd-inline-block col-12 col-sm-8 col-md-9 col-lg-6 col-xl-4'
+        : 'd-inline-block'"
         :key="artifact.id"
         v-for="artifact in artifacts"
         :artifact="artifact"
@@ -75,7 +79,8 @@
                 sub_filter_type: 'Contain',
                 sub_stats: [],
                 stack_filters: false,
-                screen: process.client && window.innerWidth
+                screen: process.client && window.innerWidth,
+                view: process.client && (sessionStorage.inventoryView || (this.screen < 776 ? 'full' : 'compressed'))
             }
         },
         methods: {
@@ -182,6 +187,10 @@
             },
             updateFilters(filter){
                 this.filterInventory(filter);
+            },
+            changeView(name){
+                sessionStorage.setItem('inventoryView', name);
+                this.view=name;
             },
             openModal(ref,id) {
                 this.$refs.artifactModal.openModal(ref,id)

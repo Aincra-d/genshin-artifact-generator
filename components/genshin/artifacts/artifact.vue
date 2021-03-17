@@ -1,91 +1,111 @@
 <template>
     <div>
-        <div
-        v-if="client"
-        :class="'stars-'+artifact.info.stars+' '+(inventory ? 'inventory' : '')"
-        class="d-inline-block p-0 border border-light text-light border-0 artifact">
+        <div v-if="client">
+            <div
+            v-if="view != 'images'"
+            :class="'stars-'+artifact.info.stars+' '+view+(view == 'full' ? 'align-top' : '')"
+            class="d-inline-block p-0 border border-light text-light border-0 artifact contain-info">
 
-            <div class="w-100 text-left set-name">
-                <h5 class="ml-4 d-inline">
-                    {{
-                        artifact.info.piece.name.length > 25 ? artifact.info.piece.name.substring(0, 22)+'...' : artifact.info.piece.name
-                    }}
-                </h5>
+                <div class="w-100 text-left set-name">
+                    <h5 class="ml-4 d-inline">
+                        {{
+                            artifact.info.piece.name.length > 25 ? artifact.info.piece.name.substring(0, 22)+'...' : artifact.info.piece.name
+                        }}
+                    </h5>
 
-                <button
-                v-if="inventory"
-                type="button"
-                class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
-                @click="$emit('open-modal','artifactModal',artifact.id)">
-                    <i class="fas fa-edit fa-sm"></i>
-                </button>
-            </div>
+                    <button
+                    v-if="inventory"
+                    type="button"
+                    class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
+                    @click="$emit('open-modal','artifactModal',artifact.id)">
+                        <i class="fas fa-edit fa-sm"></i>
+                    </button>
+                </div>
 
-            <div class="w-100 text-right artifact-main-info position-relative">
-                <img
-                class="mr-1"
-                style="height:150px;width:150px;"
-                v-lazy="artifact.info.piece.image"
-                :alt="artifact.info.piece.name">
+                <div class="w-100 text-right artifact-main-info position-relative">
+                    <img
+                    class="mr-1"
+                    style="height:150px;width:150px;"
+                    v-lazy="artifact.info.piece.image"
+                    :alt="artifact.info.piece.name">
 
-                <h6 class="position-absolute top-0 left-0 artifact-type ml-4">
-                    {{ artifact.info.piece.type }}
-                </h6>
+                    <h6 class="position-absolute top-0 left-0 artifact-type ml-4">
+                        {{ artifact.info.piece.type }}
+                    </h6>
 
-                <div class="artifact-main-stat position-absolute bottom-0 left-0 text-left">
-                    <!-- {{ artifact.info.set.name }} -->
+                    <div class="artifact-main-stat position-absolute bottom-0 left-0 text-left">
+                        <!-- {{ artifact.info.set.name }} -->
 
-                    <span class="font-15 font-weight-bold artifact-main-stat ml-4 mb-0">
-                        {{ artifact.stats.main.name.replace('%','') }}
-                    </span>
+                        <span class="font-15 font-weight-bold artifact-main-stat ml-4 mb-0">
+                            {{ artifact.stats.main.name.replace('%','') }}
+                        </span>
 
-                    <h2 class="font-weight-bold text-light artifact-main-value ml-4 mt-0">
-                        {{ artifact.stats.main.value }}
-                    </h2>
+                        <h2 class="font-weight-bold text-light artifact-main-value ml-4 mt-0">
+                            {{ artifact.stats.main.value }}
+                        </h2>
 
-                    <span class="ml-4 mt-2">
-                        <i
+                        <span class="ml-4 mt-2">
+                            <i
+                            :key="i"
+                            v-for="(star,i) in artifact.info.stars"
+                            class="fas fa-star text-warning fa-md mr-1"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="artifact-sub-info m-0 p-0">
+                    
+
+                    <ul class="list-unstyled text-left font-weight-bold artifact-sub-stats ml-4 pt-3">
+                        <li>
+                            <h6
+                            class="d-inline text-light bg-dark rounded font-weight-bold px-1">
+                                <h5 class="d-inline">+</h5>{{ artifact.info.level }}
+                            </h6>
+                        </li>
+
+                        <li
+                        :class="desired_subs ?
+                        (desired_subs.includes(sub.name) ? 'text-success font-weight-bold' : '') : ''"
                         :key="i"
-                        v-for="(star,i) in artifact.info.stars"
-                        class="fas fa-star text-warning fa-md mr-1"></i>
-                    </span>
+                        v-for="(sub,i) in artifact.stats.subs">
+                            {{ sub.name.replace('%','') }} <i class="fas fa-plus fa-xs"></i> {{ (Math.round(sub.value * 100) / 100)+(sub.name.includes('%') ? '%' : '') }}
+                        </li>
+                    </ul>
+
+                    <div class="artifact-set-info text-left">
+                        <h6 class="artifact-set-name font-weight-bold ml-4">
+                            {{ artifact.info.set.name }}:
+                        </h6>
+
+                        <ul class="list-unstyled font-weight-bold text-left ml-4 artifact-set-effects w-90">
+                            <li>
+                                2-Piece Set: {{ artifact.info.set.effects['2_piece'] }}
+                            </li>
+
+                            <li class="mt-1">
+                                4-Piece Set: {{ artifact.info.set.effects['4_piece'] }}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <div class="artifact-sub-info m-0 p-0">
-                
-
-                <ul class="list-unstyled text-left font-weight-bold artifact-sub-stats ml-4 pt-3">
-                    <li>
-                        <h6
-                        class="d-inline text-light bg-dark rounded font-weight-bold px-1">
-                            <h5 class="d-inline">+</h5>{{ artifact.info.level }}
-                        </h6>
-                    </li>
-
-                    <li
-                    :class="desired_subs ?
-                    (desired_subs.includes(sub.name) ? 'text-success font-weight-bold' : '') : ''"
-                    :key="i"
-                    v-for="(sub,i) in artifact.stats.subs">
-                        {{ sub.name.replace('%','') }} <i class="fas fa-plus fa-xs"></i> {{ (Math.round(sub.value * 100) / 100)+(sub.name.includes('%') ? '%' : '') }}
-                    </li>
-                </ul>
-
-                <div class="artifact-set-info text-left">
-                    <h6 class="artifact-set-name font-weight-bold ml-4">
-                        {{ artifact.info.set.name }}:
-                    </h6>
-
-                    <ul class="list-unstyled font-weight-bold text-left ml-4 artifact-set-effects w-90">
-                        <li>
-                            2-Piece Set: {{ artifact.info.set.effects['2_piece'] }}
-                        </li>
-
-                        <li class="mt-1">
-                            4-Piece Set: {{ artifact.info.set.effects['4_piece'] }}
-                        </li>
-                    </ul>
+            <div v-else>
+                <div
+                class="artifact images-only d-inline-block rounded"
+                :class="'stars-'+artifact.info.stars">
+                    <button
+                    v-if="inventory"
+                    type="button"
+                    class="btn text-light artifact-main-info d-inline
+                    rounded btn-md float-left py-0 px-1 mx-1"
+                    @click="$emit('open-modal','artifactModal',artifact.id)">
+                        <img
+                        class="mr-1 artifact-image"
+                        v-lazy="artifact.info.piece.image"
+                        :alt="artifact.info.piece.name">
+                    </button>
                 </div>
             </div>
         </div>
@@ -99,7 +119,8 @@
             artifact: Object,
             inventory: Boolean,
             editing: Boolean,
-            desired_subs: Array
+            desired_subs: Array,
+            view: String
         },
         data(){
             return {
@@ -130,9 +151,26 @@
     }
 
     @media(min-width: 1200px){
-        .artifact{
+        .artifact.contain-info{
             max-width: 350px;
         }
+    }
+
+    @media(max-width:1200px){
+        .artifact-image{
+            width:100px;
+            height:100px;
+        }
+    }
+    @media(min-width:1200px){
+        .artifact-image{
+            width:120px;
+            height:120px;
+        }
+    }
+
+    .artifact.images-only{
+        overflow-x: hidden;
     }
 
     .artifact.stars-5 .set-name{
@@ -222,10 +260,8 @@
         color: #909291;
     }
 
-    @media(min-width: 776px){
-        .artifact.inventory{
-            max-height: 185px;
-            overflow-y: auto;
-        }
-    } 
+    .artifact.compressed{
+        max-height: 185px;
+        overflow-y: auto;
+    }
 </style>

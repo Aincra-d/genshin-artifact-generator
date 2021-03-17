@@ -19,15 +19,6 @@
                 
                 <span>{{sort.title}}</span>
             </b-dropdown-item>
-
-           <!--  <b-dropdown-item
-            @click="$emit('sort-bystats')">
-
-                <span>
-                    Sort by sub stats
-                </span>
-
-            </b-dropdown-item> -->
         </b-dropdown>
 
         <b-dropdown
@@ -48,6 +39,29 @@
             </b-dropdown-item>
         </b-dropdown>
 
+        <b-dropdown
+        class="m-0 set-inventory-view"
+        :size="screen < 576 ? 'md' : 'lg'"
+        variant="link">
+            <template v-slot:button-content>
+                <i class="fas fa-th sort-icon"></i>
+            </template>
+
+            <b-dropdown-item
+            :key="i"
+            v-for="(view,i) in views"
+            @click="changeView(view.name)">
+                <i
+                class="fas mr-2"
+                :class="view.icon">
+                </i>
+                
+                <span :class="view.name == inventory_view && 'text-primary'">
+                    {{view.title}}
+                </span>
+            </b-dropdown-item>
+        </b-dropdown>
+
         <b-form-checkbox
         class="text-light d-inline-block"
         v-model="stack_filters"
@@ -56,12 +70,12 @@
             Stack filters
         </b-form-checkbox>
 
-        <button
+        <!-- <button
         type="button"
         class="btn btn-light btn-sm d-inline-block ml-2 py-0"
         @click="$emit('reset-inventory')">
             <i class="fas fa-redo mr-1"></i> Reset
-        </button>
+        </button> -->
     </div>
 </template>
 
@@ -73,6 +87,7 @@
         },
         data(){
             return {
+                inventory_view: process.client && (sessionStorage.inventoryView || (this.screen < 776 ? 'full' : 'compressed')),
                 stack_filters: false,
                 sorts: [
                     // {
@@ -229,7 +244,30 @@
                         type: 'by_set',
                         title: 'Filter by set'
                     }
+                ],
+                views: [
+                    {
+                        name: 'full',
+                        title: 'Full cards',
+                        icon: 'fas fa-square'
+                    },
+                    {
+                        name: 'compressed',
+                        title: 'Compressed cards',
+                        icon: 'fas fa-th-large'
+                    },
+                    {
+                        name: 'images',
+                        title: 'Images only',
+                        icon: 'fas fa-th'
+                    },
                 ]
+            }
+        },
+        methods: {
+            changeView(name){
+                this.$emit('change-view',name);
+                this.inventory_view=name;
             }
         }
     }
