@@ -80,7 +80,7 @@
                 sub_stats: [],
                 stack_filters: false,
                 screen: process.client && window.innerWidth,
-                view: process.client && (sessionStorage.inventoryView || (this.screen < 776 ? 'full' : 'compressed'))
+                view: ''
             }
         },
         methods: {
@@ -200,7 +200,10 @@
             }
         },
         mounted(){
-            if(process.client) window.addEventListener('resize',this.onResize)
+            if(process.client) window.addEventListener('resize',this.onResize);
+        },
+        created(){
+            if(process.client) this.view=(sessionStorage.inventoryView || (this.screen < 776 ? 'images' : 'compressed'))
         }
     }
 </script>

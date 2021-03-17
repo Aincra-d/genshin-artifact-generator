@@ -80,7 +80,12 @@
                         </li>
 
                         <li>
-                            By clicking the "Reset" button, you can reset your inventory to its original state, removing all applied filters. This will <b>NOT</b> delete your inventory.
+                            You have the option to change how the artifact will appear in your artifacts(<i class="fas fa-th"></i>). There are 3 options:
+                            <ul>
+                                <li>Full cards - Each artifact will have all info displayed at once.</li>
+                                <li>Compressed cards - You will only see the top section of each artifact by default. To see the sub stats and the rest, you need to scroll them(Default in desktop view).</li>
+                                <li>Images only - You will only see the image of each artifact. For further details, click/touch them to open the popup window.(Default on touch devices).</li>
+                            </ul>
                         </li>
 
                         <li>

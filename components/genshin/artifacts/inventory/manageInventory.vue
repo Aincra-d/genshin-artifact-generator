@@ -87,7 +87,7 @@
         },
         data(){
             return {
-                inventory_view: process.client && (sessionStorage.inventoryView || (this.screen < 776 ? 'full' : 'compressed')),
+                inventory_view: process.client && (sessionStorage.inventoryView || (this.screen < 776 ? 'images' : 'compressed')),
                 stack_filters: false,
                 sorts: [
                     // {
@@ -266,8 +266,8 @@
         },
         methods: {
             changeView(name){
-                this.$emit('change-view',name);
                 this.inventory_view=name;
+                this.$emit('change-view',name);
             }
         }
     }
