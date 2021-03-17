@@ -281,8 +281,14 @@
 </script>
 
 <style>
-    .select .ui-select__content *{
+    /*.select .ui-select__content *{
         max-width: 100vw !important;
+    }*/
+
+    .ui-select.is-multiple .ui-select__display-value{
+        white-space: nowrap;
+        max-width: 250px;
+        overflow-x: auto;
     }
 
     .select{
