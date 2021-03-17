@@ -3,7 +3,7 @@
         <div v-if="client">
             <div
             v-if="view != 'images'"
-            :class="'stars-'+artifact.info.stars+' '+view+(view == 'full' ? 'align-top' : '')"
+            :class="'stars-'+artifact.info.stars+' '+view+' '+(view == 'full' ? 'align-top' : '')"
             class="d-inline-block p-0 border border-light text-light border-0 artifact contain-info">
 
                 <div class="w-100 text-left set-name">
