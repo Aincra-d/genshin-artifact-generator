@@ -108,7 +108,7 @@
 </template>
 
 <script>
-	export default{
+	export default{ 
 		name: 'guide'
 	}
 </script>
