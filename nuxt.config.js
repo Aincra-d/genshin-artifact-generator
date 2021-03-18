@@ -39,11 +39,7 @@ export default {
     {
       src: '~/plugins/bootstrap-vue.js',
       mode: 'client'
-    },
-    // {
-    //   src: '~/plugins/vue-multiselect.js',
-    //   mode: 'client'
-    // }
+    }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
