@@ -137,6 +137,11 @@
                         rel: 'icon',
                         type: 'image/x-icon',
                         href: '/favicon.ico'
+                    },
+                    {
+                        rel: 'preload',
+                        asd: 'image',
+                        href: '/site-background.png'
                     }
                 ]
             }
