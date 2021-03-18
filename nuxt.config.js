@@ -68,7 +68,7 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     icon: {
-        source: 'https://genshin-artifact-generator.netlify.app/app-icon.png',
+        source: 'https://genshin-impact-artifacts.netlify.app/app-icon.png',
         fileName: 'app-icon.png',
         // sizes: [64, 120, 144, 152, 192, 384, 512]
     },

@@ -76,12 +76,12 @@
                     {
                         hid: 'og:url',
                         property: 'og:url',
-                        content: 'https://https://genshin-impact-artifacts.netlify.app/'
+                        content: '/'
                     },
                     {
                         hid: 'og:image',
                         property: 'og:image',
-                        content: `https://https://genshin-impact-artifacts.netlify.app/og-site-icon.png`
+                        content: `/og-site-icon.png`
                     },
                     {
                         hid: 'og:type',
@@ -106,12 +106,12 @@
                     {
                         hid: 'twitter:url',
                         property: 'twitter:url',
-                        content: 'https://https://genshin-impact-artifacts.netlify.app/'
+                        content: '/'
                     },
                     {
                         hid: 'twitter:image',
                         property: 'twitter:image',
-                        content: `https://https://genshin-impact-artifacts.netlify.app/og-site-icon.png`
+                        content: `/og-site-icon.png`
                     },
                     {
                         hid: 'twitter:type',

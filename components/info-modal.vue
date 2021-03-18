@@ -19,6 +19,19 @@
                         <change-log></change-log>
                     </b-tab>
                 </b-tabs>
+
+                    <b>© 2021 Copyright: <i class="fab fa-discord"></i> Mommy Beidou❤️#3271 at
+                    <a href="https://discord.gg/genshinimpact" target="blank">
+                        Genshin Impact Official
+                    </a>
+                    <br>
+
+                    <i class="fas fa-envelope"></i>
+
+                    <a href="mailto:aincrad.mb@gmail.com" target="blank">
+                        aincrad.mb@gmail.com
+                    </a>
+                </b>
             </div>
         </ui-modal>
     </div>

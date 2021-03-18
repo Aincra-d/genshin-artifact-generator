@@ -87,22 +87,6 @@
 	        <h4>
 	            Welcome to RNG hell, and have fun!
 	        </h4>
-
-	        <b>© 2021 Copyright: <i class="fab fa-discord"></i> Mommy Beidou❤️#3271 at
-	            <a href="https://discord.gg/genshinimpact" target="blank">
-	                Genshin Impact Official
-	            </a>
-	            <br>
-
-	            <i class="fas fa-envelope"></i>
-
-	            <a href="mailto:aincrad.mb@gmail.com" target="blank">
-	                aincrad.mb@gmail.com
-	            </a>
-	        </b>
-
-	        <br>
-	        Beidou best waifu btw
 	    </p>
 	</div>
 </template>
