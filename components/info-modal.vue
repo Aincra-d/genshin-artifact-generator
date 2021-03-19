@@ -6,20 +6,24 @@
         alignTop
         :alignTopMargin="0"
         :max-height="100"
-        title="About"
+        title="App info"
         ref="infoModal"
         class="text-dark text-center info-modal">
             <div class="w-100 text-left text-dark p-1">
                 <b-tabs>
-                    <b-tab title="Guide" active>
+                    <b-tab title="About" active>
+                        <about></about>
+                    </b-tab>
+
+                    <b-tab title="Guide">
                         <guide></guide>
                     </b-tab>
 
-                    <b-tab title="Change log">
+                    <b-tab title="Updates">
                         <change-log></change-log>
                     </b-tab>
 
-                    <b-tab title="Future plans">
+                    <b-tab title="Plans">
                         <future-plans></future-plans>
                     </b-tab>
                 </b-tabs>
@@ -35,6 +39,8 @@
                     <a href="mailto:aincrad.mb@gmail.com" target="blank">
                         aincrad.mb@gmail.com
                     </a>
+
+                    <br>
                 </b>
             </div>
         </ui-modal>
@@ -42,12 +48,14 @@
 </template>
 
 <script>
+    import about from '@/components/info/about.vue';
     import guide from '@/components/info/guide.vue';
     import changeLog from '@/components/info/change-log.vue';
     import futurePlans from '@/components/info/future-plans.vue';
     export default{
         name: 'infoModal',
         components: {
+            about,
             guide,
             'change-log': changeLog,
             'future-plans': futurePlans

@@ -1,12 +1,6 @@
 <template>
 	<div>
 	    <p class="font-15">
-	        Genshin Impact Artifact Generator is a hobby project of mine, which is the result of me loving Genshin Impact, and having programming knowledge with too much free time on my hands.
-
-	        <br><br>
-
-	        <u><h2>Guide</h2></u>
-
 	        <h5>Artifact roll</h5>
 
 	        <ul>

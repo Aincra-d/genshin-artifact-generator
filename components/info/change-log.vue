@@ -37,7 +37,8 @@
 						date: '2021.03.16',
 						changes: [
 							'Updated contact info',
-							'Small changes in the guide'
+							'Small changes in the guide',
+							'Added future plans'
 						]
 					},
 					{
@@ -51,7 +52,7 @@
 					{
 						date: '2021.03.19',
 						changes: [
-							'Added future plans'
+							'Added more future plans'
 						]
 					},
 				]
