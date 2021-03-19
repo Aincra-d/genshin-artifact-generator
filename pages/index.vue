@@ -137,6 +137,18 @@
                         rel: 'icon',
                         type: 'image/x-icon',
                         href: '/favicon.ico'
+                    },
+                    {
+                        rel: 'shortcut icon',
+                        href: '/favicon.ico'
+                    },
+                    {
+                        rel: 'apple-touch-icon',
+                        href: '/favicon.ico'
+                    },
+                    {
+                        rel: 'apple-touch-icon-precomposed',
+                        href: '/favicon.ico'
                     }
                 ]
             }
