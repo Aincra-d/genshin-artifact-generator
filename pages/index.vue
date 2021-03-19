@@ -9,14 +9,14 @@
         <genshin/>
 
         <info-modal
-        v-show="opened"
+        v-if="loaded"
         ref="infoModal">
         </info-modal>
 
         <button
         type="button"
         class="btn btn-light position-fixed bottom-2 left-2 px-3 rounded-circle"
-        @click="openInfoModal">
+        @click="$refs.infoModal.openModal()">
             <i class="fas fa-info fa-md"></i>
         </button>
 
@@ -36,7 +36,7 @@
         },
         data(){
             return {
-                opened: false
+                loaded: false
             }
         },
         head () {
@@ -141,12 +141,16 @@
                 ]
             }
         },
-        methods: {
-            openInfoModal(){
-                this.opened=true;
-                this.$refs.infoModal.openModal();
-            }
-        }
+        created(){
+            let self=this;
+            setTimeout(function() {
+                self.loaded=true;
+            }, 2000);
+        },
+        // beforeMount(){
+        //     if(process.client) localStorage.setItem('artifacts',[]);
+        //     if(process.client) localStorage.setItem('roll_counter',0);
+        // },
     }
 </script>
 
