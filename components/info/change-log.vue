@@ -48,6 +48,12 @@
 							'Limited the size of filters in inventory'
 						]
 					},
+					{
+						date: '2021.03.19',
+						changes: [
+							'Added future plans'
+						]
+					},
 				]
 			}
 		}

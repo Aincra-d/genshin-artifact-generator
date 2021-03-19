@@ -9,14 +9,14 @@
         <genshin/>
 
         <info-modal
-        v-if="loaded"
+        v-show="opened"
         ref="infoModal">
         </info-modal>
 
         <button
         type="button"
         class="btn btn-light position-fixed bottom-2 left-2 px-3 rounded-circle"
-        @click="$refs.infoModal.openModal()">
+        @click="openInfoModal">
             <i class="fas fa-info fa-md"></i>
         </button>
 
@@ -36,7 +36,7 @@
         },
         data(){
             return {
-                loaded: false
+                opened: false
             }
         },
         head () {
@@ -61,7 +61,7 @@
                     {
                         hid: 'description',
                         name: 'description',
-                        content: 'Generate artifacts from the popular Genshin Impact game, upgrade them, add to your inventory, play with RNG.' 
+                        content: 'An artifact generator for the popular open world game, Genshin Impact. Roll and upgrade artifacts from any sets and domains, and save them to your inventory.'
                     },
                     {
                         hid: 'og:title',
@@ -137,21 +137,22 @@
                         rel: 'icon',
                         type: 'image/x-icon',
                         href: '/favicon.ico'
-                    },
-                    {
-                        rel: 'preload',
-                        asd: 'image',
-                        href: '/site-background.png'
                     }
                 ]
             }
         },
-        created(){
-            let self=this;
-            setTimeout(function() {
-                self.loaded=true;
-            }, 2000);
-        },
+        methods: {
+            openInfoModal(){
+                this.opened=true;
+                this.$refs.infoModal.openModal();
+            }
+        }
+        // created(){
+        //     let self=this;
+        //     setTimeout(function() {
+        //         self.loaded=true;
+        //     }, 2000);
+        // },
         // beforeMount(){
         //     if(process.client) localStorage.setItem('artifacts',[]);
         //     if(process.client) localStorage.setItem('roll_counter',0);

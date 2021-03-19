@@ -171,7 +171,7 @@
                                 filter+((active_filter.filters.length > 1 && i!=active_filter.filters.length-1) ? ',' : '')
                             }}
                         </li>
-
+                        
                         <button
                         style="font-size:10px"
                         class="btn py-0 px-1 mb-1 ml-1 mr-1 btn-primary d-inline"

@@ -18,6 +18,10 @@
                     <b-tab title="Change log">
                         <change-log></change-log>
                     </b-tab>
+
+                    <b-tab title="Future plans">
+                        <future-plans></future-plans>
+                    </b-tab>
                 </b-tabs>
 
                     <b>© 2021 Copyright: <i class="fab fa-discord"></i> Mommy Beidou❤️#3271 at
@@ -40,11 +44,13 @@
 <script>
     import guide from '@/components/info/guide.vue';
     import changeLog from '@/components/info/change-log.vue';
+    import futurePlans from '@/components/info/future-plans.vue';
     export default{
         name: 'infoModal',
         components: {
             guide,
-            'change-log': changeLog
+            'change-log': changeLog,
+            'future-plans': futurePlans
         },
         methods: {
             openModal() {
