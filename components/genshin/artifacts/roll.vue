@@ -31,16 +31,6 @@
         </div>
 
         <div>
-            <!-- <div class="d-inline-block text-right w-50">
-                <ui-select
-                class="mt-1 mb-2 pt-1 px-1"
-                placeholder="Desired substats"
-                :options="sub_stat_names"
-                multiple
-                v-model="desired_subs">
-                </ui-select>
-            </div> -->
-
             <artifact
             style="max-width:500px"
             class="p-3 mx-auto"
@@ -68,7 +58,27 @@
 
             <h5 class="text-light roll-counter">
                 Number of rolls: {{ roll_counter }}
+
+                <button
+                type="button"
+                class="btn btn-light btn-sm py-0"
+                @click="roll_stats_toggled = !roll_stats_toggled">
+                    <i
+                    class="fas"
+                    :class="roll_stats_toggled ? 'fa-angle-up' : 'fa-angle-down' "></i>
+                </button>
             </h5>
+
+            <ul
+            v-if="roll_stats_toggled"
+            class="text-light text-center mx-auto list-unstyled">
+               <li
+               :key="i"
+               v-for="(stat,i) in roll_stats"
+               style="text-shadow: 0px 0px 10px black;">
+                   {{ stat.name+' - '+stat.counter }}
+               </li> 
+            </ul>
         </div>
     </div>
 </template>
@@ -103,7 +113,8 @@
                 selected_domain: '',
                 max_sub_counts: [1,2,4,4,4],
                 include_low_stars: true,
-                screen: process.client && window.innerWidth
+                screen: process.client && window.innerWidth,
+                roll_stats_toggled: false
                 // roll_count: 0
             }
         },
@@ -203,6 +214,54 @@
 
                 let counter=process.client && (localStorage.roll_counter || 0);
                 counter++;
+
+                if(this.selected_domain != ''){
+                    if(process.client && localStorage.roll_stats){
+                        let roll_stats=JSON.parse(localStorage.roll_stats);
+
+                        roll_stats.filter(stat => stat.name == this.selected_domain)[0].counter++;
+
+                        localStorage.setItem('roll_stats', JSON.stringify(roll_stats));
+                        this.roll_stats=roll_stats;
+                    }
+                    else{
+                        let roll_stats=[
+                            {
+                                name: "Domain of Guyun",
+                                counter: 0
+                            },
+                            {
+                                name: "Midsummer Courtyard",
+                                counter: 0
+                            },
+                            {
+                                name: "Valley of Remembrance",
+                                counter: 0
+                            },
+                            {
+                                name: "Hidden Palace of Zhou Formula",
+                                counter: 0
+                            },
+                            {
+                                name: "Peak of Vindagnyr",
+                                counter: 0
+                            },
+                            {
+                                name: "Clear Pool and Mountain Cavern",
+                                counter: 0
+                            },
+                            {
+                                name: "No domain",
+                                counter: 0
+                            }
+                        ];
+
+                        roll_stats.filter(stat => stat.name == this.selected_domain)[0].counter=1;
+
+                        process.client && localStorage.setItem('roll_stats', JSON.stringify(roll_stats));
+                        this.roll_stats=roll_stats;
+                    }
+                }
 
                 process.client && localStorage.setItem('roll_counter', counter);
                 this.roll_counter++;
@@ -456,10 +515,45 @@
             },
             onResize(){
                 if(process.client) this.screen=window.innerWidth
+            },
+            setRollStats(){
+                let roll_stats=[
+                    {
+                        name: "Domain of Guyun",
+                        counter: 0
+                    },
+                    {
+                        name: "Midsummer Courtyard",
+                        counter: 0
+                    },
+                    {
+                        name: "Valley of Remembrance",
+                        counter: 0
+                    },
+                    {
+                        name: "Hidden Palace of Zhou Formula",
+                        counter: 0
+                    },
+                    {
+                        name: "Peak of Vindagnyr",
+                        counter: 0
+                    },
+                    {
+                        name: "Clear Pool and Mountain Cavern",
+                        counter: 0
+                    },
+                    {
+                        name: "No domain",
+                        counter: 0
+                    }
+                ];
+
+                this.roll_stats = process.client && (localStorage.roll_stats && JSON.parse(localStorage.roll_stats) || roll_stats);
             }
         },
         created(){
             this.setSubs();
+            this.setRollStats();
         },
         mounted(){
             if(process.client) window.addEventListener('resize',this.onResize)

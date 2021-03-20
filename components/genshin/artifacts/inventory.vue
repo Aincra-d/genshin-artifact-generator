@@ -41,7 +41,7 @@
             :inventory="true"
             :view="view"
             :class="view != 'images'
-            ? 'd-inline-block col-12 col-sm-8 col-md-9 col-lg-6 col-xl-4'
+            ? 'd-inline-block col-12 col-sm-8 col-md-9 col-lg-6 col-xl-4 my-2'
             : 'd-inline-block'"
             :key="artifact.id"
             v-for="artifact in artifacts.slice((current_page*per_page-per_page),(current_page*per_page))"
@@ -124,7 +124,8 @@
                 screen: process.client,
                 current_page: 1,
                 all_pages: Math.ceil(this.artifacts.length/50),
-                per_page: 50
+                per_page: 50,
+                view: process.client &&(sessionStorage.inventoryView || (this.screen < 776 ? 'images' : 'compressed'))
             }
         },
         methods: {

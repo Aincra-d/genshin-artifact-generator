@@ -71,6 +71,11 @@
 						priority: 'high',
 						summary: 'Add pagination to inventory'
 					},
+					{
+						done: false,
+						priority: 'high',
+						summary: 'Add counters to filter dropdowns'
+					}
 				]
 			}
 		},
