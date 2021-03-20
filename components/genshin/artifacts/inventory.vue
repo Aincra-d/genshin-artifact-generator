@@ -36,18 +36,60 @@
         @update-filters="updateFilters">
         </inventory-filters>
 
-        <artifact
-        :inventory="true"
-        :view="view"
-        :class="view != 'images'
-        ? 'd-inline-block col-12 col-sm-8 col-md-9 col-lg-6 col-xl-4'
-        : 'd-inline-block'"
-        :key="artifact.id"
-        v-for="artifact in artifacts"
-        :artifact="artifact"
-        @remove-artifact="removeArtifact"
-        @open-modal="openModal">
-        </artifact>
+        <div class="inventory-container">
+            <artifact
+            :inventory="true"
+            :view="view"
+            :class="view != 'images'
+            ? 'd-inline-block col-12 col-sm-8 col-md-9 col-lg-6 col-xl-4'
+            : 'd-inline-block'"
+            :key="artifact.id"
+            v-for="artifact in artifacts.slice((current_page*per_page-per_page),(current_page*per_page))"
+            :artifact="artifact"
+            @remove-artifact="removeArtifact"
+            @open-modal="openModal">
+            </artifact>
+
+            <div
+            v-if="all_pages > 1"
+            class="pagination-container text-center mt-2 text-light">
+                <h6>
+                    All pages: {{ all_pages }} | Current page: {{ current_page }}
+                </h6>
+
+                <button
+                v-if="current_page > 2"
+                type="button"
+                class="btn btn-light"
+                @click="current_page = 1">
+                    <i class="fas fa-angle-double-left"></i> First
+                </button>
+
+                <button
+                v-if="current_page > 1"
+                type="button"
+                class="btn btn-light"
+                @click="current_page -= 1">
+                    <i class="fas fa-angle-left"></i> Prev
+                </button>
+
+                <button
+                v-if="current_page < all_pages"
+                type="button"
+                class="btn btn-light"
+                @click="current_page += 1">
+                    Next <i class="fas fa-angle-right"></i>
+                </button>
+
+                <button
+                v-if="all_pages > 2 && current_page < all_pages-1"
+                type="button"
+                class="btn btn-light"
+                @click="current_page = all_pages">
+                    Last <i class="fas fa-angle-double-right"></i>
+                </button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -79,8 +121,10 @@
                 sub_filter_type: 'Contain',
                 sub_stats: [],
                 stack_filters: false,
-                screen: process.client && window.innerWidth,
-                view: ''
+                screen: process.client,
+                current_page: 1,
+                all_pages: Math.ceil(this.artifacts.length/50),
+                per_page: 50
             }
         },
         methods: {

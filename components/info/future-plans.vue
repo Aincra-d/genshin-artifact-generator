@@ -67,12 +67,15 @@
 						summary: 'Filter sub stats by value'
 					},
 					{
-						done: false,
+						done: true,
 						priority: 'high',
 						summary: 'Add pagination to inventory'
 					},
 				]
 			}
+		},
+		created(){
+			this.plans.sort((a,b) => b.done - a.done);
 		}
 	}
 </script>

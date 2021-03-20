@@ -55,6 +55,12 @@
 							'Added more future plans'
 						]
 					},
+					{
+						date: '2021.03.20',
+						changes: [
+							'Added pagination support to inventory'
+						]
+					},
 				]
 			}
 		}
