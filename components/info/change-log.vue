@@ -59,7 +59,8 @@
 						date: '2021.03.20',
 						changes: [
 							'Added pagination support to inventory',
-							'Added roll stats to artifact roll'
+							'Added roll stats to artifact roll',
+							"Fixed not working inventory view changing"
 						]
 					},
 				]

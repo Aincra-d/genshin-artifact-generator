@@ -50,45 +50,12 @@
             @open-modal="openModal">
             </artifact>
 
-            <div
+            <pagination
             v-if="all_pages > 1"
-            class="pagination-container text-center mt-2 text-light">
-                <h6>
-                    All pages: {{ all_pages }} | Current page: {{ current_page }}
-                </h6>
-
-                <button
-                v-if="current_page > 2"
-                type="button"
-                class="btn btn-light"
-                @click="current_page = 1">
-                    <i class="fas fa-angle-double-left"></i> First
-                </button>
-
-                <button
-                v-if="current_page > 1"
-                type="button"
-                class="btn btn-light"
-                @click="current_page -= 1">
-                    <i class="fas fa-angle-left"></i> Prev
-                </button>
-
-                <button
-                v-if="current_page < all_pages"
-                type="button"
-                class="btn btn-light"
-                @click="current_page += 1">
-                    Next <i class="fas fa-angle-right"></i>
-                </button>
-
-                <button
-                v-if="all_pages > 2 && current_page < all_pages-1"
-                type="button"
-                class="btn btn-light"
-                @click="current_page = all_pages">
-                    Last <i class="fas fa-angle-double-right"></i>
-                </button>
-            </div>
+            :current_page="current_page"
+            :all_pages="all_pages"
+            @update-current-page="updateCurrentPage">
+            </pagination>
         </div>
     </div>
 </template>
@@ -98,6 +65,7 @@
     import manageInventory from '@/components/genshin/artifacts/inventory/manageInventory.vue';
     import inventoryFilters from '@/components/genshin/artifacts/inventory/filters.vue';
     import artifactModal from '@/components/genshin/artifacts/inventory/artifactModal.vue';
+    import pagination from '@/components/genshin/artifacts/inventory/pagination.vue';
     export default{
         name: 'artifactInventory',
         props: {
@@ -107,7 +75,8 @@
             artifact,
             'manage-inventory': manageInventory,
             'inventory-filters': inventoryFilters,
-            'artifact-modal': artifactModal
+            'artifact-modal': artifactModal,
+            pagination
         },
         data(){
             return {
@@ -157,18 +126,21 @@
                 if(stars.length!=0){
                     this.artifacts=this.artifacts.filter(artifact => stars.includes(artifact.info.stars));
                 }
+                this.updatePages();
             },
             filterByTypes(types){
                 this.resetArtifacts();
                 if(types.length!=0){
                     this.artifacts=this.artifacts.filter(artifact => types.includes(artifact.info.piece.type));
                 }
+                this.updatePages();
             },
             filterByMainStats(main_stats){
                 this.resetArtifacts();
                 if(main_stats.length!=0){
                     this.artifacts=this.artifacts.filter(artifact => main_stats.includes(artifact.stats.main.name));
                 }
+                this.updatePages();
             },
             filterBySubStats(){
                 this.resetArtifacts();
@@ -180,12 +152,14 @@
                         this.artifacts=this.artifacts.filter(artifact => this.sub_stats.every(sub => artifact.stats.subs.map(stat => stat.name).includes(sub)));
                     }
                 }
+                this.updatePages();
             },
             filterBySetNames(sets){
                 this.resetArtifacts();
                 if(sets.length!=0){
                     this.artifacts=this.artifacts.filter(artifact => sets.includes(artifact.info.set.name));
                 }
+                this.updatePages();
             },
             setSubStats(sub_stats){
                 this.sub_stats=sub_stats;
@@ -201,6 +175,12 @@
             },
             resetArtifacts(){
                 if(!this.stack_filters) this.artifacts=JSON.parse(localStorage.artifacts);
+            },
+            updatePages(){
+                this.all_pages = Math.ceil(this.artifacts.length/this.per_page);
+            },
+            updateCurrentPage(current_page){
+                this.current_page=current_page;
             },
             resetInventory(){
                 this.artifacts=JSON.parse(localStorage.artifacts);
@@ -229,6 +209,7 @@
                 }
 
                 this.artifacts=artifacts;
+                this.updatePages();
             },
             updateFilters(filter){
                 this.filterInventory(filter);
