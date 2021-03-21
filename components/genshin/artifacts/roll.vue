@@ -6,6 +6,7 @@
             v-if="artifacts.length!=0"
             :screen="screen"
             :artifact="current_artifact"
+            :old_main="old_main_value || 0"
             ref="upgradeModal"
             :upgrades="upgrades">    
             </upgrade-modal>
@@ -145,7 +146,8 @@
                 show_upgrades: true,
                 screen: process.client && window.innerWidth,
                 roll_stats_toggled: false,
-                upgrades: []
+                upgrades: [],
+                old_main_value: 0
                 // roll_count: 0
             }
         },
@@ -353,7 +355,7 @@
 
                 let artifact=this.current_artifact;
 
-                let old_main_value=artifact.stats.main.value;
+                this.old_main_value=artifact.stats.main.value;
 
                 for(let i=0; i<upgrade_count; i++){
                     if(artifact.stats.subs.length === this.max_sub_counts[artifact.info.stars-1]){
@@ -414,10 +416,8 @@
                         artifact.stats.main.value=this.main_stats.filter(main => main.name == artifact.stats.main.name)[0].values[+artifact.info.stars][artifact.info.level];
                     }
                 }
-
-                this.upgrades.sort((a,b) => {
-                    (b.old_value===null)-(a.old_value===null) || -(b.old_value>a.old_value)||+(b.old_value<a.old_value);
-                });
+                // console.log(this.upgrades)
+                this.upgrades.reverse();
 
                 if(this.show_upgrades) this.openModal();
             },

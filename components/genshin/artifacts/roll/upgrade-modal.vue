@@ -29,7 +29,7 @@
 
                     <div
                     style="background: #fcf4e1;top: -20px;font-weight: 900;"
-                    class="text-dark text-center rounded position-relative artifact-level-container">
+                    class="text-dark text-center position-relative artifact-level-container">
                         +{{ artifact.info.level }}
                     </div>
                 </div>
@@ -41,14 +41,44 @@
 
             <div class="w-100 text-left text-light p-1 upgrade-container">
                 <table
-                class="table table-striped border-0 upgrades text-light text-center"
-                :class="screen < 576 ? 'font-14' : 'font-15'">
+                class="table table-striped border-0 upgrades text-light text-center">
                     <tbody>
+                        <tr :class="screen < 991 ? 'font-14' : 'font-17'">
+                            <td style="width: 130px" class="text-left">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <span :class="old_main === null && 'text-warning'">
+                                            ✧ {{ artifact.stats.main.name }}
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+
+                            <td style="width: 100px" v-if="old_main === null"></td>
+
+                            <td style="width: 100px" v-else>
+                                <div style="width: 50px;" class="d-inline-block">
+                                    {{ old_main }}
+                                </div>
+
+                                <i class="fas fa-arrow-right text-secondary ml-4 d-inline"></i>
+                            </td>
+
+                            <td style="width: 100px">
+                                <div style="width: 50px;" class="text-warning d-inline-block">
+                                    {{ artifact.stats.main.value }}
+                                </div>
+
+                                <i class="fas fa-arrow-up text-success ml-1 d-inline"></i>
+                            </td>
+                        </tr>
+
                         <tr
                         :key="i"
-                        v-for="(upgrade,i) in upgrades">
-                            <td style="width: 100px" class="text-left">
-                                <ul>
+                        v-for="(upgrade,i) in upgrades"
+                        :class="screen < 991 ? 'font-12' : 'font-15'">
+                            <td style="width: 130px" class="text-left">
+                                <ul class="pl-3 ml-1">
                                     <li>
                                         <span :class="upgrade.old_value === null && 'text-warning'">
                                             {{ upgrade.name }}
@@ -85,11 +115,12 @@
 <script>
     export default{
         name: 'upgradeModal',
-        props: {
-            artifact: Object,
-            upgrades: Array,
-            screen: Number
-        },
+        props: [
+            'artifact',
+            'upgrades',
+            'screen',
+            'old_main'
+        ],
         data(){
             return {
                 client: process.client
@@ -173,5 +204,16 @@
 
     .upgrade-modal .upgrade-container .upgrades{
         font-weight: 700;
+    }
+
+    .artifact-level-container{
+        border-bottom-left-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+    }
+
+    .upgrade-container .table th, .table td{
+        padding-left: 0;
+        padding-right: 0;
+        border: 0;
     }
 </style>
