@@ -75,6 +75,11 @@
 						done: false,
 						priority: 'high',
 						summary: 'Add counters to filter dropdowns'
+					},
+					{
+						done: true,
+						priority: 'high',
+						summary: 'Add game-like upgrades to artifact roll'
 					}
 				]
 			}

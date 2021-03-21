@@ -63,6 +63,12 @@
 							"Fixed not working inventory view changing"
 						]
 					},
+					{
+						date: '2021.03.21',
+						changes: [
+							'Added game-like upgrade option to artifact roll'
+						]
+					}
 				]
 			}
 		}
