@@ -2,17 +2,42 @@
     <div>
         <div
         class="artifact-actions text-center mb-2">
+            <upgrade-modal
+            v-if="artifacts.length!=0"
+            :screen="screen"
+            :artifact="current_artifact"
+            ref="upgradeModal"
+            :upgrades="upgrades">    
+            </upgrade-modal>
+
             <b-form-checkbox
-            class="text-light mb-3 include-low-stars"
+            class="text-light mb-3 include-low-stars d-inline"
             v-model="include_low_stars"
-            size="lg">
-                Include 1-3 <i class="fas fa-star fa-xs"></i> artifacts
+            :size="screen < 1200 ? 'sm' : 'lg'">
+                Include 1-3 <i class="fas fa-star fa-xs"></i>
             </b-form-checkbox>
+
+            <b-form-checkbox
+            class="text-light mb-3 include-low-stars d-inline"
+            v-model="single_upgrades"
+            :size="screen < 1200 ? 'sm' : 'lg'">
+                Single upgrades
+            </b-form-checkbox>
+
+            <b-form-checkbox
+            class="text-light mb-3 include-low-stars d-inline"
+            v-model="show_upgrades"
+            :size="screen < 1200 ? 'sm' : 'lg'">
+                Show upgrades
+            </b-form-checkbox>
+
+
+            <br><br>
 
             <button
             v-if="artifacts.length === 0"
             @click="rollArtifact()"
-            class="btn text-light btn-link d-inline mx-1 rounded-0"
+            class="btn text-light btn-link d-inline mx-1 rounded-0 mt-2"
             style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
             :class="screen < 576 ? 'btn-sm' : 'btn-md'">
                 <i class="fas fa-redo fa-sm mr-1"></i> Roll artifact
@@ -20,6 +45,7 @@
 
             <artifact-actions
             v-else
+            :single="single_upgrades"
             :screen="screen"
             :artifact="current_artifact"
             @upgrade="upgrade"
@@ -86,6 +112,7 @@
 <script>
     import artifact from '@/components/genshin/artifacts/artifact.vue';
     import artifactActions from '@/components/genshin/artifacts/roll/artifact-actions.vue';
+    import upgradeModal from '@/components/genshin/artifacts/roll/upgrade-modal.vue';
     import substatsJ from '~/static/substats.json';
     import domainsJ from '~/static/domains.json';
     import mainstatsJ from '~/static/mainstats.json';
@@ -95,7 +122,8 @@
         name: 'roll',
         components: {
             artifact,
-            'artifact-actions': artifactActions
+            'artifact-actions': artifactActions,
+            'upgrade-modal': upgradeModal
         },
         data(){
             return {
@@ -113,8 +141,11 @@
                 selected_domain: '',
                 max_sub_counts: [1,2,4,4,4],
                 include_low_stars: true,
+                single_upgrades: false,
+                show_upgrades: true,
                 screen: process.client && window.innerWidth,
-                roll_stats_toggled: false
+                roll_stats_toggled: false,
+                upgrades: []
                 // roll_count: 0
             }
         },
@@ -212,59 +243,7 @@
                     // rolls: 1
                 };
 
-                let counter=process.client && (localStorage.roll_counter || 0);
-                counter++;
-
-                if(this.selected_domain != ''){
-                    if(process.client && localStorage.roll_stats){
-                        let roll_stats=JSON.parse(localStorage.roll_stats);
-
-                        roll_stats.filter(stat => stat.name == this.selected_domain)[0].counter++;
-
-                        localStorage.setItem('roll_stats', JSON.stringify(roll_stats));
-                        this.roll_stats=roll_stats;
-                    }
-                    else{
-                        let roll_stats=[
-                            {
-                                name: "Domain of Guyun",
-                                counter: 0
-                            },
-                            {
-                                name: "Midsummer Courtyard",
-                                counter: 0
-                            },
-                            {
-                                name: "Valley of Remembrance",
-                                counter: 0
-                            },
-                            {
-                                name: "Hidden Palace of Zhou Formula",
-                                counter: 0
-                            },
-                            {
-                                name: "Peak of Vindagnyr",
-                                counter: 0
-                            },
-                            {
-                                name: "Clear Pool and Mountain Cavern",
-                                counter: 0
-                            },
-                            {
-                                name: "No domain",
-                                counter: 0
-                            }
-                        ];
-
-                        roll_stats.filter(stat => stat.name == this.selected_domain)[0].counter=1;
-
-                        process.client && localStorage.setItem('roll_stats', JSON.stringify(roll_stats));
-                        this.roll_stats=roll_stats;
-                    }
-                }
-
-                process.client && localStorage.setItem('roll_counter', counter);
-                this.roll_counter++;
+                this.updateCounter();
                 this.artifacts.push(artifact);
                 this.sub_stats=this.all_subs;
                 this.setSubs();
@@ -368,46 +347,79 @@
                     title: '<h6>Changed sub stats from <u>'+old_subs+'</u> to <u>'+new_subs+'</u></h6>'
                 });
             },
-            upgrade(){
+            upgrade(upgrade_count){
+                if(upgrade_count === null) upgrade_count = 1;
+                this.upgrades=[];
+
                 let artifact=this.current_artifact;
 
-                if(artifact.stats.subs.length === this.max_sub_counts[artifact.info.stars-1]){
-                    if(artifact.info.level !== artifact.info.max_level){
-                        let random_sub=artifact.stats.subs[Math.floor(Math.random() * artifact.stats.subs.length)];
+                let old_main_value=artifact.stats.main.value;
 
-                        let sub_values=this.sub_stats.filter(sub => sub.name === random_sub.name)[0].values[artifact.info.stars];
+                for(let i=0; i<upgrade_count; i++){
+                    if(artifact.stats.subs.length === this.max_sub_counts[artifact.info.stars-1]){
+                        if(artifact.info.level !== artifact.info.max_level){
+                            let random_sub=artifact.stats.subs[Math.floor(Math.random() * artifact.stats.subs.length)];
 
-                        random_sub.value+=sub_values[Math.floor(Math.random() * sub_values.length)];
-                        random_sub.level+=1;
+                            let sub_values=this.sub_stats.filter(sub => sub.name === random_sub.name)[0].values[artifact.info.stars];
+                            let old_sub_value=random_sub.value;
+
+                            random_sub.value+=sub_values[Math.floor(Math.random() * sub_values.length)];
+                            random_sub.level+=1;
+                            artifact.info.level+=4;
+
+                            artifact.stats.main.value=this.main_stats.filter(main => main.name == artifact.stats.main.name)[0].values[+artifact.info.stars][artifact.info.level];
+
+                            if(this.upgrades.filter(upgrade => upgrade.name == random_sub.name).length != 0){
+                                this.upgrades[this.upgrades.findIndex(upgrade => upgrade.name == random_sub.name)].new_value=Math.round(random_sub.value*100)/100;
+                            }
+                            else{
+                                this.upgrades.push({
+                                    name: random_sub.name,
+                                    old_value: Math.round(old_sub_value*100)/100,
+                                    new_value: Math.round(random_sub.value*100)/100
+                                });
+                            }
+                        }
+                    }
+                    else{
+                        this.sub_stats.splice(this.sub_stats.findIndex(sub => sub.name === artifact.stats.main.name),1);
+
+                        let random_sub=this.sub_stats[Math.floor(Math.random() * this.sub_stats.length)];
+
+                        let isSubFree=artifact.stats.subs.filter(sub => sub.name === random_sub.name).length === 0 ? true : false;
+
+                        while(!isSubFree){
+                            random_sub=this.sub_stats[Math.floor(Math.random() * this.sub_stats.length)];
+
+                            if(artifact.stats.subs.filter(sub => sub.name === random_sub.name).length === 0)
+                                isSubFree=true;
+                        }
+
+                        let random_sub_value=random_sub.values[artifact.info.stars][Math.floor(
+                                Math.random() * random_sub.values[artifact.info.stars].length)];
+
+                        artifact.stats.subs.push({
+                            name: random_sub.name,
+                            value: random_sub_value,
+                            level: 0
+                        });
+
+                        this.upgrades.push({
+                            name: random_sub.name,
+                            old_value: null,
+                            new_value: Math.round(random_sub_value*100)/100
+                        });
+
                         artifact.info.level+=4;
-
                         artifact.stats.main.value=this.main_stats.filter(main => main.name == artifact.stats.main.name)[0].values[+artifact.info.stars][artifact.info.level];
                     }
                 }
-                else{
-                    this.sub_stats.splice(this.sub_stats.findIndex(sub => sub.name === artifact.stats.main.name),1);
 
-                    let random_sub=this.sub_stats[Math.floor(Math.random() * this.sub_stats.length)];
+                this.upgrades.sort((a,b) => {
+                    (b.old_value===null)-(a.old_value===null) || -(b.old_value>a.old_value)||+(b.old_value<a.old_value);
+                });
 
-                    let isSubFree=artifact.stats.subs.filter(sub => sub.name === random_sub.name).length === 0 ? true : false;
-
-                    while(!isSubFree){
-                        random_sub=this.sub_stats[Math.floor(Math.random() * this.sub_stats.length)];
-
-                        if(artifact.stats.subs.filter(sub => sub.name === random_sub.name).length === 0)
-                            isSubFree=true;
-                    }
-
-                    artifact.stats.subs.push({
-                        name: random_sub.name,
-                        value: random_sub.values[artifact.info.stars][Math.floor(
-                            Math.random() * random_sub.values[artifact.info.stars].length)],
-                        level: 0
-                    });
-
-                    artifact.info.level+=4;
-                    artifact.stats.main.value=this.main_stats.filter(main => main.name == artifact.stats.main.name)[0].values[+artifact.info.stars][artifact.info.level];
-                }
+                if(this.show_upgrades) this.openModal();
             },
             setSubs(){
                 this.all_subs=[
@@ -516,6 +528,61 @@
             onResize(){
                 if(process.client) this.screen=window.innerWidth
             },
+            updateCounter(){
+                let counter=process.client && (localStorage.roll_counter || 0);
+                counter++;
+
+                if(this.selected_domain != ''){
+                    if(process.client && localStorage.roll_stats){
+                        let roll_stats=JSON.parse(localStorage.roll_stats);
+
+                        roll_stats.filter(stat => stat.name == this.selected_domain)[0].counter++;
+
+                        localStorage.setItem('roll_stats', JSON.stringify(roll_stats));
+                        this.roll_stats=roll_stats;
+                    }
+                    else{
+                        let roll_stats=[
+                            {
+                                name: "Domain of Guyun",
+                                counter: 0
+                            },
+                            {
+                                name: "Midsummer Courtyard",
+                                counter: 0
+                            },
+                            {
+                                name: "Valley of Remembrance",
+                                counter: 0
+                            },
+                            {
+                                name: "Hidden Palace of Zhou Formula",
+                                counter: 0
+                            },
+                            {
+                                name: "Peak of Vindagnyr",
+                                counter: 0
+                            },
+                            {
+                                name: "Clear Pool and Mountain Cavern",
+                                counter: 0
+                            },
+                            {
+                                name: "No domain",
+                                counter: 0
+                            }
+                        ];
+
+                        roll_stats.filter(stat => stat.name == this.selected_domain)[0].counter=1;
+
+                        process.client && localStorage.setItem('roll_stats', JSON.stringify(roll_stats));
+                        this.roll_stats=roll_stats;
+                    }
+                }
+
+                process.client && localStorage.setItem('roll_counter', counter);
+                this.roll_counter++;
+            },
             setRollStats(){
                 let roll_stats=[
                     {
@@ -549,6 +616,9 @@
                 ];
 
                 this.roll_stats = process.client && (localStorage.roll_stats && JSON.parse(localStorage.roll_stats) || roll_stats);
+            },
+            openModal() {
+                this.$refs.upgradeModal.openModal();
             }
         },
         created(){

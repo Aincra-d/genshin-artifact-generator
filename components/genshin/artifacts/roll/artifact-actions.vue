@@ -2,14 +2,43 @@
 	<div>
 		<div class="mb-3">
             <button
+            v-if="single"
             type="button"
             class="btn btn-link text-light d-inline rounded-0 mx-1"
             style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
             :class="screen < 576 ? 'btn-sm' : 'btn-md'"
             :disabled="artifact.info.level == artifact.info.max_level"
-            @click="artifact.info.level!=artifact.info.max_level && $emit('upgrade')">
+            @click="artifact.info.level!=artifact.info.max_level && $emit('upgrade',null)">
                 <i class="fas fa-arrow-up fa-sm"></i> Upgrade
             </button>
+
+            <b-dropdown
+            v-else
+            :disabled="artifact.info.level == artifact.info.max_level"
+            id="dropdown-left"
+            text="Upgrade"
+            style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
+            :size="screen < 576 ? 'sm' : 'md'"
+            variant="link"
+            class="m-2">
+                <b-dropdown-item
+                :disabled="artifact.info.level == artifact.info.max_level"
+                @click="artifact.info.level != artifact.info.max_level && $emit('upgrade',1)"
+                href="#">
+                    1x
+                </b-dropdown-item>
+
+                <div
+                :key="i"
+                v-for="(upgrade,i) in 4">
+                    <b-dropdown-item
+                    v-if="artifact.info.stars > 1 && (artifact.info.max_level - artifact.info.level)/4 >= i+2"
+                    @click="artifact.info.level != artifact.info.max_level && $emit('upgrade',i+2)"
+                    href="#">
+                        {{ i+2 }}x
+                    </b-dropdown-item>
+                </div>
+            </b-dropdown>
 
             <button
             type="button"
@@ -59,7 +88,8 @@
 		name: 'artifactActions',
 		props: {
 			artifact: Object,
-            screen: Number
+            screen: Number,
+            single: Boolean
 		}
 	}
 </script>
