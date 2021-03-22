@@ -25,7 +25,7 @@
                 :disabled="artifact.info.level == artifact.info.max_level"
                 @click="artifact.info.level != artifact.info.max_level && $emit('upgrade',1)"
                 href="#">
-                    1x
+                    +{{ artifact.info.level+4 }}
                 </b-dropdown-item>
 
                 <div
@@ -35,7 +35,7 @@
                     v-if="artifact.info.stars > 1 && (artifact.info.max_level - artifact.info.level)/4 >= i+2"
                     @click="artifact.info.level != artifact.info.max_level && $emit('upgrade',i+2)"
                     href="#">
-                        {{ i+2 }}x
+                        +{{ artifact.info.level+((i+2))*4 }}
                     </b-dropdown-item>
                 </div>
             </b-dropdown>

@@ -11,10 +11,10 @@
         ref="upgradeModal"
         :class="'stars-'+artifact.info.stars"
         class="text-light text-center upgrade-modal">
-            <div class="w-100 header position-relative pt-2">
+            <div class="w-100 header position-relative pt-2 text-center">
                 <div
                 style="width: 80px; height: 105px;"
-                class="position-relative left-42 rounded artifact-container">
+                class="mx-auto rounded artifact-container">
                     <img
                     style="width: 80px; height: 80px;"
                     :src="artifact.info.piece.image"
@@ -34,7 +34,7 @@
                     </div>
                 </div>
 
-                <h4 class="position-relative left-40 level-up mt-2 pb-2">
+                <h4 class="level-up mt-2 pb-2">
                     Level Up!
                 </h4>
             </div>

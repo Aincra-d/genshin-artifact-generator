@@ -9,6 +9,14 @@
 	            </li>
 
 	            <li>
+	                By (un)checking the <i>"Single upgrades"</i> option, the upgrade option will be a button which will only do single upgrades each time you click/press it. Otherwise, a dropdown option will be present where you can choose which level you want to upgrade your artifact to.
+	            </li>
+
+	            <li>
+	                By (un)checking the <i>"Show upgrades"</i> option, you can choose to whether display the upgrade results just like in the game or not.
+	            </li>
+
+	            <li>
 	                You can generate any artifacts from any of the available domains in the game, by choosing one from the <i>"Select domain"</i> option.
 	            </li>
 
