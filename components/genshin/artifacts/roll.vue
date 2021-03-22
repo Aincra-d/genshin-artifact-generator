@@ -88,10 +88,10 @@
 
                 <button
                 type="button"
-                class="btn btn-light btn-sm py-0"
+                class="btn btn-link text-light btn-sm py-0"
                 @click="roll_stats_toggled = !roll_stats_toggled">
                     <i
-                    class="fas"
+                    class="fas fa-lg"
                     :class="roll_stats_toggled ? 'fa-angle-up' : 'fa-angle-down' "></i>
                 </button>
             </h5>

@@ -70,9 +70,10 @@
 						]
 					},
 					{
-						date: '2021.03.21',
+						date: '2021.03.22',
 						changes: [
-							'Updated guide'
+							'Updated guide',
+							'Added more future plans'
 						]
 					}
 				]

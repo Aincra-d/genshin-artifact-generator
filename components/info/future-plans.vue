@@ -58,12 +58,17 @@
 					},
 					{
 						done: false,
-						priority: 'low',
+						priority: 'medium',
 						summary: 'Option to equip artifacts on characters'
 					},
 					{
 						done: false,
-						priority: 'low',
+						priority: 'medium',
+						summary: 'Filter artifacts equipped on selected character(s)'
+					},
+					{
+						done: false,
+						priority: 'medium',
 						summary: 'Filter sub stats by value'
 					},
 					{
@@ -73,13 +78,18 @@
 					},
 					{
 						done: false,
-						priority: 'high',
+						priority: 'medium',
 						summary: 'Add counters to filter dropdowns'
 					},
 					{
 						done: true,
 						priority: 'high',
 						summary: 'Add game-like upgrades to artifact roll'
+					},
+					{
+						done: false,
+						priority: 'low',
+						summary: 'Option to delete multiple artifacts from inventory'
 					}
 				]
 			}
