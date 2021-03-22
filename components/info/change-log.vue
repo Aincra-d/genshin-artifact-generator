@@ -68,6 +68,12 @@
 						changes: [
 							'Added game-like upgrade option to artifact roll'
 						]
+					},
+					{
+						date: '2021.03.21',
+						changes: [
+							'Updated guide'
+						]
 					}
 				]
 			}
