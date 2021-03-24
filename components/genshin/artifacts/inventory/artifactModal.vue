@@ -101,37 +101,40 @@
     import mainstatsJ from '~/static/mainstats.json';
     export default{
         name: 'artifactModal',
-        props: {
-            artifacts: Array,
-            screen: Number
-        },
         components: {
             artifact
         },
-         created(){
-            console.log(this.artifacts)
+        created(){
+            console.log(this.artifacts);
+            this.current_artifact=this.artifacts[0]
         },
         data(){
             return {
-                // artifacts: [],
-                current_artifact: this.artifacts[0],
+                current_artifact: {},
                 modal_bg_class: '',
-                roll_counter: process.client && (localStorage.roll_counter || 0),
                 all_subs: [],
                 main_stats: mainstatsJ,
                 sub_stats: substatsJ,
                 max_sub_counts: [1,2,4,4,4],
                 removed: false,
                 confirm_remove: false,
-                client: process.client ? true : false
+                client: process.client ? true : false,
+                screen: 0
+            }
+        },
+        computed: {
+            artifacts(){
+                return this.$store.state.artifacts.artifacts
             }
         },
         methods: {
             openModal(ref,id) {
                 this.setSubs();
                 this.artifact_id=id;
+                this.screen=this.$store.state.artifacts.screen;
+
                 if(this.client){
-                    this.current_artifact=(localStorage.artifacts ? JSON.parse(localStorage.artifacts).filter(artifact => artifact.id === id)[0] : []);
+                    this.current_artifact=this.artifacts.filter(artifact => artifact.id === id)[0];
                 }
                 this.modal_bg_class='stars-'+this.artifacts[this.artifacts.findIndex(artifact => artifact.id === this.artifact_id)].info.stars;
                 this.$refs[ref].open();
@@ -395,8 +398,6 @@
             },
             restoreScroll(){
                 document.getElementsByTagName('body')[0].style.overflowY = 'auto';
-                // if(this.removed) this.$emit('update-inventory');
-                // if(this.removed) this.updateInventory({},true)
                 this.removed=false;
                 this.confirm_remove=false;
             }

@@ -11,7 +11,7 @@
             <b-dropdown-item
             :key="i"
             v-for="(sort,i) in sorts"
-            @click="$emit('sort-inventory',sorts[i].name,sorts[i].type)">
+            @click="sortInventory(sorts[i].name,sorts[i].type)">
                 <i
                 class="fas mr-2"
                 :class="sort.icon">
@@ -32,7 +32,7 @@
             <b-dropdown-item
             :key="i"
             v-for="(filter,i) in filters"
-            @click="$emit('filter-inventory',filter.type)">
+            @click="filterInventory(filter.type)">
 
                 <span>{{filter.title}}</span>
 
@@ -65,43 +65,38 @@
         <b-form-checkbox
         class="text-light d-inline-block"
         v-model="stack_filters"
-        @input="$emit('set-stack-filters',stack_filters)"
         :size="screen < 576 ? 'md' : 'lg'">
             Stack filters
         </b-form-checkbox>
-
-        <!-- <button
-        type="button"
-        class="btn btn-light btn-sm d-inline-block ml-2 py-0"
-        @click="$emit('reset-inventory')">
-            <i class="fas fa-redo mr-1"></i> Reset
-        </button> -->
     </div>
 </template>
 
 <script>
     export default{
         name: 'manageInventory',
-        props: {
-            screen: Number
+        computed: {
+            screen(){
+                return this.$store.state.artifacts.screen
+            },
+            stack_filters: {
+                get(){
+                    return this.$store.state.artifacts.stack_filters
+                },
+                set(value){
+                    this.$store.commit('artifacts/setStackFilters',value);
+                }
+            },
+            filter_types(){
+                return this.$store.state.artifacts.filters
+            },
+            artifacts(){
+                return this.$store.state.artifacts.artifacts
+            }
         },
         data(){
             return {
                 inventory_view: process.client && (sessionStorage.inventoryView || (this.screen < 776 ? 'images' : 'compressed')),
-                stack_filters: false,
                 sorts: [
-                    // {
-                    //     type: 'stars',
-                    //     sort: 'desc',
-                    //     icon:'fa-star text-warning',
-                    //     title: 'Sort by stars (desc 5-1)'
-                    // },
-                    // {
-                    //     type: 'stars',
-                    //     sort: 'asc',
-                    //     icon:'fa-star text-warning',
-                    //     title: 'Sort by stars (asc 1-5)'
-                    // },
                     {
                         name: 'HP',
                         type: 'desc',
@@ -267,7 +262,33 @@
         methods: {
             changeView(name){
                 this.inventory_view=name;
-                this.$emit('change-view',name);
+                process.client && sessionStorage.setItem('inventoryView', name);
+                this.$store.commit('artifacts/setView',name);
+            },
+            sortInventory(name,type){
+                let artifacts=this.artifacts.sort((a, b) => type == 'desc'
+                    ? parseFloat(b.stats.subs.filter(sub => sub.name == name)[0]
+                        ? b.stats.subs.filter(sub => sub.name == name)[0].value : 0)
+                    -
+                    parseFloat(a.stats.subs.filter(sub => sub.name == name)[0]
+                        ? a.stats.subs.filter(sub => sub.name == name)[0].value : 0)
+
+                    : parseFloat(a.stats.subs.filter(sub => sub.name == name)[0]
+                        ? a.stats.subs.filter(sub => sub.name == name)[0].value : 0)
+                    -
+                    parseFloat(b.stats.subs.filter(sub => sub.name == name)[0]
+                        ? b.stats.subs.filter(sub => sub.name == name)[0].value : 0)
+                    );
+
+                this.$store.commit('artifacts/setArtifacts',artifacts);
+            },
+            setStackFilters(){
+                let stack=this.$store.state.artifacts.stack_filters;
+                this.$store.commit('artifacts/setStackFilters',!stack)
+                console.log(this.$store.state.artifacts.stack_filters)
+            },
+            filterInventory(type){
+                this.$store.commit('artifacts/setActiveFilter',type);
             }
         }
     }

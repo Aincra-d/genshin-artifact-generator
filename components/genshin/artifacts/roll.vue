@@ -144,7 +144,7 @@
                 include_low_stars: true,
                 single_upgrades: false,
                 show_upgrades: true,
-                screen: process.client && window.innerWidth,
+                screen: 0,
                 roll_stats_toggled: false,
                 upgrades: [],
                 old_main_value: 0
@@ -257,9 +257,12 @@
 
                     artifacts.push(this.current_artifact);
                     localStorage.setItem('artifacts',JSON.stringify(artifacts));
+
+                    this.$store.commit('artifacts/setArtifacts',artifacts.reverse());
                 }
                 else{
                     if(process.client) localStorage.setItem('artifacts',JSON.stringify(this.artifacts));
+                    this.$store.commit('artifacts/setArtifacts',this.artifacts);
                 }
 
                 this.$notify({
@@ -267,8 +270,6 @@
                     type: 'success',
                     title: '<h6>Added artifact to inventory!</h6>'
                 });
-
-                this.$emit('update-inventory');
 
                 this.rollArtifact();
             },
@@ -525,9 +526,6 @@
                 }
             ];
             },
-            onResize(){
-                if(process.client) this.screen=window.innerWidth
-            },
             updateCounter(){
                 let counter=process.client && (localStorage.roll_counter || 0);
                 counter++;
@@ -626,7 +624,7 @@
             this.setRollStats();
         },
         mounted(){
-            if(process.client) window.addEventListener('resize',this.onResize)
+            this.screen=this.$store.state.artifacts.screen;
         }
     }
 </script>

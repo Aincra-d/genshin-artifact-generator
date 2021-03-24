@@ -9,7 +9,7 @@
                 v-model="stars"
                 :options="[1,2,3,4,5]"
                 buttons
-                @input="!stack && $emit('filter-by-stars',stars)"
+                @input="filterByStars"
                 button-variant="outline-light"
                 size="md"
                 name="buttons-2">
@@ -24,7 +24,7 @@
                 v-model="types"
                 :options="artifact_types"
                 buttons
-                @input="!stack && $emit('filter-by-types',types)"
+                @input="filterByTypes"
                 button-variant="outline-light"
                 :size="screen < 991 ? 'sm' :'md'"
                 name="buttons-2">
@@ -33,7 +33,7 @@
 
             <div v-if="filters.by_set">
                 <ui-select
-                @change="!stack && $emit('filter-by-set-names',sets)"
+                @change="filterBySets"
                 multipleDelimiter=" | "
                 hasSearch
                 class="mt-1 mb-2 select pt-1 px-1"
@@ -54,7 +54,7 @@
 
             <div v-if="filters.by_main">
                 <ui-select
-                @input="!stack && $emit('filter-by-main-stats',main_stats)"
+                @input="filterByMainStats"
                 multipleDelimiter=" | "
                 class="mt-0 mb-0 select pt-1 pb-0 px-1"
                 placeholder="Select main stats"
@@ -77,8 +77,7 @@
                 <tr>
                     <td>
                         <ui-select
-                        @change="!stack && $emit('filter-by-sub-stats')"
-                        @input="!stack && $emit('set-sub-stats',sub_stats)"
+                        @input="filterBySubStats"
                         multipleDelimiter=" | "
                         class="mt-1 mb-2 select pt-1 px-1"
                         placeholder="Select sub stats"
@@ -102,7 +101,7 @@
                             v-model="sub_filter_type"
                             :options="['Contain','Match']"
                             buttons
-                            @input="!stack && $emit('set-sub-filter-type',sub_filter_type)"
+                            @input="setSubFilterType"
                             button-variant="outline-light"
                             size="md"
                             name="buttons-2">
@@ -114,13 +113,13 @@
         <!-- </slide-y-up-transition> -->
 
         <h6
-        v-if="stack"
+        v-if="stack_filters"
         class="text-light">
             Filters:
         </h6>
 
         <div
-        v-if="stack"
+        v-if="stack_filters"
         class="font-italic text-light">
             <div
             :key="i"
@@ -156,7 +155,7 @@
                         method: emptySets
                     }
                 ]">
-                <div v-if="stack && active_filter.filters.length!=0">
+                <div v-if="stack_filters && active_filter.filters.length!=0">
                     <span class="font-weight-bold">
                         {{ active_filter.title }}:
                     </span>
@@ -175,7 +174,7 @@
                         <button
                         style="font-size:10px"
                         class="btn py-0 px-1 mb-1 ml-1 mr-1 btn-primary d-inline"
-                        @click="$emit('update-filters',active_filter.type)">
+                        @click="updateFilters(active_filter.type)">
                             <i class="fas fa-pen"></i>
                         </button>
 
@@ -204,11 +203,6 @@
     import setsJ from '~/static/sets.json';
     export default{
         name: 'inventoryFilters',
-        props: {
-            filters: Object,
-            stack: Boolean,
-            screen: Number
-        },
         data(){
             return {
                 stars: [],
@@ -223,37 +217,124 @@
                 artifact_sub_stats: substatsJ.map(sub => sub.name)
             }
         },
+        computed: {
+            stack_filters(){
+                return this.$store.state.artifacts.stack_filters
+            },
+            filters(){
+                return this.$store.state.artifacts.filters
+            },
+            screen(){
+                return this.$store.state.artifacts.screen
+            },
+            artifacts(){
+                return this.$store.state.artifacts.artifacts
+            }
+        },
         methods: {
+            filterByStars(){
+                if(!this.stack_filters){
+                    this.resetArtifacts();
+                    if(this.stars.length!=0){
+                        let artifacts=this.artifacts.filter(artifact => this.stars.includes(artifact.info.stars));
+                        this.$store.commit('artifacts/setArtifacts',artifacts);
+                    }
+                }
+            },
+            filterByTypes(){
+                if(!this.stack_filters){
+                    this.resetArtifacts();
+                    if(this.types.length!=0){
+                        let artifacts=this.artifacts.filter(artifact => this.types.includes(artifact.info.piece.type));
+                        this.$store.commit('artifacts/setArtifacts',artifacts);
+                    }
+                }
+            },
+            filterByMainStats(){
+                if(!this.stack_filters){
+                    this.resetArtifacts();
+                    if(this.main_stats.length!=0){
+                        let artifacts=this.artifacts.filter(artifact => this.main_stats.includes(artifact.stats.main.name));
+                        this.$store.commit('artifacts/setArtifacts',artifacts);
+                    }
+                }
+            },
+            filterBySubStats(){
+                if(!this.stack_filters){
+                    this.resetArtifacts();
+                    if(this.sub_stats.length!=0){
+                        if(this.sub_filter_type == 'Contain'){
+                            let artifacts=this.artifacts.filter(artifact => artifact.stats.subs.filter(sub => this.sub_stats.includes(sub.name)).length > 0);
+                            this.$store.commit('artifacts/setArtifacts',artifacts);
+                        }
+                        else{
+                            let artifacts=this.artifacts.filter(artifact => this.sub_stats.every(sub => artifact.stats.subs.map(stat => stat.name).includes(sub)));
+                            this.$store.commit('artifacts/setArtifacts',artifacts);
+                        }
+                    }
+                }
+            },
+            filterBySets(){
+                if(!this.stack_filters){
+                    this.resetArtifacts();
+                    if(this.sets.length!=0){
+                        let artifacts=this.artifacts.filter(artifact => this.sets.includes(artifact.info.set.name));
+                        this.$store.commit('artifacts/setArtifacts',artifacts);
+                    }
+                }
+            },
+            setSubFilterType(){
+                if(this.sub_stats.length !== 0) this.filterBySubStats();
+            },
+            resetArtifacts(){
+                if(!this.stack_filters){
+                    let artifacts=JSON.parse(localStorage.artifacts).reverse();
+                    this.$store.commit('artifacts/setArtifacts',artifacts);
+                }
+            },
+            applyFilters(){
+                let artifacts=JSON.parse(localStorage.artifacts);
+                this.$store.commit('artifacts/setArtifacts',artifacts);
+
+                if(this.stars.length!=0){
+                    this.$store.commit('artifacts/setArtifacts',this.artifacts.filter(artifact => this.stars.includes(artifact.info.stars)));
+                }
+                if(this.main_stats.length!=0){
+                    this.$store.commit('artifacts/setArtifacts',this.artifacts.filter(artifact => this.main_stats.includes(artifact.stats.main.name)));
+                }
+                if(this.sub_stats.length!=0){
+                    if(this.sub_filter_type == 'Contain'){
+                        this.$store.commit('artifacts/setArtifacts',this.artifacts.filter(artifact => artifact.stats.subs.filter(sub => this.sub_stats.includes(sub.name)).length > 0));
+                    }
+                    else{
+                        this.$store.commit('artifacts/setArtifacts',this.artifacts.filter(artifact => this.sub_stats.every(sub => artifact.stats.subs.map(stat => stat.name).includes(sub))));
+                    }
+                }
+                if(this.types.length!=0){
+                    this.$store.commit('artifacts/setArtifacts',this.artifacts.filter(artifact => this.types.includes(artifact.info.piece.type)));
+                }
+                if(this.sets.length!=0){
+                    this.$store.commit('artifacts/setArtifacts',this.artifacts.filter(artifact => this.sets.includes(artifact.info.set.name)));
+                }
+
+            },
+            updateFilters(type){
+                this.$store.commit('artifacts/setActiveFilter',type);
+            },
             emptySets(){
                 this.sets=[];
-                this.$emit('filter-by-set-names',this.sets);
             },
             emptyStars(){
                 this.stars=[];
-                this.$emit('filter-by-stars',this.stars);
             },
             emptyTypes(){
                 this.types=[];
-                this.$emit('filter-by-types',this.types);
             },
             emptyMainStats(){
                 this.main_stats=[];
-                this.$emit('filter-by-main-stats',this.main_stats);
             },
             emptySubStats(){
                 this.sub_stats=[];
-                this.$emit('set-sub-stats',this.sub_stats);
-                this.$emit('filter-by-sub-stats');
-            },
-            applyFilters(){
-                let filters={
-                    stars: this.stars,
-                    main_stats: this.main_stats,
-                    sub_stats: this.sub_stats,
-                    types: this.types,
-                    sets: this.sets
-                };
-                this.$emit('apply-filters',filters);
             },
             resetFilters(){
                 if(!this.filters.by_main){
@@ -273,9 +354,6 @@
                     this.sets=[];
                 }
             }
-        },
-        updated(){
-            if(!this.stack) this.resetFilters();
         }
     }
 </script>
