@@ -94,7 +94,7 @@
                         </button>
                     </td>
 
-                    <td>
+                    <td v-if="!exclude_filters">
                         <b-form-group
                         class="text-light p-0 m-0 sub-filter-type">
                             <b-form-checkbox-group
@@ -208,7 +208,6 @@
                 stars: [],
                 main_stats: [],
                 sub_stats: [],
-                sub_filter_type: 'Contain',
                 types: [],
                 sets: [],
                 artifact_types: ["Flower of Life","Plume of Death","Sands of Eon","Goblet of Eonothem","Circlet of Logos"],
@@ -221,6 +220,9 @@
             stack_filters(){
                 return this.$store.state.artifacts.stack_filters
             },
+            exclude_filters(){
+                return this.$store.state.artifacts.exclude_filters
+            },
             filters(){
                 return this.$store.state.artifacts.filters
             },
@@ -229,14 +231,24 @@
             },
             artifacts(){
                 return this.$store.state.artifacts.artifacts
-            }
+            },
+            sub_filter_type: {
+                get(){
+                    return this.$store.state.artifacts.sub_filter_type
+                },
+                set(value){
+                    this.$store.commit('artifacts/setSubFilter',value);
+                }
+            },
         },
         methods: {
             filterByStars(){
                 if(!this.stack_filters){
                     this.resetArtifacts();
                     if(this.stars.length!=0){
-                        let artifacts=this.artifacts.filter(artifact => this.stars.includes(artifact.info.stars));
+                        let artifacts=this.artifacts.filter(artifact => this.exclude_filters
+                            ? !this.stars.includes(artifact.info.stars)
+                            : this.stars.includes(artifact.info.stars));
                         this.$store.commit('artifacts/setArtifacts',artifacts);
                     }
                 }
@@ -245,7 +257,9 @@
                 if(!this.stack_filters){
                     this.resetArtifacts();
                     if(this.types.length!=0){
-                        let artifacts=this.artifacts.filter(artifact => this.types.includes(artifact.info.piece.type));
+                        let artifacts=this.artifacts.filter(artifact => this.exclude_filters
+                            ? !this.types.includes(artifact.info.piece.type)
+                            : this.types.includes(artifact.info.piece.type));
                         this.$store.commit('artifacts/setArtifacts',artifacts);
                     }
                 }
@@ -254,7 +268,9 @@
                 if(!this.stack_filters){
                     this.resetArtifacts();
                     if(this.main_stats.length!=0){
-                        let artifacts=this.artifacts.filter(artifact => this.main_stats.includes(artifact.stats.main.name));
+                        let artifacts=this.artifacts.filter(artifact => this.exclude_filters
+                            ? !this.main_stats.includes(artifact.stats.main.name)
+                            : this.main_stats.includes(artifact.stats.main.name));
                         this.$store.commit('artifacts/setArtifacts',artifacts);
                     }
                 }
@@ -263,12 +279,18 @@
                 if(!this.stack_filters){
                     this.resetArtifacts();
                     if(this.sub_stats.length!=0){
-                        if(this.sub_filter_type == 'Contain'){
-                            let artifacts=this.artifacts.filter(artifact => artifact.stats.subs.filter(sub => this.sub_stats.includes(sub.name)).length > 0);
-                            this.$store.commit('artifacts/setArtifacts',artifacts);
+                        if(!this.exclude_filters){
+                            if(this.sub_filter_type == 'Contain'){
+                                let artifacts=this.artifacts.filter(artifact => artifact.stats.subs.filter(sub => this.sub_stats.includes(sub.name)).length > 0);
+                                this.$store.commit('artifacts/setArtifacts',artifacts);
+                            }
+                            else{
+                                let artifacts=this.artifacts.filter(artifact => this.sub_stats.every(sub => artifact.stats.subs.map(stat => stat.name).includes(sub)));
+                                this.$store.commit('artifacts/setArtifacts',artifacts);
+                            }
                         }
                         else{
-                            let artifacts=this.artifacts.filter(artifact => this.sub_stats.every(sub => artifact.stats.subs.map(stat => stat.name).includes(sub)));
+                            let artifacts=this.artifacts.filter(artifact => this.sub_stats.every(sub => !artifact.stats.subs.map(stat => stat.name).includes(sub)));
                             this.$store.commit('artifacts/setArtifacts',artifacts);
                         }
                     }
@@ -278,7 +300,9 @@
                 if(!this.stack_filters){
                     this.resetArtifacts();
                     if(this.sets.length!=0){
-                        let artifacts=this.artifacts.filter(artifact => this.sets.includes(artifact.info.set.name));
+                        let artifacts=this.artifacts.filter(artifact => this.exclude_filters
+                            ? !this.sets.includes(artifact.info.set.name)
+                            : this.sets.includes(artifact.info.set.name));
                         this.$store.commit('artifacts/setArtifacts',artifacts);
                     }
                 }
@@ -293,28 +317,48 @@
                 }
             },
             applyFilters(){
-                let artifacts=JSON.parse(localStorage.artifacts);
+                let artifacts=JSON.parse(localStorage.artifacts).reverse();
                 this.$store.commit('artifacts/setArtifacts',artifacts);
 
                 if(this.stars.length!=0){
-                    this.$store.commit('artifacts/setArtifacts',this.artifacts.filter(artifact => this.stars.includes(artifact.info.stars)));
+                    this.$store.commit('artifacts/setArtifacts',
+                        this.artifacts.filter(artifact => this.exclude_filters
+                            ? !this.stars.includes(artifact.info.stars)
+                            : this.stars.includes(artifact.info.stars)));
                 }
                 if(this.main_stats.length!=0){
-                    this.$store.commit('artifacts/setArtifacts',this.artifacts.filter(artifact => this.main_stats.includes(artifact.stats.main.name)));
+                    this.$store.commit('artifacts/setArtifacts',
+                        this.artifacts.filter(artifact => this.exclude_filters
+                            ? !this.main_stats.includes(artifact.stats.main.name)
+                            : this.main_stats.includes(artifact.stats.main.name)));
                 }
                 if(this.sub_stats.length!=0){
-                    if(this.sub_filter_type == 'Contain'){
-                        this.$store.commit('artifacts/setArtifacts',this.artifacts.filter(artifact => artifact.stats.subs.filter(sub => this.sub_stats.includes(sub.name)).length > 0));
-                    }
-                    else{
-                        this.$store.commit('artifacts/setArtifacts',this.artifacts.filter(artifact => this.sub_stats.every(sub => artifact.stats.subs.map(stat => stat.name).includes(sub))));
-                    }
+                    if(!this.exclude_filters){
+                            if(this.sub_filter_type == 'Contain'){
+                                let artifacts=this.artifacts.filter(artifact => artifact.stats.subs.filter(sub => this.sub_stats.includes(sub.name)).length > 0);
+                                this.$store.commit('artifacts/setArtifacts',artifacts);
+                            }
+                            else{
+                                let artifacts=this.artifacts.filter(artifact => this.sub_stats.every(sub => artifact.stats.subs.map(stat => stat.name).includes(sub)));
+                                this.$store.commit('artifacts/setArtifacts',artifacts);
+                            }
+                        }
+                        else{
+                            let artifacts=this.artifacts.filter(artifact => this.sub_stats.every(sub => !artifact.stats.subs.map(stat => stat.name).includes(sub)));
+                            this.$store.commit('artifacts/setArtifacts',artifacts);
+                        }
                 }
                 if(this.types.length!=0){
-                    this.$store.commit('artifacts/setArtifacts',this.artifacts.filter(artifact => this.types.includes(artifact.info.piece.type)));
+                    this.$store.commit('artifacts/setArtifacts',
+                        this.artifacts.filter(artifact => this.exclude_filters
+                            ? !this.types.includes(artifact.info.piece.type)
+                            : this.types.includes(artifact.info.piece.type)));
                 }
                 if(this.sets.length!=0){
-                    this.$store.commit('artifacts/setArtifacts',this.artifacts.filter(artifact => this.sets.includes(artifact.info.set.name)));
+                    this.$store.commit('artifacts/setArtifacts',
+                        this.artifacts.filter(artifact => this.exclude_filters
+                            ? !this.sets.includes(artifact.info.set.name)
+                            : this.sets.includes(artifact.info.set.name)));
                 }
 
             },
@@ -323,36 +367,23 @@
             },
             emptySets(){
                 this.sets=[];
+                this.resetArtifacts();
             },
             emptyStars(){
                 this.stars=[];
+                this.resetArtifacts();
             },
             emptyTypes(){
                 this.types=[];
+                this.resetArtifacts();
             },
             emptyMainStats(){
                 this.main_stats=[];
+                this.resetArtifacts();
             },
             emptySubStats(){
                 this.sub_stats=[];
-            },
-            resetFilters(){
-                if(!this.filters.by_main){
-                    this.main_stats=[];
-                }
-                if(!this.filters.by_type){
-                    this.types=[];
-                }
-                if(!this.filters.by_sub){
-                    this.sub_stats=[];
-                    this.sub_filter_type='Contain';
-                }
-                if(!this.filters.by_star){
-                    this.stars=[];
-                }
-                if(!this.filters.by_set){
-                    this.sets=[];
-                }
+                this.resetArtifacts();
             }
         }
     }

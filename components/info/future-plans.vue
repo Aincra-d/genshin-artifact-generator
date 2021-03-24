@@ -52,7 +52,7 @@
 						summary: 'Add different views to inventory'
 					},
 					{
-						done: false,
+						done: true,
 						priority: 'medium',
 						summary: 'Exclude option for inventory filters'
 					},

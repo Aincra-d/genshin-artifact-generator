@@ -62,12 +62,46 @@
             </b-dropdown-item>
         </b-dropdown>
 
-        <b-form-checkbox
+        <b-dropdown
+        class="m-0 set-inventory-view"
+        :size="screen < 576 ? 'md' : 'lg'"
+        variant="link">
+            <template v-slot:button-content>
+                <i class="fas fa-ellipsis-v sort-icon"></i>
+            </template>
+
+            <b-dropdown-item
+            @click="stack_filters=!stack_filters">
+                <i
+                class="fa-sm"
+                :class="stack_filters ? 'fas fa-check-square' : 'far fa-square'"></i>
+                Stack Filters
+            </b-dropdown-item>
+
+            <b-dropdown-item
+            @click="exclude_filters=!exclude_filters">
+                <i
+                class="fa-sm"
+                :class="exclude_filters ? 'fas fa-check-square' : 'far fa-square'"></i>
+                Exclude filters
+            </b-dropdown-item>
+        </b-dropdown>
+
+        <!-- <b-form-checkbox
         class="text-light d-inline-block"
         v-model="stack_filters"
         :size="screen < 576 ? 'md' : 'lg'">
-            Stack filters
+            Stack
         </b-form-checkbox>
+
+        <b-form-checkbox
+        class="text-light d-inline-block"
+        v-model="exclude_filters"
+        :size="screen < 576 ? 'md' : 'lg'">
+            Exclude
+        </b-form-checkbox> -->
+
+        <!-- @click.native.capture.stop -->
     </div>
 </template>
 
@@ -84,6 +118,19 @@
                 },
                 set(value){
                     this.$store.commit('artifacts/setStackFilters',value);
+                }
+            },
+            exclude_filters: {
+                get(){
+                    return this.$store.state.artifacts.exclude_filters
+                },
+                set(value){
+                    this.$store.commit('artifacts/setFilterType',value);
+                    this.$notify({
+                        group: 'foo',
+                        type: 'success',
+                        title: '<h6>Changed filter type to '+(value ? 'exclude' : 'include')+'</h6>'
+                    });
                 }
             },
             filter_types(){
@@ -260,6 +307,9 @@
             }
         },
         methods: {
+            asd(){
+                bvEvent.preventDefault()
+            },
             changeView(name){
                 this.inventory_view=name;
                 process.client && sessionStorage.setItem('inventoryView', name);

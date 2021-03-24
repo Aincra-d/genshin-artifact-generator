@@ -44,7 +44,7 @@
 					{
 						date: '2021.03.17',
 						changes: [
-							'Added different views in inventory',
+							'Added different views to inventory',
 							'Updated guide',
 							'Limited the size of filters in inventory'
 						]
@@ -79,7 +79,9 @@
 					{
 						date: '2021.03.24',
 						changes: [
-							'Improved background logic'
+							'Improved background logic',
+							'Added exclude option to inventory filters',
+							'Updated guide'
 						]
 					}
 				]
