@@ -75,6 +75,12 @@
 							'Updated guide',
 							'Added more future plans'
 						]
+					},
+					{
+						date: '2021.03.24',
+						changes: [
+							'Improved background logic'
+						]
 					}
 				]
 			}
