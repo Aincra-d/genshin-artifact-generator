@@ -4,7 +4,6 @@
         @close="restoreScroll"
         style="height:100vh;"
         alignTop
-        removeHeader
         :alignTopMargin="0"
         :max-height="100"
         title="App info"
@@ -75,7 +74,7 @@
 
 <style scoped>
     .info-container{
-        max-height:80%;
-        height:80%;
+        max-height:80vh;
+        height:80vh;
     }
 </style>

@@ -513,7 +513,7 @@
                 this.resetArtifacts();
             }
         },
-        mounted(){
+        created(){
             this.setMainStats();
             this.setSubStats();
             this.setSets();

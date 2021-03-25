@@ -5,7 +5,6 @@
         @close="restoreScroll"
         style="height:100vh;"
         alignTop
-        removeHeader
         :alignTopMargin="screen < 991 ? 0 : 50"
         :max-height="100"
         title="Edit your artifact"
