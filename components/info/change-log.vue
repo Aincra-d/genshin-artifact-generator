@@ -3,7 +3,7 @@
 		<ul>
 			<li
 			:key="i"
-			v-for="(log,i) in logs.reverse()">
+			v-for="(log,i) in logs">
 				<h6>
 					{{ log.date }}
 				</h6>
@@ -93,6 +93,9 @@
 					}
 				]
 			}
+		},
+		created(){
+			this.logs.reverse();
 		}
 	}
 </script>
