@@ -24,8 +24,7 @@
 
                 <div class="w-100 text-right artifact-main-info position-relative">
                     <img
-                    class="mr-1"
-                    style="height:150px;width:150px;"
+                    class="mr-1 artifact-image"
                     v-lazy="artifact.info.piece.image"
                     :alt="artifact.info.piece.name">
 
@@ -102,7 +101,7 @@
                     rounded btn-md float-left py-0 px-1 mx-1"
                     @click="$emit('open-modal','artifactModal',artifact.id)">
                         <img
-                        class="mr-1 artifact-image"
+                        class="mr-1 artifact-thumbnail"
                         v-lazy="artifact.info.piece.image"
                         :alt="artifact.info.piece.name">
                     </button>
@@ -157,15 +156,40 @@
     }
 
     @media(max-width:1200px){
-        .artifact-image{
+        .artifact-thumbnail{
             width:100px;
             height:100px;
         }
     }
     @media(min-width:1200px){
-        .artifact-image{
+        .artifact-thumbnail{
             width:120px;
             height:120px;
+        }
+    }
+
+    @media(max-width: 1200px){
+        .artifact-image{
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+    @media(min-width: 1200px) and (max-width: 1600px){
+        .artifact-image{
+            width: 120px;
+            height: 120px;
+        }
+
+        .artifact *{
+            font-size: 15px
+        }
+    }
+
+    @media(min-width: 1600px){
+        .artifact-image{
+            width: 150px;
+            height: 150px;
         }
     }
 

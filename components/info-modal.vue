@@ -10,7 +10,7 @@
         title="App info"
         ref="infoModal"
         class="text-dark text-center info-modal">
-            <div class="w-100 text-left text-dark p-1">
+            <div class="w-100 text-left text-dark p-1 info-container">
                 <b-tabs>
                     <b-tab title="About" active>
                         <about></about>
@@ -72,3 +72,10 @@
         }
     }
 </script>
+
+<style scoped>
+    .info-container{
+        max-height:80%;
+        height:80%;
+    }
+</style>

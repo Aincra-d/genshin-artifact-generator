@@ -225,6 +225,6 @@ body{
 }
 
 .ui-modal__body{
-    max-height: 100vh
+    max-height: 90vh;
 }
 </style>
