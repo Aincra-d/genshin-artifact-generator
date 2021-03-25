@@ -32,6 +32,51 @@
             </b-form-group>
 
             <div v-if="filters.by_set">
+                <b-input-group class="w-100 d-inline-block filter-select"
+                :class="screen < 576 ? 'text-center' : 'text-left'">
+                    <!-- <ui-select
+                    @change="filterBySets"
+                    multipleDelimiter=" | "
+                    hasSearch
+                    class="mb-0 mt-1 select pt-1 px-1 d-inline-block"
+                    placeholder="Select artifact set"
+                    searchPlaceholder="Enter set name"
+                    :options="artifact_sets"
+                    multiple
+                    v-model="sets">
+                    </ui-select> -->
+
+                    <b-dropdown
+                    :text="sets.length!=0 ? sets.length+' set(s) selected' : 'Select artifact set(s)'"
+                    variant="light"
+                    class="text-dark rounded-0">
+                        <b-dropdown-item
+                        :key="i"
+                        v-for="(set,i) in artifact_sets"
+                        @click.native.capture.stop="filterBySets(set.name)">
+                            <i
+                            class="fa-sm"
+                            :class="sets.includes(set.name) ?
+                            'fas fa-check-square' : 'far fa-square'">
+                            </i>
+
+                            {{ set.name }} ({{ set.count }})
+                        </b-dropdown-item>
+                    </b-dropdown>
+                    
+                    <b-input-group-append class="d-inline">
+                        <b-button
+                        style="margin-left:-5px"
+                        variant="danger"
+                        @click="emptySets"
+                        class="text-light">
+                            <i class="fas fa-times"></i>
+                        </b-button>
+                    </b-input-group-append>
+                </b-input-group>
+            </div>
+
+           <!--  <div v-if="filters.by_set">
                 <ui-select
                 @change="filterBySets"
                 multipleDelimiter=" | "
@@ -50,25 +95,39 @@
                 class="btn btn-danger d-inline-block text-light btn-sm mb-2 ml-1 pt-1 pb-1 rounded">
                     <i class="fas fa-times"></i>
                 </button>
-            </div>
+            </div> -->
 
             <div v-if="filters.by_main">
-                <ui-select
-                @input="filterByMainStats"
-                multipleDelimiter=" | "
-                class="mt-0 mb-0 select pt-1 pb-0 px-1"
-                placeholder="Select main stats"
-                :options="artifact_main_stats"
-                multiple
-                v-model="main_stats">
-                </ui-select>
+                <b-input-group class="w-100 d-inline-block ml-3 ml-lg-0 filter-select"
+                :class="screen < 776 ? 'text-center' : 'text-left'">
+                    <b-dropdown
+                    :text="main_stats.length!=0 ? main_stats.length+' stat(s) selected' : 'Select main stat(s)'"
+                    variant="light"
+                    class="text-dark rounded-0">
+                        <b-dropdown-item
+                        :key="i"
+                        v-for="(main,i) in artifact_main_stats"
+                        @click.native.capture.stop="filterByMainStats(main.name)">
+                            <i
+                            class="fa-sm"
+                            :class="main_stats.includes(main.name) ?
+                            'fas fa-check-square' : 'far fa-square'">
+                            </i>
 
-                <button
-                @click="emptyMainStats"
-                type="button"
-                class="btn btn-danger d-inline-block text-light btn-sm mb-2 ml-1 pt-1 pb-1 rounded">
-                    <i class="fas fa-times"></i>
-                </button>
+                            {{ main.name }} ({{ main.count }})
+                        </b-dropdown-item>
+                    </b-dropdown>
+                    
+                    <b-input-group-append class="d-inline">
+                        <b-button
+                        style="margin-left:-5px"
+                        variant="danger"
+                        @click="emptyMainStats"
+                        class="text-light">
+                            <i class="fas fa-times"></i>
+                        </b-button>
+                    </b-input-group-append>
+                </b-input-group>
             </div>
 
             <table
@@ -76,30 +135,56 @@
             v-if="filters.by_sub">
                 <tr>
                     <td>
-                        <ui-select
-                        @input="filterBySubStats"
-                        multipleDelimiter=" | "
-                        class="mt-1 mb-2 select pt-1 px-1"
-                        placeholder="Select sub stats"
-                        :options="artifact_sub_stats"
-                        multiple
-                        v-model="sub_stats">
-                        </ui-select>
+                        <b-input-group class="w-100 d-inline-block filter-select"
+                        :class="screen < 776 ? 'text-center' : 'text-left'">
+                            <b-dropdown
+                            :text="sub_stats.length!=0 ? sub_stats.length+' stat(s) selected' : 'Select sub stat(s)'"
+                            variant="light"
+                            class="text-dark rounded-0">
+                                <b-dropdown-item
+                                :key="i"
+                                v-for="(sub,i) in artifact_sub_stats"
+                                @click.native.capture.stop="filterBySubStats(sub.name)">
+                                    <i
+                                    class="fa-sm"
+                                    :class="sub_stats.includes(sub.name) ?
+                                    'fas fa-check-square' : 'far fa-square'">
+                                    </i>
 
-                        <button
-                        @click="emptySubStats"
-                        type="button"
-                        class="btn btn-danger d-inline-block text-light btn-sm mb-2 ml-1 pt-1 pb-1 rounded">
-                            <i class="fas fa-times"></i>
-                        </button>
+                                    {{ sub.name }} ({{ sub.count }})
+                                </b-dropdown-item>
+                            </b-dropdown>
+                            
+                            <b-input-group-append class="d-inline">
+                                <b-form-checkbox
+                                v-if="!exclude_filters"
+                                v-model="match_subs"
+                                style="margin-left:-5px;"
+                                name="check-button"
+                                class="rounded-0"
+                                button-variant="outline-light"
+                                @input="setSubFilterType"
+                                button>
+                                    Match
+                                </b-form-checkbox>
+
+                                <b-button
+                                style="margin-left:-5px"
+                                variant="danger"
+                                @click="emptySubStats"
+                                class="text-light">
+                                    <i class="fas fa-times"></i>
+                                </b-button>
+                            </b-input-group-append>
+                        </b-input-group>
                     </td>
 
-                    <td v-if="!exclude_filters">
+                    <!-- <td v-if="!exclude_filters">
                         <b-form-group
                         class="text-light p-0 m-0 sub-filter-type">
                             <b-form-checkbox-group
-                            v-model="sub_filter_type"
-                            :options="['Contain','Match']"
+                            v-model="match_subs"
+                            :options="'Match'"
                             buttons
                             @input="setSubFilterType"
                             button-variant="outline-light"
@@ -107,7 +192,7 @@
                             name="buttons-2">
                             </b-form-checkbox-group>
                         </b-form-group>
-                    </td>
+                    </td> -->
                 </tr>
             </table>
         <!-- </slide-y-up-transition> -->
@@ -232,16 +317,49 @@
             artifacts(){
                 return this.$store.state.artifacts.artifacts
             },
-            sub_filter_type: {
+            match_subs: {
                 get(){
-                    return this.$store.state.artifacts.sub_filter_type
+                    return this.$store.state.artifacts.match_subs
                 },
                 set(value){
-                    this.$store.commit('artifacts/setSubFilter',value);
+                    this.$store.commit('artifacts/setMatchSubs',value);
                 }
             },
         },
         methods: {
+            setMainStats(){
+                let main_stats=[];
+                this.artifact_main_stats.forEach(main_stat => {
+                    main_stats.push({
+                        name: main_stat,
+                        count: this.artifacts.filter(artifact => artifact.stats.main.name == main_stat).length
+                    });
+
+                    this.artifact_main_stats=main_stats;
+                });
+            },
+            setSubStats(){
+                let sub_stats=[];
+                this.artifact_sub_stats.forEach(sub_stat => {
+                    sub_stats.push({
+                        name: sub_stat,
+                        count: this.artifacts.filter(artifact => artifact.stats.subs.map(sub => sub.name).includes(sub_stat)).length
+                    });
+
+                    this.artifact_sub_stats=sub_stats;
+                });
+            },
+            setSets(){
+                let sets=[];
+                this.artifact_sets.forEach(set => {
+                    sets.push({
+                        name: set,
+                        count: this.artifacts.filter(artifact => artifact.info.set.name == set).length
+                    });
+
+                    this.artifact_sets=sets;
+                });
+            },
             filterByStars(){
                 if(!this.stack_filters){
                     this.resetArtifacts();
@@ -264,7 +382,9 @@
                     }
                 }
             },
-            filterByMainStats(){
+            filterByMainStats(main){
+                this.setSelectData(this.main_stats,main);
+
                 if(!this.stack_filters){
                     this.resetArtifacts();
                     if(this.main_stats.length!=0){
@@ -275,12 +395,14 @@
                     }
                 }
             },
-            filterBySubStats(){
+            filterBySubStats(sub){
+                if(sub !==null) this.setSelectData(this.sub_stats,sub);
+
                 if(!this.stack_filters){
                     this.resetArtifacts();
                     if(this.sub_stats.length!=0){
                         if(!this.exclude_filters){
-                            if(this.sub_filter_type == 'Contain'){
+                            if(!this.match_subs){
                                 let artifacts=this.artifacts.filter(artifact => artifact.stats.subs.filter(sub => this.sub_stats.includes(sub.name)).length > 0);
                                 this.$store.commit('artifacts/setArtifacts',artifacts);
                             }
@@ -296,7 +418,9 @@
                     }
                 }
             },
-            filterBySets(){
+            filterBySets(set){
+                this.setSelectData(this.sets,set);
+
                 if(!this.stack_filters){
                     this.resetArtifacts();
                     if(this.sets.length!=0){
@@ -307,8 +431,11 @@
                     }
                 }
             },
+            setSelectData(array,item){
+                array.includes(item) ? array.splice(array.findIndex(name => name == item),1) : array.push(item);
+            },
             setSubFilterType(){
-                if(this.sub_stats.length !== 0) this.filterBySubStats();
+                if(this.sub_stats.length !== 0) this.filterBySubStats(null);
             },
             resetArtifacts(){
                 if(!this.stack_filters){
@@ -334,7 +461,7 @@
                 }
                 if(this.sub_stats.length!=0){
                     if(!this.exclude_filters){
-                            if(this.sub_filter_type == 'Contain'){
+                            if(!this.match_subs){
                                 let artifacts=this.artifacts.filter(artifact => artifact.stats.subs.filter(sub => this.sub_stats.includes(sub.name)).length > 0);
                                 this.$store.commit('artifacts/setArtifacts',artifacts);
                             }
@@ -385,6 +512,11 @@
                 this.sub_stats=[];
                 this.resetArtifacts();
             }
+        },
+        mounted(){
+            this.setMainStats();
+            this.setSubStats();
+            this.setSets();
         }
     }
 </script>
@@ -394,6 +526,19 @@
         max-width: 100vw !important;
     }*/
 
+    .filter-select label{
+        border-radius: 0;
+    }
+
+    .filter-select .dropdown-toggle{
+        color:black;
+        border-radius: 0;
+    }
+    .filter-select .dropdown-menu{
+        max-height:300px;
+        overflow-y: auto;
+    }
+
     .ui-select.is-multiple .ui-select__display-value{
         white-space: nowrap;
         max-width: 250px;
@@ -402,7 +547,7 @@
 
     .select{
         background-color: white;
-        border-radius: 10px;
+        /*border-radius: 10px;*/
     }
 
     .sub-filter-type .btn{

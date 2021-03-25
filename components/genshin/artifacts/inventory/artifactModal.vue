@@ -5,14 +5,15 @@
         @close="restoreScroll"
         style="height:100vh;"
         alignTop
-        :alignTopMargin="0"
+        removeHeader
+        :alignTopMargin="screen < 991 ? 0 : 50"
         :max-height="100"
         title="Edit your artifact"
         ref="artifactModal"
         :class="modal_bg_class"
         class="text-light text-center anime-info-modal">
             <div
-            class="w-100 text-center"
+            class="w-100 text-center py-3"
             style="/*{ backgroundImage: 'url(' + artifacts[0].info.piece.image + ')', backgroundSize: 'auto'}*/">
                 <artifact
                 v-if="client"

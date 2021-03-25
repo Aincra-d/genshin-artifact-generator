@@ -17,7 +17,7 @@
             <b-tab title="Inventory">
                 <div class="position-relative d-block inventory-container p-0 text-center col-12">
                     <artifact-inventory
-                    style="max-height:90vh; overflow-y: auto;">
+                    style="height:90vh; overflow-y: auto;">
                     </artifact-inventory>
                 </div>
             </b-tab>
@@ -35,7 +35,7 @@
             <div class="position-absolute top-0 right-0 d-inline-block inventory-container
             p-0 text-left col-12 col-sm-12 col-md-7 col-lg-8 col-xl-7">
                 <artifact-inventory
-                style="max-height:100vh; overflow-y: auto;">
+                style="height:100vh; overflow-y: auto;">
                 </artifact-inventory>
             </div>
         </div>

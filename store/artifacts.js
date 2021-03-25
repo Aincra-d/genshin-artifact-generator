@@ -2,7 +2,7 @@ export const state = () => ({
     artifacts: [],
     screen: 0,
     view: '',
-    sub_filter_type: 'Contain',
+    match_subs: false,
     stack_filters: false,
     exclude_filters: false,
     filters: {
@@ -16,19 +16,19 @@ export const state = () => ({
 
 export const mutations = {
     setArtifacts: (state,artifacts) => state.artifacts=artifacts,
-    
+
     setScreen: (state,screen) => state.screen=screen,
-    
+
     setView: (state,view) => state.view=view,
-    
-    setSubFilter: (state,sub_filter_type) => state.sub_filter_type=sub_filter_type,
-    
+
+    setMatchSubs: (state,match) => state.match_subs=match,
+
     setStackFilters: (state,stack_filters) => state.stack_filters=stack_filters,
-    
+
     setFilterType: (state,exclude) => state.exclude_filters=exclude,
-    
+
     setFilters: (state,filters) => state.filters=filters,
-    
+
     setActiveFilter(state,type){
         Object.keys(state.filters).forEach(v => state.filters[v] = false);
         state.filters[type]=true

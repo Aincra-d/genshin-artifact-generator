@@ -5,7 +5,9 @@
         ref="artifactModal">    
         </artifact-modal>
 
-        <div class="text-left manage-inventory">
+        <div
+        class="manage-inventory"
+        :class="screen > 576 && screen < 776 ? 'text-center' : 'text-left'">
             <manage-inventory></manage-inventory>
         </div>
 
@@ -63,6 +65,9 @@
             },
             view(){
                 return this.$store.state.artifacts.view
+            },
+            screen(){
+                return this.$store.state.artifacts.screen
             },
             all_pages(){
                 return Math.ceil(this.artifacts.length/50);

@@ -4,6 +4,7 @@
         @close="restoreScroll"
         style="height:100vh;"
         alignTop
+        removeHeader
         :alignTopMargin="0"
         :max-height="100"
         title="App info"

@@ -191,7 +191,7 @@ html {
 
 .ui-select__content *{
     color:white !important;
-    max-width: 200px;
+    /*max-width: 200px;*/
 }
 
 .ui-select{
@@ -220,6 +220,11 @@ body{
 }
 
 .dropdown-toggle{
-    color:white !important;
+    color:white;
+    border-radius: 0;
+}
+
+.ui-modal__body{
+    max-height: 100vh
 }
 </style>

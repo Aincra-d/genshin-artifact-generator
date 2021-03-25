@@ -83,6 +83,13 @@
 							'Added exclude option to inventory filters',
 							'Updated guide'
 						]
+					},
+					{
+						date: '2021.03.25',
+						changes: [
+							'Design improvements',
+							'Added counters to filter dropdown'
+						]
 					}
 				]
 			}

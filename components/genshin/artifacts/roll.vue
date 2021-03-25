@@ -67,20 +67,38 @@
             :artifact="artifact">
             </artifact>
 
-            <div class="d-inline text-center w-100">
-                <ui-select
-                class="mt-1 mb-2 ml-3 select pt-1 px-1"
-                placeholder="Select domain"
-                :options="domain_names"
-                v-model="selected_domain">
-                </ui-select>
+            <div>
+                <b-input-group
+                class="w-80 d-inline-block text-center">
+                    <ui-select
+                    class="mb-0 mt-1 select pt-1 px-1 d-inline-block"
+                    placeholder="Select domain"
+                    :options="domain_names"
+                    v-model="selected_domain">
+                    </ui-select>
 
-                <button
-                @click="selected_domain=''"
-                type="button"
-                class="btn btn-danger d-inline-block text-light btn-sm mb-2 ml-1 pt-1 pb-1 rounded">
-                    <i class="fas fa-times"></i>
-                </button>
+                    <!-- <b-dropdown
+                    :text="selected_domain == '' ? 'Select domain' : selected_domain"
+                    variant="light"
+                    class="text-dark rounded-0">
+                        <b-dropdown-item
+                        :key="i"
+                        v-for="(domain,i) in domain_names"
+                        @click="selected_domain=domain">
+                            {{ domain }}
+                        </b-dropdown-item>
+                    </b-dropdown>
+ -->
+                    <b-input-group-append class="d-inline">
+                        <b-button
+                        style="margin-left:-5px"
+                        variant="danger"
+                        @click="selected_domain=''"
+                        class="text-light mb-2 pt-1">
+                            <i class="fas fa-times"></i>
+                        </b-button>
+                    </b-input-group-append>
+                </b-input-group>
             </div>
 
             <h5 class="text-light roll-counter">

@@ -68,7 +68,7 @@
 					},
 					{
 						done: false,
-						priority: 'medium',
+						priority: 'low',
 						summary: 'Filter sub stats by value'
 					},
 					{
@@ -77,7 +77,7 @@
 						summary: 'Add pagination to inventory'
 					},
 					{
-						done: false,
+						done: true,
 						priority: 'medium',
 						summary: 'Add counters to filter dropdowns'
 					},
@@ -88,7 +88,7 @@
 					},
 					{
 						done: false,
-						priority: 'low',
+						priority: 'medium',
 						summary: 'Option to delete multiple artifacts from inventory'
 					}
 				]
