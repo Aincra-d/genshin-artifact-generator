@@ -1,201 +1,151 @@
 <template>
     <div>
-        <!-- <slide-y-up-transition :duration="250"> -->
-            <b-form-group
-            v-if="filters.by_star"
-            class="text-light stars-filter"
-            label="Select artifact rarity to show">
-                <b-form-checkbox-group
-                v-model="stars"
-                :options="[1,2,3,4,5]"
-                buttons
-                @input="filterByStars"
-                button-variant="outline-light"
-                size="md"
-                name="buttons-2">
-                </b-form-checkbox-group>
-            </b-form-group>
+        <b-form-group
+        v-if="filters.by_star"
+        class="text-light stars-filter"
+        label="Select artifact rarity to show">
+            <b-form-checkbox-group
+            v-model="stars"
+            :options="[1,2,3,4,5]"
+            buttons
+            @input="filterByStars"
+            button-variant="outline-light"
+            size="md"
+            name="buttons-2">
+            </b-form-checkbox-group>
+        </b-form-group>
 
-            <b-form-group
-            v-if="filters.by_type"
-            class="text-light type-filter"
-            label="Select artifact type to show">
-                <b-form-checkbox-group
-                v-model="types"
-                :options="artifact_types"
-                buttons
-                @input="filterByTypes"
-                button-variant="outline-light"
-                :size="screen < 991 ? 'sm' :'md'"
-                name="buttons-2">
-                </b-form-checkbox-group>
-            </b-form-group>
+        <b-form-group
+        v-if="filters.by_type"
+        class="text-light type-filter"
+        label="Select artifact type to show">
+            <b-form-checkbox-group
+            v-model="types"
+            :options="artifact_types"
+            buttons
+            @input="filterByTypes"
+            button-variant="outline-light"
+            :size="screen < 991 ? 'sm' :'md'"
+            name="buttons-2">
+            </b-form-checkbox-group>
+        </b-form-group>
 
-            <div v-if="filters.by_set">
-                <b-input-group class="w-100 d-inline-block filter-select"
-                :class="screen < 576 ? 'text-center' : 'text-left'">
-                    <!-- <ui-select
-                    @change="filterBySets"
-                    multipleDelimiter=" | "
-                    hasSearch
-                    class="mb-0 mt-1 select pt-1 px-1 d-inline-block"
-                    placeholder="Select artifact set"
-                    searchPlaceholder="Enter set name"
-                    :options="artifact_sets"
-                    multiple
-                    v-model="sets">
-                    </ui-select> -->
+        <div v-if="filters.by_set">
+            <b-input-group class="w-100 d-inline-block filter-select"
+            :class="screen < 576 ? 'text-center' : 'text-left'">
+                <b-dropdown
+                :text="sets.length!=0 ? sets.length+' set(s) selected' : 'Select artifact set(s)'"
+                variant="light"
+                class="text-dark rounded-0">
+                    <b-dropdown-item
+                    :key="i"
+                    v-for="(set,i) in artifact_sets"
+                    @click.native.capture.stop="filterBySets(set.name)">
+                        <i
+                        class="fa-sm"
+                        :class="sets.includes(set.name) ?
+                        'fas fa-check-square' : 'far fa-square'">
+                        </i>
 
-                    <b-dropdown
-                    :text="sets.length!=0 ? sets.length+' set(s) selected' : 'Select artifact set(s)'"
-                    variant="light"
-                    class="text-dark rounded-0">
-                        <b-dropdown-item
-                        :key="i"
-                        v-for="(set,i) in artifact_sets"
-                        @click.native.capture.stop="filterBySets(set.name)">
-                            <i
-                            class="fa-sm"
-                            :class="sets.includes(set.name) ?
-                            'fas fa-check-square' : 'far fa-square'">
-                            </i>
+                        {{ set.name }} ({{ set.count }})
+                    </b-dropdown-item>
+                </b-dropdown>
+                
+                <b-input-group-append class="d-inline">
+                    <b-button
+                    style="margin-left:-5px"
+                    variant="danger"
+                    @click="emptySets"
+                    class="text-light">
+                        <i class="fas fa-times"></i>
+                    </b-button>
+                </b-input-group-append>
+            </b-input-group>
+        </div>
 
-                            {{ set.name }} ({{ set.count }})
-                        </b-dropdown-item>
-                    </b-dropdown>
-                    
-                    <b-input-group-append class="d-inline">
-                        <b-button
-                        style="margin-left:-5px"
-                        variant="danger"
-                        @click="emptySets"
-                        class="text-light">
-                            <i class="fas fa-times"></i>
-                        </b-button>
-                    </b-input-group-append>
-                </b-input-group>
-            </div>
+        <div v-if="filters.by_main">
+            <b-input-group class="w-100 d-inline-block ml-3 ml-lg-0 filter-select"
+            :class="screen < 776 ? 'text-center' : 'text-left'">
+                <b-dropdown
+                :text="main_stats.length!=0 ? main_stats.length+' stat(s) selected' : 'Select main stat(s)'"
+                variant="light"
+                class="text-dark rounded-0">
+                    <b-dropdown-item
+                    :key="i"
+                    v-for="(main,i) in artifact_main_stats"
+                    @click.native.capture.stop="filterByMainStats(main.name)">
+                        <i
+                        class="fa-sm"
+                        :class="main_stats.includes(main.name) ?
+                        'fas fa-check-square' : 'far fa-square'">
+                        </i>
 
-           <!--  <div v-if="filters.by_set">
-                <ui-select
-                @change="filterBySets"
-                multipleDelimiter=" | "
-                hasSearch
-                class="mt-1 mb-2 select pt-1 px-1"
-                placeholder="Select artifact set"
-                searchPlaceholder="Enter set name"
-                :options="artifact_sets"
-                multiple
-                v-model="sets">
-                </ui-select>
+                        {{ main.name }} ({{ main.count }})
+                    </b-dropdown-item>
+                </b-dropdown>
+                
+                <b-input-group-append class="d-inline">
+                    <b-button
+                    style="margin-left:-5px"
+                    variant="danger"
+                    @click="emptyMainStats"
+                    class="text-light">
+                        <i class="fas fa-times"></i>
+                    </b-button>
+                </b-input-group-append>
+            </b-input-group>
+        </div>
 
-                <button
-                @click="emptySets"
-                type="button"
-                class="btn btn-danger d-inline-block text-light btn-sm mb-2 ml-1 pt-1 pb-1 rounded">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div> -->
+        <table
+        class="mx-auto mx-md-0"
+        v-if="filters.by_sub">
+            <tr>
+                <td>
+                    <b-input-group class="w-100 d-inline-block filter-select"
+                    :class="screen < 776 ? 'text-center' : 'text-left'">
+                        <b-dropdown
+                        :text="sub_stats.length!=0 ? sub_stats.length+' stat(s) selected' : 'Select sub stat(s)'"
+                        variant="light"
+                        class="text-dark rounded-0">
+                            <b-dropdown-item
+                            :key="i"
+                            v-for="(sub,i) in artifact_sub_stats"
+                            @click.native.capture.stop="filterBySubStats(sub.name)">
+                                <i
+                                class="fa-sm"
+                                :class="sub_stats.includes(sub.name) ?
+                                'fas fa-check-square' : 'far fa-square'">
+                                </i>
 
-            <div v-if="filters.by_main">
-                <b-input-group class="w-100 d-inline-block ml-3 ml-lg-0 filter-select"
-                :class="screen < 776 ? 'text-center' : 'text-left'">
-                    <b-dropdown
-                    :text="main_stats.length!=0 ? main_stats.length+' stat(s) selected' : 'Select main stat(s)'"
-                    variant="light"
-                    class="text-dark rounded-0">
-                        <b-dropdown-item
-                        :key="i"
-                        v-for="(main,i) in artifact_main_stats"
-                        @click.native.capture.stop="filterByMainStats(main.name)">
-                            <i
-                            class="fa-sm"
-                            :class="main_stats.includes(main.name) ?
-                            'fas fa-check-square' : 'far fa-square'">
-                            </i>
-
-                            {{ main.name }} ({{ main.count }})
-                        </b-dropdown-item>
-                    </b-dropdown>
-                    
-                    <b-input-group-append class="d-inline">
-                        <b-button
-                        style="margin-left:-5px"
-                        variant="danger"
-                        @click="emptyMainStats"
-                        class="text-light">
-                            <i class="fas fa-times"></i>
-                        </b-button>
-                    </b-input-group-append>
-                </b-input-group>
-            </div>
-
-            <table
-            class="mx-auto mx-md-0"
-            v-if="filters.by_sub">
-                <tr>
-                    <td>
-                        <b-input-group class="w-100 d-inline-block filter-select"
-                        :class="screen < 776 ? 'text-center' : 'text-left'">
-                            <b-dropdown
-                            :text="sub_stats.length!=0 ? sub_stats.length+' stat(s) selected' : 'Select sub stat(s)'"
-                            variant="light"
-                            class="text-dark rounded-0">
-                                <b-dropdown-item
-                                :key="i"
-                                v-for="(sub,i) in artifact_sub_stats"
-                                @click.native.capture.stop="filterBySubStats(sub.name)">
-                                    <i
-                                    class="fa-sm"
-                                    :class="sub_stats.includes(sub.name) ?
-                                    'fas fa-check-square' : 'far fa-square'">
-                                    </i>
-
-                                    {{ sub.name }} ({{ sub.count }})
-                                </b-dropdown-item>
-                            </b-dropdown>
-                            
-                            <b-input-group-append class="d-inline">
-                                <b-form-checkbox
-                                v-if="!exclude_filters"
-                                v-model="match_subs"
-                                style="margin-left:-5px;"
-                                name="check-button"
-                                class="rounded-0"
-                                button-variant="outline-light"
-                                @input="setSubFilterType"
-                                button>
-                                    Match
-                                </b-form-checkbox>
-
-                                <b-button
-                                style="margin-left:-5px"
-                                variant="danger"
-                                @click="emptySubStats"
-                                class="text-light">
-                                    <i class="fas fa-times"></i>
-                                </b-button>
-                            </b-input-group-append>
-                        </b-input-group>
-                    </td>
-
-                    <!-- <td v-if="!exclude_filters">
-                        <b-form-group
-                        class="text-light p-0 m-0 sub-filter-type">
-                            <b-form-checkbox-group
+                                {{ sub.name }} ({{ sub.count }})
+                            </b-dropdown-item>
+                        </b-dropdown>
+                        
+                        <b-input-group-append class="d-inline">
+                            <b-form-checkbox
+                            v-if="!exclude_filters"
                             v-model="match_subs"
-                            :options="'Match'"
-                            buttons
-                            @input="setSubFilterType"
+                            style="margin-left:-5px;"
+                            name="check-button"
+                            class="rounded-0"
                             button-variant="outline-light"
-                            size="md"
-                            name="buttons-2">
-                            </b-form-checkbox-group>
-                        </b-form-group>
-                    </td> -->
-                </tr>
-            </table>
-        <!-- </slide-y-up-transition> -->
+                            @input="setSubFilterType"
+                            button>
+                                Match
+                            </b-form-checkbox>
+
+                            <b-button
+                            style="margin-left:-5px"
+                            variant="danger"
+                            @click="emptySubStats"
+                            class="text-light">
+                                <i class="fas fa-times"></i>
+                            </b-button>
+                        </b-input-group-append>
+                    </b-input-group>
+                </td>
+            </tr>
+        </table>
 
         <h6
         v-if="stack_filters"
@@ -279,6 +229,40 @@
                 Apply filters
             </button>
         </div>
+
+        <button
+        v-if="delete_artifacts"
+        type="button"
+        class="btn btn-sm btn-outline-danger rounded-0"
+        @click="confirm_delete = !confirm_delete">
+            Delete selected artifacts
+        </button>
+
+        <div v-if="delete_artifacts && confirm_delete">
+            <h6 class="text-warning font-weight-bold">
+                Are you sure you want to delete {{ delete_ids.length }} selected artifacts?
+            </h6>
+
+            <ul class="list-unstyled">
+                <li class="d-inline">
+                    <button
+                    type="button"
+                    class="btn btn-sm btn-danger rounded-0"
+                    @click="deleteArtifacts">
+                        Delete
+                    </button>
+                </li>
+
+                <li class="d-inline">
+                    <button
+                    type="button"
+                    class="btn btn-sm btn-secondary text-light d-inline rounded-0 mx-1"
+                    @click="confirm_delete = false">
+                        <i class="fas fa-times fa-sm mr-1"></i> Cancel
+                    </button>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -298,7 +282,8 @@
                 artifact_types: ["Flower of Life","Plume of Death","Sands of Eon","Goblet of Eonothem","Circlet of Logos"],
                 artifact_main_stats: mainstatsJ.map(main => main.name),
                 artifact_sets: setsJ.map(set => set.name),
-                artifact_sub_stats: substatsJ.map(sub => sub.name)
+                artifact_sub_stats: substatsJ.map(sub => sub.name),
+                confirm_delete: false
             }
         },
         computed: {
@@ -316,6 +301,12 @@
             },
             artifacts(){
                 return this.$store.state.artifacts.artifacts
+            },
+            delete_ids(){
+                return this.$store.state.artifacts.delete_ids
+            },
+            delete_artifacts(){
+                return this.$store.state.artifacts.delete_artifacts
             },
             match_subs: {
                 get(){
@@ -358,6 +349,24 @@
                     });
 
                     this.artifact_sets=sets;
+                });
+            },
+            deleteArtifacts(){
+                let artifacts=JSON.parse(localStorage.artifacts) || [];
+                let original_size=artifacts.length;
+
+                artifacts=artifacts.filter(artifact => !this.delete_ids.includes(artifact.id));
+
+                this.$store.commit('artifacts/setArtifacts',this.artifacts.filter(artifact => !this.delete_ids.includes(artifact.id)));
+                
+                localStorage.setItem('artifacts',JSON.stringify(artifacts));
+
+                this.$store.commit('artifacts/setDeleteArtifacts',false);
+
+                this.$notify({
+                    group: 'foo',
+                    type: 'success',
+                    title: '<h6>Deleted '+(original_size - artifacts.length)+' artifacts from inventory!</h6>'
                 });
             },
             filterByStars(){

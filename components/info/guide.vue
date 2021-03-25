@@ -69,9 +69,12 @@
 	                </ul>
 
 	                You can choose to apply just one filter at the time, in which case your artifacts will be sorted each time you change your filter automatically, or by checking the "Stack filters" option(<i class="fas fa-ellipsis-v"></i>), you can apply multiple filters. In this case, the filters will only be applied once you manually do so, by clicking the "Apply filters" button. Also, all your selected filter options will be displayed, so you will know what filters you will apply. You can also quickly change them by clicking the <i class="fas fa-edit text-primary"></i> button, or remove those filters with the <i class="fas fa-times text-danger"></i> button.
+
 	                You can also choose to <b>exclude</b> the selected data by checking the "Exclude filters" option, instead of the default include.
 	                When filtering by sub stats, you can choose to <b>match</b> the selected sub stats.
 	                Choosing this option will only return ones that contain <b>all</b> of the selected sub stats, otherwise it return artifacts that contain <b>any</b> of the selected substats.
+
+	                Selecting the "Delete artifacts" option will give you the opportunity to select the artifacts you wish to delete, in the inventory, by checking the box in the top right corner of each artifact.
 	            </li>
 
 	            <li>

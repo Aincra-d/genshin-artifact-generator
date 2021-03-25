@@ -14,12 +14,19 @@
                     </h5>
 
                     <button
-                    v-if="inventory"
+                    v-if="inventory && !delete_artifacts"
                     type="button"
                     class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
                     @click="$emit('open-modal','artifactModal',artifact.id)">
                         <i class="fas fa-edit fa-sm"></i>
                     </button>
+
+                    <b-form-checkbox
+                    v-if="delete_artifacts"
+                    type="button"
+                    class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
+                    @change="addDeleteId(artifact.id)">
+                    </b-form-checkbox>
                 </div>
 
                 <div class="w-100 text-right artifact-main-info position-relative">
@@ -96,7 +103,7 @@
                 class="artifact images-only d-inline-block rounded"
                 :class="'stars-'+artifact.info.stars">
                     <button
-                    v-if="inventory"
+                    v-if="inventory && !delete_artifacts"
                     type="button"
                     class="btn text-light artifact-main-info d-inline
                     rounded btn-md float-left py-0 px-1 mx-1"
@@ -105,6 +112,23 @@
                         class="mr-1 artifact-image"
                         v-lazy="artifact.info.piece.image"
                         :alt="artifact.info.piece.name">
+                    </button>
+
+                    <button
+                    v-if="inventory && delete_artifacts"
+                    type="button"
+                    class="btn text-light artifact-main-info d-inline
+                    rounded btn-md float-left py-0 px-1 mx-1">
+                        <img
+                        class="mr-1 artifact-image"
+                        v-lazy="artifact.info.piece.image"
+                        :alt="artifact.info.piece.name">
+
+                        <b-form-checkbox
+                        type="button"
+                        class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
+                        @change="addDeleteId(artifact.id)">
+                        </b-form-checkbox>
                     </button>
                 </div>
             </div>
@@ -122,9 +146,19 @@
             desired_subs: Array,
             view: String
         },
+        computed: {
+            delete_artifacts(){
+                return this.$store.state.artifacts.delete_artifacts
+            }
+        },
         data(){
             return {
                 client: process.client ? true : false
+            }
+        },
+        methods: {
+            addDeleteId(id){
+                this.$store.commit('artifacts/setDeleteIds',id);
             }
         }
 }

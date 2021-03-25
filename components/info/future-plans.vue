@@ -87,7 +87,7 @@
 						summary: 'Add game-like upgrades to artifact roll'
 					},
 					{
-						done: false,
+						done: true,
 						priority: 'medium',
 						summary: 'Option to delete multiple artifacts from inventory'
 					}

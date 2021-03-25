@@ -88,7 +88,8 @@
 						date: '2021.03.25',
 						changes: [
 							'Design improvements',
-							'Added counters to filter dropdown'
+							'Added counters to filter dropdown',
+							'Added option to delete artifacts in inventory'
 						]
 					}
 				]
