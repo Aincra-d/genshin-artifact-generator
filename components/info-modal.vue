@@ -75,6 +75,5 @@
 <style scoped>
     .info-container{
         max-height:80vh;
-        height:80vh;
     }
 </style>
