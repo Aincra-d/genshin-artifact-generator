@@ -91,6 +91,12 @@
 							'Added counters to filter dropdown',
 							'Added option to delete artifacts in inventory'
 						]
+					},
+					{
+						date: '2021.03.26',
+						changes: [
+							'Added select all option to deleting artifacts in inventory'
+						]
 					}
 				]
 			}

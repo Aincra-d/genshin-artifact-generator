@@ -90,6 +90,11 @@
 						done: true,
 						priority: 'medium',
 						summary: 'Option to delete multiple artifacts from inventory'
+					},
+					{
+						done: false,
+						priority: 'high',
+						summary: 'Change the stack filter option into a search, with all filters visible at once'//in a popup window/modal
 					}
 				]
 			}

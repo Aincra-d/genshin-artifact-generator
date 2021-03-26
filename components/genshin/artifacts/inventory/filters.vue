@@ -233,9 +233,17 @@
         <button
         v-if="delete_artifacts"
         type="button"
-        class="btn btn-sm btn-outline-danger rounded-0"
+        class="btn btn-sm btn-outline-danger rounded-0 mt-3"
         @click="confirm_delete = !confirm_delete">
-            Delete selected artifacts
+            <i class="fas fa-times"></i> Delete selected artifacts
+        </button>
+
+        <button
+        v-if="delete_artifacts"
+        type="button"
+        class="btn btn-sm btn-outline-light rounded-0 mt-3"
+        @click="selectAllArtifacts">
+            Select all
         </button>
 
         <div v-if="delete_artifacts && confirm_delete">
@@ -249,7 +257,7 @@
                     type="button"
                     class="btn btn-sm btn-danger rounded-0"
                     @click="deleteArtifacts">
-                        Delete
+                        <i class="fas fa-times"></i> Delete
                     </button>
                 </li>
 
@@ -283,7 +291,8 @@
                 artifact_main_stats: mainstatsJ.map(main => main.name),
                 artifact_sets: setsJ.map(set => set.name),
                 artifact_sub_stats: substatsJ.map(sub => sub.name),
-                confirm_delete: false
+                confirm_delete: false,
+                ids: []
             }
         },
         computed: {
@@ -350,6 +359,21 @@
 
                     this.artifact_sets=sets;
                 });
+            },
+            selectAllArtifacts(){
+                if(this.artifacts.length == this.delete_ids.length){
+                    this.$store.commit('artifacts/setDeleteIdsAll',[]);
+                    this.ids=[];
+                }
+                else{
+                    this.artifacts.forEach(artifact => {
+                        if(!this.$store.state.artifacts.delete_ids.includes(artifact.id)){
+                            this.ids.push(artifact.id)
+                        }
+                    });
+                }
+
+                this.$store.commit('artifacts/setDeleteIdsAll',this.ids);
             },
             deleteArtifacts(){
                 let artifacts=JSON.parse(localStorage.artifacts) || [];

@@ -22,6 +22,7 @@
                     </button>
 
                     <b-form-checkbox
+                    :checked="delete_ids.includes(artifact.id)"
                     v-if="delete_artifacts"
                     type="button"
                     class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
@@ -149,6 +150,9 @@
         computed: {
             delete_artifacts(){
                 return this.$store.state.artifacts.delete_artifacts
+            },
+            delete_ids(){
+                return this.$store.state.artifacts.delete_ids
             }
         },
         data(){
@@ -168,6 +172,7 @@
     .artifact{
         /*max-height: 400px;*/
         overflow-y: auto;
+        overflow-x: hidden;
     }
 
     ::-webkit-scrollbar {

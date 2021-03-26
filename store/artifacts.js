@@ -41,6 +41,8 @@ export const mutations = {
         }
     },
 
+    setDeleteIdsAll: (state,ids) => state.delete_ids=ids,
+
     setFilterType: (state,exclude) => state.exclude_filters=exclude,
 
     setFilters: (state,filters) => state.filters=filters,
