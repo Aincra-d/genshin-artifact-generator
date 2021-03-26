@@ -13,6 +13,13 @@ export const state = () => ({
         by_sub: false,
         by_type: false,
         by_set: false
+    },
+    active_filters: {
+        stars: [],
+        main_stats: [],
+        sub_stats: [],
+        types: [],
+        sets: []
     }
 });
 
@@ -38,6 +45,21 @@ export const mutations = {
         }
         else{
             state.delete_ids.push(id);
+        }
+    },
+
+    setActiveFilters(state,{type,value}){
+        if(value === null){
+            state.active_filters[type]=[];
+            return
+        }
+
+        if(state.active_filters[type].includes(value)){
+            state.active_filters[type].splice(
+                state.active_filters[type].findIndex(item => item == value),1);
+        }
+        else{
+            state.active_filters[type].push(value);
         }
     },
 

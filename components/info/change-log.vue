@@ -95,7 +95,11 @@
 					{
 						date: '2021.03.26',
 						changes: [
-							'Added select all option to deleting artifacts in inventory'
+							'Added select all option to deleting artifacts in inventory',
+							'Design improvements',
+							'Single filters no longer filter automatically when selecting from dropdown',
+							'Added "Select all" and "Apply" option to filter dropdowns',
+							'Added search option to sets filter dropdown'
 						]
 					}
 				]

@@ -1,0 +1,166 @@
+<template>
+    <div>
+        <table class="mx-auto mx-md-0">
+            <tr>
+                <td>
+                    <b-input-group class="w-100 d-inline-block filter-select"
+                    :class="screen < 776 ? 'text-center' : 'text-left'">
+                        <b-dropdown
+                        :text="sub_stats.length!=0 ? sub_stats.length+' stat(s) selected' : 'Select sub stat(s)'"
+                        variant="light"
+                        class="text-dark rounded-0">
+                            <button
+                            type="button"
+                            class="btn btn-secondary btn-sm w-50 d-inline float-left rounded-0"
+                            @click="selectAll">
+                                Select all
+                            </button>
+
+                            <button
+                            type="button"
+                            class="btn btn-info btn-sm w-50 d-inline float-right rounded-0"
+                            @click="filterBySubStats">
+                                Apply
+                            </button>
+
+                            <b-dropdown-item
+                            :key="i"
+                            v-for="(sub,i) in artifact_sub_stats"
+                            @click.native.capture.stop="addSubStat(sub.name)">
+                                <i
+                                class="fa-sm"
+                                :class="sub_stats.includes(sub.name) ?
+                                'fas fa-check-square' : 'far fa-square'">
+                                </i>
+
+                                {{ sub.name }} ({{ sub.count }})
+                            </b-dropdown-item>
+                        </b-dropdown>
+                        
+                        <b-input-group-append class="d-inline">
+                            <b-form-checkbox
+                            v-if="!exclude_filters"
+                            v-model="match_subs"
+                            style="margin-left:-5px;"
+                            name="check-button"
+                            class="rounded-0"
+                            button-variant="outline-light"
+                            @input="setSubFilterType"
+                            button>
+                                Match
+                            </b-form-checkbox>
+
+                            <b-button
+                            style="margin-left:-5px"
+                            variant="danger"
+                            @click="emptySubStats"
+                            class="text-light">
+                                <i class="fas fa-times"></i>
+                            </b-button>
+                        </b-input-group-append>
+                    </b-input-group>
+                </td>
+            </tr>
+        </table>
+    </div>
+</template>
+
+<script>
+    import substatsJ from '~/static/substats.json';
+
+    export default{
+        name: 'filterBySubStats',
+        data(){
+            return {
+                artifact_sub_stats: substatsJ.map(sub => sub.name)
+            }
+        },
+        computed: {
+            artifacts(){
+                return this.$store.state.artifacts.artifacts
+            },
+            stack_filters(){
+                return this.$store.state.artifacts.stack_filters
+            },
+            exclude_filters(){
+                return this.$store.state.artifacts.exclude_filters
+            },
+            sub_stats(){
+                return this.$store.state.artifacts.active_filters['sub_stats']
+            },
+            screen(){
+                return this.$store.state.artifacts.screen
+            },
+            match_subs: {
+                get(){
+                    return this.$store.state.artifacts.match_subs
+                },
+                set(value){
+                    this.$store.commit('artifacts/setMatchSubs',value);
+                }
+            }
+        },
+        methods: {
+            setSubStats(){
+                let sub_stats=[];
+                this.artifact_sub_stats.forEach(sub_stat => {
+                    sub_stats.push({
+                        name: sub_stat,
+                        count: this.artifacts.filter(artifact => artifact.stats.subs.map(sub => sub.name).includes(sub_stat)).length
+                    });
+
+                    this.artifact_sub_stats=sub_stats;
+                });
+            },
+            setSubFilterType(){
+                if(this.sub_stats.length !== 0) this.filterBySubStats(null);
+            },
+            addSubStat(sub){
+                this.$store.commit('artifacts/setActiveFilters',{type: 'sub_stats', value: sub});
+            },
+            filterBySubStats(){
+                if(!this.stack_filters){
+                    this.resetArtifacts();
+                    if(this.sub_stats.length!=0){
+                        if(!this.exclude_filters){
+                            if(!this.match_subs){
+                                let artifacts=this.artifacts.filter(artifact => artifact.stats.subs.filter(sub => this.sub_stats.includes(sub.name)).length > 0);
+                                this.$store.commit('artifacts/setArtifacts',artifacts);
+                            }
+                            else{
+                                let artifacts=this.artifacts.filter(artifact => this.sub_stats.every(sub => artifact.stats.subs.map(stat => stat.name).includes(sub)));
+                                this.$store.commit('artifacts/setArtifacts',artifacts);
+                            }
+                        }
+                        else{
+                            let artifacts=this.artifacts.filter(artifact => this.sub_stats.every(sub => !artifact.stats.subs.map(stat => stat.name).includes(sub)));
+                            this.$store.commit('artifacts/setArtifacts',artifacts);
+                        }
+                    }
+                }
+            },
+            emptySubStats(){
+                this.resetArtifacts();
+                this.$store.commit('artifacts/setActiveFilters',{type: 'sub_stats', value: null});
+            },
+            resetArtifacts(){
+                if(!this.stack_filters){
+                    let artifacts=JSON.parse(localStorage.artifacts).reverse();
+                    this.$store.commit('artifacts/setArtifacts',artifacts);
+                }
+            },
+            selectAll(){
+                this.artifact_sub_stats.forEach(sub => this.$store.commit('artifacts/setActiveFilters',{type: 'sub_stats', value: sub.name}));
+            }
+        },
+        created(){
+            this.setSubStats();
+        }
+    }
+</script>
+
+<style>
+    .stars-filter div label{
+        border-radius: 0;
+    }
+</style>

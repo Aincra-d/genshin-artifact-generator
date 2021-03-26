@@ -12,7 +12,7 @@
         :class="modal_bg_class"
         class="text-light text-center anime-info-modal">
             <div
-            class="w-100 text-center py-3"
+            class="w-100 text-center"
             style="/*{ backgroundImage: 'url(' + artifacts[0].info.piece.image + ')', backgroundSize: 'auto'}*/">
                 <artifact
                 v-if="client"
@@ -22,73 +22,75 @@
                 :artifact="current_artifact">
                 </artifact>
 
-                <button
-                type="button"
-                class="btn btn-link text-light d-inline rounded-0 my-1"
-                style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
-                :class="screen < 576 ? 'btn-sm' : 'btn-md'"
-                :disabled="removed || current_artifact.info.level === current_artifact.info.max_level"
-                @click="current_artifact.info.level!=current_artifact.info.max_level && upgrade()">
-                    <i class="fas fa-arrow-up fa-sm"></i> Upgrade
-                </button>
+                <div slot="footer">
+                    <button
+                    type="button"
+                    class="btn btn-link text-light d-inline rounded-0 my-1"
+                    style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
+                    :class="screen < 576 ? 'btn-sm' : 'btn-md'"
+                    :disabled="removed || current_artifact.info.level === current_artifact.info.max_level"
+                    @click="current_artifact.info.level!=current_artifact.info.max_level && upgrade()">
+                        <i class="fas fa-arrow-up fa-sm"></i> Upgrade
+                    </button>
 
-                <button
-                type="button"
-                class="btn btn-link text-light d-inline rounded-0 my-1"
-                style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
-                :class="screen < 576 ? 'btn-sm' : 'btn-md'"
-                :disabled="removed || current_artifact.info.rerolls.main.count != 0 || ['Flower of Life','Plume of Death'].includes(current_artifact.info.piece.type)"
-                @click="current_artifact.info.rerolls.main.count === 0 && rerollMainStat()">
-                    <i class="fas fa-redo fa-sm mr-1"></i>Reroll main
-                </button>
+                    <button
+                    type="button"
+                    class="btn btn-link text-light d-inline rounded-0 my-1"
+                    style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
+                    :class="screen < 576 ? 'btn-sm' : 'btn-md'"
+                    :disabled="removed || current_artifact.info.rerolls.main.count != 0 || ['Flower of Life','Plume of Death'].includes(current_artifact.info.piece.type)"
+                    @click="current_artifact.info.rerolls.main.count === 0 && rerollMainStat()">
+                        <i class="fas fa-redo fa-sm mr-1"></i>Reroll main
+                    </button>
 
-                <button
-                type="button"
-                class="btn btn-link text-light d-inline rounded-0 my-1"
-                style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
-                :class="screen < 576 ? 'btn-sm' : 'btn-md'"
-                :disabled="removed || current_artifact.info.rerolls.subs.count != 0"
-                @click="current_artifact.info.rerolls.subs.count === 0 && rerollSubStats()">
-                    <i class="fas fa-redo fa-sm mr-1"></i>Reroll subs
-                </button>
+                    <button
+                    type="button"
+                    class="btn btn-link text-light d-inline rounded-0 my-1"
+                    style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
+                    :class="screen < 576 ? 'btn-sm' : 'btn-md'"
+                    :disabled="removed || current_artifact.info.rerolls.subs.count != 0"
+                    @click="current_artifact.info.rerolls.subs.count === 0 && rerollSubStats()">
+                        <i class="fas fa-redo fa-sm mr-1"></i>Reroll subs
+                    </button>
 
-                <button
-                type="button"
-                class="btn btn-link text-light d-inline rounded-0 my-1"
-                style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
-                :class="screen < 576 ? 'btn-sm' : 'btn-md'"
-                :disabled="removed"
-                @click="confirm_remove = !confirm_remove">
-                    <i class="fas fa-times fa-sm mr-1"></i> Remove
-                </button>
+                    <button
+                    type="button"
+                    class="btn btn-link text-light d-inline rounded-0 my-1"
+                    style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
+                    :class="screen < 576 ? 'btn-sm' : 'btn-md'"
+                    :disabled="removed"
+                    @click="confirm_remove = !confirm_remove">
+                        <i class="fas fa-times fa-sm mr-1"></i> Remove
+                    </button>
 
-                <div
-                v-if="confirm_remove"
-                class="text-center text-light">
-                    <h6 class="text-warning font-weight-bold">
-                        Are you sure you want to delete this artifact from your inventory?
-                    </h6>
+                    <div
+                    v-if="confirm_remove"
+                    class="text-center text-light">
+                        <h6 class="text-warning font-weight-bold">
+                            Are you sure you want to delete this artifact from your inventory?
+                        </h6>
 
-                    <ul class="list-unstyled">
-                        <li class="d-inline">
-                            <button
-                            type="button"
-                            class="btn btn-sm btn-danger text-light d-inline rounded-0 mx-1"
-                            :disabled="removed"
-                            @click="!removed && remove()">
-                                <i class="fas fa-times fa-sm mr-1"></i>Remove
-                            </button>
-                        </li>
+                        <ul class="list-unstyled">
+                            <li class="d-inline">
+                                <button
+                                type="button"
+                                class="btn btn-sm btn-danger text-light d-inline rounded-0 mx-1"
+                                :disabled="removed"
+                                @click="!removed && remove()">
+                                    <i class="fas fa-times fa-sm mr-1"></i>Remove
+                                </button>
+                            </li>
 
-                        <li class="d-inline">
-                            <button
-                            type="button"
-                            class="btn btn-sm btn-secondary text-light d-inline rounded-0 mx-1"
-                            @click="confirm_remove = false">
-                                <i class="fas fa-times fa-sm mr-1"></i> Cancel
-                            </button>
-                        </li>
-                    </ul>
+                            <li class="d-inline">
+                                <button
+                                type="button"
+                                class="btn btn-sm btn-secondary text-light d-inline rounded-0 mx-1"
+                                @click="confirm_remove = false">
+                                    <i class="fas fa-times fa-sm mr-1"></i> Cancel
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </ui-modal>
@@ -410,7 +412,7 @@
 </style>
 
 <style>
-    @media(max-width: 991px){
+    /*@media(max-width: 991px){*/
         .ui-modal__container{
             /*max-height: 80vh !important;*/
             overflow-y: auto;
@@ -419,7 +421,7 @@
             max-height: 80vh !important;
             overflow-y: auto;
         }*/
-    }
+    /*}*/
 
     .ui-modal__body{
         background-image: attr(data-body-image);
@@ -428,31 +430,31 @@
         padding-right:0 !important;
     }
 
-    .stars-5 .ui-modal__header,.stars-5 .ui-modal__body{
+    .stars-5 .ui-modal__header,.stars-5 .ui-modal__body,.stars-5 .ui-modal__footer{
         background: #dca451;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #7c5b52,#ac7b53, #dca451);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #7c5b52,#ac7b53, #dca451); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
 
-    .stars-4 .ui-modal__header,.stars-4 .ui-modal__body{
+    .stars-4 .ui-modal__header,.stars-4 .ui-modal__body,.stars-4 .ui-modal__footer{
         background: #a17bb9;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #675b8f,#675b8f, #a17bb9);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #675b8f,#675b8f, #a17bb9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
 
-    .stars-3 .ui-modal__header,.stars-3 .ui-modal__body{
+    .stars-3 .ui-modal__header,.stars-3 .ui-modal__body,.stars-3 .ui-modal__footer{
         background: #5599af;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #51597a,#517d97, #5599af);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #51597a,#517d97, #5599af); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
 
-    .stars-2 .ui-modal__header,.stars-2 .ui-modal__body{
+    .stars-2 .ui-modal__header,.stars-2 .ui-modal__body,.stars-2 .ui-modal__footer{
         background: #609674;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #496162,#48736a, #609674);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #496162,#48736a, #609674); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
 
-    .stars-1 .ui-modal__header,.stars-1 .ui-modal__body{
+    .stars-1 .ui-modal__header,.stars-1 .ui-modal__body,.stars-1 .ui-modal__footer{
         background: #7d8995;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #525965,#6c7480, #7d8995);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #525965,#6c7480, #7d8995); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
