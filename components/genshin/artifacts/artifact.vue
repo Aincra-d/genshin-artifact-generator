@@ -24,6 +24,7 @@
                     <b-form-checkbox
                     :checked="delete_ids.includes(artifact.id)"
                     v-if="delete_artifacts"
+                    size="lg"
                     type="button"
                     class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
                     @change="addDeleteId(artifact.id)">
@@ -101,7 +102,7 @@
 
             <div v-else>
                 <div
-                class="artifact images-only d-inline-block rounded"
+                class="artifact images-only d-inline-block rounded position-relative"
                 :class="'stars-'+artifact.info.stars">
                     <button
                     v-if="inventory && !delete_artifacts"
@@ -126,8 +127,10 @@
                         :alt="artifact.info.piece.name">
 
                         <b-form-checkbox
+                        :checked="delete_ids.includes(artifact.id)"
                         type="button"
-                        class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
+                        size="lg"
+                        class="btn text-light d-inline rounded-0 btn-md position-absolute top-0 right-0 py-0 px-1"
                         @change="addDeleteId(artifact.id)">
                         </b-form-checkbox>
                     </button>
