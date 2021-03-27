@@ -101,6 +101,12 @@
 							'Added "Select all" and "Apply" option to filter dropdowns',
 							'Added search option to sets filter dropdown'
 						]
+					},
+					{
+						date: '2021.03.26',
+						changes: [
+							'Added notices tab'
+						]
 					}
 				]
 			}
