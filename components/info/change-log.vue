@@ -103,7 +103,7 @@
 						]
 					},
 					{
-						date: '2021.03.26',
+						date: '2021.03.27',
 						changes: [
 							'Added notices tab'
 						]
