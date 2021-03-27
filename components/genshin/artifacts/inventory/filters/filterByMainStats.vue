@@ -56,7 +56,8 @@
         name: 'filterByMainStats',
         data(){
             return {
-                artifact_main_stats: mainstatsJ.map(main => main.name)
+                artifact_main_stats: mainstatsJ.map(main => main.name),
+                main_stats: []
             }
         },
         computed: {
@@ -69,9 +70,9 @@
             exclude_filters(){
                 return this.$store.state.artifacts.exclude_filters
             },
-            main_stats(){
-                return this.$store.state.artifacts.active_filters['main_stats']
-            },
+            // main_stats(){
+            //     return this.$store.state.artifacts.active_filters['main_stats']
+            // },
             screen(){
                 return this.$store.state.artifacts.screen
             }
@@ -89,7 +90,15 @@
                 });
             },
             addMainStat(main){
-                this.$store.commit('artifacts/setActiveFilters',{type: 'main_stats', value: main});
+                this.$store.commit('artifacts/setActiveFilters',{type: 'main_stats', value: main})
+
+                if(this.main_stats.includes(main)){
+                    this.main_stats.splice(
+                        this.main_stats.findIndex(item => item == main),1);
+                }
+                else{
+                    this.main_stats.push(main);
+                }
             },
             filterByMainStats(){
                 if(!this.stack_filters){
@@ -105,6 +114,7 @@
             emptyMainStats(){
                 this.resetArtifacts();
                 this.$store.commit('artifacts/setActiveFilters',{type: 'main_stats', value: null});
+                this.main_stats=[];
             },
             resetArtifacts(){
                 if(!this.stack_filters){
@@ -113,7 +123,10 @@
                 }
             },
             selectAll(){
-                this.artifact_main_stats.forEach(main => this.$store.commit('artifacts/setActiveFilters',{type: 'main_stats', value: main.name}));
+                this.artifact_main_stats.forEach(main => {
+                    this.$store.commit('artifacts/setActiveFilters',{type: 'main_stats', value: main.name})
+                    this.addMainStat(main.name);
+                });
             }
         },
         created(){

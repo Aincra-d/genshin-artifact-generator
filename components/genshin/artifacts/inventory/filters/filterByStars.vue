@@ -31,13 +31,19 @@
             exclude_filters(){
                 return this.$store.state.artifacts.exclude_filters
             },
-            stars(){
-                return this.$store.state.artifacts.active_filters['stars']
+            // stars(){
+            //     return this.$store.state.artifacts.active_filters['stars']
+            // }
+        },
+        data(){
+            return {
+                stars: []
             }
         },
         methods: {
             filterByStars(star){
                 this.$store.commit('artifacts/setActiveFilters',{type: 'stars', value: star});
+                this.addStar(star);
 
                 if(!this.stack_filters){
                     this.resetArtifacts();
@@ -53,6 +59,15 @@
                 if(!this.stack_filters){
                     let artifacts=JSON.parse(localStorage.artifacts).reverse();
                     this.$store.commit('artifacts/setArtifacts',artifacts);
+                }
+            },
+            addStar(star){
+                if(this.stars.includes(star)){
+                    this.stars.splice(
+                        this.stars.findIndex(item => item == star),1);
+                }
+                else{
+                    this.stars.push(star);
                 }
             }
         }

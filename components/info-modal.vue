@@ -26,6 +26,10 @@
                     <b-tab title="Plans">
                         <future-plans></future-plans>
                     </b-tab>
+
+                    <b-tab title="Notices">
+                        <notices></notices>
+                    </b-tab>
                 </b-tabs>
 
                 <b>© 2021 Copyright: <i class="fab fa-discord"></i> Mommy Beidou❤️#3271 at
@@ -53,13 +57,15 @@
     import guide from '@/components/info/guide.vue';
     import changeLog from '@/components/info/change-log.vue';
     import futurePlans from '@/components/info/future-plans.vue';
+    import notices from '@/components/info/notices.vue';
     export default{
         name: 'infoModal',
         components: {
             about,
             guide,
             'change-log': changeLog,
-            'future-plans': futurePlans
+            'future-plans': futurePlans,
+            notices
         },
         methods: {
             openModal() {

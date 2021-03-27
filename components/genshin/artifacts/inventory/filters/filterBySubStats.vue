@@ -72,7 +72,8 @@
         name: 'filterBySubStats',
         data(){
             return {
-                artifact_sub_stats: substatsJ.map(sub => sub.name)
+                artifact_sub_stats: substatsJ.map(sub => sub.name),
+                sub_stats: []
             }
         },
         computed: {
@@ -85,9 +86,9 @@
             exclude_filters(){
                 return this.$store.state.artifacts.exclude_filters
             },
-            sub_stats(){
-                return this.$store.state.artifacts.active_filters['sub_stats']
-            },
+            // sub_stats(){
+            //     return this.$store.state.artifacts.active_filters['sub_stats']
+            // },
             screen(){
                 return this.$store.state.artifacts.screen
             },
@@ -116,7 +117,15 @@
                 if(this.sub_stats.length !== 0) this.filterBySubStats(null);
             },
             addSubStat(sub){
-                this.$store.commit('artifacts/setActiveFilters',{type: 'sub_stats', value: sub});
+                this.$store.commit('artifacts/setActiveFilters',{type: 'sub_stats', value: sub})
+
+                if(this.sub_stats.includes(sub)){
+                    this.sub_stats.splice(
+                        this.sub_stats.findIndex(item => item == sub),1);
+                }
+                else{
+                    this.sub_stats.push(sub);
+                }
             },
             filterBySubStats(){
                 if(!this.stack_filters){
@@ -142,6 +151,7 @@
             emptySubStats(){
                 this.resetArtifacts();
                 this.$store.commit('artifacts/setActiveFilters',{type: 'sub_stats', value: null});
+                this.sub_stats=[];
             },
             resetArtifacts(){
                 if(!this.stack_filters){
@@ -150,7 +160,10 @@
                 }
             },
             selectAll(){
-                this.artifact_sub_stats.forEach(sub => this.$store.commit('artifacts/setActiveFilters',{type: 'sub_stats', value: sub.name}));
+                this.artifact_sub_stats.forEach(sub => {
+                    this.$store.commit('artifacts/setActiveFilters',{type: 'sub_stats', value: sub.name})
+                    this.addSubStat(sub.name);
+                });
             }
         },
         created(){

@@ -10,7 +10,7 @@
 
         <filter-by-sets v-if="filters.by_set"></filter-by-sets>
 
-        <h6
+        <!-- <h6
         v-if="stack_filters"
         class="text-light">
             Filters:
@@ -91,7 +91,7 @@
             @click="applyFilters">
                 Apply filters
             </button>
-        </div>
+        </div> -->
 
         <button
         v-if="delete_artifacts"

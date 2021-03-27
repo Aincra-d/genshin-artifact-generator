@@ -63,7 +63,8 @@
         data(){
             return {
                 artifact_set_names: setsJ.map(set => set.name),
-                set_name: ''
+                set_name: '',
+                sets: []
             }
         },
         computed: {
@@ -76,9 +77,9 @@
             exclude_filters(){
                 return this.$store.state.artifacts.exclude_filters
             },
-            sets(){
-                return this.$store.state.artifacts.active_filters['sets']
-            },
+            // sets(){
+            //     return this.$store.state.artifacts.active_filters['sets']
+            // },
             screen(){
                 return this.$store.state.artifacts.screen
             },
@@ -108,13 +109,24 @@
                         this.$store.commit('artifacts/setArtifacts',artifacts);
                     }
                 }
+
+                console.log(this.$store.state.artifacts.active_filters['sets'])
             },
             addSet(set){
-                this.$store.commit('artifacts/setActiveFilters',{type: 'sets', value: set});
+                this.$store.commit('artifacts/setActiveFilters',{type: 'sets', value: set})
+
+                if(this.sets.includes(set)){
+                    this.sets.splice(
+                        this.sets.findIndex(item => item == set),1);
+                }
+                else{
+                    this.sets.push(set);
+                }
             },
             emptySets(){
                 this.resetArtifacts();
                 this.$store.commit('artifacts/setActiveFilters',{type: 'sets', value: null});
+                this.sets=[];
             },
             resetArtifacts(){
                 if(!this.stack_filters){
@@ -123,7 +135,10 @@
                 }
             },
             selectAll(){
-                this.artifact_sets.forEach(set => this.$store.commit('artifacts/setActiveFilters',{type: 'sets', value: set.name}));
+                this.artifact_sets.forEach(set => {
+                    this.$store.commit('artifacts/setActiveFilters',{type: 'sets', value: set.name})
+                    this.addSet(set.name)
+                });
             }
         },
         created(){

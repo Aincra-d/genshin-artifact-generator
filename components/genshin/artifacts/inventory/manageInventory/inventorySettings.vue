@@ -9,6 +9,7 @@
             </template>
 
             <b-dropdown-item
+            disabled
             @click="stack_filters=!stack_filters">
                 <i
                 class="fa-sm"
@@ -56,7 +57,7 @@
                 },
                 set(value){
                     this.$store.commit('artifacts/setFilterType',value);
-                    
+
                     this.$notify({
                         group: 'foo',
                         type: 'success',
