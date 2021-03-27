@@ -23,7 +23,7 @@
         name: 'filterByTypes',
         data (){
             return {
-                artifact_types: ["Flower","Plume","Sands","Goblet","Circlet"],
+                artifact_types: ["Flower of Life","Plume of Death","Sands of Eon","Goblet of Eonothem","Circlet of Logos"],
                 types: []
             }
         },
@@ -66,8 +66,6 @@
                 }
             },
             addType(type){
-                this.$store.commit('artifacts/setActiveFilters',{type: 'types', value: type})
-
                 if(this.types.includes(type)){
                     this.types.splice(
                         this.types.findIndex(item => item == type),1);

@@ -54,6 +54,8 @@
                         this.$store.commit('artifacts/setArtifacts',artifacts);
                     }
                 }
+
+                console.log(this.$store.state.artifacts.active_filters['stars'])
             },
             resetArtifacts(){
                 if(!this.stack_filters){
