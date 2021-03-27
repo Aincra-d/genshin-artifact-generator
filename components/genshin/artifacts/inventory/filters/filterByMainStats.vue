@@ -2,19 +2,21 @@
     <div>
         <div>
             <b-input-group class="w-100 d-inline-block ml-3 ml-lg-0 filter-select"
-            :class="screen < 776 ? 'text-center' : 'text-left'">
+            :class="!stack ? (screen < 776 ? 'text-center' : 'text-left') : 'text-center'">
                 <b-dropdown
                 :text="main_stats.length!=0 ? main_stats.length+' stat(s) selected' : 'Select main stat(s)'"
                 variant="light"
                 class="text-dark rounded-0">
                     <button
                     type="button"
+                    :class="stack ? 'w-100' : 'w-50'"
                     class="btn btn-secondary btn-sm w-50 d-inline float-left rounded-0"
                     @click="selectAll">
                         Select all
                     </button>
 
                     <button
+                    v-if="!stack"
                     type="button"
                     class="btn btn-info btn-sm w-50 d-inline float-right rounded-0"
                     @click="filterByMainStats">
@@ -54,6 +56,12 @@
 
     export default{
         name: 'filterByMainStats',
+        props: {
+            stack: {
+                type: Boolean,
+                default: false
+            }
+        },
         data(){
             return {
                 artifact_main_stats: mainstatsJ.map(main => main.name),
@@ -64,15 +72,9 @@
             artifacts(){
                 return this.$store.state.artifacts.artifacts
             },
-            stack_filters(){
-                return this.$store.state.artifacts.stack_filters
-            },
             exclude_filters(){
                 return this.$store.state.artifacts.exclude_filters
             },
-            // main_stats(){
-            //     return this.$store.state.artifacts.active_filters['main_stats']
-            // },
             screen(){
                 return this.$store.state.artifacts.screen
             }
@@ -101,7 +103,7 @@
                 }
             },
             filterByMainStats(){
-                if(!this.stack_filters){
+                if(!this.stack){
                     this.resetArtifacts();
                     if(this.main_stats.length!=0){
                         let artifacts=this.artifacts.filter(artifact => this.exclude_filters
@@ -117,14 +119,13 @@
                 this.main_stats=[];
             },
             resetArtifacts(){
-                if(!this.stack_filters){
+                if(!this.stack){
                     let artifacts=JSON.parse(localStorage.artifacts).reverse();
                     this.$store.commit('artifacts/setArtifacts',artifacts);
                 }
             },
             selectAll(){
                 this.artifact_main_stats.forEach(main => {
-                    this.$store.commit('artifacts/setActiveFilters',{type: 'main_stats', value: main.name})
                     this.addMainStat(main.name);
                 });
             }

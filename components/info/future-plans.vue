@@ -92,9 +92,9 @@
 						summary: 'Option to delete multiple artifacts from inventory'
 					},
 					{
-						done: false,
+						done: true,
 						priority: 'high',
-						summary: 'Change the stack filter option into a search, with all filters visible at once'//in a popup window/modal
+						summary: 'Change the stack filter option into a search, with all filters visible at once'
 					}
 				]
 			}

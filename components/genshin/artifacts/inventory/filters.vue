@@ -10,89 +10,6 @@
 
         <filter-by-sets v-if="filters.by_set"></filter-by-sets>
 
-        <!-- <h6
-        v-if="stack_filters"
-        class="text-light">
-            Filters:
-        </h6>
-
-        <div
-        v-if="stack_filters"
-        class="font-italic text-light">
-            <div
-            :key="i"
-            v-for="(active_filter,i) in [
-                    {
-                        title: 'Stars',
-                        type: Object.keys(filters)[0],
-                        filters: this.stars,
-                        method: emptyStars
-                    },
-                    {
-                        title: 'Main stats',
-                        type: Object.keys(filters)[1],
-                        filters: this.main_stats,
-                        method: emptyMainStats
-                    },
-                    {
-                        title: 'Sub stats',
-                        type: Object.keys(filters)[2],
-                        filters: this.sub_stats,
-                        method: emptySubStats
-                    },
-                    {
-                        title: 'Types',
-                        type: Object.keys(filters)[3],
-                        filters: this.types,
-                        method: emptyTypes
-                    },
-                    {
-                        title: 'Sets',
-                        type: Object.keys(filters)[4],
-                        filters: this.sets,
-                        method: emptySets
-                    }
-                ]">
-                <div v-if="stack_filters && active_filter.filters.length!=0">
-                    <span class="font-weight-bold">
-                        {{ active_filter.title }}:
-                    </span>
-
-                    <ul class="list-unstyled d-inline">
-                        <li
-                        :key="i"
-                        v-for="(filter,i) in active_filter.filters"
-                        style="text-shadow: 0px 0px 2px black;"
-                        class="d-inline">
-                            {{
-                                filter+((active_filter.filters.length > 1 && i!=active_filter.filters.length-1) ? ',' : '')
-                            }}
-                        </li>
-
-                        <button
-                        style="font-size:10px"
-                        class="btn py-0 px-1 mb-1 ml-1 mr-1 btn-primary d-inline"
-                        @click="updateFilters(active_filter.type)">
-                            <i class="fas fa-pen"></i>
-                        </button>
-
-                        <button
-                        style="font-size:12px"
-                        class="btn py-0 px-1 mb-1 ml-2 btn-danger d-inline"
-                        @click="active_filter.method">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </ul>
-                </div>
-            </div>
-
-            <button
-            class="btn btn-primary btn-sm mt-2"
-            @click="applyFilters">
-                Apply filters
-            </button>
-        </div> -->
-
         <button
         v-if="delete_artifacts"
         type="button"
@@ -159,12 +76,6 @@
             }
         },
         computed: {
-            stack_filters(){
-                return this.$store.state.artifacts.stack_filters
-            },
-            exclude_filters(){
-                return this.$store.state.artifacts.exclude_filters
-            },
             filters(){
                 return this.$store.state.artifacts.filters
             },
@@ -214,55 +125,6 @@
                     type: 'success',
                     title: '<h6>Deleted '+(original_size - artifacts.length)+' artifacts from inventory!</h6>'
                 });
-            },
-            applyFilters(){
-                let artifacts=JSON.parse(localStorage.artifacts).reverse();
-                this.$store.commit('artifacts/setArtifacts',artifacts);
-
-                if(this.stars.length!=0){
-                    this.$store.commit('artifacts/setArtifacts',
-                        this.artifacts.filter(artifact => this.exclude_filters
-                            ? !this.stars.includes(artifact.info.stars)
-                            : this.stars.includes(artifact.info.stars)));
-                }
-                if(this.main_stats.length!=0){
-                    this.$store.commit('artifacts/setArtifacts',
-                        this.artifacts.filter(artifact => this.exclude_filters
-                            ? !this.main_stats.includes(artifact.stats.main.name)
-                            : this.main_stats.includes(artifact.stats.main.name)));
-                }
-                if(this.sub_stats.length!=0){
-                    if(!this.exclude_filters){
-                            if(!this.match_subs){
-                                let artifacts=this.artifacts.filter(artifact => artifact.stats.subs.filter(sub => this.sub_stats.includes(sub.name)).length > 0);
-                                this.$store.commit('artifacts/setArtifacts',artifacts);
-                            }
-                            else{
-                                let artifacts=this.artifacts.filter(artifact => this.sub_stats.every(sub => artifact.stats.subs.map(stat => stat.name).includes(sub)));
-                                this.$store.commit('artifacts/setArtifacts',artifacts);
-                            }
-                        }
-                        else{
-                            let artifacts=this.artifacts.filter(artifact => this.sub_stats.every(sub => !artifact.stats.subs.map(stat => stat.name).includes(sub)));
-                            this.$store.commit('artifacts/setArtifacts',artifacts);
-                        }
-                }
-                if(this.types.length!=0){
-                    this.$store.commit('artifacts/setArtifacts',
-                        this.artifacts.filter(artifact => this.exclude_filters
-                            ? !this.types.includes(artifact.info.piece.type)
-                            : this.types.includes(artifact.info.piece.type)));
-                }
-                if(this.sets.length!=0){
-                    this.$store.commit('artifacts/setArtifacts',
-                        this.artifacts.filter(artifact => this.exclude_filters
-                            ? !this.sets.includes(artifact.info.set.name)
-                            : this.sets.includes(artifact.info.set.name)));
-                }
-
-            },
-            updateFilters(type){
-                this.$store.commit('artifacts/setActiveFilter',type);
             }
         }
     }

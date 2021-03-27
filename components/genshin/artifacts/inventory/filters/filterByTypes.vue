@@ -2,15 +2,15 @@
     <div>
         <b-form-group
         class="text-light stars-filter"
-        label="Select artifact type to show">
+        :label="!stack && 'Select artifact type to show'">
             <b-form-checkbox
             :key="i"
             v-for="(type,i) in artifact_types"
             button
             @input="filterByTypes(type)"
             button-variant="outline-light"
-            class="d-inline rounded-0"
-            :size="screen <576 ? 'sm' : 'md'"
+            class="d-inline rounded-0 mt-1"
+            :size="screen <576 ? 'sm' : (stack ? 'sm' : 'md')"
             name="buttons-2">
             {{ type }}
             </b-form-checkbox>
@@ -21,6 +21,12 @@
 <script>
     export default{
         name: 'filterByTypes',
+        props: {
+            stack: {
+                type: Boolean,
+                default: false
+            }
+        },
         data (){
             return {
                 artifact_types: ["Flower of Life","Plume of Death","Sands of Eon","Goblet of Eonothem","Circlet of Logos"],
@@ -31,25 +37,19 @@
             artifacts(){
                 return this.$store.state.artifacts.artifacts
             },
-            stack_filters(){
-                return this.$store.state.artifacts.stack_filters
-            },
             exclude_filters(){
                 return this.$store.state.artifacts.exclude_filters
             },
             screen(){
                 return this.$store.state.artifacts.screen
             },
-            // types(){
-            //     return this.$store.state.artifacts.active_filters['types']
-            // }
         },
         methods: {
             filterByTypes(type){
                 this.$store.commit('artifacts/setActiveFilters',{type: 'types', value: type});
                 this.addType(type);
 
-                if(!this.stack_filters){
+                if(!this.stack){
                     this.resetArtifacts();
                     if(this.types.length!=0){
                         let artifacts=this.artifacts.filter(artifact => this.exclude_filters
@@ -60,7 +60,7 @@
                 }
             },
             resetArtifacts(){
-                if(!this.stack_filters){
+                if(!this.stack){
                     let artifacts=JSON.parse(localStorage.artifacts).reverse();
                     this.$store.commit('artifacts/setArtifacts',artifacts);
                 }

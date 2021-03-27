@@ -21,9 +21,7 @@
 		name: 'notices',
 		data(){
 			return {
-				notices: [
-					'Stack filter option in inventory is temporarily unavailable due to rework in progress.'
-				]
+				notices: []
 			}
 		}
 	}

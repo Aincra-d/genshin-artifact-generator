@@ -2,7 +2,7 @@
     <div>
         <b-form-group
         class="text-light stars-filter"
-        label="Select artifact rarity to show">
+        :label="!stack && 'Select artifact rarity to show'">
             <b-form-checkbox
             :key="i"
             v-for="(star,i) in 5"
@@ -21,19 +21,19 @@
 <script>
     export default{
         name: 'filterByStars',
+        props: {
+            stack: {
+                type: Boolean,
+                default: false
+            }
+        },
         computed: {
             artifacts(){
                 return this.$store.state.artifacts.artifacts
             },
-            stack_filters(){
-                return this.$store.state.artifacts.stack_filters
-            },
             exclude_filters(){
                 return this.$store.state.artifacts.exclude_filters
-            },
-            // stars(){
-            //     return this.$store.state.artifacts.active_filters['stars']
-            // }
+            }
         },
         data(){
             return {
@@ -45,7 +45,7 @@
                 this.$store.commit('artifacts/setActiveFilters',{type: 'stars', value: star});
                 this.addStar(star);
 
-                if(!this.stack_filters){
+                if(!this.stack){
                     this.resetArtifacts();
                     if(this.stars.length!=0){
                         let artifacts=this.artifacts.filter(artifact => this.exclude_filters
@@ -55,10 +55,10 @@
                     }
                 }
 
-                console.log(this.$store.state.artifacts.active_filters['stars'])
+                // console.log(this.$store.state.artifacts.active_filters['stars'])
             },
             resetArtifacts(){
-                if(!this.stack_filters){
+                if(!this.stack){
                     let artifacts=JSON.parse(localStorage.artifacts).reverse();
                     this.$store.commit('artifacts/setArtifacts',artifacts);
                 }

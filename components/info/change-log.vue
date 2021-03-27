@@ -105,7 +105,8 @@
 					{
 						date: '2021.03.27',
 						changes: [
-							'Added notices tab'
+							'Added "Notices" tab',
+							'Changed stack filter option into search in a popup window with all filters available at once'
 						]
 					}
 				]

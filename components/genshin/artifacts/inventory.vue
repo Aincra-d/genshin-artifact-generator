@@ -34,6 +34,12 @@
             :all_pages="all_pages"
             @update-current-page="updateCurrentPage">
             </pagination>
+
+            <p
+            v-if="artifacts.length === 0"
+            class="text-light h5">
+                There are no artifacts in your inventory, or there are no results for your applied filter(s).
+            </p>
         </div>
     </div>
 </template>

@@ -1,67 +1,65 @@
 <template>
     <div>
-        <table class="mx-auto mx-md-0">
-            <tr>
-                <td>
-                    <b-input-group class="w-100 d-inline-block filter-select"
-                    :class="screen < 776 ? 'text-center' : 'text-left'">
-                        <b-dropdown
-                        :text="sub_stats.length!=0 ? sub_stats.length+' stat(s) selected' : 'Select sub stat(s)'"
-                        variant="light"
-                        class="text-dark rounded-0">
-                            <button
-                            type="button"
-                            class="btn btn-secondary btn-sm w-50 d-inline float-left rounded-0"
-                            @click="selectAll">
-                                Select all
-                            </button>
+        <div>
+            <b-input-group class="w-100 d-inline-block filter-select"
+            :class="!stack ? (screen < 776 ? 'text-center' : 'text-left') : 'text-center'">
+                <b-dropdown
+                :text="sub_stats.length!=0 ? sub_stats.length+' stat(s) selected' : 'Select sub stat(s)'"
+                variant="light"
+                class="text-dark rounded-0">
+                        <button
+                        type="button"
+                        :class="stack ? 'w-100' : 'w-50'"
+                        class="btn btn-secondary btn-sm d-inline float-left rounded-0"
+                        @click="selectAll">
+                            Select all
+                        </button>
 
-                            <button
-                            type="button"
-                            class="btn btn-info btn-sm w-50 d-inline float-right rounded-0"
-                            @click="filterBySubStats">
-                                Apply
-                            </button>
+                        <button
+                        v-if="!stack"
+                        type="button"
+                        class="btn btn-info btn-sm w-50 d-inline float-right rounded-0"
+                        @click="filterBySubStats">
+                            Apply
+                        </button>
 
-                            <b-dropdown-item
-                            :key="i"
-                            v-for="(sub,i) in artifact_sub_stats"
-                            @click.native.capture.stop="addSubStat(sub.name)">
-                                <i
-                                class="fa-sm"
-                                :class="sub_stats.includes(sub.name) ?
-                                'fas fa-check-square' : 'far fa-square'">
-                                </i>
+                    <b-dropdown-item
+                    :key="i"
+                    v-for="(sub,i) in artifact_sub_stats"
+                    @click.native.capture.stop="addSubStat(sub.name)">
+                        <i
+                        class="fa-sm"
+                        :class="sub_stats.includes(sub.name) ?
+                        'fas fa-check-square' : 'far fa-square'">
+                        </i>
 
-                                {{ sub.name }} ({{ sub.count }})
-                            </b-dropdown-item>
-                        </b-dropdown>
-                        
-                        <b-input-group-append class="d-inline">
-                            <b-form-checkbox
-                            v-if="!exclude_filters"
-                            v-model="match_subs"
-                            style="margin-left:-5px;"
-                            name="check-button"
-                            class="rounded-0"
-                            button-variant="outline-light"
-                            @input="setSubFilterType"
-                            button>
-                                Match
-                            </b-form-checkbox>
+                        {{ sub.name }} ({{ sub.count }})
+                    </b-dropdown-item>
+                </b-dropdown>
+                
+                <b-input-group-append class="d-inline">
+                    <b-form-checkbox
+                    v-if="!exclude_filters"
+                    v-model="match_subs"
+                    style="margin-left:-5px;"
+                    name="check-button"
+                    class="rounded-0"
+                    button-variant="outline-light"
+                    @input="setSubFilterType"
+                    button>
+                        Match
+                    </b-form-checkbox>
 
-                            <b-button
-                            style="margin-left:-5px"
-                            variant="danger"
-                            @click="emptySubStats"
-                            class="text-light">
-                                <i class="fas fa-times"></i>
-                            </b-button>
-                        </b-input-group-append>
-                    </b-input-group>
-                </td>
-            </tr>
-        </table>
+                    <b-button
+                    style="margin-left:-5px"
+                    variant="danger"
+                    @click="emptySubStats"
+                    class="text-light">
+                        <i class="fas fa-times"></i>
+                    </b-button>
+                </b-input-group-append>
+            </b-input-group>
+        </div>
     </div>
 </template>
 
@@ -70,6 +68,12 @@
 
     export default{
         name: 'filterBySubStats',
+        props: {
+            stack: {
+                type: Boolean,
+                default: false
+            }
+        },
         data(){
             return {
                 artifact_sub_stats: substatsJ.map(sub => sub.name),
@@ -80,15 +84,9 @@
             artifacts(){
                 return this.$store.state.artifacts.artifacts
             },
-            stack_filters(){
-                return this.$store.state.artifacts.stack_filters
-            },
             exclude_filters(){
                 return this.$store.state.artifacts.exclude_filters
             },
-            // sub_stats(){
-            //     return this.$store.state.artifacts.active_filters['sub_stats']
-            // },
             screen(){
                 return this.$store.state.artifacts.screen
             },
@@ -114,7 +112,7 @@
                 });
             },
             setSubFilterType(){
-                if(this.sub_stats.length !== 0) this.filterBySubStats(null);
+                if(this.sub_stats.length !== 0) this.filterBySubStats();
             },
             addSubStat(sub){
                 this.$store.commit('artifacts/setActiveFilters',{type: 'sub_stats', value: sub})
@@ -128,7 +126,7 @@
                 }
             },
             filterBySubStats(){
-                if(!this.stack_filters){
+                if(!this.stack){
                     this.resetArtifacts();
                     if(this.sub_stats.length!=0){
                         if(!this.exclude_filters){
@@ -154,14 +152,13 @@
                 this.sub_stats=[];
             },
             resetArtifacts(){
-                if(!this.stack_filters){
+                if(!this.stack){
                     let artifacts=JSON.parse(localStorage.artifacts).reverse();
                     this.$store.commit('artifacts/setArtifacts',artifacts);
                 }
             },
             selectAll(){
                 this.artifact_sub_stats.forEach(sub => {
-                    this.$store.commit('artifacts/setActiveFilters',{type: 'sub_stats', value: sub.name})
                     this.addSubStat(sub.name);
                 });
             }

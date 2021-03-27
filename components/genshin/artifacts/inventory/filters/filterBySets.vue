@@ -2,19 +2,21 @@
     <div>
         <div>
             <b-input-group class="w-100 d-inline-block ml-3 ml-lg-0 filter-select"
-            :class="screen < 776 ? 'text-center' : 'text-left'">
+            :class="!stack ? (screen < 776 ? 'text-center' : 'text-left') : 'text-center'">
                 <b-dropdown
                 :text="sets.length!=0 ? sets.length+' set(s) selected' : 'Select artifact set(s)'"
                 variant="light"
                 class="text-dark rounded-0">
                     <button
                     type="button"
-                    class="btn btn-secondary btn-sm w-50 d-inline float-left rounded-0"
+                    :class="stack ? 'w-100' : 'w-50'"
+                    class="btn btn-secondary btn-sm d-inline float-left rounded-0"
                     @click="selectAll">
                         Select all
                     </button>
 
                     <button
+                    v-if="!stack"
                     type="button"
                     class="btn btn-info btn-sm w-50 d-inline float-right rounded-0"
                     @click="filterBySets">
@@ -60,6 +62,12 @@
 
     export default{
         name: 'filterBySets',
+        props: {
+            stack: {
+                type: Boolean,
+                default: false
+            }
+        },
         data(){
             return {
                 artifact_set_names: setsJ.map(set => set.name),
@@ -71,15 +79,9 @@
             artifacts(){
                 return this.$store.state.artifacts.artifacts
             },
-            stack_filters(){
-                return this.$store.state.artifacts.stack_filters
-            },
             exclude_filters(){
                 return this.$store.state.artifacts.exclude_filters
             },
-            // sets(){
-            //     return this.$store.state.artifacts.active_filters['sets']
-            // },
             screen(){
                 return this.$store.state.artifacts.screen
             },
@@ -100,7 +102,7 @@
                 });
             },
             filterBySets(){
-                if(!this.stack_filters){
+                if(!this.stack){
                     this.resetArtifacts();
                     if(this.sets.length!=0){
                         let artifacts=this.artifacts.filter(artifact => this.exclude_filters
@@ -110,7 +112,7 @@
                     }
                 }
 
-                console.log(this.$store.state.artifacts.active_filters['sets'])
+                // console.log(this.$store.state.artifacts.active_filters['sets'])
             },
             addSet(set){
                 this.$store.commit('artifacts/setActiveFilters',{type: 'sets', value: set})
@@ -129,14 +131,13 @@
                 this.sets=[];
             },
             resetArtifacts(){
-                if(!this.stack_filters){
+                if(!this.stack){
                     let artifacts=JSON.parse(localStorage.artifacts).reverse();
                     this.$store.commit('artifacts/setArtifacts',artifacts);
                 }
             },
             selectAll(){
                 this.artifact_sets.forEach(set => {
-                    this.$store.commit('artifacts/setActiveFilters',{type: 'sets', value: set.name})
                     this.addSet(set.name)
                 });
             }

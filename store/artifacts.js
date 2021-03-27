@@ -3,7 +3,6 @@ export const state = () => ({
     screen: 0,
     view: '',
     match_subs: false,
-    stack_filters: false,
     exclude_filters: false,
     delete_artifacts: false,
     delete_ids: [],
@@ -31,8 +30,6 @@ export const mutations = {
     setView: (state,view) => state.view=view,
 
     setMatchSubs: (state,match) => state.match_subs=match,
-
-    setStackFilters: (state,stack_filters) => state.stack_filters=stack_filters,
 
     setDeleteArtifacts(state,delete_artifacts){
         state.delete_artifacts=delete_artifacts;

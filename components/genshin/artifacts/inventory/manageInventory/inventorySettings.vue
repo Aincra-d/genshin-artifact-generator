@@ -9,15 +9,6 @@
             </template>
 
             <b-dropdown-item
-            disabled
-            @click="stack_filters=!stack_filters">
-                <i
-                class="fa-sm"
-                :class="stack_filters ? 'fas fa-check-square' : 'far fa-square'"></i>
-                Stack Filters
-            </b-dropdown-item>
-
-            <b-dropdown-item
             @click="exclude_filters=!exclude_filters">
                 <i
                 class="fa-sm"
@@ -42,14 +33,6 @@
         computed: {
             screen(){
                 return this.$store.state.artifacts.screen
-            },
-            stack_filters: {
-                get(){
-                    return this.$store.state.artifacts.stack_filters
-                },
-                set(value){
-                    this.$store.commit('artifacts/setStackFilters',value);
-                }
             },
             exclude_filters: {
                 get(){
