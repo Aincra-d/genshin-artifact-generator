@@ -144,6 +144,11 @@
             'artifact-actions': artifactActions,
             'upgrade-modal': upgradeModal
         },
+        computed: {
+            screen(){
+                return this.$store.state.artifacts.screen
+            }
+        },
         data(){
             return {
                 artifacts: [],
@@ -162,7 +167,6 @@
                 include_low_stars: true,
                 single_upgrades: false,
                 show_upgrades: true,
-                screen: 0,
                 roll_stats_toggled: false,
                 upgrades: [],
                 old_main_value: 0
@@ -640,9 +644,6 @@
         created(){
             this.setSubs();
             this.setRollStats();
-        },
-        mounted(){
-            this.screen=this.$store.state.artifacts.screen;
         }
     }
 </script>
