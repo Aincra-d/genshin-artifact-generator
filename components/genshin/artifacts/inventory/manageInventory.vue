@@ -18,6 +18,13 @@
         @click="openModal">
             <i class="fas fa-search"></i>
         </button>
+
+        <button
+        type="button"
+        class="btn text-light"
+        @click="delete_artifacts=!delete_artifacts">
+            <i class="fas fa-trash"></i>
+        </button>
     </div>
 </template>
 
@@ -35,6 +42,16 @@
             'change-view': changeView,
             'inventory-settings': inventorySettings,
             'artifact-search-modal': artifactSearchModal
+        },
+        computed: {
+            delete_artifacts: {
+                get(){
+                    return this.$store.state.artifacts.delete_artifacts
+                },
+                set(value){
+                    this.$store.commit('artifacts/setDeleteArtifacts',value);
+                }
+            }
         },
         methods: {
             openModal() {

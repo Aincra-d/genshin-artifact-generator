@@ -108,6 +108,12 @@
 							'Added "Notices" tab',
 							'Changed stack filter option into search in a popup window with all filters available at once'
 						]
+					},
+					{
+						date: '2021.03.28',
+						changes: [
+							'Changed delete artifacts option in inventory from dropdown option to a separate button'
+						]
 					}
 				]
 			}

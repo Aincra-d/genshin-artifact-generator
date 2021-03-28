@@ -10,8 +10,11 @@
 
             <b-dropdown-item
             :key="i"
-            v-for="(filter,i) in filters"
+            v-for="(filter,i) in filter"
             @click="filterInventory(filter.type)">
+                <i
+                class="fa-sm"
+                :class="filter_types[filter.type] ? 'fas fa-check-square' : 'far fa-square'"></i>
 
                 <span>{{filter.title}}</span>
 
@@ -24,13 +27,16 @@
 	export default{
 		name: 'filterInventory',
 		computed: {
+            filter_types(){
+                return this.$store.state.artifacts.filters
+            },
             screen(){
                 return this.$store.state.artifacts.screen
             }
 		},
         data(){
             return {
-                filters: [
+                filter: [
                     {
                         type: 'by_star',
                         title: 'Filter by stars'

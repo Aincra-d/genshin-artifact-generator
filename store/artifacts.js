@@ -67,7 +67,10 @@ export const mutations = {
     setFilters: (state,filters) => state.filters=filters,
 
     setActiveFilter(state,type){
-        Object.keys(state.filters).forEach(v => state.filters[v] = false);
-        state.filters[type]=true
+        if(state.filters[type]) state.filters[type]=false
+        else{
+            Object.keys(state.filters).forEach(v => state.filters[v] = false);
+            state.filters[type]=true
+        }
     }
 };

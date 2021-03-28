@@ -92,12 +92,6 @@
                 },
                 set(value){
                     this.$store.commit('artifacts/setFilterType',value);
-
-                    this.$notify({
-                        group: 'foo',
-                        type: 'success',
-                        title: '<h6>Changed filter type to '+(value ? 'exclude' : 'include')+'</h6>'
-                    });
                 }
             },
             match_subs: {

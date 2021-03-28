@@ -12,12 +12,10 @@
             :key="i"
             v-for="(sort,i) in sorts"
             @click="sortInventory(sorts[i].name,sorts[i].type)">
-                <i
-                class="fas mr-2"
-                :class="sort.icon">
-                </i>
-                
-                <span>{{sort.title}}</span>
+                <span>
+                	{{sort.title}}
+                	({{ sort.type }} <i :class="sort.icon"></i>)
+                </span>
             </b-dropdown-item>
         </b-dropdown>
 	</div>
@@ -59,122 +57,122 @@
                     {
                         name: 'HP',
                         type: 'desc',
-                        icon: 'text-danger',
-                        title: '❤️ Sort by HP (desc ⬇)'
+                        icon: 'fas fa-angle-down',
+                        title: '❤️ Sort by HP'
                     },
                     {
                         name: 'HP',
                         type: 'asc',
-                        icon: 'text-danger',
-                        title: '❤️ Sort by HP (asc ⬆)'
+                        icon: 'fas fa-angle-up',
+                        title: '❤️ Sort by HP'
                     },
                     {
                         name: 'HP%',
                         type: 'desc',
-                        icon: 'text-danger',
-                        title: '❤️ Sort by HP% (desc ⬇)'
+                        icon: 'fas fa-angle-down',
+                        title: '❤️ Sort by HP%'
                     },
                     {
                         name: 'HP%',
                         type: 'asc',
-                        icon: 'text-danger',
-                        title: '❤️ Sort by HP% (asc ⬆)'
+                        icon: 'fas fa-angle-up',
+                        title: '❤️ Sort by HP%'
                     },
                     {
                         name: 'DEF',
                         type: 'desc',
-                        icon: 'text-primary',
-                        title: '🛡️ Sort by DEF (desc ⬇)'
+                        icon: 'fas fa-angle-down',
+                        title: '🛡️ Sort by DEF'
                     },
                     {
                         name: 'DEF',
                         type: 'asc',
-                        icon: 'text-primary',
-                        title: '🛡️ Sort by DEF (asc ⬆)'
+                        icon: 'fas fa-angle-up',
+                        title: '🛡️ Sort by DEF'
                     },
                     {
                         name: 'DEF%',
                         type: 'desc',
-                        icon: 'text-primary',
-                        title: '🛡️ Sort by DEF% (desc ⬇)'
+                        icon: 'fas fa-angle-down',
+                        title: '🛡️ Sort by DEF%'
                     },
                     {
                         name: 'DEF%',
                         type: 'asc',
-                        icon: 'text-primary',
-                        title: '🛡️ Sort by DEF% (asc ⬆)'
+                        icon: 'fas fa-angle-upext-primary',
+                        title: '🛡️ Sort by DEF%'
                     },
                     {
                         name: 'ATK',
                         type: 'desc',
-                        icon: 'text-primary',
-                        title: '⚔️ Sort by ATK (desc ⬇)'
+                        icon: 'fas fa-angle-down',
+                        title: '⚔️ Sort by ATK'
                     },
                     {
                         name: 'ATK',
                         type: 'asc',
-                        icon: 'text-primary',
-                        title: '⚔️ Sort by ATK (asc ⬆)'
+                        icon: 'fas fa-angle-up',
+                        title: '⚔️ Sort by ATK'
                     },
                     {
                         name: 'ATK%',
                         type: 'desc',
-                        icon: 'text-primary',
-                        title: '⚔️ Sort by ATK% (desc ⬇)'
+                        icon: 'fas fa-angle-down',
+                        title: '⚔️ Sort by ATK%'
                     },
                     {
                         name: 'ATK%',
                         type: 'asc',
-                        icon: 'text-primary',
-                        title: '⚔️ Sort by ATK% (asc ⬆)'
+                        icon: 'fas fa-angle-upext-primary',
+                        title: '⚔️ Sort by ATK%'
                     },
                     {
                         name: 'Energy Recharge%',
                         type: 'desc',
-                        icon: 'text-primary',
-                        title: '⚡ Sort by Energy Recharge% (desc ⬇)'
+                        icon: 'fas fa-angle-down',
+                        title: '⚡ Sort by Energy Recharge%'
                     },
                     {
                         name: 'Energy Recharge%',
                         type: 'asc',
-                        icon: 'text-primary',
-                        title: '⚡ Sort by Energy Recharge% (asc ⬆)'
+                        icon: 'fas fa-angle-down',
+                        title: '⚡ Sort by Energy Recharge%'
                     },
                     {
                         name: 'Elemental Mastery',
                         type: 'desc',
-                        icon: 'text-primary',
-                        title: '🔥 Sort by Elemental Mastery (desc ⬇)'
+                        icon: 'fas fa-angle-down',
+                        title: '🔥 Sort by Elemental Mastery'
                     },
                     {
                         name: 'Elemental Mastery',
                         type: 'asc',
-                        icon: 'text-primary',
-                        title: '🔥 Sort by Elemental Mastery (asc ⬆)'
+                        icon: 'fas fa-angle-down',
+                        title: '🔥 Sort by Elemental Mastery'
                     },
                     {
                         name: 'CRIT Rate%',
                         type: 'desc',
-                        icon: 'text-primary',
-                        title: '🎯 Sort by CRIT Rate% (desc ⬇)'
+                        icon: 'fas fa-angle-down',
+                        title: '🎯 Sort by CRIT Rate%'
                     },
                     {
                         name: 'CRIT Rate%',
                         type: 'asc',
-                        icon: 'text-primary',
-                        title: '🎯 Sort by CRIT Rate% (asc ⬆)'
+                        icon: 'fas fa-angle-down',
+                        title: '🎯 Sort by CRIT Rate%'
                     },
                     {
                         name: 'CRIT DMG%',
                         type: 'desc',
-                        icon: 'text-primary',
-                        title: '🎯 Sort by CRIT DMG% (desc ⬇)'
+                        icon: 'fas fa-angle-down',
+                        title: '🎯 Sort by CRIT DMG%'
                     },
                     {
                         name: 'CRIT DMG%',
                         type: 'asc',
-                        icon: 'text-primary',
-                        title: '🎯 Sort by CRIT DMG% (asc ⬆)'
+                        icon: 'fas fa-angle-down',
+                        title: '🎯 Sort by CRIT DMG%'
                     },
                 ]
 			}
