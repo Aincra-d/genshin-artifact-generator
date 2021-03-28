@@ -22,8 +22,8 @@
                     </button>
 
                     <b-form-checkbox
+                    v-if="inventory && delete_artifacts"
                     :checked="delete_ids.includes(artifact.id)"
-                    v-if="delete_artifacts"
                     size="lg"
                     type="button"
                     class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
