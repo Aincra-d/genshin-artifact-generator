@@ -11,37 +11,51 @@
             :upgrades="upgrades">    
             </upgrade-modal>
 
-            <b-form-checkbox
-            class="text-light mb-3 include-low-stars d-inline"
-            v-model="include_low_stars"
-            :size="screen < 1200 ? 'sm' : 'lg'">
-                Include 1-3 <i class="fas fa-star fa-xs"></i>
-            </b-form-checkbox>
+            <b-dropdown
+            text="Artifact roll settings"
+            variant="light"
+            class="text-dark rounded-0 filter-select">
+                <b-dropdown-item @click.native.capture.stop="include_low_stars=!include_low_stars">
+                    <i
+                    class="fa-sm"
+                    :class="include_low_stars ?
+                    'fas fa-check-square' : 'far fa-square'">
+                    </i>
 
-            <b-form-checkbox
-            class="text-light mb-3 include-low-stars d-inline"
-            v-model="single_upgrades"
-            :size="screen < 1200 ? 'sm' : 'lg'">
-                Single upgrades
-            </b-form-checkbox>
+                    Include 1-3 star artifacts
+                </b-dropdown-item>
 
-            <b-form-checkbox
-            class="text-light mb-3 include-low-stars d-inline"
-            v-model="show_upgrades"
-            :size="screen < 1200 ? 'sm' : 'lg'">
-                Show upgrades
-            </b-form-checkbox>
+                <b-dropdown-item @click.native.capture.stop="single_upgrades=!single_upgrades">
+                    <i
+                    class="fa-sm"
+                    :class="single_upgrades ?
+                    'fas fa-check-square' : 'far fa-square'">
+                    </i>
+                    
+                    Single upgrades
+                </b-dropdown-item>
 
+                <b-dropdown-item @click.native.capture.stop="show_upgrades=!show_upgrades">
+                    <i
+                    class="fa-sm"
+                    :class="show_upgrades ?
+                    'fas fa-check-square' : 'far fa-square'">
+                    </i>
+                    
+                    Show upgrades
+                </b-dropdown-item>
+            </b-dropdown>
 
             <br><br>
 
             <button
             v-if="artifacts.length === 0"
             @click="rollArtifact()"
-            class="btn text-light btn-link d-inline mx-1 rounded-0 mt-2"
-            style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
-            :class="screen < 576 ? 'btn-sm' : 'btn-md'">
-                <i class="fas fa-redo fa-sm mr-1"></i> Roll artifact
+            class="btn text-light btn-link btn-lg p-5 d-inline mx-1 rounded-0 mt-2"
+            style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;">
+                <i
+                class="fas fa-redo"
+                style="font-size: 50px;"></i>
             </button>
 
             <artifact-actions

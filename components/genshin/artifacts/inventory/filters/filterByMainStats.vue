@@ -10,7 +10,7 @@
                     <button
                     type="button"
                     :class="stack ? 'w-100' : 'w-50'"
-                    class="btn btn-secondary btn-sm w-50 d-inline float-left rounded-0"
+                    class="btn btn-secondary btn-sm d-inline float-left rounded-0"
                     @click="selectAll">
                         Select all
                     </button>
@@ -18,10 +18,18 @@
                     <button
                     v-if="!stack"
                     type="button"
-                    class="btn btn-info btn-sm w-50 d-inline float-right rounded-0"
+                    class="btn btn-info btn-sm w-50 d-inline float-left rounded-0"
                     @click="filterByMainStats">
                         Apply
                     </button>
+
+                    <!-- <button
+                    v-if="!stack"
+                    type="button"
+                    class="btn btn-danger btn-sm w-33 d-inline float-left rounded-0"
+                    @click="filterByMainStats">
+                        Delete
+                    </button> -->
 
                     <b-dropdown-item
                     :key="i"

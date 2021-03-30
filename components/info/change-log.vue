@@ -118,7 +118,8 @@
 					{
 						date: '2021.03.30',
 						changes: [
-							'Moved "Exclude filters" option in inventory to filter dropdown'
+							'Moved "Exclude filters" option in inventory to filter dropdown',
+							'Small design changes'
 						]
 					}
 				]
