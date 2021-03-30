@@ -8,6 +8,16 @@
                 <i class="fas fa-filter filter-icon"></i>
             </template>
 
+            <button
+            type="button"
+            class="btn btn-secondary btn-sm w-100 rounded-0"
+            @click="exclude_filters=!exclude_filters">
+                <i
+                class="fa-sm"
+                :class="exclude_filters ? 'fas fa-check-square' : 'far fa-square'"></i>
+                Exclude filters
+            </button>
+
             <b-dropdown-item
             :key="i"
             v-for="(filter,i) in filter"
@@ -32,6 +42,14 @@
             },
             screen(){
                 return this.$store.state.artifacts.screen
+            },
+            exclude_filters: {
+                get(){
+                    return this.$store.state.artifacts.exclude_filters
+                },
+                set(value){
+                    this.$store.commit('artifacts/setFilterType',value);
+                }
             }
 		},
         data(){

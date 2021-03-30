@@ -114,6 +114,12 @@
 						changes: [
 							'Changed delete artifacts option in inventory from dropdown option to a separate button'
 						]
+					},
+					{
+						date: '2021.03.30',
+						changes: [
+							'Moved "Exclude filters" option in inventory to filter dropdown'
+						]
 					}
 				]
 			}

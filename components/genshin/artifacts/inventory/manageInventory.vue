@@ -10,7 +10,7 @@
 
         <change-view class="d-inline"></change-view>
 
-        <inventory-settings class="d-inline"></inventory-settings>
+        <!-- <inventory-settings class="d-inline"></inventory-settings> -->
 
         <button
         type="button"
@@ -32,7 +32,7 @@
     import sortInventory from './manageInventory/sortInventory.vue';
     import filterInventory from './manageInventory/filterInventory.vue';
     import changeView from './manageInventory/changeView.vue';
-    import inventorySettings from './manageInventory/inventorySettings.vue';
+    // import inventorySettings from './manageInventory/inventorySettings.vue';
     import artifactSearchModal from './filters/artifactSearchModal.vue';
     export default{
         name: 'manageInventory',
@@ -40,7 +40,7 @@
             'sort-inventory': sortInventory,
             'filter-inventory': filterInventory,
             'change-view': changeView,
-            'inventory-settings': inventorySettings,
+            // 'inventory-settings': inventorySettings,
             'artifact-search-modal': artifactSearchModal
         },
         computed: {
