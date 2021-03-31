@@ -21,7 +21,7 @@ export const state = () => ({
         },
         {
             type: 'main_stats',
-            exclude: true,
+            exclude: false,
             data: []
         },
         {

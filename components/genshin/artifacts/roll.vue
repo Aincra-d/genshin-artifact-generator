@@ -11,6 +11,20 @@
             :upgrades="upgrades">    
             </upgrade-modal>
 
+            <artifact-modal
+            v-if="artifacts.length!=0"
+            roll
+            :rolls="artifacts"
+            ref="artifactModal">    
+            </artifact-modal>
+
+            <roll-modal
+            v-if="roll_10x"
+            ref="rollModal"
+            @open-artifact="openArtifact"
+            :artifacts="artifacts">    
+            </roll-modal>
+
             <b-dropdown
             text="Artifact roll settings"
             variant="outline-light"
@@ -25,7 +39,9 @@
                     Include 1-3 star artifacts
                 </b-dropdown-item>
 
-                <b-dropdown-item @click.native.capture.stop="single_upgrades=!single_upgrades">
+                <b-dropdown-item
+                :disabled="roll_10x"
+                @click.native.capture.stop="!roll_10x && (single_upgrades=!single_upgrades)">
                     <i
                     class="fa-sm"
                     :class="single_upgrades ?
@@ -35,7 +51,9 @@
                     Single upgrades
                 </b-dropdown-item>
 
-                <b-dropdown-item @click.native.capture.stop="show_upgrades=!show_upgrades">
+                <b-dropdown-item
+                :disabled="roll_10x"
+                @click.native.capture.stop="!roll_10x && (show_upgrades=!show_upgrades)">
                     <i
                     class="fa-sm"
                     :class="show_upgrades ?
@@ -44,13 +62,23 @@
                     
                     Show upgrades
                 </b-dropdown-item>
+
+                <b-dropdown-item @click.native.capture.stop="set10xRoll">
+                    <i
+                    class="fa-sm"
+                    :class="roll_10x ?
+                    'fas fa-check-square' : 'far fa-square'">
+                    </i>
+                    
+                    10x rolls
+                </b-dropdown-item>
             </b-dropdown>
 
             <br><br>
 
             <button
-            v-if="artifacts.length === 0"
-            @click="rollArtifact()"
+            v-if="artifacts.length === 0 || roll_10x"
+            @click="roll_10x ? roll10x() : singleRoll()"
             class="btn text-light btn-link btn-lg p-5 d-inline mx-1 rounded-0 mt-2"
             style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;">
                 <i
@@ -64,7 +92,7 @@
             :screen="screen"
             :artifact="current_artifact"
             @upgrade="upgrade"
-            @roll-artifact="rollArtifact"
+            @roll-artifact="singleRoll"
             @add="add"
             @reroll-main-stat="rerollMainStat"
             @reroll-sub-stats="rerollSubStats">
@@ -73,6 +101,7 @@
 
         <div>
             <artifact
+            v-if="!roll_10x"
             style="max-width:500px"
             class="p-3 mx-auto"
             :key="artifact.id"
@@ -146,6 +175,8 @@
     import artifact from '@/components/genshin/artifacts/artifact.vue';
     import artifactActions from '@/components/genshin/artifacts/roll/artifact-actions.vue';
     import upgradeModal from '@/components/genshin/artifacts/roll/upgrade-modal.vue';
+    import rollModal from '@/components/genshin/artifacts/roll/roll-modal.vue';
+    import artifactModal from '@/components/genshin/artifacts/inventory/artifactModal.vue';
     import substatsJ from '~/static/substats.json';
     import domainsJ from '~/static/domains.json';
     import mainstatsJ from '~/static/mainstats.json';
@@ -156,7 +187,9 @@
         components: {
             artifact,
             'artifact-actions': artifactActions,
-            'upgrade-modal': upgradeModal
+            'upgrade-modal': upgradeModal,
+            'roll-modal': rollModal,
+            'artifact-modal': artifactModal
         },
         computed: {
             screen(){
@@ -183,17 +216,35 @@
                 show_upgrades: true,
                 roll_stats_toggled: false,
                 upgrades: [],
-                old_main_value: 0
+                old_main_value: 0,
+                roll_10x: false
                 // roll_count: 0
             }
         },
         methods: {
+            openArtifact(ref,id) {
+                this.$refs.artifactModal.openModal(ref,id)
+            },
             clear(){
                 this.artifacts=[];
                 // this.roll_count=0;
             },
-            rollArtifact(){
+            set10xRoll(){
+                this.roll_10x=!this.roll_10x;
+
                 this.artifacts=[];
+            },
+            roll10x(){
+                this.artifacts=[];
+
+                for(let i=0; i<10; i++){
+                    this.singleRoll();
+                }
+
+                this.$refs.rollModal.openModal();
+            },
+            singleRoll(){
+                if(!this.roll_10x) this.artifacts=[];
                 this.sub_stats=this.all_subs;
                 this.setSubs();
                 let sets = this.sets;
@@ -307,7 +358,7 @@
                     title: '<h6>Added artifact to inventory!</h6>'
                 });
 
-                this.rollArtifact();
+                this.singleRoll();
             },
             rerollMainStat(){
                 let artifact=this.current_artifact;

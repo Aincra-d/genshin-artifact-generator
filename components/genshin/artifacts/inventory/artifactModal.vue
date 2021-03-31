@@ -3,7 +3,7 @@
         <ui-modal
         v-if="client"
         @close="restoreScroll"
-        style="height:100vh;"
+        style="height:100vh;z-index: 9999"
         alignTop
         :alignTopMargin="screen < 991 ? 0 : 50"
         :max-height="100"
@@ -54,6 +54,7 @@
                     </button>
 
                     <button
+                    v-if="!roll"
                     type="button"
                     class="btn btn-link text-light d-inline rounded-0 my-1"
                     style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
@@ -61,6 +62,17 @@
                     :disabled="removed"
                     @click="confirm_remove = !confirm_remove">
                         <i class="fas fa-times fa-sm mr-1"></i> Remove
+                    </button>
+
+                    <button
+                    v-else
+                    type="button"
+                    class="btn btn-link text-light d-inline rounded-0 my-1"
+                    style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
+                    :class="screen < 576 ? 'btn-sm' : 'btn-md'"
+                    :disabled="removed"
+                    @click="add">
+                        <i class="fas fa-plus fa-sm mr-1"></i> Add
                     </button>
 
                     <div
@@ -103,6 +115,13 @@
     import mainstatsJ from '~/static/mainstats.json';
     export default{
         name: 'artifactModal',
+        props: {
+            rolls: Array,
+            roll: {
+                type: Boolean,
+                default: false
+            }
+        },
         components: {
             artifact
         },
@@ -134,16 +153,19 @@
                 this.setSubs();
                 this.artifact_id=id;
                 this.screen=this.$store.state.artifacts.screen;
+                let artifacts=this.rolls ? this.rolls : this.artifacts;
 
                 if(this.client){
-                    this.current_artifact=this.artifacts.filter(artifact => artifact.id === id)[0];
+                    this.current_artifact=artifacts.filter(artifact => artifact.id === id)[0];
                 }
-                this.modal_bg_class='stars-'+this.artifacts[this.artifacts.findIndex(artifact => artifact.id === this.artifact_id)].info.stars;
+                this.modal_bg_class='stars-'+artifacts[artifacts.findIndex(artifact => artifact.id === this.artifact_id)].info.stars;
                 this.$refs[ref].open();
                 this.ref=ref;
             },
             rerollMainStat(){
-                let artifact=this.artifacts[this.artifacts.findIndex(artifact => artifact.id === this.artifact_id)];
+                let artifacts=this.rolls ? this.rolls : this.artifacts;
+
+                let artifact=artifacts[artifacts.findIndex(artifact => artifact.id === this.artifact_id)];
 
                 let old_main=artifact.stats.main.name;
 
@@ -164,7 +186,7 @@
 
                 artifact.info.rerolls.main.count++;
                 this.current_artifact=artifact;
-                this.updateInventory(artifact);
+                if(this.roll) this.updateInventory(artifact);
 
                 this.$notify({
                     group: 'foo',
@@ -173,7 +195,9 @@
                 });
             },
             rerollSubStats(){
-                let artifact=this.artifacts[this.artifacts.findIndex(artifact => artifact.id === this.artifact_id)];
+                let artifacts=this.rolls ? this.rolls : this.artifacts;
+
+                let artifact=artifacts[artifacts.findIndex(artifact => artifact.id === this.artifact_id)];
                 let old_subs=artifact.stats.subs.map(sub => sub.name);
 
                 artifact.stats.subs=[];
@@ -212,7 +236,7 @@
                 this.current_artifact=artifact;
                 this.sub_stats=this.all_subs;
                 this.setSubs();
-                this.updateInventory(artifact);
+                if(this.roll) this.updateInventory(artifact);
 
                 let new_subs=artifact.stats.subs.map(sub => sub.name);
 
@@ -243,8 +267,36 @@
 
                 this.$refs[this.ref].close();
             },
+            add(){
+                if(process.client && localStorage.artifacts){
+                    let artifacts=JSON.parse(localStorage.artifacts);
+
+                    artifacts.push(this.current_artifact);
+                    localStorage.setItem('artifacts',JSON.stringify(artifacts));
+
+                    this.$store.commit('artifacts/setArtifacts',artifacts.reverse());
+                }
+                else{
+                    let artifacts=[this.current_artifact];
+
+                    if(process.client) localStorage.setItem('artifacts',JSON.stringify(artifacts));
+                    this.$store.commit('artifacts/setArtifacts',artifacts);
+                }
+
+                this.rolls.splice(this.rolls.findIndex(roll => roll.id === this.current_artifact.id),1);
+
+                this.$notify({
+                    group: 'foo',
+                    type: 'success',
+                    title: '<h6>Added artifact to inventory!</h6>'
+                });
+
+                this.$refs[this.ref].close();
+            },
             upgrade(){
-                let artifact=this.artifacts[this.artifacts.findIndex(artifact => artifact.id === this.artifact_id)];
+                let artifacts=this.rolls ? this.rolls : this.artifacts;
+
+                let artifact=artifacts[artifacts.findIndex(artifact => artifact.id === this.artifact_id)];
 
                 if(artifact.stats.subs.length === this.max_sub_counts[artifact.info.stars-1]){
                     if(artifact.info.level !== artifact.info.max_level){
@@ -286,7 +338,7 @@
 
                 this.current_artifact=artifact;
 
-                this.updateInventory(artifact);
+                if(this.roll) this.updateInventory(artifact);
             },
             updateInventory(artifact){
                 let artifacts=JSON.parse(localStorage.artifacts);

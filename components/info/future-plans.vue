@@ -97,9 +97,9 @@
 						summary: 'Change the stack filter option into a search, with all filters visible at once'
 					},
 					{
-						done: false,
+						done: true,
 						priority: 'high',
-						summary: 'Add game-like artifact domain roll option to artifact roll'
+						summary: 'Add 10x artifact roll option'
 					}
 				]
 			}

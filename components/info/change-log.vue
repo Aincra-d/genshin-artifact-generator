@@ -126,7 +126,8 @@
 						date: '2021.03.31',
 						changes: [
 							'Changed star and type filter into dropdowns',
-							'Added "Exclude" option to each filter options, now you can separately set each filter type to include/exclude the selected options'
+							'Added "Exclude" option to each filter options, now you can separately set each filter type to include/exclude the selected options',
+							'Added 10x roll option to artifact roll'
 						]
 					}
 				]
