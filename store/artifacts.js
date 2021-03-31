@@ -13,13 +13,33 @@ export const state = () => ({
         by_type: false,
         by_set: false
     },
-    active_filters: {
-        stars: [],
-        main_stats: [],
-        sub_stats: [],
-        types: [],
-        sets: []
-    }
+    active_filters: [
+        {
+            type: 'stars',
+            exclude: false,
+            data: []
+        },
+        {
+            type: 'main_stats',
+            exclude: true,
+            data: []
+        },
+        {
+            type: 'sub_stats',
+            exclude: false,
+            data: []
+        },
+        {
+            type: 'types',
+            exclude: false,
+            data: []
+        },
+        {
+            type: 'sets',
+            exclude: false,
+            data: []
+        }
+    ]
 });
 
 export const mutations = {
@@ -46,18 +66,24 @@ export const mutations = {
     },
 
     setActiveFilters(state,{type,value}){
+        let active_filter=state.active_filters[state.active_filters.findIndex(filt => filt.type == type)];
+
         if(value === null){
-            state.active_filters[type]=[];
+            active_filter.data=[];
             return
         }
 
-        if(state.active_filters[type].includes(value)){
-            state.active_filters[type].splice(
-                state.active_filters[type].findIndex(item => item == value),1);
+        if(active_filter.data.includes(value)){
+            active_filter.data.splice(
+                active_filter.data.findIndex(item => item == value),1);
         }
         else{
-            state.active_filters[type].push(value);
+            active_filter.data.push(value);
         }
+    },
+
+    setExcludeFilter(state,{type,value}){
+        state.active_filters[state.active_filters.findIndex(filt => filt.type == type)].exclude=value;
     },
 
     setDeleteIdsAll: (state,ids) => state.delete_ids=ids,

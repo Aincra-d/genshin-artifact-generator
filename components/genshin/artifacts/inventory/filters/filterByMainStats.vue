@@ -9,18 +9,29 @@
                 class="text-dark rounded-0">
                     <button
                     type="button"
-                    :class="stack ? 'w-100' : 'w-50'"
+                    :class="stack ? 'w-50' : 'w-30'"
                     class="btn btn-secondary btn-sm d-inline float-left rounded-0"
                     @click="selectAll">
-                        Select all
+                        All
                     </button>
 
                     <button
                     v-if="!stack"
                     type="button"
-                    class="btn btn-info btn-sm w-50 d-inline float-left rounded-0"
+                    class="btn btn-info btn-sm w-30 d-inline float-left rounded-0"
                     @click="filterByMainStats">
                         Apply
+                    </button>
+
+                    <button
+                    type="button"
+                    :class="stack ? 'w-50' : 'w-40'"
+                    class="btn btn-primary btn-sm d-inline float-left rounded-0"
+                    @click="exclude_filter=!exclude_filter">
+                        <i
+                        class="fa-sm"
+                        :class="exclude_filter ? 'fas fa-check-square' : 'far fa-square'"></i>
+                        Exclude
                     </button>
 
                     <!-- <button
@@ -80,16 +91,22 @@
             artifacts(){
                 return this.$store.state.artifacts.artifacts
             },
-            exclude_filters(){
-                return this.$store.state.artifacts.exclude_filters
+            exclude_filter: {
+                get(){
+                    return this.$store.state.artifacts.active_filters[this.$store.state.artifacts.active_filters.findIndex(filt => filt.type == 'main_stats')].exclude;
+                },
+                set(value){
+                    this.$store.commit('artifacts/setExcludeFilter',{type: 'main_stats',value: value});
+                }
             },
             screen(){
                 return this.$store.state.artifacts.screen
-            }
+            },
         },
         methods: {
             setMainStats(){
                 let main_stats=[];
+                
                 this.artifact_main_stats.forEach(main_stat => {
                     main_stats.push({
                         name: main_stat,
@@ -114,7 +131,7 @@
                 if(!this.stack){
                     this.resetArtifacts();
                     if(this.main_stats.length!=0){
-                        let artifacts=this.artifacts.filter(artifact => this.exclude_filters
+                        let artifacts=this.artifacts.filter(artifact => this.exclude_filter
                             ? !this.main_stats.includes(artifact.stats.main.name)
                             : this.main_stats.includes(artifact.stats.main.name));
                         this.$store.commit('artifacts/setArtifacts',artifacts);

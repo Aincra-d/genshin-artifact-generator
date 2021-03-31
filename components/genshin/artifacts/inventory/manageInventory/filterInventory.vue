@@ -8,7 +8,7 @@
                 <i class="fas fa-filter filter-icon"></i>
             </template>
 
-            <button
+            <!-- <button
             type="button"
             class="btn btn-secondary btn-sm w-100 rounded-0"
             @click="exclude_filters=!exclude_filters">
@@ -16,17 +16,19 @@
                 class="fa-sm"
                 :class="exclude_filters ? 'fas fa-check-square' : 'far fa-square'"></i>
                 Exclude filters
-            </button>
+            </button> -->
 
             <b-dropdown-item
             :key="i"
             v-for="(filter,i) in filter"
             @click="filterInventory(filter.type)">
-                <i
+<!--                 <i
                 class="fa-sm"
                 :class="filter_types[filter.type] ? 'fas fa-check-square' : 'far fa-square'"></i>
-
-                <span>{{filter.title}}</span>
+ -->
+                <span :class="filter_types[filter.type] ? 'text-primary' : 'text-dark'">
+                    {{filter.title}}
+                </span>
 
             </b-dropdown-item>
         </b-dropdown>
@@ -43,14 +45,14 @@
             screen(){
                 return this.$store.state.artifacts.screen
             },
-            exclude_filters: {
-                get(){
-                    return this.$store.state.artifacts.exclude_filters
-                },
-                set(value){
-                    this.$store.commit('artifacts/setFilterType',value);
-                }
-            }
+            // exclude_filters: {
+            //     get(){
+            //         return this.$store.state.artifacts.exclude_filters
+            //     },
+            //     set(value){
+            //         this.$store.commit('artifacts/setFilterType',value);
+            //     }
+            // }
 		},
         data(){
             return {

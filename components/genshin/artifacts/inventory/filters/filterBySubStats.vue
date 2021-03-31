@@ -9,18 +9,29 @@
                 class="text-dark rounded-0">
                         <button
                         type="button"
-                        :class="stack ? 'w-100' : 'w-50'"
+                        :class="stack ? 'w-50' : 'w-30'"
                         class="btn btn-secondary btn-sm d-inline float-left rounded-0"
                         @click="selectAll">
-                            Select all
+                            All
                         </button>
 
                         <button
                         v-if="!stack"
                         type="button"
-                        class="btn btn-info btn-sm w-50 d-inline float-right rounded-0"
+                        class="btn btn-info btn-sm w-30 d-inline float-left rounded-0"
                         @click="filterBySubStats">
                             Apply
+                        </button>
+
+                        <button
+                        type="button"
+                        :class="stack ? 'w-50' : 'w-40'"
+                        class="btn btn-primary btn-sm d-inline float-left rounded-0"
+                        @click="exclude_filter=!exclude_filter">
+                            <i
+                            class="fa-sm"
+                            :class="exclude_filter ? 'fas fa-check-square' : 'far fa-square'"></i>
+                            Exclude
                         </button>
 
                     <b-dropdown-item
@@ -39,7 +50,7 @@
                 
                 <b-input-group-append class="d-inline">
                     <b-form-checkbox
-                    v-if="!exclude_filters"
+                    v-if="!exclude_filter"
                     v-model="match_subs"
                     style="margin-left:-5px;"
                     name="check-button"
@@ -84,8 +95,13 @@
             artifacts(){
                 return this.$store.state.artifacts.artifacts
             },
-            exclude_filters(){
-                return this.$store.state.artifacts.exclude_filters
+            exclude_filter: {
+                get(){
+                    return this.$store.state.artifacts.active_filters[this.$store.state.artifacts.active_filters.findIndex(filt => filt.type == 'sub_stats')].exclude;
+                },
+                set(value){
+                    this.$store.commit('artifacts/setExcludeFilter',{type: 'sub_stats',value: value});
+                }
             },
             screen(){
                 return this.$store.state.artifacts.screen
@@ -129,7 +145,7 @@
                 if(!this.stack){
                     this.resetArtifacts();
                     if(this.sub_stats.length!=0){
-                        if(!this.exclude_filters){
+                        if(!this.exclude_filter){
                             if(!this.match_subs){
                                 let artifacts=this.artifacts.filter(artifact => artifact.stats.subs.filter(sub => this.sub_stats.includes(sub.name)).length > 0);
                                 this.$store.commit('artifacts/setArtifacts',artifacts);

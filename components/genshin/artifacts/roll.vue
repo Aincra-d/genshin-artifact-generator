@@ -13,8 +13,8 @@
 
             <b-dropdown
             text="Artifact roll settings"
-            variant="light"
-            class="text-dark rounded-0 filter-select">
+            variant="outline-light"
+            class="text-dark rounded-0 border-0 outline-0">
                 <b-dropdown-item @click.native.capture.stop="include_low_stars=!include_low_stars">
                     <i
                     class="fa-sm"

@@ -121,6 +121,13 @@
 							'Moved "Exclude filters" option in inventory to filter dropdown',
 							'Small design changes'
 						]
+					},
+					{
+						date: '2021.03.31',
+						changes: [
+							'Changed star and type filter into dropdowns',
+							'Added "Exclude" option to each filter options, now you can separately set each filter type to include/exclude the selected options'
+						]
 					}
 				]
 			}

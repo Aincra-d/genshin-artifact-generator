@@ -8,7 +8,7 @@
         :max-height="100"
         title="App info"
         ref="infoModal"
-        class="text-dark text-center info-modal">
+        class="text-center info-modal">
             <div class="w-100 text-left text-dark p-1 info-container">
                 <b-tabs>
                     <b-tab title="About" active>
