@@ -3,7 +3,7 @@
         <ui-modal
         v-if="client"
         @close="restoreScroll"
-        style="height:100vh;"
+        style="height:100vh;z-index: 999;"
         alignTop
         removeHeader
         :alignTopMargin="screen < 991 ? 50 : 150"
@@ -118,12 +118,16 @@
         props: [
             'artifact',
             'upgrades',
-            'screen',
             'old_main'
         ],
         data(){
             return {
                 client: process.client
+            }
+        },
+        computed: {
+            screen(){
+                return this.$store.state.artifacts.screen
             }
         },
         methods: {

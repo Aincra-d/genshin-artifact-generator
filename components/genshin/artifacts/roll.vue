@@ -3,26 +3,21 @@
         <div
         class="artifact-actions text-center mb-2">
             <upgrade-modal
+            style="z-index: 99999 !important;"
             v-if="artifacts.length!=0"
-            :screen="screen"
             :artifact="current_artifact"
             :old_main="old_main_value || 0"
             ref="upgradeModal"
             :upgrades="upgrades">    
             </upgrade-modal>
 
-            <artifact-modal
-            v-if="artifacts.length!=0"
-            roll
-            :rolls="artifacts"
-            ref="artifactModal">    
-            </artifact-modal>
-
             <roll-modal
             v-if="roll_10x"
             ref="rollModal"
-            @open-artifact="openArtifact"
-            :artifacts="artifacts">    
+            :show="show_upgrades"
+            :single="single_upgrades"
+            :artifacts="artifacts"
+            @show-upgrades="showUpgrades">    
             </roll-modal>
 
             <b-dropdown
@@ -39,9 +34,7 @@
                     Include 1-3 star artifacts
                 </b-dropdown-item>
 
-                <b-dropdown-item
-                :disabled="roll_10x"
-                @click.native.capture.stop="!roll_10x && (single_upgrades=!single_upgrades)">
+                <b-dropdown-item @click.native.capture.stop="single_upgrades=!single_upgrades">
                     <i
                     class="fa-sm"
                     :class="single_upgrades ?
@@ -51,9 +44,7 @@
                     Single upgrades
                 </b-dropdown-item>
 
-                <b-dropdown-item
-                :disabled="roll_10x"
-                @click.native.capture.stop="!roll_10x && (show_upgrades=!show_upgrades)">
+                <b-dropdown-item @click.native.capture.stop="show_upgrades=!show_upgrades">
                     <i
                     class="fa-sm"
                     :class="show_upgrades ?
@@ -89,7 +80,6 @@
             <artifact-actions
             v-else
             :single="single_upgrades"
-            :screen="screen"
             :artifact="current_artifact"
             @upgrade="upgrade"
             @roll-artifact="singleRoll"
@@ -176,7 +166,6 @@
     import artifactActions from '@/components/genshin/artifacts/roll/artifact-actions.vue';
     import upgradeModal from '@/components/genshin/artifacts/roll/upgrade-modal.vue';
     import rollModal from '@/components/genshin/artifacts/roll/roll-modal.vue';
-    import artifactModal from '@/components/genshin/artifacts/inventory/artifactModal.vue';
     import substatsJ from '~/static/substats.json';
     import domainsJ from '~/static/domains.json';
     import mainstatsJ from '~/static/mainstats.json';
@@ -188,8 +177,7 @@
             artifact,
             'artifact-actions': artifactActions,
             'upgrade-modal': upgradeModal,
-            'roll-modal': rollModal,
-            'artifact-modal': artifactModal
+            'roll-modal': rollModal
         },
         computed: {
             screen(){
@@ -222,12 +210,12 @@
             }
         },
         methods: {
-            openArtifact(ref,id) {
-                this.$refs.artifactModal.openModal(ref,id)
-            },
-            clear(){
-                this.artifacts=[];
-                // this.roll_count=0;
+            showUpgrades(upgrades,artifact,old_main){
+                this.upgrades=upgrades;
+                this.current_artifact=artifact;
+                this.old_main_value=old_main;
+
+                this.$refs.upgradeModal.openModal();
             },
             set10xRoll(){
                 this.roll_10x=!this.roll_10x;

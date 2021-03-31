@@ -88,8 +88,12 @@
 		name: 'artifactActions',
 		props: {
 			artifact: Object,
-            screen: Number,
             single: Boolean
-		}
+		},
+        computed: {
+            screen(){
+                return this.$store.state.artifacts.screen
+            }
+        }
 	}
 </script>

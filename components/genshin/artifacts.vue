@@ -81,7 +81,6 @@
 
             let view=(sessionStorage.inventoryView || (screen < 776 ? 'images' : 'compressed'));
             this.$store.commit('artifacts/setView',view);
-            this.$store.commit('artifacts/setStackFilters',false);
         }
     }
 </script>
