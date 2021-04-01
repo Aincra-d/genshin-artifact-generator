@@ -445,7 +445,7 @@
                             random_sub.level+=1;
                             artifact.info.level+=4;
 
-                            artifact.stats.main.value=this.main_stats.filter(main => main.name == artifact.stats.main.name)[0].values[+artifact.info.stars][artifact.info.level];
+                            artifact.stats.main.value=this.main_stats.filter(main => main.name == artifact.stats.main.name)[0].values[artifact.info.stars][artifact.info.level];
 
                             if(this.upgrades.filter(upgrade => upgrade.name == random_sub.name).length != 0){
                                 this.upgrades[this.upgrades.findIndex(upgrade => upgrade.name == random_sub.name)].new_value=Math.round(random_sub.value*100)/100;
@@ -489,7 +489,7 @@
                         });
 
                         artifact.info.level+=4;
-                        artifact.stats.main.value=this.main_stats.filter(main => main.name == artifact.stats.main.name)[0].values[+artifact.info.stars][artifact.info.level];
+                        artifact.stats.main.value=this.main_stats.filter(main => main.name == artifact.stats.main.name)[0].values[artifact.info.stars][artifact.info.level];
                     }
                 }
                 // console.log(this.upgrades)

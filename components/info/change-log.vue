@@ -106,7 +106,7 @@
 						date: '2021.03.27',
 						changes: [
 							'Added "Notices" tab',
-							'Changed stack filter option into search in a popup window with all filters available at once'
+							'Added artifact search option'
 						]
 					},
 					{
@@ -128,6 +128,12 @@
 							'Changed star and type filter into dropdowns',
 							'Added "Exclude" option to each filter options, now you can separately set each filter type to include/exclude the selected options',
 							'Added 10x roll option to artifact roll'
+						]
+					},
+					{
+						date: '2021.04.01',
+						changes: [
+							'Changed upgrade and sub reroll issues when rolling 10x'
 						]
 					}
 				]

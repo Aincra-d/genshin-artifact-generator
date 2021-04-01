@@ -39,7 +39,8 @@ export const state = () => ({
             exclude: false,
             data: []
         }
-    ]
+    ],
+    // rolled_artifacts: []
 });
 
 export const mutations = {
@@ -98,5 +99,15 @@ export const mutations = {
             Object.keys(state.filters).forEach(v => state.filters[v] = false);
             state.filters[type]=true
         }
-    }
+    },
+
+    // setRolledArtifacts(state,{artifact,id}){
+    //     if(id === null){
+    //         state.rolled_artifacts.push(artifact)
+    //     }
+    //     else{
+    //         state.rolled_artifacts.splice(state.rolled_artifacts.findIndex(
+    //             artifact => artifact.id === id),1);
+    //     }
+    // }
 };

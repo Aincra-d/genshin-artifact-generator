@@ -94,7 +94,7 @@
 					{
 						done: true,
 						priority: 'high',
-						summary: 'Change the stack filter option into a search, with all filters visible at once'
+						summary: 'Add artifact search option with all filters available'
 					},
 					{
 						done: true,

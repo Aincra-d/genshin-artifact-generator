@@ -69,7 +69,7 @@
 
                     <div
                     :key="i"
-                    v-for="i in 4">
+                    v-for="(up,i) in 4">
                         <b-dropdown-item
                         v-if="current_artifact.info.stars > 1 && (current_artifact.info.max_level - current_artifact.info.level)/4 >= i+2"
                         @click="current_artifact.info.level != current_artifact.info.max_level && upgrade(i+2)"
@@ -145,10 +145,14 @@
         methods: {
             openModal() {
                 this.$refs['rollModal'].open();
+                console.log(this.artifacts)
             },
             showArtifact(id){
                 this.current_artifact=this.artifacts.filter(artifact => artifact.id === id)[0];
                 this.toggled=true;
+                this.setSubs();
+
+                console.log(this.current_artifact)
             },
             rerollMainStat(){
                 let artifact=this.current_artifact;
@@ -257,6 +261,8 @@
             upgrade(upgrade_count){
                 if(upgrade_count === null) upgrade_count = 1;
                 this.upgrades=[];
+                this.sub_stats=this.all_subs;
+                this.setSubs();
 
                 let artifact=this.current_artifact;
 
@@ -274,7 +280,7 @@
                             random_sub.level+=1;
                             artifact.info.level+=4;
 
-                            artifact.stats.main.value=this.main_stats.filter(main => main.name == artifact.stats.main.name)[0].values[+artifact.info.stars][artifact.info.level];
+                            artifact.stats.main.value=this.main_stats.filter(main => main.name == artifact.stats.main.name)[0].values[artifact.info.stars][artifact.info.level];
 
                             if(this.upgrades.filter(upgrade => upgrade.name == random_sub.name).length != 0){
                                 this.upgrades[this.upgrades.findIndex(upgrade => upgrade.name == random_sub.name)].new_value=Math.round(random_sub.value*100)/100;
@@ -318,7 +324,7 @@
                         });
 
                         artifact.info.level+=4;
-                        artifact.stats.main.value=this.main_stats.filter(main => main.name == artifact.stats.main.name)[0].values[+artifact.info.stars][artifact.info.level];
+                        artifact.stats.main.value=this.main_stats.filter(main => main.name == artifact.stats.main.name)[0].values[artifact.info.stars][artifact.info.level];
                     }
                 }
                 // console.log(this.upgrades)
