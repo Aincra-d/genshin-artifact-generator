@@ -48,7 +48,7 @@
                 class="btn btn-link text-light d-inline rounded-0 my-1"
                 :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                 :disabled="current_artifact.info.level === current_artifact.info.max_level"
-                @click="current_artifact.info.level!=current_artifact.info.max_level && upgrade()">
+                @click="current_artifact.info.level!=current_artifact.info.max_level && upgrade(1)">
                     <i class="fas fa-arrow-up fa-sm"></i> Upgrade
                 </button>
 
