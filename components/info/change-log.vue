@@ -133,7 +133,7 @@
 					{
 						date: '2021.04.01',
 						changes: [
-							'Changed upgrade and sub reroll issues when rolling 10x'
+							'Fixed upgrade and sub reroll issues when rolling 10x'
 						]
 					}
 				]

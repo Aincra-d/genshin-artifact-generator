@@ -145,14 +145,11 @@
         methods: {
             openModal() {
                 this.$refs['rollModal'].open();
-                console.log(this.artifacts)
             },
             showArtifact(id){
                 this.current_artifact=this.artifacts.filter(artifact => artifact.id === id)[0];
                 this.toggled=true;
                 this.setSubs();
-
-                console.log(this.current_artifact)
             },
             rerollMainStat(){
                 let artifact=this.current_artifact;
