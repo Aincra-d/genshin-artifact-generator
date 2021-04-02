@@ -6,7 +6,7 @@
         style="height:100vh;"
         alignTop
         removeHeader
-        :alignTopMargin="screen < 991 ? 50 : 50"
+        :alignTopMargin="screen < 991 ? 0 : 50"
         :max-height="100"
         ref="rollModal"
         class="text-light text-center roll-modal">
@@ -79,7 +79,7 @@
                     </div>
                 </b-dropdown>
 
-                <button
+                <!-- <button
                 type="button"
                 class="btn btn-link text-light d-inline rounded-0 my-1"
                 :class="screen < 576 ? 'btn-sm' : 'btn-md'"
@@ -95,7 +95,28 @@
                 :disabled="current_artifact.info.rerolls.subs.count != 0"
                 @click="current_artifact.info.rerolls.subs.count === 0 && rerollSubStats()">
                     <i class="fas fa-redo fa-sm mr-1"></i>Reroll subs
-                </button>
+                </button> -->
+
+                <b-dropdown
+                id="dropdown-left"
+                text="Reroll"
+                :size="screen < 576 ? 'sm' : 'md'"
+                variant="link"
+                class="m-2">
+                    <b-dropdown-item
+                    @click="current_artifact.info.rerolls.main.count === 0 && rerollMainStat()"
+                    :disabled="current_artifact.info.rerolls.main.count != 0 || ['Flower of Life','Plume of Death'].includes(current_artifact.info.piece.type)"
+                    href="#">
+                        Main stat(max: 1)
+                    </b-dropdown-item>
+
+                    <b-dropdown-item
+                    @click="current_artifact.info.rerolls.subs.count === 0 && rerollSubStats()"
+                    :disabled="current_artifact.info.rerolls.subs.count != 0"
+                    href="#">
+                        Sub stats(max: 1)
+                    </b-dropdown-item>
+                </b-dropdown>
 
                 <button
                 type="button"
@@ -449,9 +470,18 @@
 </script>
 
 <style>
+    .roll-modal .ui-modal__body{
+        max-height: 90vh !important;
+        overflow-y: auto;
+    }
+
     .roll-modal .roll-container{
         white-space: nowrap;
         overflow-x: auto;
+    }
+
+    .roll-modal .ui-modal__body{
+        max-height: 60vh;
     }
 
     @media(max-width:1200px){
@@ -468,7 +498,7 @@
         }
     }
 
-    .roll-modal .action-container button,.roll-modal .action-container .dropdown{
+    .roll-modal .action-container button,.roll-modal .action-container .dropdown-toggle{
         box-shadow: 0px 0px 10px black;
         text-shadow: 0px 0px 10px black;
     }
@@ -506,7 +536,7 @@
     .roll-modal .ui-modal__body{
         background: #353b49 !important;
         padding: 0;
-        overflow: hidden !important;
+        overflow-x: hidden !important;
     }
     .ui-modal:not(.has-footer) .ui-modal__body{
         padding: 0;

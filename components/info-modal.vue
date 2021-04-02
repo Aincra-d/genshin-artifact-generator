@@ -11,23 +11,23 @@
         class="text-center info-modal">
             <div class="w-100 text-left text-light p-1 info-container">
                 <b-tabs>
-                    <b-tab title-link-class="text-light bg-transparent" title="About" active>
+                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="About" active>
                         <about></about>
                     </b-tab>
 
-                    <b-tab title-link-class="text-light bg-transparent" title="Guide">
+                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Guide">
                         <guide></guide>
                     </b-tab>
 
-                    <b-tab title-link-class="text-light bg-transparent" title="Updates">
+                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Updates">
                         <change-log></change-log>
                     </b-tab>
 
-                    <b-tab title-link-class="text-light bg-transparent" title="Plans">
+                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Plans">
                         <future-plans></future-plans>
                     </b-tab>
 
-                    <b-tab title-link-class="text-light bg-transparent" title="Notices">
+                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Notices">
                         <notices></notices>
                     </b-tab>
                 </b-tabs>

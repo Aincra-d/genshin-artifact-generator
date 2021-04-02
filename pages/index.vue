@@ -223,8 +223,4 @@ body{
     color:white;
     border-radius: 0;
 }
-
-.ui-modal__body{
-    max-height: 100vh
-}
 </style>

@@ -6,6 +6,7 @@
         style="height:100vh;"
         alignTop
         :alignTopMargin="screen < 991 ? 0 : 50"
+        removeHeader
         :max-height="100"
         title="Edit your artifact"
         ref="artifactModal"
@@ -14,6 +15,7 @@
             <div
             class="w-100 text-center"
             style="/*{ backgroundImage: 'url(' + artifacts[0].info.piece.image + ')', backgroundSize: 'auto'}*/">
+            <br>
                 <artifact
                 v-if="client"
                 :inventory="false"
@@ -33,7 +35,7 @@
                         <i class="fas fa-arrow-up fa-sm"></i> Upgrade
                     </button>
 
-                    <button
+                    <!-- <button
                     type="button"
                     class="btn btn-link text-light d-inline rounded-0 my-1"
                     style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
@@ -51,7 +53,29 @@
                     :disabled="removed || current_artifact.info.rerolls.subs.count != 0"
                     @click="current_artifact.info.rerolls.subs.count === 0 && rerollSubStats()">
                         <i class="fas fa-redo fa-sm mr-1"></i>Reroll subs
-                    </button>
+                    </button> -->
+
+                    <b-dropdown
+                    style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
+                    id="dropdown-left"
+                    text="Reroll"
+                    :size="screen < 576 ? 'sm' : 'md'"
+                    variant="link"
+                    class="m-2">
+                        <b-dropdown-item
+                        @click="current_artifact.info.rerolls.main.count === 0 && rerollMainStat()"
+                        :disabled="removed || current_artifact.info.rerolls.main.count != 0 || ['Flower of Life','Plume of Death'].includes(current_artifact.info.piece.type)"
+                        href="#">
+                            Main stat(max: 1)
+                        </b-dropdown-item>
+
+                        <b-dropdown-item
+                        @click="current_artifact.info.rerolls.subs.count === 0 && rerollSubStats()"
+                        :disabled="removed || current_artifact.info.rerolls.subs.count != 0"
+                        href="#">
+                            Sub stats(max: 1)
+                        </b-dropdown-item>
+                    </b-dropdown>
 
                     <button
                     type="button"
@@ -413,12 +437,12 @@
 
 <style>
     /*@media(max-width: 991px){*/
-        .ui-modal__container{
-            /*max-height: 80vh !important;*/
+        .artifact-modal .ui-modal__body{
+            max-height: 90vh !important;
             overflow-y: auto;
         }
 /*        .ui-modal__body{
-            max-height: 80vh !important;
+            max-height: 90vh !important;
             overflow-y: auto;
         }*/
     /*}*/
@@ -432,6 +456,10 @@
 
     .artifact-modal .ui-modal__body,.artifact-modal .ui-modal__header{
         background: #353b49 !important;
+    }
+
+    .artifact-modal .ui-icon{
+        color:white;
     }
 
    /* .stars-5 .ui-modal__header,.stars-5 .ui-modal__body,.stars-5 .ui-modal__footer{
