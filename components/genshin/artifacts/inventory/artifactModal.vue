@@ -28,7 +28,6 @@
                     <button
                     type="button"
                     class="btn btn-link text-light d-inline rounded-0 my-1"
-                    style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
                     :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                     :disabled="removed || current_artifact.info.level === current_artifact.info.max_level"
                     @click="current_artifact.info.level!=current_artifact.info.max_level && upgrade()">
@@ -38,7 +37,6 @@
                     <!-- <button
                     type="button"
                     class="btn btn-link text-light d-inline rounded-0 my-1"
-                    style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
                     :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                     :disabled="removed || current_artifact.info.rerolls.main.count != 0 || ['Flower of Life','Plume of Death'].includes(current_artifact.info.piece.type)"
                     @click="current_artifact.info.rerolls.main.count === 0 && rerollMainStat()">
@@ -48,7 +46,6 @@
                     <button
                     type="button"
                     class="btn btn-link text-light d-inline rounded-0 my-1"
-                    style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
                     :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                     :disabled="removed || current_artifact.info.rerolls.subs.count != 0"
                     @click="current_artifact.info.rerolls.subs.count === 0 && rerollSubStats()">
@@ -56,7 +53,6 @@
                     </button> -->
 
                     <b-dropdown
-                    style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
                     id="dropdown-left"
                     text="Reroll"
                     :size="screen < 576 ? 'sm' : 'md'"
@@ -80,7 +76,6 @@
                     <button
                     type="button"
                     class="btn btn-link text-light d-inline rounded-0 my-1"
-                    style="box-shadow: 0px 0px 10px black;text-shadow: 0px 0px 10px black;"
                     :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                     :disabled="removed"
                     @click="confirm_remove = !confirm_remove">
@@ -446,6 +441,11 @@
             overflow-y: auto;
         }*/
     /*}*/
+
+    .artifact-modal button,.artifact-modal .dropdown-toggle{
+        box-shadow: 0px 0px 10px black;
+        text-shadow: 0px 0px 10px black;
+    }
 
     .ui-modal__body{
         background-image: attr(data-body-image);
