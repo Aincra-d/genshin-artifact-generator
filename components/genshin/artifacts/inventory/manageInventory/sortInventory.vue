@@ -34,21 +34,7 @@
 		},
 		methods: {
 			sortInventory(name,type){
-                let artifacts=this.artifacts.sort((a, b) => type == 'desc'
-                    ? parseFloat(b.stats.subs.filter(sub => sub.name == name)[0]
-                        ? b.stats.subs.filter(sub => sub.name == name)[0].value : 0)
-                    -
-                    parseFloat(a.stats.subs.filter(sub => sub.name == name)[0]
-                        ? a.stats.subs.filter(sub => sub.name == name)[0].value : 0)
-
-                    : parseFloat(a.stats.subs.filter(sub => sub.name == name)[0]
-                        ? a.stats.subs.filter(sub => sub.name == name)[0].value : 0)
-                    -
-                    parseFloat(b.stats.subs.filter(sub => sub.name == name)[0]
-                        ? b.stats.subs.filter(sub => sub.name == name)[0].value : 0)
-                    );
-
-                this.$store.commit('artifacts/setArtifacts',artifacts);
+				this.$store.commit('artifacts/sortInventory',{name,type});
             }
 		},
 		data(){

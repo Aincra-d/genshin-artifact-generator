@@ -10,7 +10,7 @@
         title="Search artifacts"
         ref="artifactSearchModal"
         class="text-light text-center search-modal">
-            <div class="w-100 bg-dark text-center text-light p-1 search-container">
+            <div class="w-100 text-center text-light p-1 search-container">
                 <h6>Select artifact rarity</h6>
                 <filter-by-stars
                 stack
@@ -174,5 +174,11 @@
 <style scoped>
     .search-container{
         max-height:80vh;
+    }
+</style>
+
+<style>
+    .search-modal .ui-modal__body,.search-modal .ui-modal__header{
+        background: #353b49 !important;
     }
 </style>

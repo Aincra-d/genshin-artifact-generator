@@ -66,6 +66,22 @@ export const mutations = {
         }
     },
 
+    sortInventory(state,{name,type}){
+        state.artifacts.sort((a, b) => type == 'desc'
+            ? parseFloat(b.stats.subs.filter(sub => sub.name == name)[0]
+                ? b.stats.subs.filter(sub => sub.name == name)[0].value : 0)
+            -
+            parseFloat(a.stats.subs.filter(sub => sub.name == name)[0]
+                ? a.stats.subs.filter(sub => sub.name == name)[0].value : 0)
+
+            : parseFloat(a.stats.subs.filter(sub => sub.name == name)[0]
+                ? a.stats.subs.filter(sub => sub.name == name)[0].value : 0)
+            -
+            parseFloat(b.stats.subs.filter(sub => sub.name == name)[0]
+                ? b.stats.subs.filter(sub => sub.name == name)[0].value : 0)
+            );
+    },
+
     setActiveFilters(state,{type,value}){
         let active_filter=state.active_filters[state.active_filters.findIndex(filt => filt.type == type)];
 

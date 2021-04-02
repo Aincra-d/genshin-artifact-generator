@@ -135,6 +135,12 @@
 						changes: [
 							'Fixed upgrade and sub reroll issues when rolling 10x'
 						]
+					},
+					{
+						date: '2021.04.02',
+						changes: [
+							'Small design changes'
+						]
 					}
 				]
 			}

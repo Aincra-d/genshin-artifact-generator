@@ -73,8 +73,13 @@
             class="btn text-light btn-link btn-lg p-5 d-inline mx-1 rounded-0 mt-2"
             style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;">
                 <i
+                v-if="!roll_10x"
                 class="fas fa-redo"
                 style="font-size: 50px;"></i>
+
+                <h1 v-else>
+                    <i class="fas fa-redo fa-sm"></i> 10X
+                </h1>
             </button>
 
             <artifact-actions

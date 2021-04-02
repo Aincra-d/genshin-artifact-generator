@@ -9,25 +9,25 @@
         title="App info"
         ref="infoModal"
         class="text-center info-modal">
-            <div class="w-100 text-left text-dark p-1 info-container">
+            <div class="w-100 text-left text-light p-1 info-container">
                 <b-tabs>
-                    <b-tab title="About" active>
+                    <b-tab title-link-class="text-light bg-transparent" title="About" active>
                         <about></about>
                     </b-tab>
 
-                    <b-tab title="Guide">
+                    <b-tab title-link-class="text-light bg-transparent" title="Guide">
                         <guide></guide>
                     </b-tab>
 
-                    <b-tab title="Updates">
+                    <b-tab title-link-class="text-light bg-transparent" title="Updates">
                         <change-log></change-log>
                     </b-tab>
 
-                    <b-tab title="Plans">
+                    <b-tab title-link-class="text-light bg-transparent" title="Plans">
                         <future-plans></future-plans>
                     </b-tab>
 
-                    <b-tab title="Notices">
+                    <b-tab title-link-class="text-light bg-transparent" title="Notices">
                         <notices></notices>
                     </b-tab>
                 </b-tabs>
@@ -81,5 +81,15 @@
 <style scoped>
     .info-container{
         max-height:80vh;
+    }
+</style>
+
+<style>
+    .info-modal .ui-modal__body,.info-modal .ui-modal__header{
+        background: #353b49 !important;
+    }
+
+    .info-modal .ui-modal__header{
+        color:white;
     }
 </style>
