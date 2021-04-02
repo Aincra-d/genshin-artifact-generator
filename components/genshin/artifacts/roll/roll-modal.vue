@@ -145,6 +145,10 @@
         methods: {
             openModal() {
                 this.$refs['rollModal'].open();
+                let self=this;
+                setTimeout(function() {
+                    self.showArtifact(self.artifacts[0].id)
+                }, 50);
             },
             showArtifact(id){
                 this.current_artifact=this.artifacts.filter(artifact => artifact.id === id)[0];

@@ -141,7 +141,8 @@
 						changes: [
 							'Small design changes',
 							'Both single and 10x options are available when opening the app',
-							'Added more future plans'
+							'Added more future plans',
+							'After doing a 10x roll, the first artifact is already visible'
 						]
 					}
 				]
