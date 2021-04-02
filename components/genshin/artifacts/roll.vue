@@ -12,7 +12,7 @@
             </upgrade-modal>
 
             <roll-modal
-            v-if="roll_10x"
+            v-if="roll_10x || !rolled"
             ref="rollModal"
             :show="show_upgrades"
             :single="single_upgrades"
@@ -67,31 +67,53 @@
 
             <br><br>
 
-            <button
-            v-if="artifacts.length === 0 || roll_10x"
-            @click="roll_10x ? roll10x() : singleRoll()"
-            class="btn text-light btn-link btn-lg p-5 d-inline mx-1 rounded-0 mt-2"
-            style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;">
-                <i
-                v-if="!roll_10x"
-                class="fas fa-redo"
-                style="font-size: 50px;"></i>
+            <div v-if="artifacts.length === 0 && !rolled">
+                <button
+                @click="singleRoll()"
+                class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2"
+                style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;">
+                    <i
+                    class="fas fa-redo"
+                    style="font-size: 35px;"></i>
+                </button>
 
-                <h1 v-else>
-                    <i class="fas fa-redo fa-sm"></i> 10X
-                </h1>
-            </button>
+                <button
+                @click="roll10x()"
+                class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2"
+                style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;">
+                    <h4>
+                        <i class="fas fa-redo fa-sm"></i> 10X
+                    </h4>
+                </button>
+            </div>
 
-            <artifact-actions
-            v-else
-            :single="single_upgrades"
-            :artifact="current_artifact"
-            @upgrade="upgrade"
-            @roll-artifact="singleRoll"
-            @add="add"
-            @reroll-main-stat="rerollMainStat"
-            @reroll-sub-stats="rerollSubStats">
-            </artifact-actions>
+            <div v-else>
+                <button
+                v-if="artifacts.length === 0 || roll_10x"
+                @click="roll_10x ? roll10x() : singleRoll()"
+                class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2"
+                style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;">
+                    <i
+                    v-if="!roll_10x"
+                    class="fas fa-redo"
+                    style="font-size: 35px;"></i>
+
+                    <h4 v-else>
+                        <i class="fas fa-redo fa-sm"></i> 10X
+                    </h4>
+                </button>
+
+                <artifact-actions
+                v-else
+                :single="single_upgrades"
+                :artifact="current_artifact"
+                @upgrade="upgrade"
+                @roll-artifact="singleRoll"
+                @add="add"
+                @reroll-main-stat="rerollMainStat"
+                @reroll-sub-stats="rerollSubStats">
+                </artifact-actions>
+            </div>
         </div>
 
         <div>
@@ -210,7 +232,8 @@
                 roll_stats_toggled: false,
                 upgrades: [],
                 old_main_value: 0,
-                roll_10x: false
+                roll_10x: false,
+                rolled: false
                 // roll_count: 0
             }
         },
@@ -229,6 +252,7 @@
             },
             roll10x(){
                 this.artifacts=[];
+                this.roll_10x=true;
 
                 for(let i=0; i<10; i++){
                     this.singleRoll();
@@ -237,6 +261,7 @@
                 this.$refs.rollModal.openModal();
             },
             singleRoll(){
+                this.rolled=true;
                 if(!this.roll_10x) this.artifacts=[];
                 this.sub_stats=this.all_subs;
                 this.setSubs();

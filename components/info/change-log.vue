@@ -139,7 +139,9 @@
 					{
 						date: '2021.04.02',
 						changes: [
-							'Small design changes'
+							'Small design changes',
+							'Both single and 10x options are available when opening the app',
+							'Added more future plans'
 						]
 					}
 				]

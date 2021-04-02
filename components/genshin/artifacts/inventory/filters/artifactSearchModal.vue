@@ -163,6 +163,8 @@
 
                     this.$store.commit('artifacts/setArtifacts', artifacts);
                 }
+
+                this.$refs.artifactSearchModal.close();
             },
             restoreScroll(){
                 document.getElementsByTagName('body')[0].style.overflowY = 'auto';

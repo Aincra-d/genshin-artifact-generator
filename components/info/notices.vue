@@ -21,7 +21,9 @@
 		name: 'notices',
 		data(){
 			return {
-				notices: []
+				notices: [
+					'Guide is currently not completely up to date. It will be updated soon.'
+				]
 			}
 		}
 	}

@@ -100,6 +100,11 @@
 						done: true,
 						priority: 'high',
 						summary: 'Add 10x artifact roll option'
+					},
+					{
+						done: false,
+						priority: 'high',
+						summary: 'Create achievement system'
 					}
 				]
 			}
