@@ -142,6 +142,11 @@
 </script>
 
 <style>
+    .upgrade-modal .ui-modal__body{
+        max-height: 80vh !important;
+        overflow-y: auto;
+    }
+
     .upgrade-modal.stars-5 .header{
         background: #dca451;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #7c5b52,#ac7b53, #dca451);  /* Chrome 10-25, Safari 5.1-6 */
@@ -175,7 +180,6 @@
     .upgrade-modal .ui-modal__body{
         background: #353b49 !important;
         padding: 0;
-        overflow: hidden !important;
     }
     .ui-modal:not(.has-footer) .ui-modal__body{
         padding: 0;
