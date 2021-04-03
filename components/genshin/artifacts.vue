@@ -127,6 +127,6 @@
         margin-top: 55px !important;
 
         overflow-y: auto;
-        height: 90vh;
+        height: 85vh;
     }
 </style>
