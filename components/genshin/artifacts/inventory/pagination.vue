@@ -8,7 +8,7 @@
             <button
             v-if="current_page > 2"
             type="button"
-            class="btn btn-light"
+            class="btn btn-light btn-sm"
             @click="updateCurrentPage(1)">
                 <i class="fas fa-angle-double-left"></i> First
             </button>
@@ -16,7 +16,7 @@
             <button
             v-if="current_page > 1"
             type="button"
-            class="btn btn-light"
+            class="btn btn-light btn-sm"
             @click="updateCurrentPage(current_page - 1)">
                 <i class="fas fa-angle-left"></i> Prev
             </button>
@@ -24,7 +24,7 @@
             <button
             v-if="current_page < all_pages"
             type="button"
-            class="btn btn-light"
+            class="btn btn-light btn-sm"
             @click="updateCurrentPage(current_page + 1)">
                 Next <i class="fas fa-angle-right"></i>
             </button>
@@ -32,7 +32,7 @@
             <button
             v-if="all_pages > 2 && current_page < all_pages-1"
             type="button"
-            class="btn btn-light"
+            class="btn btn-light btn-sm"
             @click="updateCurrentPage(all_pages)">
                 Last <i class="fas fa-angle-double-right"></i>
             </button>
