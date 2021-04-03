@@ -125,5 +125,8 @@
 
     .page-container .tab-pane .artifact-roll-container-tabs, .page-container .tab-pane .inventory-container-tabs{
         margin-top: 55px !important;
+
+        overflow-y: auto;
+        height: 90vh;
     }
 </style>

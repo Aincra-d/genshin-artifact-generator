@@ -169,13 +169,14 @@
 
     html {
         font-size: 100%;
-        height:100vh !important;
+        height:120vh !important;
         overflow:hidden;
         background-image: url('../static/background-image.png');
         margin: 0px;
         padding: 0px;
         overflow-x: hidden;
         overscroll-behavior-y:none;
+        background-color:black;
     }
     body{
         height: 100vh;

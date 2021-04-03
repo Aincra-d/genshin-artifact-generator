@@ -28,7 +28,10 @@
                         <future-plans></future-plans>
                     </b-tab>
 
-                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Notices">
+                    <b-tab title-link-class="text-light bg-transparent font-xs-12">
+                        <div slot="title">
+                            Notices <i class="fas fa-exclamation-circle fa-sm text-warning"></i>
+                        </div>
                         <notices></notices>
                     </b-tab>
                 </b-tabs>
