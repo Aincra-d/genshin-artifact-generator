@@ -181,6 +181,12 @@
 html {
     font-size: 100%;
     height:100vh !important;
+    overflow:hidden;
+    background: #1c1c22;
+}
+body{
+    height: 100%;
+    overflow:auto;
 }
 
 /*@media(min-width: 776px){
