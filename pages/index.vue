@@ -158,95 +158,83 @@
             setTimeout(function() {
                 self.loaded=true;
             }, 2000);
-        },
-        // beforeMount(){
-        //     if(process.client) localStorage.setItem('artifacts',[]);
-        //     if(process.client) localStorage.setItem('roll_counter',0);
-        // },
+        }
     }
 </script>
 
-<!-- <style lang="css">
-@import 'static/positioning.css';
-@import 'https://use.fontawesome.com/releases/v5.11.2/css/all.css';
-</style> -->
-
 <style>
-  *,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-html {
-    font-size: 100%;
-    height:100vh !important;
-    overflow:hidden;
-    background: #1c1c22 !important;
-    background-color: #1c1c22 !important;
-}
-body{
-    height: 100vh;
-    overflow:auto;
-}
-
-/*@media(min-width: 776px){
-    html{
-        overflow-y: hidden;
+    *, *::before, *::after {
+        box-sizing: border-box;
     }
-}*/
 
-.ui-collapsible__header{
-  background-color: rgba(209, 207, 207, 0.2) !important;
-  color:white;
-}
-
-.ui-select__content *{
-    color:white !important;
-    /*max-width: 200px;*/
-}
-
-.ui-select{
-    display: inline-block!important;
-}
-
-@media(min-width: 992px){
-  ::-webkit-scrollbar {
-    color:black;
-    width:15px;
-    height:10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.5);
-  }
-
-
-  ::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.3);
-  }
-}
-
-body{
-    overflow-x: hidden;
-}
-
-.dropdown-toggle{
-    color:white;
-    border-radius: 0;
-}
-
-@media(max-width: 576px){
-    .ui-modal__body{
-        max-height:80vh;
-        overflow-y: auto;
+    html {
+        font-size: 100%;
+        height:100vh !important;
+        overflow:hidden;
+        background-image: url('../static/background-image.png');
     }
-}
-
-@media(min-width: 576px){
-    .ui-modal__body{
-        max-height:100vh;
-        overflow-y: auto;
+    body{
+        height: 100vh;
+        overflow:auto;
     }
-}
+
+    /*@media(min-width: 776px){
+        html{
+            overflow-y: hidden;
+        }
+    }*/
+
+    .ui-collapsible__header{
+      background-color: rgba(209, 207, 207, 0.2) !important;
+      color:white;
+    }
+
+    .ui-select__content *{
+        color:white !important;
+        /*max-width: 200px;*/
+    }
+
+    .ui-select{
+        display: inline-block!important;
+    }
+
+    @media(min-width: 992px){
+      ::-webkit-scrollbar {
+        color:black;
+        width:15px;
+        height:10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.5);
+      }
+
+
+      ::-webkit-scrollbar-thumb {
+        background: rgba(0,0,0,0.3);
+      }
+    }
+
+    body{
+        overflow-x: hidden;
+    }
+
+    .dropdown-toggle{
+        color:white;
+        border-radius: 0;
+    }
+
+    @media(max-width: 576px){
+        .ui-modal__body{
+            max-height:80vh;
+            overflow-y: auto;
+        }
+    }
+
+    @media(min-width: 576px){
+        .ui-modal__body{
+            max-height:100vh;
+            overflow-y: auto;
+        }
+    }
 </style>
