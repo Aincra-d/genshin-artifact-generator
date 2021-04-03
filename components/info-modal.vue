@@ -88,6 +88,7 @@
         /*white-space: nowrap;*/
         overflow-x: auto;
         flex-wrap: nowrap;
+        overflow-y: hidden;
     }
 </style>
 
