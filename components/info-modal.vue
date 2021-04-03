@@ -80,7 +80,7 @@
 </script>
 
 <style>
-    /*@media(max-width: 576px){
+    @media(max-width: 576px){
         .info-modal .ui-modal__body{
             max-height:80vh;
         }
@@ -90,7 +90,7 @@
         .info-modal .ui-modal__body{
             max-height:100vh;
         }
-    }*/
+    }
 
     .info-modal .nav-tabs{
         /*white-space: nowrap;*/

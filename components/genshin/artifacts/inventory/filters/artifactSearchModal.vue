@@ -181,4 +181,16 @@
     .search-modal .ui-modal__body,.search-modal .ui-modal__header{
         background: #353b49 !important;
     }
+
+    @media(max-width: 576px){
+        .search-modal .ui-modal__body{
+            max-height:80vh;
+        }
+    }
+
+    @media(min-width: 576px){
+        .search-modal .ui-modal__body{
+            max-height:100vh;
+        }
+    }
 </style>

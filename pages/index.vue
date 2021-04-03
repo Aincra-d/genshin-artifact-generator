@@ -1,5 +1,5 @@
 <template>
-    <div class="w-100 mx-auto p-0 m-0">
+    <div class="w-100 mx-auto p-0 m-0 content-container">
         <notifications
         width="350"
         position="top center"
@@ -172,6 +172,9 @@
         height:100vh !important;
         overflow:hidden;
         background-image: url('../static/background-image.png');
+        margin: 0px;
+        padding: 0px;
+        overflow-x: hidden;
     }
     body{
         height: 100vh;
@@ -224,9 +227,9 @@
         border-radius: 0;
     }
 
-    @media(max-width: 576px){
+    /*@media(max-width: 576px){
         .ui-modal__body{
-            max-height:80vh;
+            max-height:80vh !important;
             overflow-y: auto;
         }
     }
@@ -236,5 +239,5 @@
             max-height:100vh;
             overflow-y: auto;
         }
-    }
+    }*/
 </style>

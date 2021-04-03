@@ -448,4 +448,16 @@
     .artifact-modal .ui-icon{
         color:white;
     }
+
+    @media(max-width: 576px){
+        .artifact-modal .ui-modal__body{
+            max-height:80vh;
+        }
+    }
+
+    @media(min-width: 576px){
+        .artifact-modal .ui-modal__body{
+            max-height:100vh;
+        }
+    }
 </style>

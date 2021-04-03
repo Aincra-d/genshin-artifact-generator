@@ -142,6 +142,17 @@
 </script>
 
 <style>
+    @media(max-width: 576px){
+        .upgrade-modal .ui-modal__body{
+            max-height:80vh;
+        }
+    }
+
+    @media(min-width: 576px){
+        .upgrade-modal .ui-modal__body{
+            max-height:100vh;
+        }
+    }
     .upgrade-modal.stars-5 .header{
         background: #dca451;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #7c5b52,#ac7b53, #dca451);  /* Chrome 10-25, Safari 5.1-6 */
@@ -176,7 +187,6 @@
         background: #353b49 !important;
         padding: 0;
     }
-    
     .ui-modal:not(.has-footer) .ui-modal__body{
         padding: 0;
     }

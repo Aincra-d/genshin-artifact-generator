@@ -473,6 +473,18 @@
 </script>
 
 <style>
+    @media(max-width: 576px){
+        .roll-modal .ui-modal__body{
+            max-height:80vh;
+        }
+    }
+
+    @media(min-width: 576px){
+        .roll-modal .ui-modal__body{
+            max-height:100vh;
+        }
+    }
+
     .roll-modal .roll-container{
         white-space: nowrap;
         overflow-x: auto;
