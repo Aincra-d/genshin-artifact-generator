@@ -175,10 +175,12 @@
         margin: 0px;
         padding: 0px;
         overflow-x: hidden;
+        overscroll-behavior-y:none;
     }
     body{
         height: 100vh;
         overflow:auto;
+        overscroll-behavior-y:none;
     }
 
     /*@media(min-width: 776px){
