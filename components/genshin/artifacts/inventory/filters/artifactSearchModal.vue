@@ -177,13 +177,6 @@
     }
 </script>
 
-<style scoped>
-    .search-container{
-        max-height:80vh;
-        overflow-x: hidden;
-    }
-</style>
-
 <style>
     .search-modal .ui-modal__body,.search-modal .ui-modal__header{
         background: #353b49 !important;

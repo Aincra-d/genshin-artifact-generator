@@ -80,9 +80,17 @@
 </script>
 
 <style>
-    .info-modal .ui-modal__body{
-        max-height:80vh;
+    /*@media(max-width: 576px){
+        .info-modal .ui-modal__body{
+            max-height:80vh;
+        }
     }
+
+    @media(min-width: 576px){
+        .info-modal .ui-modal__body{
+            max-height:100vh;
+        }
+    }*/
 
     .info-modal .nav-tabs{
         /*white-space: nowrap;*/

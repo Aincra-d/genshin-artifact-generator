@@ -86,8 +86,9 @@
 
 <style>
     body{
-        /*background-image: url('https://images8.alphacoders.com/111/1114939.jpg');*/
-        background-image: url('../../static/site-background.png');
+        background-image: url('https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Dawn_Winery.png/revision/latest?cb=20200915165946');
+        transition: background  300ms;
+        /*background-image: url('../../static/site-background.png');*/
         background-size: cover;
         background-attachment: fixed;
         background-repeat: no-repeat;
@@ -118,7 +119,8 @@
         top:0;
         width: 100%;
         z-index: 10;
-        background-image: url('../../static/site-background.png');
+        background-image: url('https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Dawn_Winery.png/revision/latest?cb=20200915165946');
+        background-size: cover;
         border: 0;
     }
 

@@ -429,29 +429,13 @@
     }
 </script>
 
-<style scoped>
-
-</style>
-
 <style>
-    /*@media(max-width: 991px){*/
-        .artifact-modal .ui-modal__body{
-            max-height: 80vh !important;
-            overflow-y: auto;
-        }
-/*        .ui-modal__body{
-            max-height: 80vh !important;
-            overflow-y: auto;
-        }*/
-    /*}*/
-
     .artifact-modal button,.artifact-modal .dropdown-toggle{
         box-shadow: 0px 0px 10px black;
         text-shadow: 0px 0px 10px black;
     }
 
-    .ui-modal__body{
-        background-image: attr(data-body-image);
+    .artifact-modal .ui-modal__body{
         color:white;
         padding-left:0 !important;
         padding-right:0 !important;
@@ -464,34 +448,4 @@
     .artifact-modal .ui-icon{
         color:white;
     }
-
-   /* .stars-5 .ui-modal__header,.stars-5 .ui-modal__body,.stars-5 .ui-modal__footer{
-        background: #dca451;
-        background: -webkit-linear-gradient(to right, #7c5b52,#ac7b53, #dca451);
-        background: linear-gradient(to right, #7c5b52,#ac7b53, #dca451);
-    }
-
-    .stars-4 .ui-modal__header,.stars-4 .ui-modal__body,.stars-4 .ui-modal__footer{
-        background: #a17bb9;
-        background: -webkit-linear-gradient(to right, #675b8f,#675b8f, #a17bb9);
-        background: linear-gradient(to right, #675b8f,#675b8f, #a17bb9);
-    }
-
-    .stars-3 .ui-modal__header,.stars-3 .ui-modal__body,.stars-3 .ui-modal__footer{
-        background: #5599af;
-        background: -webkit-linear-gradient(to right, #51597a,#517d97, #5599af);
-        background: linear-gradient(to right, #51597a,#517d97, #5599af);
-    }
-
-    .stars-2 .ui-modal__header,.stars-2 .ui-modal__body,.stars-2 .ui-modal__footer{
-        background: #609674;
-        background: -webkit-linear-gradient(to right, #496162,#48736a, #609674);
-        background: linear-gradient(to right, #496162,#48736a, #609674);
-    }
-
-    .stars-1 .ui-modal__header,.stars-1 .ui-modal__body,.stars-1 .ui-modal__footer{
-        background: #7d8995;
-        background: -webkit-linear-gradient(to right, #525965,#6c7480, #7d8995);
-        background: linear-gradient(to right, #525965,#6c7480, #7d8995);
-    }*/
 </style>
