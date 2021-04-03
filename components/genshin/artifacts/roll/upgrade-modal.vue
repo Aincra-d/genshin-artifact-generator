@@ -6,7 +6,7 @@
         style="height:100vh;z-index: 999;"
         alignTop
         removeHeader
-        :alignTopMargin="screen < 991 ? 50 : 150"
+        :alignTopMargin="screen < 991 ? 0 : 150"
         :max-height="100"
         ref="upgradeModal"
         :class="'stars-'+artifact.info.stars"
