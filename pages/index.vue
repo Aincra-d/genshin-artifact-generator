@@ -169,7 +169,7 @@
 
     html {
         font-size: 100%;
-        height:120vh !important;
+        height:100vh !important;
         overflow:hidden;
         background-image: url('../static/background-image.png');
         margin: 0px;
@@ -179,6 +179,7 @@
         background-color:black;
     }
     body{
+        background-image: url('../static/background-image.png');
         height: 100vh;
         overflow:auto;
         overscroll-behavior-y:none;
