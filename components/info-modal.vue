@@ -4,13 +4,14 @@
         @close="restoreScroll"
         style="height:100vh;"
         alignTop
+        removeHeader
         :alignTopMargin="0"
         :max-height="100"
         title="App info"
         ref="infoModal"
         class="text-center info-modal">
             <div class="w-100 text-left text-light p-1 info-container">
-                <b-tabs>
+                <b-tabs class="info-tabs">
                     <b-tab title-link-class="text-light bg-transparent font-xs-12" title="About" active>
                         <about></about>
                     </b-tab>
@@ -78,9 +79,15 @@
     }
 </script>
 
-<style scoped>
-    .info-container{
+<style>
+    .info-modal .ui-modal__body{
         max-height:80vh;
+    }
+
+    .info-modal .nav-tabs{
+        /*white-space: nowrap;*/
+        overflow-x: auto;
+        flex-wrap: nowrap;
     }
 </style>
 

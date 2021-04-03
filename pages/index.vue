@@ -183,11 +183,11 @@ html {
     height:100% !important;
 }
 
-@media(min-width: 776px){
+/*@media(min-width: 776px){
     html{
         overflow-y: hidden;
     }
-}
+}*/
 
 .ui-collapsible__header{
   background-color: rgba(209, 207, 207, 0.2) !important;

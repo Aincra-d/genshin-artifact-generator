@@ -433,11 +433,11 @@
 <style>
     /*@media(max-width: 991px){*/
         .artifact-modal .ui-modal__body{
-            max-height: 90vh !important;
+            max-height: 80vh !important;
             overflow-y: auto;
         }
 /*        .ui-modal__body{
-            max-height: 90vh !important;
+            max-height: 80vh !important;
             overflow-y: auto;
         }*/
     /*}*/

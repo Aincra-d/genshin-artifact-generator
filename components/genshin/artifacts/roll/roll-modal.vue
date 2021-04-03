@@ -471,7 +471,7 @@
 
 <style>
     .roll-modal .ui-modal__body{
-        max-height: 90vh !important;
+        max-height: 80vh !important;
         overflow-y: auto;
     }
 
