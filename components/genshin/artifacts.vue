@@ -1,41 +1,40 @@
 <template>
     <div>
         <b-tabs
-        class="text-light font-weight-bold"
+        class="text-light font-weight-bold page-container"
         active-nav-item-class="btn-light border-0"
         v-if="screen <= 776"
         align="center"
         content-class="mt-3">
             <b-tab title="Artifact roll" active>
-                <div class="position-relative d-block artifact-roll-container p-0 text-center col-12">
-                    <artifact-roll
-                    style="max-height:85vh; overflow-y: auto;">
+                <div class="position-relative d-block artifact-roll-container-tabs p-0
+                text-center col-12">
+                    <artifact-roll>
                     </artifact-roll>
                 </div>
             </b-tab>
 
             <b-tab title="Inventory">
-                <div class="position-relative d-block inventory-container p-0 text-center col-12">
-                    <artifact-inventory
-                    style="height:90vh; overflow-y: auto;">
+                <div class="position-relative d-block inventory-container-tabs
+                p-0 text-center col-12">
+                    <artifact-inventory>
                     </artifact-inventory>
                 </div>
             </b-tab>
         </b-tabs>
 
         <div v-else>
-            <div
-            style="height:100vh; overflow-y: auto;"
-            class="position-absolute top-0 left-0 d-inline-block artifact-roll-container
+            <div class="position-absolute top-0 left-0 d-inline-block
+            page-artifact-roll-container
             p-0 text-center col-12 col-sm-12 col-md-5 col-lg-4 col-xl-5">
                 <artifact-roll>
                 </artifact-roll>
             </div>
 
-            <div class="position-absolute top-0 right-0 d-inline-block inventory-container
+            <div class="position-absolute top-0 right-0 d-inline-block
+            page-inventory-container
             p-0 text-left col-12 col-sm-12 col-md-7 col-lg-8 col-xl-7">
-                <artifact-inventory
-                style="height:100vh; overflow-y: auto;">
+                <artifact-inventory>
                 </artifact-inventory>
             </div>
         </div>
@@ -97,8 +96,32 @@
 </style>
 
 <style>
-    .artifact-roll-container::-webkit-scrollbar {
+    .page-artifact-roll-container::-webkit-scrollbar {
         display: none;
         background: transparent;
+    }
+
+    @media(max-width: 776px){
+        .page-artifact-roll-container, .page-inventory-container{
+            height: 100vh;
+            overflow-y: auto;
+        }
+    }
+
+    .page-artifact-roll-container, .page-inventory-container{
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .page-container .nav-tabs{
+        position: fixed;
+        top:0;
+        width: 100%;
+        z-index: 10;
+        background-image: url('../../static/site-background.png');
+    }
+
+    .page-container .tab-pane .artifact-roll-container-tabs, .page-container .tab-pane .inventory-container-tabs{
+        margin-top: 55px !important;
     }
 </style>
