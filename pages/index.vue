@@ -182,10 +182,11 @@ html {
     font-size: 100%;
     height:100vh !important;
     overflow:hidden;
-    background: #1c1c22;
+    background: #1c1c22 !important;
+    background-color: #1c1c22 !important;
 }
 body{
-    height: 100%;
+    height: 100vh;
     overflow:auto;
 }
 
