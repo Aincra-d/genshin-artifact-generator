@@ -373,6 +373,7 @@
                 this.$notify({
                     group: 'foo',
                     type: 'success',
+                    duration: 1000,
                     title: '<h6>Added artifact to inventory!</h6>'
                 });
 
@@ -403,6 +404,7 @@
                 this.$notify({
                     group: 'foo',
                     type: 'success',
+                    duration: 1000,
                     title: '<h6>Changed main stat from <u>'+old_main+'</u> to <u>'+new_main+'</u></h6>'
                 });
             },
@@ -452,6 +454,7 @@
                 this.$notify({
                     group: 'foo',
                     type: 'success',
+                    duration: 1000,
                     title: '<h6>Changed sub stats from <u>'+old_subs+'</u> to <u>'+new_subs+'</u></h6>'
                 });
             },

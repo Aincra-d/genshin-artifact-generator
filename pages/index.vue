@@ -180,7 +180,7 @@
 
 html {
     font-size: 100%;
-    height:100% !important;
+    height:100vh !important;
 }
 
 /*@media(min-width: 776px){

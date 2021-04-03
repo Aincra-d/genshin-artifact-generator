@@ -3,6 +3,7 @@
 		<div class="mb-3">
             <button
             v-if="single"
+            :dropleft="screen < 360"
             type="button"
             class="btn btn-link text-light d-inline rounded-0 mx-1"
             style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
@@ -19,8 +20,7 @@
             text="Upgrade"
             style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
             :size="screen < 576 ? 'sm' : 'md'"
-            variant="link"
-            class="m-2">
+            variant="link">
                 <b-dropdown-item
                 :disabled="artifact.info.level == artifact.info.max_level"
                 @click="artifact.info.level != artifact.info.max_level && $emit('upgrade',1)"
@@ -46,25 +46,16 @@
             style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
             :class="screen < 576 ? 'btn-sm' : 'btn-md'"
             @click="$emit('roll-artifact')">
-                <i class="fas fa-redo fa-sm mr-1"></i> Reroll
-            </button>
-
-            <button
-            type="button"
-            class="btn btn-link text-light d-inline rounded-0 mx-1"
-            style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
-            :class="screen < 576 ? 'btn-sm' : 'btn-md'"
-            @click="$emit('add')">
-                <i class="fas fa-plus fa-sm mr-1"></i>Add
+                <i class="fas fa-redo fa-sm mr-1"></i> Roll
             </button>
 
             <b-dropdown
             id="dropdown-left"
             text="Reroll"
+            :dropright="screen < 360"
             style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
             :size="screen < 576 ? 'sm' : 'md'"
-            variant="link"
-            class="m-2">
+            variant="link">
                 <b-dropdown-item
                 @click="artifact.info.rerolls.main.count == 0 && $emit('reroll-main-stat')"
                 :disabled="artifact.info.rerolls.main.count == 1  || ['Flower of Life','Plume of Death'].includes(artifact.info.piece.type)"
@@ -79,6 +70,15 @@
                     Sub stats(max: 1)
                 </b-dropdown-item>
             </b-dropdown>
+
+            <button
+            type="button"
+            class="btn btn-link text-light d-inline rounded-0 mx-1"
+            style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
+            :class="screen < 576 ? 'btn-sm' : 'btn-md'"
+            @click="$emit('add')">
+                <i class="fas fa-plus fa-sm mr-1"></i>Add
+            </button>
         </div>
 	</div>
 </template>

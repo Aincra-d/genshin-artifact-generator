@@ -198,16 +198,24 @@
         }
     }
 
-    @media(max-width:1200px){
+    @media(min-width: 370px) and (max-width:1200px){
         .artifact-image{
             width:100px;
             height:100px;
         }
     }
+
     @media(min-width:1200px){
         .artifact-image{
             width:120px;
             height:120px;
+        }
+    }
+
+     @media(max-width: 370px){
+        .artifact-image{
+            width:80px;
+            height:80px;
         }
     }
 

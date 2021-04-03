@@ -5,7 +5,7 @@
         active-nav-item-class="btn-light border-0"
         v-if="screen <= 776"
         align="center"
-        content-class="mt-3">
+        content-class="mt-3 border-0">
             <b-tab title="Artifact roll" active>
                 <div class="position-relative d-block artifact-roll-container-tabs p-0
                 text-center col-12">
@@ -119,6 +119,7 @@
         width: 100%;
         z-index: 10;
         background-image: url('../../static/site-background.png');
+        border: 0;
     }
 
     .page-container .tab-pane .artifact-roll-container-tabs, .page-container .tab-pane .inventory-container-tabs{

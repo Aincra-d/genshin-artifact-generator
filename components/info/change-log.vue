@@ -149,7 +149,8 @@
 					{
 						date: '2021.04.03',
 						changes: [
-							'Design issue fixes'
+							'Design issue fixes',
+							'Improved usability'
 						]
 					},
 				]

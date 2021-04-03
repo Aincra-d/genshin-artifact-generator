@@ -52,7 +52,7 @@
                         'fas fa-check-square' : 'far fa-square'">
                         </i>
 
-                        {{ type.name }} <i class="fas fa-type text-warning fa-sm"></i> ({{ type.count }})
+                        {{ type.name }} <i class="fas fa-type text-warning fa-sm"></i>({{ type.count }})
                     </b-dropdown-item>
                 </b-dropdown>
                 

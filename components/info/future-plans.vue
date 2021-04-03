@@ -105,6 +105,11 @@
 						done: false,
 						priority: 'high',
 						summary: 'Create achievement system'
+					},
+					{
+						done: false,
+						priority: 'high',
+						summary: 'Add feedback/contact form'
 					}
 				]
 			}
