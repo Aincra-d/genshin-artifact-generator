@@ -181,6 +181,7 @@
 html {
     font-size: 100%;
     overflow-y: hidden;
+    height:100%;
 }
 
 

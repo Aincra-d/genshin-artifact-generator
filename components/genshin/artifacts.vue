@@ -7,7 +7,7 @@
         align="center"
         content-class="mt-3">
             <b-tab title="Artifact roll" active>
-                <div class="position-relative d-block roll-container p-0 text-center col-12">
+                <div class="position-relative d-block artifact-roll-container p-0 text-center col-12">
                     <artifact-roll
                     style="max-height:85vh; overflow-y: auto;">
                     </artifact-roll>
@@ -26,7 +26,7 @@
         <div v-else>
             <div
             style="height:100vh; overflow-y: auto;"
-            class="position-absolute top-0 left-0 d-inline-block roll-container
+            class="position-absolute top-0 left-0 d-inline-block artifact-roll-container
             p-0 text-center col-12 col-sm-12 col-md-5 col-lg-4 col-xl-5">
                 <artifact-roll>
                 </artifact-roll>
@@ -93,5 +93,12 @@
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-position: center;
+    }
+</style>
+
+<style>
+    .artifact-roll-container::-webkit-scrollbar {
+        display: none;
+        background: transparent;
     }
 </style>

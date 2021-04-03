@@ -458,6 +458,8 @@
             upgrade(upgrade_count){
                 if(upgrade_count === null) upgrade_count = 1;
                 this.upgrades=[];
+                this.sub_stats=this.all_subs;
+                this.setSubs();
 
                 let artifact=this.current_artifact;
 
