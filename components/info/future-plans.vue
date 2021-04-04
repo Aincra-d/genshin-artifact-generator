@@ -2,19 +2,19 @@
 	<div>
 		<ul class="list-unstyled">
 			<li class="d-inline">
-				<i class="fas fa-circle text-secondary"></i> - low priority
+				<i class="fas fa-circle text-secondary"></i> Inessential
 			</li>
 
 			<li class="d-inline">
-				<i class="fas fa-circle text-warning"></i> - medium priority
+				<i class="fas fa-circle text-warning"></i> In plan
 			</li>
 
 			<li class="d-inline">
-				<i class="fas fa-circle text-danger"></i> - high priority
+				<i class="fas fa-circle text-danger"></i> Important
 			</li>
 
 			<li class="d-inline">
-				<i class="fas fa-check-square text-success"></i> - done
+				<i class="fas fa-check-square text-success"></i> Done
 			</li>
 		</ul>
 
