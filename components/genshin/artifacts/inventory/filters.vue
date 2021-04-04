@@ -95,18 +95,11 @@
         methods: {
             selectAllArtifacts(){
                 if(this.artifacts.length == this.delete_ids.length){
-                    this.$store.commit('artifacts/setDeleteIdsAll',[]);
-                    this.ids=[];
+                    this.$store.commit('artifacts/setDeleteIdsAll',null);
                 }
                 else{
-                    this.artifacts.forEach(artifact => {
-                        if(!this.$store.state.artifacts.delete_ids.includes(artifact.id)){
-                            this.ids.push(artifact.id)
-                        }
-                    });
+                    this.$store.commit('artifacts/setDeleteIdsAll',1);
                 }
-
-                this.$store.commit('artifacts/setDeleteIdsAll',this.ids);
             },
             deleteArtifacts(){
                 let artifacts=JSON.parse(localStorage.artifacts) || [];

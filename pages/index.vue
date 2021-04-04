@@ -205,6 +205,11 @@
         display: inline-block!important;
     }
 
+    .ui-modal{
+        overflow-y: hidden;
+        overscroll-behavior-y:none;
+    }
+
     @media(min-width: 992px){
       ::-webkit-scrollbar {
         color:black;

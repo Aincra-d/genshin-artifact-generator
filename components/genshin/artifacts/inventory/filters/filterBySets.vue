@@ -12,7 +12,7 @@
                     :class="stack ? 'w-50' : 'w-30'"
                     class="btn btn-secondary btn-sm d-inline float-left rounded-0"
                     @click="selectAll">
-                        Select all
+                        All
                     </button>
 
                     <button

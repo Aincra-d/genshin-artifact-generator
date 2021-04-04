@@ -103,7 +103,19 @@ export const mutations = {
         state.active_filters[state.active_filters.findIndex(filt => filt.type == type)].exclude=value;
     },
 
-    setDeleteIdsAll: (state,ids) => state.delete_ids=ids,
+    setDeleteIdsAll(state,asd){
+        if(asd === null) state.delete_ids=[];
+        else{
+            let ids=[];
+
+            state.artifacts.forEach(artifact => {
+                if(!state.delete_ids.includes(artifact.id)){
+                    ids.push(artifact.id)
+                }
+            });
+            state.delete_ids=ids;
+        }
+    },
 
     setFilterType: (state,exclude) => state.exclude_filters=exclude,
 
