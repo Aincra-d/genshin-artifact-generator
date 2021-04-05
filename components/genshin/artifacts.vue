@@ -14,7 +14,7 @@
                 </div>
             </b-tab>
 
-            <b-tab title="Inventory">
+            <b-tab title="Inventory" lazy>
                 <div class="position-relative d-block inventory-container-tabs
                 p-0 text-center col-12">
                     <artifact-inventory>

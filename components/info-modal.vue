@@ -12,23 +12,23 @@
         class="text-center info-modal">
             <div class="w-100 text-left text-light p-1 info-container">
                 <b-tabs class="info-tabs">
-                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="About" active>
+                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="About" active lazy>
                         <about></about>
                     </b-tab>
 
-                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Guide">
+                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Guide" lazy>
                         <guide></guide>
                     </b-tab>
 
-                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Updates">
+                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Updates" lazy>
                         <change-log></change-log>
                     </b-tab>
 
-                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Plans">
+                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Plans" lazy>
                         <future-plans></future-plans>
                     </b-tab>
 
-                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Notices">
+                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Notices" lazy>
                         <notices></notices>
                     </b-tab>
                 </b-tabs>
