@@ -164,7 +164,6 @@
             <div
             v-if="loaded"
             class="w-100 text-center"
-            style="max-height: 50vh; overflow-y: auto;">
                 <b-button-group class="my-3">
                     <b-button
                     v-b-toggle.domain-select
@@ -185,7 +184,8 @@
 
                 <b-collapse
                 id="domain-select"
-                class="bg-transparent text-light">
+                class="bg-transparent text-light"
+                style="max-height: 50vh; overflow-y: auto;">
                     <b-card
                     v-b-toggle.domain-select
                     :key="i"
