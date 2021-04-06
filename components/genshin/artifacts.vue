@@ -6,7 +6,7 @@
         v-if="screen <= 776"
         align="center"
         content-class="mt-3 border-0">
-            <b-tab title="Artifact roll" active>
+            <b-tab title="Artifact Generator" active>
                 <div class="position-relative d-block artifact-roll-container-tabs p-0
                 text-center col-12">
                     <artifact-roll>
@@ -14,7 +14,7 @@
                 </div>
             </b-tab>
 
-            <b-tab title="Inventory" lazy>
+            <b-tab title="Inventory">
                 <div class="position-relative d-block inventory-container-tabs
                 p-0 text-center col-12">
                     <artifact-inventory>

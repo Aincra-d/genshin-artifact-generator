@@ -15,14 +15,14 @@
             	<b-dropdown-item
 	            @click="sortInventory(sorts[i].name,'asc')">
 	                <span>
-	                	<i class="fas fa-angle-up"></i> Ascending
+	                	Ascending <i class="fas fa-angle-up"></i>
 	                </span>
 	            </b-dropdown-item>
 
 	            <b-dropdown-item
 	            @click="sortInventory(sorts[i].name,'desc')">
 	                <span>
-	                	<i class="fas fa-angle-down"></i> Descending
+	                	Descending <i class="fas fa-angle-down"></i>
 	                </span>
 	            </b-dropdown-item>
 	        </b-dropdown-group>

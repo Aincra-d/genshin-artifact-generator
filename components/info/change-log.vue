@@ -59,14 +59,14 @@
 						date: '2021.03.20',
 						changes: [
 							'Added pagination support to inventory',
-							'Added roll stats to artifact roll',
+							'Added roll stats to artifact generator',
 							"Fixed not working inventory view changing"
 						]
 					},
 					{
 						date: '2021.03.21',
 						changes: [
-							'Added game-like upgrade option to artifact roll'
+							'Added game-like upgrade option to artifact generator'
 						]
 					},
 					{
@@ -127,7 +127,7 @@
 						changes: [
 							'Changed star and type filter into dropdowns',
 							'Added "Exclude" option to each filter options, now you can separately set each filter type to include/exclude the selected options',
-							'Added 10x roll option to artifact roll'
+							'Added 10x roll option to artifact generator'
 						]
 					},
 					{
@@ -157,6 +157,12 @@
 						date: '2021.04.05',
 						changes: [
 							'Grouped sort options in inventory'
+						]
+					},
+					{
+						date: '2021.04.06',
+						changes: [
+							'Changed domain select in artifact generator from select into a collapsable menu with the image of sets displayed'
 						]
 					}
 				]

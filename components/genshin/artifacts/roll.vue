@@ -127,17 +127,17 @@
             :artifact="artifact">
             </artifact>
 
-            <div>
+            <!--<div>
                 <b-input-group
                 class="w-80 d-inline-block text-center">
                     <ui-select
                     class="mb-0 mt-1 select pt-1 px-1 d-inline-block"
                     placeholder="Select domain"
-                    :options="domain_names"
+                    :options="domains"
                     v-model="selected_domain">
                     </ui-select>
 
-                    <!-- <b-dropdown
+                    <b-dropdown
                     :text="selected_domain == '' ? 'Select domain' : selected_domain"
                     variant="light"
                     class="text-dark rounded-0">
@@ -148,7 +148,7 @@
                             {{ domain }}
                         </b-dropdown-item>
                     </b-dropdown>
- -->
+
                     <b-input-group-append class="d-inline">
                         <b-button
                         style="margin-left:-5px"
@@ -159,6 +159,58 @@
                         </b-button>
                     </b-input-group-append>
                 </b-input-group>
+            </div> -->
+
+            <div
+            v-if="loaded"
+            class="w-100 text-center">
+                <b-button-group class="my-3">
+                    <b-button
+                    v-b-toggle.domain-select
+                    class="rounded-0"
+                    variant="light"
+                    :size="screen < 576 ? 'sm' : 'md' ">
+                        {{ selected_domain == '' ? 'Select domain' : selected_domain }}
+                    </b-button>
+
+                    <b-button
+                    variant="danger"
+                    :size="screen < 576 ? 'sm' : 'md' "
+                    @click="selected_domain=''"
+                    class="text-light pr-2">
+                        <i class="fas fa-times mr-1"></i>
+                    </b-button>
+                </b-button-group>
+
+                <b-collapse
+                id="domain-select"
+                class="bg-transparent text-light">
+                    <b-card
+                    v-b-toggle.domain-select
+                    :key="i"
+                    v-for="(domain,i) in domains"
+                    class="bg-transparent p-0 text-light d-block pointer border-light border-left-0 border-right-0 border-top-0 col-12 col-sm-6 mx-auto"
+                    @click="selected_domain=(selected_domain == '' ? domain.name
+                    : selected_domain == domain.name ? '' : domain.name)">
+                        <h5>
+                            {{ domain.name }}
+                        </h5>
+
+                        <img
+                        :key="j"
+                        v-for="(img,j) in domain.images"
+                        :src="img"
+                        :alt="domain.sets[i]"
+                        style="width:40px; height:40px"
+                        class="d-inline-block mx-1">
+
+                        <span
+                        v-if="selected_domain == domain.name"
+                        class="position-absolute top-0 right-0">
+                            <i class="fas fa-check-square fa-lg"></i>
+                        </span>
+                    </b-card>
+                </b-collapse>
             </div>
 
             <h5 class="text-light roll-counter">
@@ -193,10 +245,10 @@
     import artifactActions from '@/components/genshin/artifacts/roll/artifact-actions.vue';
     import upgradeModal from '@/components/genshin/artifacts/roll/upgrade-modal.vue';
     import rollModal from '@/components/genshin/artifacts/roll/roll-modal.vue';
-    import substatsJ from '~/static/substats.json';
-    import domainsJ from '~/static/domains.json';
-    import mainstatsJ from '~/static/mainstats.json';
-    import setsJ from '~/static/sets.json';
+    import substatsJSON from '~/static/substats.json';
+    import domainsJSON from '~/static/domains.json';
+    import mainstatsJSON from '~/static/mainstats.json';
+    import setsJSON from '~/static/sets.json';
     import { uuid } from 'vue-uuid';
     export default{
         name: 'roll',
@@ -217,12 +269,12 @@
                 current_artifact: {},
                 roll_counter: process.client && (localStorage.roll_counter || 0),
                 all_subs: [],
-                sub_stats: substatsJ,
-                domains: domainsJ,
-                main_stats: mainstatsJ,
-                sub_stat_names: substatsJ.map(sub => sub.name),
-                domain_names: domainsJ.map(domain => domain.name),
-                sets: setsJ,
+                sub_stats: substatsJSON,
+                domains: domainsJSON,
+                main_stats: mainstatsJSON,
+                sub_stat_names: substatsJSON.map(sub => sub.name),
+                domain_names: domainsJSON.map(domain => domain.name),
+                sets: setsJSON,
                 desired_subs: [],
                 selected_domain: '',
                 max_sub_counts: [1,2,4,4,4],
@@ -233,7 +285,8 @@
                 upgrades: [],
                 old_main_value: 0,
                 roll_10x: false,
-                rolled: false
+                rolled: false,
+                loaded: false
                 // roll_count: 0
             }
         },
@@ -727,11 +780,37 @@
             },
             openModal() {
                 this.$refs.upgradeModal.openModal();
+            },
+            setDomains(){
+                let domains=[];
+
+                this.domains.forEach(domain => {
+                    let images=[];
+
+                    domain.sets.forEach(domain_set => {
+                        images.push(this.sets.filter(set => set.name == domain_set)[0].image);
+                    });
+
+                    domains.push({
+                        name: domain.name,
+                        sets: domain.sets,
+                        images: images
+                    });
+                });
+
+                this.domains=domains;
             }
         },
         created(){
             this.setSubs();
             this.setRollStats();
+            this.setDomains();
+
+            let self=this;
+
+            setTimeout(function() {
+                self.loaded=true;
+            }, 10);
         }
     }
 </script>

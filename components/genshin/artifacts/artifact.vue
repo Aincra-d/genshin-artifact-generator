@@ -1,104 +1,14 @@
 <template>
     <div>
         <div v-if="client">
-            <div
+            <artifact-body
             v-if="view != 'images'"
+            :artifact="artifact"
+            :inventory="inventory"
+            :deleting="delete_artifacts"
             :class="'stars-'+artifact.info.stars+' '+view+' '+(view == 'full' ? 'align-top' : '')"
             class="d-inline-block p-0 border border-light text-light border-0 artifact contain-info">
-
-                <div class="w-100 text-left set-name">
-                    <h5 class="ml-4 d-inline">
-                        {{
-                            artifact.info.piece.name.length > 25 ? artifact.info.piece.name.substring(0, 22)+'...' : artifact.info.piece.name
-                        }}
-                    </h5>
-
-                    <button
-                    v-if="inventory && !delete_artifacts"
-                    type="button"
-                    class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
-                    @click="$emit('open-modal','artifactModal',artifact.id)">
-                        <i class="fas fa-edit fa-sm"></i>
-                    </button>
-
-                    <b-form-checkbox
-                    v-if="inventory && delete_artifacts"
-                    :checked="delete_ids.includes(artifact.id)"
-                    size="lg"
-                    type="button"
-                    class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
-                    @change="addDeleteId(artifact.id)">
-                    </b-form-checkbox>
-                </div>
-
-                <div class="w-100 text-right artifact-main-info position-relative">
-                    <img
-                    class="mr-1"
-                    style="height:150px;width:150px;"
-                    v-lazy="artifact.info.piece.image"
-                    :alt="artifact.info.piece.name">
-
-                    <h6 class="position-absolute top-0 left-0 artifact-type ml-4">
-                        {{ artifact.info.piece.type }}
-                    </h6>
-
-                    <div class="artifact-main-stat position-absolute bottom-0 left-0 text-left">
-                        <!-- {{ artifact.info.set.name }} -->
-
-                        <span class="font-15 font-weight-bold artifact-main-stat ml-4 mb-0">
-                            {{ artifact.stats.main.name.replace('%','') }}
-                        </span>
-
-                        <h2 class="font-weight-bold text-light artifact-main-value ml-4 mt-0">
-                            {{ artifact.stats.main.value }}
-                        </h2>
-
-                        <span class="ml-4 mt-2">
-                            <i
-                            :key="i"
-                            v-for="(star,i) in artifact.info.stars"
-                            class="fas fa-star text-warning fa-md mr-1"></i>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="artifact-sub-info m-0 p-0">
-                    
-
-                    <ul class="list-unstyled text-left font-weight-bold artifact-sub-stats ml-4 pt-3">
-                        <li>
-                            <h6
-                            class="d-inline text-light bg-dark rounded font-weight-bold px-1">
-                                <h5 class="d-inline">+</h5>{{ artifact.info.level }}
-                            </h6>
-                        </li>
-
-                        <li
-                        :class="desired_subs ?
-                        (desired_subs.includes(sub.name) ? 'text-success font-weight-bold' : '') : ''"
-                        :key="i"
-                        v-for="(sub,i) in artifact.stats.subs">
-                            {{ sub.name.replace('%','') }} <i class="fas fa-plus fa-xs"></i> {{ (Math.round(sub.value * 100) / 100)+(sub.name.includes('%') ? '%' : '') }}
-                        </li>
-                    </ul>
-
-                    <div class="artifact-set-info text-left">
-                        <h6 class="artifact-set-name font-weight-bold ml-4">
-                            {{ artifact.info.set.name }}:
-                        </h6>
-
-                        <ul class="list-unstyled font-weight-bold text-left ml-4 artifact-set-effects w-90">
-                            <li>
-                                2-Piece Set: {{ artifact.info.set.effects['2_piece'] }}
-                            </li>
-
-                            <li class="mt-1">
-                                4-Piece Set: {{ artifact.info.set.effects['4_piece'] }}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            </artifact-body>
 
             <div v-else>
                 <div
@@ -115,6 +25,29 @@
                         v-lazy="artifact.info.piece.image"
                         :alt="artifact.info.piece.name">
                     </button>
+
+                    <!-- <b-button
+                    v-if="inventory && !delete_artifacts"
+                    :id="'artifact-'+artifact.id"
+                    class="artifact-main-info">
+                        <img
+                        class="mr-1 artifact-image"
+                        v-lazy="artifact.info.piece.image"
+                        :alt="artifact.info.piece.name">
+                    </b-button>
+
+                    <b-popover
+                    :target="'artifact-'+artifact.id"
+                    triggers="focus"
+                    class="bg-transparent p-3">
+                        <artifact-body
+                        :artifact="artifact"
+                        :inventory="inventory"
+                        :deleting="delete_artifacts"
+                        :class="'stars-'+artifact.info.stars+' '+view+' '+(view == 'full' ? 'align-top' : '')"
+                        class="d-inline-block p-0 border border-light text-light border-0 artifact contain-info">
+                        </artifact-body>
+                    </b-popover> -->
 
                     <button
                     v-if="inventory && delete_artifacts"
@@ -141,14 +74,16 @@
 </template>
 
 <script>
+    import artifactBody from './artifact/artifactBody.vue';
     export default{
         name: 'artifact',
         props: {
             artifact: Object,
             inventory: Boolean,
-            editing: Boolean,
-            desired_subs: Array,
             view: String
+        },
+        components: {
+            'artifact-body': artifactBody
         },
         computed: {
             delete_artifacts(){
@@ -313,5 +248,14 @@
     .artifact.compressed{
         max-height: 185px;
         overflow-y: auto;
+    }
+</style>
+
+<style>
+    .popover{
+        background: transparent;
+        border:0;
+        border-radius: 0;
+        /*max-width: 400px;*/
     }
 </style>
