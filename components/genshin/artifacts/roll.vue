@@ -185,7 +185,7 @@
                 <b-collapse
                 id="domain-select"
                 class="bg-transparent text-light"
-                style="max-height: 50vh; overflow-y: auto;">
+                style="max-height: 45vh; overflow-y: auto;">
                     <b-card
                     v-b-toggle.domain-select
                     :key="i"
