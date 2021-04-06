@@ -4,6 +4,7 @@
             <b-input-group class="w-100 d-inline-block filter-select"
             :class="!stack ? (screen < 776 ? 'text-center' : 'text-left') : 'text-center'">
                 <b-dropdown
+                :size="screen < 576 ? 'sm' : 'md'"
                 :text="sub_stats.length!=0 ? sub_stats.length+' stat(s) selected' : 'Select sub stat(s)'"
                 variant="light"
                 class="text-dark rounded-0">
@@ -34,10 +35,22 @@
                             Exclude
                         </button>
 
+                        <!-- <button
+                        type="button"
+                        :class="stack ? 'w-34' : 'w-30'"
+                        class="btn btn-dark btn-sm d-inline float-left rounded-0"
+                        @click="match_subs=!match_subs">
+                            <i
+                            class="fa-sm"
+                            :class="match_subs ? 'fas fa-check-square' : 'far fa-square'"></i>
+                            Match
+                        </button> -->
+
                     <b-dropdown-item
                     :key="i"
                     v-for="(sub,i) in artifact_sub_stats"
-                    @click.native.capture.stop="addSubStat(sub.name)">
+                    @click.native.capture.stop="addSubStat(sub.name)"
+                    class="font-xs-15">
                         <i
                         class="fa-sm"
                         :class="sub_stats.includes(sub.name) ?
@@ -50,6 +63,7 @@
                 
                 <b-input-group-append class="d-inline">
                     <b-form-checkbox
+                    :size="screen < 576 ? 'sm' : 'md'"
                     v-if="!exclude_filter"
                     v-model="match_subs"
                     style="margin-left:-5px;"
@@ -62,6 +76,7 @@
                     </b-form-checkbox>
 
                     <b-button
+                    :size="screen < 576 ? 'sm' : 'md'"
                     style="margin-left:-5px"
                     variant="danger"
                     @click="emptySubStats"

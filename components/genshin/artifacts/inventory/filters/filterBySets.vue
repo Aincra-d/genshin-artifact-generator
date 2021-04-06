@@ -4,6 +4,7 @@
             <b-input-group class="w-100 d-inline-block ml-3 ml-lg-0 filter-select"
             :class="!stack ? (screen < 776 ? 'text-center' : 'text-left') : 'text-center'">
                 <b-dropdown
+                :size="screen < 576 ? 'sm' : 'md'"
                 :text="sets.length!=0 ? sets.length+' set(s) selected' : 'Select artifact set(s)'"
                 variant="light"
                 class="text-dark rounded-0">
@@ -43,7 +44,8 @@
                     <b-dropdown-item
                     :key="i"
                     v-for="(set,i) in artifact_sets"
-                    @click.native.capture.stop="addSet(set.name)">
+                    @click.native.capture.stop="addSet(set.name)"
+                    class="font-xs-15">
                         <i
                         class="fa-sm"
                         :class="sets.includes(set.name) ?
@@ -56,6 +58,7 @@
                 
                 <b-input-group-append class="d-inline">
                     <b-button
+                    :size="screen < 576 ? 'sm' : 'md'"
                     style="margin-left:-5px"
                     variant="danger"
                     @click="emptySets"

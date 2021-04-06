@@ -7,7 +7,8 @@
             :inventory="inventory"
             :deleting="delete_artifacts"
             :class="'stars-'+artifact.info.stars+' '+view+' '+(view == 'full' ? 'align-top' : '')"
-            class="d-inline-block p-0 border border-light text-light border-0 artifact contain-info">
+            class="d-inline-block p-0 border border-light text-light border-0 artifact contain-info"
+            @open-modal="$emit('open-modal','artifactModal',artifact.id)">
             </artifact-body>
 
             <div v-else>

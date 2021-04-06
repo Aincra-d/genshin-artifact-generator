@@ -2,11 +2,10 @@
     <div>
         <b-tabs
         class="text-light font-weight-bold page-container"
-        active-nav-item-class="btn-light border-0"
         v-if="screen <= 776"
         align="center"
         content-class="mt-3 border-0">
-            <b-tab title="Artifact Generator" active>
+            <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Artifact Generator" active>
                 <div class="position-relative d-block artifact-roll-container-tabs p-0
                 text-center col-12">
                     <artifact-roll>
@@ -14,7 +13,7 @@
                 </div>
             </b-tab>
 
-            <b-tab title="Inventory">
+            <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Inventory">
                 <div class="position-relative d-block inventory-container-tabs
                 p-0 text-center col-12">
                     <artifact-inventory>

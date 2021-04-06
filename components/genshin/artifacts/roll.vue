@@ -21,9 +21,10 @@
             </roll-modal>
 
             <b-dropdown
+            menu-class="w-100"
             text="Artifact roll settings"
             variant="outline-light"
-            class="text-dark rounded-0 border-0 outline-0">
+            class="text-dark rounded-0 border-0 outline-0 mx-auto">
                 <b-dropdown-item @click.native.capture.stop="include_low_stars=!include_low_stars">
                     <i
                     class="fa-sm"
@@ -31,7 +32,7 @@
                     'fas fa-check-square' : 'far fa-square'">
                     </i>
 
-                    Include 1-3 star artifacts
+                    Include 1-3 star
                 </b-dropdown-item>
 
                 <b-dropdown-item @click.native.capture.stop="single_upgrades=!single_upgrades">

@@ -4,6 +4,7 @@
             <b-input-group class="w-100 d-inline-block ml-3 ml-lg-0 filter-select"
             :class="!stack ? (screen < 776 ? 'text-center' : 'text-left') : 'text-center'">
                 <b-dropdown
+                :size="screen < 576 ? 'sm' : 'md'"
                 :text="main_stats.length!=0 ? main_stats.length+' stat(s) selected' : 'Select main stat(s)'"
                 variant="light"
                 class="text-dark rounded-0">
@@ -45,7 +46,8 @@
                     <b-dropdown-item
                     :key="i"
                     v-for="(main,i) in artifact_main_stats"
-                    @click.native.capture.stop="addMainStat(main.name)">
+                    @click.native.capture.stop="addMainStat(main.name)"
+                    class="font-xs-15">
                         <i
                         class="fa-sm"
                         :class="main_stats.includes(main.name) ?
@@ -58,6 +60,7 @@
                 
                 <b-input-group-append class="d-inline">
                     <b-button
+                    :size="screen < 576 ? 'sm' : 'md'"
                     style="margin-left:-5px"
                     variant="danger"
                     @click="emptyMainStats"
