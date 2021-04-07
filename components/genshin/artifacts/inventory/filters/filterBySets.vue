@@ -3,6 +3,17 @@
         <div>
             <b-input-group class="w-100 d-inline-block ml-3 ml-lg-0 filter-select"
             :class="!stack ? (screen < 776 ? 'text-center' : 'text-left') : 'text-center'">
+                <b-input-group-prepend class="d-inline">
+                    <b-button
+                    :size="screen < 576 ? 'sm' : 'md'"
+                    style="margin-right:-5px"
+                    variant="secondary"
+                    @click="toggled=!toggled"
+                    class="text-light">
+                        <i :class="toggled ? 'fas fa-angle-up' : 'fas fa-angle-down'"></i>
+                    </b-button>
+                </b-input-group-prepend>
+
                 <b-dropdown
                 :size="screen < 576 ? 'sm' : 'md'"
                 :text="sets.length!=0 ? sets.length+' set(s) selected' : 'Select artifact set(s)'"
@@ -67,6 +78,23 @@
                     </b-button>
                 </b-input-group-append>
             </b-input-group>
+
+            <zoom-y-transition :duration="250">
+                <div
+                v-if="toggled"
+                class="text-light">
+                    Selected sets: 
+                    <ul class="d-inline ml-2 p-0">
+                        <li
+                        :key="i"
+                        v-for="(set,i) in sets"
+                        class="d-inline pointer"
+                        @click="sets.splice(sets.findIndex(_set => _set == set),1)">
+                            {{ set }} |
+                        </li>
+                    </ul>
+                </div>
+            </zoom-y-transition>
         </div>
     </div>
 </template>
@@ -86,7 +114,8 @@
             return {
                 artifact_set_names: setsJ.map(set => set.name),
                 set_name: '',
-                sets: []
+                sets: [],
+                toggled: false
             }
         },
         computed: {

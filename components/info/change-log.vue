@@ -168,7 +168,8 @@
 					{
 						date: '2021.04.07',
 						changes: [
-							'Clicking/touching an artifact in "Images only" view will show the main and sub stats. You can also edit your artifact from there.'
+							'Clicking/touching an artifact in "Images only" view will show the main and sub stats. You can also edit your artifact from there',
+							'Added option to display selected filters'
 						]
 					}
 				]

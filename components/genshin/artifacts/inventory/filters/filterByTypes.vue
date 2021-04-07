@@ -3,6 +3,17 @@
         <div>
             <b-input-group class="w-100 d-inline-block ml-3 ml-lg-0 filter-select"
             :class="!stack ? (screen < 776 ? 'text-center' : 'text-left') : 'text-center'">
+                <b-input-group-prepend class="d-inline">
+                    <b-button
+                    :size="screen < 576 ? 'sm' : 'md'"
+                    style="margin-right:-5px"
+                    variant="secondary"
+                    @click="toggled=!toggled"
+                    class="text-light">
+                        <i :class="toggled ? 'fas fa-angle-up' : 'fas fa-angle-down'"></i>
+                    </b-button>
+                </b-input-group-prepend>
+
                 <b-dropdown
                 :size="screen < 576 ? 'sm' : 'md'"
                 :text="types.length!=0 ? types.length+' type(s) selected' : 'Select artifact types'"
@@ -69,6 +80,23 @@
                     </b-button>
                 </b-input-group-append>
             </b-input-group>
+
+            <zoom-y-transition :duration="250">
+                <div
+                v-if="toggled"
+                class="text-light">
+                    Selected types: 
+                    <ul class="d-inline ml-2 p-0">
+                        <li
+                        :key="i"
+                        v-for="(type,i) in types"
+                        class="d-inline pointer"
+                        @click="types.splice(types.findIndex(_type => _type == type),1)">
+                            {{ type }} |
+                        </li>
+                    </ul>
+                </div>
+            </zoom-y-transition>
         </div>
     </div>
 </template>
@@ -85,7 +113,8 @@
         data(){
             return {
                 artifact_types: ["Flower of Life","Plume of Death","Sands of Eon","Goblet of Eonothem","Circlet of Logos"],
-                types: []
+                types: [],
+                toggled: false
             }
         },
         computed: {

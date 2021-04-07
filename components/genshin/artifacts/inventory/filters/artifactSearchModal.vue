@@ -193,4 +193,8 @@
             max-height:100vh;
         }
     }
+
+    .search-modal .ui-modal__body{
+        overflow-x: hidden;
+    }
 </style>
