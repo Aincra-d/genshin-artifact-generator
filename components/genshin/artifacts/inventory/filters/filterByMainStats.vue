@@ -8,32 +8,34 @@
                 :text="main_stats.length!=0 ? main_stats.length+' stat(s) selected' : 'Select main stat(s)'"
                 variant="light"
                 class="text-dark rounded-0">
-                    <button
-                    type="button"
-                    :class="stack ? 'w-50' : 'w-30'"
-                    class="btn btn-secondary btn-sm d-inline float-left rounded-0"
-                    @click="selectAll">
-                        All
-                    </button>
+                <div>
+                        <button
+                        type="button"
+                        :class="stack ? 'w-50' : 'w-30'"
+                        class="btn btn-secondary btn-sm d-inline float-left rounded-0"
+                        @click="selectAll">
+                            All
+                        </button>
 
-                    <button
-                    v-if="!stack"
-                    type="button"
-                    class="btn btn-info btn-sm w-30 d-inline float-left rounded-0"
-                    @click="filterByMainStats">
-                        Apply
-                    </button>
+                        <button
+                        v-if="!stack"
+                        type="button"
+                        class="btn btn-info btn-sm w-30 d-inline float-left rounded-0"
+                        @click="filterByMainStats">
+                            Apply
+                        </button>
 
-                    <button
-                    type="button"
-                    :class="stack ? 'w-50' : 'w-40'"
-                    class="btn btn-primary btn-sm d-inline float-left rounded-0"
-                    @click="exclude_filter=!exclude_filter">
-                        <i
-                        class="fa-sm"
-                        :class="exclude_filter ? 'fas fa-check-square' : 'far fa-square'"></i>
-                        Exclude
-                    </button>
+                        <button
+                        type="button"
+                        :class="stack ? 'w-50' : 'w-40'"
+                        class="btn btn-primary btn-sm d-inline float-left rounded-0"
+                        @click="exclude_filter=!exclude_filter">
+                            <i
+                            class="fa-sm"
+                            :class="exclude_filter ? 'fas fa-check-square' : 'far fa-square'"></i>
+                            Exclude
+                        </button>
+                    </div>
 
                     <!-- <button
                     v-if="!stack"

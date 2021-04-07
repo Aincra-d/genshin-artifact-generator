@@ -40,10 +40,20 @@ export const state = () => ({
             data: []
         }
     ],
+    selected_domain: '',
+    roll_settings: {
+        include_low_stars: true,
+        single_upgrades: false,
+        roll_10x: false,
+        show_upgrades: true
+    }
     // rolled_artifacts: []
 });
 
 export const mutations = {
+    setRollSettings(state,name){
+        state.roll_settings[name]=!state.roll_settings[name];
+    },
     setArtifacts: (state,artifacts) => state.artifacts=artifacts,
 
     setScreen: (state,screen) => state.screen=screen,
@@ -129,13 +139,5 @@ export const mutations = {
         }
     },
 
-    // setRolledArtifacts(state,{artifact,id}){
-    //     if(id === null){
-    //         state.rolled_artifacts.push(artifact)
-    //     }
-    //     else{
-    //         state.rolled_artifacts.splice(state.rolled_artifacts.findIndex(
-    //             artifact => artifact.id === id),1);
-    //     }
-    // }
+    setSelectedDomain: (state,name) => state.selected_domain=name
 };

@@ -87,7 +87,7 @@
                     },
                     {
                         name: 'CRIT DMG%',
-                        icon: '🎯'
+                        icon: '💯'
                     },
                 ]
 			}

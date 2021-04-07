@@ -12,59 +12,16 @@
             </upgrade-modal>
 
             <roll-modal
-            v-if="roll_10x || !rolled"
+            v-if="roll_settings.roll_10x || !rolled"
             ref="rollModal"
-            :show="show_upgrades"
-            :single="single_upgrades"
+            :show="roll_settings.show_upgrades"
+            :single="roll_settings.single_upgrades"
             :artifacts="artifacts"
             @show-upgrades="showUpgrades">    
             </roll-modal>
 
-            <b-dropdown
-            menu-class="w-100"
-            text="Artifact roll settings"
-            variant="outline-light"
-            class="text-dark rounded-0 border-0 outline-0 mx-auto">
-                <b-dropdown-item @click.native.capture.stop="include_low_stars=!include_low_stars">
-                    <i
-                    class="fa-sm"
-                    :class="include_low_stars ?
-                    'fas fa-check-square' : 'far fa-square'">
-                    </i>
-
-                    Include 1-3 star
-                </b-dropdown-item>
-
-                <b-dropdown-item @click.native.capture.stop="single_upgrades=!single_upgrades">
-                    <i
-                    class="fa-sm"
-                    :class="single_upgrades ?
-                    'fas fa-check-square' : 'far fa-square'">
-                    </i>
-                    
-                    Single upgrades
-                </b-dropdown-item>
-
-                <b-dropdown-item @click.native.capture.stop="show_upgrades=!show_upgrades">
-                    <i
-                    class="fa-sm"
-                    :class="show_upgrades ?
-                    'fas fa-check-square' : 'far fa-square'">
-                    </i>
-                    
-                    Show upgrades
-                </b-dropdown-item>
-
-                <b-dropdown-item @click.native.capture.stop="set10xRoll">
-                    <i
-                    class="fa-sm"
-                    :class="roll_10x ?
-                    'fas fa-check-square' : 'far fa-square'">
-                    </i>
-                    
-                    10x rolls
-                </b-dropdown-item>
-            </b-dropdown>
+            <roll-settings @emptyArtifacts="emptyArtifacts">
+            </roll-settings>
 
             <br><br>
 
@@ -90,12 +47,12 @@
 
             <div v-else>
                 <button
-                v-if="artifacts.length === 0 || roll_10x"
-                @click="roll_10x ? roll10x() : singleRoll()"
+                v-if="artifacts.length === 0 || roll_settings.roll_10x"
+                @click="roll_settings.roll_10x ? roll10x() : singleRoll()"
                 class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2"
                 style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;">
                     <i
-                    v-if="!roll_10x"
+                    v-if="!roll_settings.roll_10x"
                     class="fas fa-redo"
                     style="font-size: 35px;"></i>
 
@@ -106,7 +63,7 @@
 
                 <artifact-actions
                 v-else
-                :single="single_upgrades"
+                :single="roll_settings.single_upgrades"
                 :artifact="current_artifact"
                 @upgrade="upgrade"
                 @roll-artifact="singleRoll"
@@ -119,101 +76,16 @@
 
         <div>
             <artifact
-            v-if="!roll_10x"
+            v-if="!roll_settings.roll_10x"
             style="max-width:500px"
             class="p-3 mx-auto"
             :key="artifact.id"
             v-for="artifact in artifacts"
-            :desired_subs="desired_subs"
             :artifact="artifact">
             </artifact>
 
-            <!--<div>
-                <b-input-group
-                class="w-80 d-inline-block text-center">
-                    <ui-select
-                    class="mb-0 mt-1 select pt-1 px-1 d-inline-block"
-                    placeholder="Select domain"
-                    :options="domains"
-                    v-model="selected_domain">
-                    </ui-select>
-
-                    <b-dropdown
-                    :text="selected_domain == '' ? 'Select domain' : selected_domain"
-                    variant="light"
-                    class="text-dark rounded-0">
-                        <b-dropdown-item
-                        :key="i"
-                        v-for="(domain,i) in domain_names"
-                        @click="selected_domain=domain">
-                            {{ domain }}
-                        </b-dropdown-item>
-                    </b-dropdown>
-
-                    <b-input-group-append class="d-inline">
-                        <b-button
-                        style="margin-left:-5px"
-                        variant="danger"
-                        @click="selected_domain=''"
-                        class="text-light mb-2 pt-1">
-                            <i class="fas fa-times"></i>
-                        </b-button>
-                    </b-input-group-append>
-                </b-input-group>
-            </div> -->
-
-            <div
-            v-if="loaded"
-            class="w-100 text-center"
-                <b-button-group class="my-3">
-                    <b-button
-                    v-b-toggle.domain-select
-                    class="rounded-0"
-                    variant="light"
-                    :size="screen < 576 ? 'sm' : 'md' ">
-                        {{ selected_domain == '' ? 'Select domain' : selected_domain }}
-                    </b-button>
-
-                    <b-button
-                    variant="danger"
-                    :size="screen < 576 ? 'sm' : 'md' "
-                    @click="selected_domain=''"
-                    class="text-light pr-2">
-                        <i class="fas fa-times mr-1"></i>
-                    </b-button>
-                </b-button-group>
-
-                <b-collapse
-                id="domain-select"
-                class="bg-transparent text-light"
-                style="max-height: 45vh; overflow-y: auto;">
-                    <b-card
-                    v-b-toggle.domain-select
-                    :key="i"
-                    v-for="(domain,i) in domains"
-                    class="bg-transparent p-0 text-light d-block pointer border-light border-left-0 border-right-0 border-top-0 col-12 col-sm-6 mx-auto"
-                    @click="selected_domain=(selected_domain == '' ? domain.name
-                    : selected_domain == domain.name ? '' : domain.name)">
-                        <h5>
-                            {{ domain.name }}
-                        </h5>
-
-                        <img
-                        :key="j"
-                        v-for="(img,j) in domain.images"
-                        :src="img"
-                        :alt="domain.sets[i]"
-                        style="width:40px; height:40px"
-                        class="d-inline-block mx-1">
-
-                        <span
-                        v-if="selected_domain == domain.name"
-                        class="position-absolute top-0 right-0">
-                            <i class="fas fa-check-square fa-lg"></i>
-                        </span>
-                    </b-card>
-                </b-collapse>
-            </div>
+            <domain-select :domains="domains">
+            </domain-select>
 
             <h5 class="text-light roll-counter">
                 Number of rolls: {{ roll_counter }}
@@ -247,6 +119,8 @@
     import artifactActions from '@/components/genshin/artifacts/roll/artifact-actions.vue';
     import upgradeModal from '@/components/genshin/artifacts/roll/upgrade-modal.vue';
     import rollModal from '@/components/genshin/artifacts/roll/roll-modal.vue';
+    import domainSelect from './roll/domainSelect.vue';
+    import rollSettings from './roll/rollSettings.vue';
     import substatsJSON from '~/static/substats.json';
     import domainsJSON from '~/static/domains.json';
     import mainstatsJSON from '~/static/mainstats.json';
@@ -258,11 +132,19 @@
             artifact,
             'artifact-actions': artifactActions,
             'upgrade-modal': upgradeModal,
-            'roll-modal': rollModal
+            'roll-modal': rollModal,
+            'domain-select': domainSelect,
+            'roll-settings': rollSettings,
         },
         computed: {
             screen(){
                 return this.$store.state.artifacts.screen
+            },
+            selected_domain(){
+                return this.$store.state.artifacts.selected_domain
+            },
+            roll_settings(){
+                return this.$store.state.artifacts.roll_settings
             }
         },
         data(){
@@ -277,16 +159,10 @@
                 sub_stat_names: substatsJSON.map(sub => sub.name),
                 domain_names: domainsJSON.map(domain => domain.name),
                 sets: setsJSON,
-                desired_subs: [],
-                selected_domain: '',
                 max_sub_counts: [1,2,4,4,4],
-                include_low_stars: true,
-                single_upgrades: false,
-                show_upgrades: true,
                 roll_stats_toggled: false,
                 upgrades: [],
                 old_main_value: 0,
-                roll_10x: false,
                 rolled: false,
                 loaded: false
                 // roll_count: 0
@@ -300,14 +176,12 @@
 
                 this.$refs.upgradeModal.openModal();
             },
-            set10xRoll(){
-                this.roll_10x=!this.roll_10x;
-
+            emptyArtifacts(){
                 this.artifacts=[];
             },
             roll10x(){
                 this.artifacts=[];
-                this.roll_10x=true;
+                this.roll_settings.roll_10x=true;
 
                 for(let i=0; i<10; i++){
                     this.singleRoll();
@@ -317,12 +191,12 @@
             },
             singleRoll(){
                 this.rolled=true;
-                if(!this.roll_10x) this.artifacts=[];
+                if(!this.roll_settings.roll_10x) this.artifacts=[];
                 this.sub_stats=this.all_subs;
                 this.setSubs();
                 let sets = this.sets;
 
-                if(!this.include_low_stars) sets=sets.filter(set => set.stars.includes(5));
+                if(!this.roll_settings.include_low_stars) sets=sets.filter(set => set.stars.includes(5));
 
                 if(this.selected_domain !== ""){
                     let domain_sets=this.domains.filter(domain => domain.name === this.selected_domain)[0].sets;
@@ -585,7 +459,7 @@
                 // console.log(this.upgrades)
                 this.upgrades.reverse();
 
-                if(this.show_upgrades) this.openModal();
+                if(this.roll_settings.show_upgrades) this.openModal();
             },
             setSubs(){
                 this.all_subs=[
