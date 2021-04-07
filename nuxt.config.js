@@ -22,6 +22,10 @@ export default {
     {
       src: '~/plugins/bootstrap-vue.js',
       mode: 'client'
+    },
+    {
+      src: '~/plugins/vue2-transitions.js',
+      mode: 'client'
     }
   ],
 

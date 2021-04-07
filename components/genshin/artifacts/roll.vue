@@ -100,16 +100,18 @@
                 </button>
             </h5>
 
-            <ul
-            v-if="roll_stats_toggled"
-            class="text-light text-center mx-auto list-unstyled">
-               <li
-               :key="i"
-               v-for="(stat,i) in roll_stats"
-               style="text-shadow: 0px 0px 10px black;">
-                   {{ stat.name+' - '+stat.counter }}
-               </li> 
-            </ul>
+            <zoom-y-transition :duration="250">
+                <ul
+                v-if="roll_stats_toggled"
+                class="text-light text-center mx-auto list-unstyled">
+                   <li
+                   :key="i"
+                   v-for="(stat,i) in roll_stats"
+                   style="text-shadow: 0px 0px 10px black;">
+                       {{ stat.name+' - '+stat.counter }}
+                   </li> 
+                </ul>
+            </zoom-y-transition>
         </div>
     </div>
 </template>

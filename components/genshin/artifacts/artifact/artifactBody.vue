@@ -9,7 +9,7 @@
                 </h5>
 
                 <button
-                v-if="inventory && !deleting"
+                v-if="inventory && !delete_artifacts"
                 type="button"
                 class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
                 @click="$emit('open-modal','artifactModal',artifact.id)">
@@ -17,7 +17,7 @@
                 </button>
 
                 <b-form-checkbox
-                v-if="inventory && deleting"
+                v-if="inventory && delete_artifacts"
                 :checked="delete_ids.includes(artifact.id)"
                 size="lg"
                 type="button"
@@ -101,12 +101,21 @@
 			inventory: {
 				type: Boolean,
 				default: false
-			},
-			deleting: {
-				type: Boolean,
-				default: false
 			}
-		}
+		},
+		computed: {
+            delete_artifacts(){
+                return this.$store.state.artifacts.delete_artifacts
+            },
+            delete_ids(){
+                return this.$store.state.artifacts.delete_ids
+            }
+        },
+        methods: {
+        	addDeleteId(id){
+                this.$store.commit('artifacts/setDeleteIds',id);
+            },
+        }
 	}
 </script>
 

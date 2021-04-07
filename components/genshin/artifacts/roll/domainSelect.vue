@@ -27,7 +27,7 @@
                 v-b-toggle.domain-select
                 :key="i"
                 v-for="(domain,i) in domains"
-                class="bg-transparent p-0 text-light d-block pointer border-light border-left-0 border-right-0 border-top-0 col-12 col-sm-6 mx-auto"
+                class="bg-transparent p-0 text-light d-block pointer border-light border-left-0 border-right-0 border-top-0 col-12 col-sm-6 col-md-12 col-xl-6 mx-auto"
                 @click="selected_domain=(selected_domain == '' ? domain.name
                 : selected_domain == domain.name ? '' : domain.name)">
                     <h5>
