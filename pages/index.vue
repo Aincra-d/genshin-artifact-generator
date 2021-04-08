@@ -8,8 +8,7 @@
 
         <genshin/>
 
-        <br>
-        <br>
+        <br><br><br>
 
         <info-modal
         v-if="loaded"
