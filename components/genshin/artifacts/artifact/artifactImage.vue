@@ -7,7 +7,7 @@
             v-if="inventory && !delete_artifacts"
             type="button"
             class="btn d-flex text-light artifact-main-info artifact-thumb d-inline
-            rounded btn-md float-left py-0 px-1 mx-1"
+            rounded btn-md float-left py-0 px-2 mx-1"
             @click="/*$emit('open-modal','artifactModal',artifact.id)*/ toggled=!toggled">
                 <collapse-transition :duration="250" group>
                     <img

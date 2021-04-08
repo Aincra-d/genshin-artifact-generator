@@ -105,11 +105,19 @@
         .artifact-thumb{
             overflow-y:auto;
         }
+
+        img.artifact-thumb{
+            margin-left:-5px;
+        }
     }
 
     @media(min-width: 370px){
         .artifact-thumb{
             overflow-y:hidden;
+        }
+
+        img.artifact-thumb{
+            margin-left:-10px;
         }
     }
 

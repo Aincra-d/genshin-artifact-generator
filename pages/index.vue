@@ -8,6 +8,9 @@
 
         <genshin/>
 
+        <br>
+        <br>
+
         <info-modal
         v-if="loaded"
         ref="infoModal">
@@ -181,7 +184,7 @@
     body{
         background-image: url('../static/background-image.png');
         height: 100vh;
-        overflow:auto;
+        overflow-y:auto;
         overscroll-behavior-y:none;
     }
 
