@@ -16,7 +16,7 @@
                         <about></about>
                     </b-tab>
 
-                    <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Guide" lazy>
+                    <b-tab disabled title-link-class="text-secondary bg-transparent font-xs-12" title="Guide" lazy>
                         <guide></guide>
                     </b-tab>
 

@@ -109,6 +109,11 @@
 					{
 						done: false,
 						priority: 'high',
+						summary: 'Add option to view achievements'
+					},
+					{
+						done: false,
+						priority: 'high',
 						summary: 'Add feedback/contact form'
 					}
 				]

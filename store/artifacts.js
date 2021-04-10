@@ -42,15 +42,21 @@ export const state = () => ({
     ],
     selected_domain: '',
     roll_settings: {
-        include_low_stars: true,
+        include_low_stars: false,
         single_upgrades: false,
         roll_10x: false,
         show_upgrades: true
-    }
+    },
+    achievements: []
     // rolled_artifacts: []
 });
 
 export const mutations = {
+    setAchievements(state,achievements){
+        state.achievements=achievements;
+        localStorage.setItem('achievements',JSON.stringify(achievements));
+    },
+
     setRollSettings(state,name){
         state.roll_settings[name]=!state.roll_settings[name];
     },

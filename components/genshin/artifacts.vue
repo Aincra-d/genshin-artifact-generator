@@ -41,8 +41,10 @@
 </template>
 
 <script>
-    import artifactRoll from '@/components/genshin/artifacts/roll.vue'
-    import artifactInventory from '@/components/genshin/artifacts/inventory.vue'
+    import artifactRoll from '@/components/genshin/artifacts/roll.vue';
+    import artifactInventory from '@/components/genshin/artifacts/inventory.vue';
+    import substatsJSON from '~/static/substats.json';
+    import domainsJSON from '~/static/domains.json';
     export default{
          name: 'artifacts',
          components: {
@@ -51,7 +53,14 @@
          },
          data(){
             return {
-                screen: 0
+                screen: 0,
+                sub_stats: substatsJSON,
+                domain_names: domainsJSON.map(domain => domain.name),
+            }
+         },
+         computed: {
+            achievements(){
+                return this.$store.state.artifacts.achievements
             }
          },
          methods: {
@@ -63,6 +72,51 @@
 
                 let view=(sessionStorage.inventoryView || (screen < 776 ? 'images' : 'compressed'));
                 this.$store.commit('artifacts/setView',view);
+            },
+            setAchievements(){
+                if(!localStorage.achievements){
+                    let roll_numbers={ 100: false, 500: false, 1000: false, 2500: false, 5000: false, 10000: false, 20000: false, 30000: false, 40000: false, 50000: false, 60000: false, 70000: false, 80000: false, 90000: false, 100000: false
+                    };
+
+                    let domain_rolls={};
+
+                    this.domain_names.forEach(name => {
+                        domain_rolls[name]=roll_numbers;
+                    });
+
+                    let upgrades={
+                        subs: {}
+                    }
+
+                    this.sub_stats.forEach(sub => {
+                        let name=sub.name;
+                        let values=[];
+
+                        for(let i=2; i<8; i++){
+                            values.push({
+                                value: name.includes('%') ? (sub.values['4'][3]*i).toFixed(1) : sub.values['4'][3]*i,
+                                done: false
+                            });
+                        }
+
+                        upgrades.subs[sub.name]=values;
+                    });
+
+                    let achievements={
+                        rolls: {
+                            overall: roll_numbers,
+                            domains: domain_rolls
+                        },
+                        upgrades: upgrades
+                    }
+
+                    localStorage.setItem('achievements',JSON.stringify(achievements));
+                    this.$store.commit('artifacts/setAchievements',achievements);
+                }
+                else{
+                    let achievements=JSON.parse(localStorage.achievements);
+                    this.$store.commit('artifacts/setAchievements',achievements);
+                }
             }
          },
          created(){
@@ -79,6 +133,11 @@
 
             let view=(sessionStorage.inventoryView || (screen < 776 ? 'images' : 'compressed'));
             this.$store.commit('artifacts/setView',view);
+
+            console.log('ach',this.$store.state.artifacts.achievements)
+        },
+        beforeMount(){
+            this.setAchievements();
         }
     }
 </script>

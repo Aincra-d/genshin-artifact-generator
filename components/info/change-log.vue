@@ -171,7 +171,14 @@
 							'Clicking/touching an artifact in "Images only" view will show the main and sub stats. You can also edit your artifact from there',
 							'Added option to display selected filters'
 						]
-					}
+					},
+					// {
+					// 	date: '2021.04.10',
+					// 	changes: [
+					// 		'Improved background logic',
+					// 		'Implemented achievement system! You can earn new achievements by rolling, upgrading artifacts, rerolling their stats etc.'
+					// 	]
+					// },
 				]
 			}
 		},
