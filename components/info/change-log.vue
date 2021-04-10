@@ -1,11 +1,51 @@
 <template>
 	<div>
+		<ul class="list-unstyled">
+			<li class="d-inline">
+				<button
+				:class="type == 'fix' ? 'btn-secondary' : 'btn-outline-secondary'"
+				class="btn btn-sm text-light w-32"
+				@click="filterUpdates('fix')">
+					<i class="fas fa-bug text-success"></i> Fix
+				</button>
+			</li>
+
+			<li class="d-inline">
+				<button
+				:class="type == 'feature' ? 'btn-secondary' : 'btn-outline-secondary'"
+				class="btn btn-sm text-light w-32"
+				@click="filterUpdates('feature')">
+					<b class="text-primary">{}</b> Feature
+				</button>
+			</li>
+
+			<li class="d-inline">
+				<button
+				:class="type == 'update' ? 'btn-secondary' : 'btn-outline-secondary'"
+				class="btn btn-sm text-light w-32"
+				@click="filterUpdates('update')">
+					<i class="fas fa-exclamation-circle text-info"></i> Update
+				</button>
+			</li>
+		</ul>
+
 		<ul>
 			<li
 			:key="i"
-			v-for="(log,i) in logs">
+			v-for="(log,i) in logs"
+			class="my-2 border-right-0 border-left-0 border-top-0 border border-light">
 				<h6>
 					{{ log.date }}
+
+					<i
+					v-if="log.types.includes('fix')"
+					class="fas fa-bug text-success"></i>
+
+					<b v-if="log.types.includes('feature')"
+					class="text-primary">{}</b>
+
+					<i v-if="log.types.includes('update')"
+					class="fas fa-exclamation-circle text-info"></i>
 				</h6>
 				<ul>
 					<li
@@ -24,9 +64,12 @@
 		name: 'changeLog',
 		data(){
 			return {
-				logs: [
+				type: '',
+				logs: [],
+				changes: [
 					{
 						date: '2021.03.15',
+						types: ['feature','fix','update'],
 						changes: [
 							'Added site info modal',
 							'Changed app loading screen',
@@ -35,6 +78,7 @@
 					},
 					{
 						date: '2021.03.16',
+						types: ['update'],
 						changes: [
 							'Updated contact info',
 							'Small changes in the guide',
@@ -43,6 +87,7 @@
 					},
 					{
 						date: '2021.03.17',
+						types: ['feature','update'],
 						changes: [
 							'Added different views to inventory',
 							'Updated guide',
@@ -51,12 +96,14 @@
 					},
 					{
 						date: '2021.03.19',
+						types: ['update'],
 						changes: [
 							'Added more future plans'
 						]
 					},
 					{
 						date: '2021.03.20',
+						types: ['feature','fix'],
 						changes: [
 							'Added pagination support to inventory',
 							'Added roll stats to artifact generator',
@@ -65,12 +112,14 @@
 					},
 					{
 						date: '2021.03.21',
+						types: ['feature'],
 						changes: [
 							'Added game-like upgrade option to artifact generator'
 						]
 					},
 					{
 						date: '2021.03.22',
+						types: ['update','feature'],
 						changes: [
 							'Updated guide',
 							'Added more future plans'
@@ -78,6 +127,7 @@
 					},
 					{
 						date: '2021.03.24',
+						types: ['update','feature'],
 						changes: [
 							'Improved background logic',
 							'Added exclude option to inventory filters',
@@ -86,6 +136,7 @@
 					},
 					{
 						date: '2021.03.25',
+						types: ['update','feature'],
 						changes: [
 							'Design improvements',
 							'Added counters to filter dropdown',
@@ -94,6 +145,7 @@
 					},
 					{
 						date: '2021.03.26',
+						types: ['feature','update'],
 						changes: [
 							'Added select all option to deleting artifacts in inventory',
 							'Design improvements',
@@ -104,6 +156,7 @@
 					},
 					{
 						date: '2021.03.27',
+						types: ['feture'],
 						changes: [
 							'Added "Notices" tab',
 							'Added artifact search option'
@@ -111,12 +164,14 @@
 					},
 					{
 						date: '2021.03.28',
+						types: ['feature'],
 						changes: [
 							'Changed delete artifacts option in inventory from dropdown option to a separate button'
 						]
 					},
 					{
 						date: '2021.03.30',
+						types: ['feature'],
 						changes: [
 							'Moved "Exclude filters" option in inventory to filter dropdown',
 							'Small design changes'
@@ -124,6 +179,7 @@
 					},
 					{
 						date: '2021.03.31',
+						types: ['update','feature'],
 						changes: [
 							'Changed star and type filter into dropdowns',
 							'Added "Exclude" option to each filter options, now you can separately set each filter type to include/exclude the selected options',
@@ -132,12 +188,14 @@
 					},
 					{
 						date: '2021.04.01',
+						types: ['fix'],
 						changes: [
 							'Fixed upgrade and sub reroll issues when rolling 10x'
 						]
 					},
 					{
 						date: '2021.04.02',
+						types: ['update','feature,fix'],
 						changes: [
 							'Small design changes',
 							'Both single and 10x options are available when opening the app',
@@ -148,6 +206,7 @@
 					},
 					{
 						date: '2021.04.03',
+						types: ['fix','update'],
 						changes: [
 							'Design issue fixes',
 							'Improved usability'
@@ -155,35 +214,48 @@
 					},
 					{
 						date: '2021.04.05',
+						types: ['feature'],
 						changes: [
 							'Grouped sort options in inventory'
 						]
 					},
 					{
 						date: '2021.04.06',
+						types: ['feature'],
 						changes: [
 							'Changed domain select in artifact generator from select into a collapsable menu with the image of sets displayed'
 						]
 					},
 					{
 						date: '2021.04.07',
+						types: ['feature'],
 						changes: [
 							'Clicking/touching an artifact in "Images only" view will show the main and sub stats. You can also edit your artifact from there',
 							'Added option to display selected filters'
 						]
 					},
-					// {
-					// 	date: '2021.04.10',
-					// 	changes: [
-					// 		'Improved background logic',
-					// 		'Implemented achievement system! You can earn new achievements by rolling, upgrading artifacts, rerolling their stats etc.'
-					// 	]
-					// },
+					{
+						date: '2021.04.10',
+					types: ['update','feature'],
+						changes: [
+							'Improved background logic',
+							'Implemented achievement system! You can earn new achievements by rolling, upgrading artifacts, rerolling their stats, adding artifacts to your inventory etc',
+							'Added labels to updates based on their type, and you can filter them'
+						]
+					},
 				]
 			}
 		},
+		methods: {
+			filterUpdates(type){
+				this.logs=this.changes;
+				this.logs=this.logs.filter(log => log.types.includes(type));
+				this.type=type;
+			}
+		},
 		created(){
-			this.logs.reverse();
+			this.changes.reverse();
+			this.logs=this.changes;
 		}
 	}
 </script>
