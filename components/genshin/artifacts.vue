@@ -98,14 +98,16 @@
 
                         for(let i=2; i<8; i++){
                             values.push({
-                                value: name.includes('%') ? (sub.values['4'][3]*i).toFixed(1) : sub.values['4'][3]*i,
+                                value: name.includes('%')
+                                ? (sub.values['4'][3]*i).toFixed(1)
+                                : sub.values['4'][3]*i,
                                 done: false
                             });
                         }
 
                         upgrades.subs[sub.name]=values;
                     });
-                    
+
                     roll_numbers=[ {value: 100, done: false}, {value: 500, done: false}, {value: 1000, done: false}, {value: 2500, done: false}, {value: 5000, done: false}, {value: 10000, done: false}, {value: 20000, done: false}, {value: 30000, done: false}, {value: 40000, done: false}, {value: 50000, done: false}, {value: 60000, done: false}, {value: 70000, done: false}, {value: 80000, done: false}, {value: 90000, done: false}, {value: 100000, done: false}];
 
                     let achievements={

@@ -29,12 +29,13 @@
 			</li>
 		</ul>
 
-		<ul>
+		<ul class="list-unstyled py-1">
 			<li
 			:key="i"
 			v-for="(log,i) in logs"
-			class="my-2 border-right-0 border-left-0 border-top-0 border border-light">
-				<h6>
+			style="background-color: #282c38;border-left: 3px solid white;"
+			class="my-3 px-sm-4 py-1 font-xs-12 rounded">
+				<h6 class="ml-2">
 					{{ log.date }}
 
 					<i
@@ -156,7 +157,7 @@
 					},
 					{
 						date: '2021.03.27',
-						types: ['feture'],
+						types: ['feature'],
 						changes: [
 							'Added "Notices" tab',
 							'Added artifact search option'
@@ -171,7 +172,7 @@
 					},
 					{
 						date: '2021.03.30',
-						types: ['feature'],
+						types: ['feature','update'],
 						changes: [
 							'Moved "Exclude filters" option in inventory to filter dropdown',
 							'Small design changes'
@@ -195,7 +196,7 @@
 					},
 					{
 						date: '2021.04.02',
-						types: ['update','feature,fix'],
+						types: ['update','feature','fix'],
 						changes: [
 							'Small design changes',
 							'Both single and 10x options are available when opening the app',
@@ -239,8 +240,9 @@
 					types: ['update','feature'],
 						changes: [
 							'Improved background logic',
-							'Implemented achievement system! You can earn new achievements by rolling artifacts, upgrading and adding them to your inventory',
-							'Added labels to updates based on their type, and you can filter them'
+							'Implemented achievement system! You can earn new achievements by rolling artifacts, upgrading and adding them to your inventory. Option to view them will also be added in the near future!',
+							'Added labels to updates based on their type, and you can filter them',
+							'Improved updates design'
 						]
 					},
 				]
