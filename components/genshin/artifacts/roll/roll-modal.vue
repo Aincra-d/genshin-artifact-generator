@@ -193,7 +193,7 @@
             },
             upgrade(upgrade_count){
                 artifactMethods.upgrade(this,false,true,upgrade_count);
-                updateAchievements(this);
+                updateAchievements.updateUpgrades(this);
             },
             showUpgrades(){
                 this.$emit('show-upgrades',this.upgrades,this.current_artifact,this.old_main_value)

@@ -199,7 +199,7 @@
             },
             upgrade(){
                 artifactMethods.upgrade(this,true,false,1);
-                updateAchievements(this);
+                updateAchievements.updateUpgrades(this);
             },
             updateInventory(artifact){
                 let artifacts=JSON.parse(localStorage.artifacts);

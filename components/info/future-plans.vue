@@ -115,6 +115,11 @@
 						done: false,
 						priority: 'high',
 						summary: 'Add feedback/contact form'
+					},
+					{
+						done: false,
+						priority: 'medium',
+						summary: 'Add more achievement options'
 					}
 				]
 			}

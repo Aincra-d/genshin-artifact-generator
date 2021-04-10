@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<ul class="list-unstyled">
+		<ul class="list-unstyled mt-2">
 			<li class="d-inline">
 				<button
 				:class="type == 'fix' ? 'btn-secondary' : 'btn-outline-secondary'"
@@ -235,11 +235,11 @@
 						]
 					},
 					{
-						date: '2021.04.10',
+					date: '2021.04.10',
 					types: ['update','feature'],
 						changes: [
 							'Improved background logic',
-							'Implemented achievement system! You can earn new achievements by rolling, upgrading artifacts, rerolling their stats, adding artifacts to your inventory etc',
+							'Implemented achievement system! You can earn new achievements by rolling artifacts, upgrading and adding them to your inventory',
 							'Added labels to updates based on their type, and you can filter them'
 						]
 					},
@@ -248,6 +248,12 @@
 		},
 		methods: {
 			filterUpdates(type){
+				if(this.type == type){
+					this.type='';
+					this.logs=this.changes
+					return
+				}
+
 				this.logs=this.changes;
 				this.logs=this.logs.filter(log => log.types.includes(type));
 				this.type=type;

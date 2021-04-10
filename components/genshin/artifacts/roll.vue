@@ -292,6 +292,8 @@
                 this.sub_stats=this.all_subs;
                 artifactMethods.setSubs(this);
                 this.current_artifact=artifact;
+
+                updateAchievements.updateRolls(this);
             },
             add(){
                artifactMethods.add(this,false);
@@ -304,7 +306,7 @@
             },
             upgrade(upgrade_count){
                 artifactMethods.upgrade(this,false,false,upgrade_count);
-                updateAchievements(this);
+                updateAchievements.updateUpgrades(this);
             },
             updateCounter(){
                 let counter=process.client && (localStorage.roll_counter || 0);

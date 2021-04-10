@@ -75,13 +75,17 @@
             },
             setAchievements(){
                 if(!localStorage.achievements){
-                    let roll_numbers={ 100: false, 500: false, 1000: false, 2500: false, 5000: false, 10000: false, 20000: false, 30000: false, 40000: false, 50000: false, 60000: false, 70000: false, 80000: false, 90000: false, 100000: false
-                    };
+                    let roll_numbers;
 
-                    let domain_rolls={};
+                    let domain_rolls=[];
 
                     this.domain_names.forEach(name => {
-                        domain_rolls[name]=roll_numbers;
+                        roll_numbers=[ {value: 100, done: false}, {value: 500, done: false}, {value: 1000, done: false}, {value: 2500, done: false}, {value: 5000, done: false}, {value: 10000, done: false}, {value: 20000, done: false}, {value: 30000, done: false}, {value: 40000, done: false}, {value: 50000, done: false}, {value: 60000, done: false}, {value: 70000, done: false}, {value: 80000, done: false}, {value: 90000, done: false}, {value: 100000, done: false}];
+
+                        domain_rolls.push({
+                            name,
+                            values: roll_numbers
+                        });
                     });
 
                     let upgrades={
@@ -101,6 +105,8 @@
 
                         upgrades.subs[sub.name]=values;
                     });
+                    
+                    roll_numbers=[ {value: 100, done: false}, {value: 500, done: false}, {value: 1000, done: false}, {value: 2500, done: false}, {value: 5000, done: false}, {value: 10000, done: false}, {value: 20000, done: false}, {value: 30000, done: false}, {value: 40000, done: false}, {value: 50000, done: false}, {value: 60000, done: false}, {value: 70000, done: false}, {value: 80000, done: false}, {value: 90000, done: false}, {value: 100000, done: false}];
 
                     let achievements={
                         rolls: {
