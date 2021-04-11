@@ -243,7 +243,8 @@
 							'Implemented achievement system! You can earn new achievements by rolling artifacts, upgrading and adding them to your inventory. Option to view them will also be added in the near future!',
 							'Added labels to updates based on their type, and you can filter them',
 							'Improved updates design',
-							'Changed artifact window design'
+							'Changed artifact window design',
+							'Added upgrade level select option to artifact window in inventory'
 						]
 					},
 				]
