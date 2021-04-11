@@ -10,7 +10,6 @@
         :max-height="100"
         title="Edit your artifact"
         ref="artifactModal"
-        :class="modal_bg_class"
         class="text-light text-center artifact-modal">
             <div
             class="w-100 text-center"
@@ -19,38 +18,45 @@
                 <artifact
                 v-if="client"
                 :inventory="false"
-                :editing="true"
                 class="d-inline-block col-12"
                 :artifact="current_artifact">
                 </artifact>
 
                 <div slot="footer">
-                    <button
+                   <!--  <button
                     type="button"
                     class="btn btn-link text-light d-inline rounded-0 my-1"
                     :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                     :disabled="removed || current_artifact.info.level === current_artifact.info.max_level"
                     @click="current_artifact.info.level!=current_artifact.info.max_level && upgrade()">
                         <i class="fas fa-arrow-up fa-sm"></i> Upgrade
-                    </button>
-
-                    <!-- <button
-                    type="button"
-                    class="btn btn-link text-light d-inline rounded-0 my-1"
-                    :class="screen < 576 ? 'btn-sm' : 'btn-md'"
-                    :disabled="removed || current_artifact.info.rerolls.main.count != 0 || ['Flower of Life','Plume of Death'].includes(current_artifact.info.piece.type)"
-                    @click="current_artifact.info.rerolls.main.count === 0 && rerollMainStat()">
-                        <i class="fas fa-redo fa-sm mr-1"></i>Reroll main
-                    </button>
-
-                    <button
-                    type="button"
-                    class="btn btn-link text-light d-inline rounded-0 my-1"
-                    :class="screen < 576 ? 'btn-sm' : 'btn-md'"
-                    :disabled="removed || current_artifact.info.rerolls.subs.count != 0"
-                    @click="current_artifact.info.rerolls.subs.count === 0 && rerollSubStats()">
-                        <i class="fas fa-redo fa-sm mr-1"></i>Reroll subs
                     </button> -->
+
+                    <b-dropdown
+                    :disabled="current_artifact.info.level == current_artifact.info.max_level"
+                    id="dropdown-left"
+                    text="Upgrade"
+                    :size="screen < 576 ? 'sm' : 'md'"
+                    variant="link"
+                    class="m-2">
+                        <b-dropdown-item
+                        :disabled="current_artifact.info.level == current_artifact.info.max_level"
+                        @click="current_artifact.info.level != current_artifact.info.max_level && upgrade(1)"
+                        href="#">
+                            +{{ current_artifact.info.level+4 }}
+                        </b-dropdown-item>
+
+                        <div
+                        :key="i"
+                        v-for="(up,i) in 4">
+                            <b-dropdown-item
+                            v-if="current_artifact.info.stars > 1 && (current_artifact.info.max_level - current_artifact.info.level)/4 >= i+2"
+                            @click="current_artifact.info.level != current_artifact.info.max_level && upgrade(i+2)"
+                            href="#">
+                                +{{ current_artifact.info.level+((i+2))*4 }}
+                            </b-dropdown-item>
+                        </div>
+                    </b-dropdown>
 
                     <b-dropdown
                     id="dropdown-left"
@@ -135,7 +141,7 @@
         data(){
             return {
                 current_artifact: {},
-                modal_bg_class: '',
+                // modal_bg_class: '',
                 all_subs: [],
                 main_stats: mainstatsJ,
                 sub_stats: substatsJ,
@@ -165,7 +171,7 @@
                 if(this.client){
                     this.current_artifact=this.artifacts.filter(artifact => artifact.id === id)[0];
                 }
-                this.modal_bg_class='stars-'+this.artifacts[this.artifacts.findIndex(artifact => artifact.id === this.artifact_id)].info.stars;
+                // this.modal_bg_class='stars-'+this.artifacts[this.artifacts.findIndex(artifact => artifact.id === this.artifact_id)].info.stars;
                 this.$refs[ref].open();
                 this.ref=ref;
             },
@@ -197,8 +203,8 @@
 
                 this.$refs[this.ref].close();
             },
-            upgrade(){
-                artifactMethods.upgrade(this,true,false,1);
+            upgrade(upgrade_count){
+                artifactMethods.upgrade(this,true,false,upgrade_count);
                 updateAchievements.updateUpgrades(this);
             },
             updateInventory(artifact){
@@ -218,7 +224,7 @@
 
 <style>
     .artifact-modal button,.artifact-modal .dropdown-toggle{
-        box-shadow: 0px 0px 10px black;
+        box-shadow: inset 0px 0px 10px black;
         text-shadow: 0px 0px 10px black;
     }
 
@@ -228,8 +234,9 @@
         padding-right:0 !important;
     }
 
-    .artifact-modal .ui-modal__body,.artifact-modal .ui-modal__header{
-        background: #353b49 !important;
+    .artifact-modal .ui-modal__container, .artifact-modal .ui-modal__body,.artifact-modal .ui-modal__header{
+        background: transparent !important;
+        box-shadow: none;
     }
 
     .artifact-modal .ui-icon{

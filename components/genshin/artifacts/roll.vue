@@ -8,7 +8,7 @@
             :artifact="current_artifact"
             :old_main="old_main_value || 0"
             ref="upgradeModal"
-            :upgrades="upgrades">    
+            :upgrades="upgrades">
             </upgrade-modal>
 
             <roll-modal
@@ -297,6 +297,7 @@
             },
             add(){
                artifactMethods.add(this,false);
+               updateAchievements.updateInventory(this);
             },
             rerollMainStat(){
                 artifactMethods.rerollMainStat(this,false);

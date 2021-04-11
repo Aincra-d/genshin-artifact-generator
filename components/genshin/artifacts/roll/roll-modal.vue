@@ -33,7 +33,6 @@
                 <artifact
                 v-if="toggled"
                 :inventory="false"
-                :editing="false"
                 class="d-inline-block col-12"
                 :artifact="current_artifact">
                 </artifact>
@@ -190,6 +189,7 @@
             },
             add(){
                 artifactMethods.add(this,true);
+                updateAchievements.updateInventory(this);
             },
             upgrade(upgrade_count){
                 artifactMethods.upgrade(this,false,true,upgrade_count);
@@ -239,7 +239,7 @@
     }
 
     .roll-modal .action-container button,.roll-modal .action-container .dropdown-toggle{
-        box-shadow: 0px 0px 10px black;
+        box-shadow: inset 0px 0px 10px black;
         text-shadow: 0px 0px 10px black;
     }
 
@@ -272,6 +272,11 @@
         background: -webkit-linear-gradient(to right, #525965,#6c7480, #7d8995);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #525965,#6c7480, #7d8995); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
+
+    /*.roll-modal .ui-modal__container, .roll-modal .ui-modal__body,.roll-modal .ui-modal__header{
+        background: transparent !important;
+        box-shadow: none;
+    }*/
 
     .roll-modal .ui-modal__body{
         background: #353b49 !important;

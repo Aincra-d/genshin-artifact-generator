@@ -102,7 +102,7 @@
 						summary: 'Add 10x artifact roll option'
 					},
 					{
-						done: false,
+						done: true,
 						priority: 'high',
 						summary: 'Create achievement system'
 					},

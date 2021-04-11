@@ -236,13 +236,14 @@
 						]
 					},
 					{
-					date: '2021.04.10',
+					date: '2021.04.11',
 					types: ['update','feature'],
 						changes: [
 							'Improved background logic',
 							'Implemented achievement system! You can earn new achievements by rolling artifacts, upgrading and adding them to your inventory. Option to view them will also be added in the near future!',
 							'Added labels to updates based on their type, and you can filter them',
-							'Improved updates design'
+							'Improved updates design',
+							'Changed artifact window design'
 						]
 					},
 				]

@@ -39,7 +39,6 @@ export const updateAchievements={
         }
 
         self.$store.commit('artifacts/setAchievements',self.achievements);
-        // localStorage.setItem('achievements',JSON.stringify(self.achievements));
     },
     updateRolls(self){
         let overall_rolls=0;
@@ -70,6 +69,28 @@ export const updateAchievements={
                 duration: 5000,
                 title: `<h6>New achievement unlocked!</h6> Do over ${overall_rolls || domain_rolls} rolls`+
                 (self.selected_domain == '' ? '.' : ` in ${self.selected_domain}.`)
+            });
+
+            self.$store.commit('artifacts/setAchievements',self.achievements);
+        }
+    },
+    updateInventory(self){
+        let artifacts=JSON.parse(localStorage.artifacts);
+        let inventory_size=0;
+
+        self.achievements.inventory.forEach(counter => {
+            if(artifacts.length > counter.value && !counter.done){
+                counter.done=true;
+                inventory_size=counter.value;
+            }
+        });
+
+        if(inventory_size != 0){
+            self.$notify({
+                group: 'foo',
+                type: 'info',
+                duration: 5000,
+                title: `<h6>New achievement unlocked!</h6> Have over ${inventory_size} artifacts in your inventory.`
             });
 
             self.$store.commit('artifacts/setAchievements',self.achievements);

@@ -76,8 +76,15 @@
             setAchievements(){
                 if(!localStorage.achievements){
                     let roll_numbers;
-
                     let domain_rolls=[];
+                    let inventory_numbers=[];
+
+                    for(let i=1; i<41; i++){
+                        inventory_numbers.push({
+                            value: i*25,
+                            done: false
+                        });
+                    }
 
                     this.domain_names.forEach(name => {
                         roll_numbers=[ {value: 100, done: false}, {value: 500, done: false}, {value: 1000, done: false}, {value: 2500, done: false}, {value: 5000, done: false}, {value: 10000, done: false}, {value: 20000, done: false}, {value: 30000, done: false}, {value: 40000, done: false}, {value: 50000, done: false}, {value: 60000, done: false}, {value: 70000, done: false}, {value: 80000, done: false}, {value: 90000, done: false}, {value: 100000, done: false}];
@@ -115,7 +122,8 @@
                             overall: roll_numbers,
                             domains: domain_rolls
                         },
-                        upgrades: upgrades
+                        upgrades: upgrades,
+                        inventory: inventory_numbers
                     }
 
                     localStorage.setItem('achievements',JSON.stringify(achievements));
