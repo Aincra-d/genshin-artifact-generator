@@ -141,6 +141,7 @@
         data(){
             return {
                 current_artifact: {},
+                max_upgrades: process.client && (localStorage.max_upgrades || 0),
                 // modal_bg_class: '',
                 all_subs: [],
                 main_stats: mainstatsJ,

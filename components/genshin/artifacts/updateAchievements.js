@@ -1,6 +1,7 @@
 export const updateAchievements={
     updateUpgrades(self){
-        let new_achievements=[];
+        let new_sub_achievements=[];
+        let new_max_upgrade=0;
 
         self.upgrades.forEach(upgrade => {
             let new_achievement={};
@@ -16,19 +17,35 @@ export const updateAchievements={
                             value: self.achievements.upgrades.subs[upgrade.name].filter(sub => sub.done)[self.achievements.upgrades.subs[upgrade.name].filter(sub => sub.done).length - 1].value
                         };
 
-                        if(new_achievements.map(achievement => achievement.name).includes(new_achievement.name)){
-                            new_achievements[new_achievements.findIndex(achievement => achievement.name == new_achievement.name)].value=new_achievement.value;
+                        if(new_sub_achievements.map(achievement => achievement.name).includes(new_achievement.name)){
+                            new_sub_achievements[new_sub_achievements.findIndex(achievement => achievement.name == new_achievement.name)].value=new_achievement.value;
                         }
                         else{
-                            new_achievements.push(new_achievement)
+                            new_sub_achievements.push(new_achievement)
                         }
                     }
                 }
             });
         });
 
-        if(new_achievements.length > 0){
-            new_achievements.forEach(achievement => {
+        self.achievements.upgrades.max_level_numbers.forEach(counter => {
+            if(self.max_upgrades >= counter.value && !counter.done){
+                counter.done=true;
+                new_max_upgrade=counter.value;
+            }
+        });
+
+        if(new_max_upgrade != 0){
+            self.$notify({
+                group: 'foo',
+                type: 'info',
+                duration: 5000,
+                title: `<h6>New achievement unlocked!</h6> Upgrade ${new_max_upgrade} artifacts to max level</b>`
+            });
+        }
+
+        if(new_sub_achievements.length > 0){
+            new_sub_achievements.forEach(achievement => {
                 self.$notify({
                     group: 'foo',
                     type: 'info',

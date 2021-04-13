@@ -5,7 +5,10 @@
         v-if="screen <= 776"
         align="center"
         content-class="mt-3 border-0">
-            <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Artifact Generator" active>
+            <b-tab
+            title-link-class="text-light bg-transparent font-xs-12"
+            title="Generator"
+            active>
                 <div class="position-relative d-block artifact-roll-container-tabs p-0
                 text-center col-12">
                     <artifact-roll>
@@ -13,11 +16,24 @@
                 </div>
             </b-tab>
 
-            <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Inventory">
+            <b-tab
+            title-link-class="text-light bg-transparent font-xs-12"
+            title="Inventory">
                 <div class="position-relative d-block inventory-container-tabs
                 p-0 text-center col-12">
                     <artifact-inventory>
                     </artifact-inventory>
+                </div>
+            </b-tab>
+
+            <b-tab
+            title-link-class="text-light bg-transparent font-xs-12"
+            title="Achievements"
+            lazy>
+                <div class="position-relative d-block inventory-container-tabs
+                p-0 text-center col-12">
+                    <achievements>
+                    </achievements>
                 </div>
             </b-tab>
         </b-tabs>
@@ -33,8 +49,25 @@
             <div class="position-absolute top-0 right-0 d-inline-block
             page-inventory-container
             p-0 text-left col-12 col-sm-12 col-md-7 col-lg-8 col-xl-7">
-                <artifact-inventory>
-                </artifact-inventory>
+                <b-tabs
+                class="text-light font-weight-bold"
+                align="center">
+                    <b-tab
+                    title-link-class="text-light bg-transparent font-xs-12"
+                    title="Inventory"
+                    active>
+                        <artifact-inventory>
+                        </artifact-inventory>
+                    </b-tab>
+
+                    <b-tab
+                    title-link-class="text-light bg-transparent font-xs-12"
+                    title="Achievements"
+                    lazy>
+                        <achievements>
+                        </achievements>
+                    </b-tab>
+                </b-tabs>
             </div>
         </div>
     </div>
@@ -43,19 +76,23 @@
 <script>
     import artifactRoll from '@/components/genshin/artifacts/roll.vue';
     import artifactInventory from '@/components/genshin/artifacts/inventory.vue';
+    import achievements from '@/components/genshin/artifacts/achievements.vue';
     import substatsJSON from '~/static/substats.json';
     import domainsJSON from '~/static/domains.json';
     export default{
          name: 'artifacts',
          components: {
             'artifact-roll': artifactRoll,
-            'artifact-inventory': artifactInventory
+            'artifact-inventory': artifactInventory,
+            achievements
          },
          data(){
             return {
                 screen: 0,
                 sub_stats: substatsJSON,
                 domain_names: domainsJSON.map(domain => domain.name),
+                roll_numbers: [],
+                upgrades: {}
             }
          },
          computed: {
@@ -73,9 +110,72 @@
                 let view=(sessionStorage.inventoryView || (screen < 776 ? 'images' : 'compressed'));
                 this.$store.commit('artifacts/setView',view);
             },
+            setRollNumbers(){
+                let roll_numbers=[];
+                this.roll_numbers=[];
+
+                for(let i=1; i<=60; i++){
+                    roll_numbers.push({
+                        value:(
+                            i<=10 ? i*100
+                            : i<=28 ? 1000+(i-10)*500
+                            : i<=38 ? 10000+(i-28)*1000
+                            : i<=50 ? 20000+(i-38)*2500
+                            : 50000+(i-50)*5000
+                        ),
+                        done: false
+                    });
+                }
+
+                this.roll_numbers=roll_numbers;
+            },
+            setUpgrades(){
+                let upgrades={
+                    subs: {},
+                    max_level_numbers: []
+                }
+
+                this.sub_stats.forEach(sub => {
+                    let name=sub.name;
+                    let values=[];
+
+                    for(let i=2; i<8; i++){
+                        values.push({
+                            value: name.includes('%')
+                            ? (sub.values['4'][3]*i).toFixed(1)
+                            : sub.values['4'][3]*i,
+                            done: false
+                        });
+                    }
+
+                    // upgrades.subs.push({
+                    //     name: sub.name,
+                    //     values
+                    // })
+
+                    upgrades.subs[sub.name]=values;
+                });
+
+                let max_level_numbers=[];
+
+                for(let i=1; i<=61; i++){
+                    max_level_numbers.push({
+                        value:(
+                            i<=10 ? i*50
+                            : i<=25 ? 500+(i-10)*100
+                            : i<=40 ? 2000+(i-25)*500
+                            : 10000+(i-41)*1000
+                        ),
+                        done: false
+                    });
+                }
+
+                upgrades.max_level_numbers=max_level_numbers;
+
+                this.upgrades=upgrades;
+            },
             setAchievements(){
-                if(!localStorage.achievements){
-                    let roll_numbers;
+                if(!localStorage.achievements || (localStorage.achievements && !JSON.parse(localStorage.achievements).upgrades.max_level_numbers)){
                     let domain_rolls=[];
                     let inventory_numbers=[];
 
@@ -86,43 +186,25 @@
                         });
                     }
 
-                    this.domain_names.forEach(name => {
-                        roll_numbers=[ {value: 100, done: false}, {value: 500, done: false}, {value: 1000, done: false}, {value: 2500, done: false}, {value: 5000, done: false}, {value: 10000, done: false}, {value: 20000, done: false}, {value: 30000, done: false}, {value: 40000, done: false}, {value: 50000, done: false}, {value: 60000, done: false}, {value: 70000, done: false}, {value: 80000, done: false}, {value: 90000, done: false}, {value: 100000, done: false}];
+                    this.domain_names.forEach((name,ind) => {
+                        this.setRollNumbers();
 
                         domain_rolls.push({
                             name,
-                            values: roll_numbers
+                            values: this.roll_numbers
                         });
                     });
 
-                    let upgrades={
-                        subs: {}
-                    }
+                    this.setUpgrades();
 
-                    this.sub_stats.forEach(sub => {
-                        let name=sub.name;
-                        let values=[];
-
-                        for(let i=2; i<8; i++){
-                            values.push({
-                                value: name.includes('%')
-                                ? (sub.values['4'][3]*i).toFixed(1)
-                                : sub.values['4'][3]*i,
-                                done: false
-                            });
-                        }
-
-                        upgrades.subs[sub.name]=values;
-                    });
-
-                    roll_numbers=[ {value: 100, done: false}, {value: 500, done: false}, {value: 1000, done: false}, {value: 2500, done: false}, {value: 5000, done: false}, {value: 10000, done: false}, {value: 20000, done: false}, {value: 30000, done: false}, {value: 40000, done: false}, {value: 50000, done: false}, {value: 60000, done: false}, {value: 70000, done: false}, {value: 80000, done: false}, {value: 90000, done: false}, {value: 100000, done: false}];
+                    this.setRollNumbers();
 
                     let achievements={
                         rolls: {
-                            overall: roll_numbers,
+                            overall: this.roll_numbers,
                             domains: domain_rolls
                         },
-                        upgrades: upgrades,
+                        upgrades: this.upgrades,
                         inventory: inventory_numbers
                     }
 
@@ -195,6 +277,10 @@
         background-image: url('../../static/background-image.png');
         background-size: cover;
         border: 0;
+    }
+
+    .page-container .nav-tabs .nav-tabs{
+        color:red!important;
     }
 
     .page-container .tab-pane .artifact-roll-container-tabs, .page-container .tab-pane .inventory-container-tabs{

@@ -159,6 +159,7 @@
                 artifacts: [],
                 current_artifact: {},
                 roll_counter: process.client && (localStorage.roll_counter || 0),
+                max_upgrades: process.client && (localStorage.max_upgrades || 0),
                 all_subs: [],
                 sub_stats: substatsJSON,
                 domains: domainsJSON,

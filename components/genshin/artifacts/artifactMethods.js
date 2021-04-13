@@ -127,6 +127,8 @@ export const artifactMethods={
         self.sub_stats=self.all_subs;
         this.setSubs(self);
 
+        if(!localStorage.max_upgrades) localStorage.setItem('max_upgrades', 0);
+
         let artifact;
 
         if(from_inventory)
@@ -194,7 +196,12 @@ export const artifactMethods={
                 artifact.stats.main.value=self.main_stats.filter(main => main.name == artifact.stats.main.name)[0].values[artifact.info.stars][artifact.info.level];
             }
         }
-        
+
+        if(artifact.info.level === artifact.info.max_level){
+            self.max_upgrades++;
+            localStorage.setItem('max_upgrades', self.max_upgrades);
+        }
+
         self.upgrades.reverse();
 
         if(roll_10x && self.show) self.showUpgrades();

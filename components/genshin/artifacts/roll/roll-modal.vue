@@ -149,6 +149,7 @@
         data(){
             return {
                 client: process.client,
+                max_upgrades: process.client && (localStorage.max_upgrades || 0),
                 toggled: false,
                 current_artifact: this.artifacts[0],
                 main_stats: mainstatsJ,

@@ -99,7 +99,7 @@
 						date: '2021.03.19',
 						types: ['update'],
 						changes: [
-							'Added more future plans'
+							'Updated future plans'
 						]
 					},
 					{
@@ -123,7 +123,7 @@
 						types: ['update','feature'],
 						changes: [
 							'Updated guide',
-							'Added more future plans'
+							'Updated future plans'
 						]
 					},
 					{
@@ -200,7 +200,7 @@
 						changes: [
 							'Small design changes',
 							'Both single and 10x options are available when opening the app',
-							'Added more future plans',
+							'Updated future plans',
 							'After doing a 10x roll, the first artifact is already visible',
 							'Design issue fixes'
 						]
@@ -245,6 +245,16 @@
 							'Improved updates design',
 							'Changed artifact window design',
 							'Added upgrade level select option to artifact window in inventory'
+						]
+					},
+					{
+					date: '2021.04.13',
+					types: ['feature','update'],
+						changes: [
+							'Added option to view your achievement progress',
+							'Added more achievements. Earn new achievements by upgrading artifacts to their max level and adding different kind of artifacts to your inventory',
+							'Added different kind of animations to inventory',
+							'Updated future plans'
 						]
 					},
 				]

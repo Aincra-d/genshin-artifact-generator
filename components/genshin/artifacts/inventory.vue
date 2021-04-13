@@ -16,17 +16,19 @@
         </inventory-filters>
 
         <div class="inventory-container">
-            <artifact
-            :inventory="true"
-            :view="view"
-            :class="view != 'images'
-            ? 'd-inline-block col-12 col-sm-8 col-md-9 col-lg-6 col-xl-4 my-2'
-            : 'd-inline-block'"
-            :key="artifact.id"
-            v-for="artifact in artifacts.slice((current_page*per_page-per_page),(current_page*per_page))"
-            :artifact="artifact"
-            @open-modal="openModal">
-            </artifact>
+            <zoom-x-transition group>
+                <artifact
+                :inventory="true"
+                :view="view"
+                :class="view != 'images'
+                ? 'd-inline-block col-12 col-sm-8 col-md-9 col-lg-6 col-xl-4 my-2'
+                : 'd-inline-block'"
+                :key="artifact.id"
+                v-for="artifact in artifacts.slice((current_page*per_page-per_page),(current_page*per_page))"
+                :artifact="artifact"
+                @open-modal="openModal">
+                </artifact>
+            </zoom-x-transition>
 
             <pagination
             v-if="all_pages > 1"

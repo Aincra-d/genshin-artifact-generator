@@ -107,7 +107,7 @@
 						summary: 'Create achievement system'
 					},
 					{
-						done: false,
+						done: true,
 						priority: 'high',
 						summary: 'Add option to view achievements'
 					},
@@ -117,9 +117,14 @@
 						summary: 'Add feedback/contact form'
 					},
 					{
-						done: false,
+						done: true,
 						priority: 'medium',
 						summary: 'Add more achievement options'
+					},
+					{
+						done: false,
+						priority: 'medium',
+						summary: 'Add user statistics'
 					}
 				]
 			}
