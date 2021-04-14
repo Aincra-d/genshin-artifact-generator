@@ -239,6 +239,10 @@
         color: #b7a59b;
     }
 
+    .artifact{
+    	max-width: 350px;
+    }
+
     .artifact-sub-stats{
         color: #66697a;
     }

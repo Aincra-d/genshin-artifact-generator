@@ -18,7 +18,9 @@
 
             <b-tab
             title-link-class="text-light bg-transparent font-xs-12"
-            title="Inventory">
+            title="Inventory"
+            :lazy="!$store.state.artifacts.inventory_loaded"
+            @click="$store.commit('artifacts/setInventoryLoaded')">
                 <div class="position-relative d-block inventory-container-tabs
                 p-0 text-center col-12">
                     <artifact-inventory>
@@ -29,7 +31,8 @@
             <b-tab
             title-link-class="text-light bg-transparent font-xs-12"
             title="Achievements"
-            lazy>
+            :lazy="!$store.state.artifacts.achievements_loaded"
+            @click="$store.commit('artifacts/setAchievementsLoaded')">
                 <div class="position-relative d-block inventory-container-tabs
                 p-0 text-center col-12">
                     <achievements>

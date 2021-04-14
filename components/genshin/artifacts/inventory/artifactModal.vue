@@ -33,12 +33,13 @@
                     </button> -->
 
                     <b-dropdown
+                    menu-class="w-100"
                     :disabled="current_artifact.info.level == current_artifact.info.max_level"
                     id="dropdown-left"
                     text="Upgrade"
                     :size="screen < 576 ? 'sm' : 'md'"
                     variant="link"
-                    class="m-2">
+                    class="my-2 mx-0 w-30">
                         <b-dropdown-item
                         :disabled="current_artifact.info.level == current_artifact.info.max_level"
                         @click="current_artifact.info.level != current_artifact.info.max_level && upgrade(1)"
@@ -59,11 +60,12 @@
                     </b-dropdown>
 
                     <b-dropdown
+                    menu-class="w-100"
                     id="dropdown-left"
                     text="Reroll"
                     :size="screen < 576 ? 'sm' : 'md'"
                     variant="link"
-                    class="m-2">
+                    class="my-2 mx-0 w-30">
                         <b-dropdown-item
                         @click="current_artifact.info.rerolls.main.count === 0 && rerollMainStat()"
                         :disabled="removed || current_artifact.info.rerolls.main.count != 0 || ['Flower of Life','Plume of Death'].includes(current_artifact.info.piece.type)"
@@ -81,7 +83,7 @@
 
                     <button
                     type="button"
-                    class="btn btn-link text-light d-inline rounded-0 my-1"
+                    class="btn btn-link text-light d-inline rounded-0 my-1 mx-0 w-30"
                     :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                     :disabled="removed"
                     @click="confirm_remove = !confirm_remove">
@@ -233,6 +235,8 @@
         color:white;
         padding-left:0 !important;
         padding-right:0 !important;
+        /*max-width: 350px;*/
+        /*margin:auto;*/
     }
 
     .artifact-modal .ui-modal__container, .artifact-modal .ui-modal__body,.artifact-modal .ui-modal__header{

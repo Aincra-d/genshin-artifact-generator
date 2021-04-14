@@ -83,7 +83,7 @@
 						changes: [
 							'Updated contact info',
 							'Small changes in the guide',
-							'Added future plans'
+							'Added plans'
 						]
 					},
 					{
@@ -99,7 +99,7 @@
 						date: '2021.03.19',
 						types: ['update'],
 						changes: [
-							'Updated future plans'
+							'Updated plans'
 						]
 					},
 					{
@@ -123,7 +123,7 @@
 						types: ['update','feature'],
 						changes: [
 							'Updated guide',
-							'Updated future plans'
+							'Updated plans'
 						]
 					},
 					{
@@ -200,7 +200,7 @@
 						changes: [
 							'Small design changes',
 							'Both single and 10x options are available when opening the app',
-							'Updated future plans',
+							'Updated plans',
 							'After doing a 10x roll, the first artifact is already visible',
 							'Design issue fixes'
 						]
@@ -236,8 +236,8 @@
 						]
 					},
 					{
-					date: '2021.04.11',
-					types: ['update','feature'],
+						date: '2021.04.11',
+						types: ['update','feature'],
 						changes: [
 							'Improved background logic',
 							'Implemented achievement system! You can earn new achievements by rolling artifacts, upgrading and adding them to your inventory. Option to view them will also be added in the near future!',
@@ -248,13 +248,21 @@
 						]
 					},
 					{
-					date: '2021.04.13',
-					types: ['feature','update'],
+						date: '2021.04.13',
+						types: ['feature','update'],
 						changes: [
 							'Added option to view your achievement progress',
 							'Added more achievements. Earn new achievements by upgrading artifacts to their max level and adding different kind of artifacts to your inventory',
 							'Added different kind of animations to inventory',
-							'Updated future plans'
+							'Updated plans'
+						]
+					},
+					{
+						date: '2021.04.14',
+						types: ['update'],
+						changes: [
+							'Design improvements',
+							"On touch devices, inventory and achievements won't load automatically when the app loads to improve performance"
 						]
 					},
 				]

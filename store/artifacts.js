@@ -47,7 +47,9 @@ export const state = () => ({
         roll_10x: false,
         show_upgrades: true
     },
-    achievements: []
+    achievements: [],
+    inventory_loaded: false,
+    achievements_loaded: false,
     // rolled_artifacts: []
 });
 
@@ -56,6 +58,9 @@ export const mutations = {
         state.achievements=achievements;
         localStorage.setItem('achievements',JSON.stringify(achievements));
     },
+
+    setInventoryLoaded: (state) => state.inventory_loaded=true,
+    setAchievementsLoaded: (state) => state.achievements_loaded=true,
 
     setRollSettings(state,name){
         state.roll_settings[name]=!state.roll_settings[name];

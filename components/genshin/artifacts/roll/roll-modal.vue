@@ -44,7 +44,7 @@
                 <button
                 v-if="single"
                 type="button"
-                class="btn btn-link text-light d-inline rounded-0 my-1"
+                class="btn btn-link text-light d-inline rounded-0 my-1 mx-0 w-30"
                 :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                 :disabled="current_artifact.info.level === current_artifact.info.max_level"
                 @click="current_artifact.info.level!=current_artifact.info.max_level && upgrade(1)">
@@ -53,12 +53,13 @@
 
                 <b-dropdown
                 v-else
+                menu-class="w-100"
                 :disabled="current_artifact.info.level == current_artifact.info.max_level"
                 id="dropdown-left"
                 text="Upgrade"
                 :size="screen < 576 ? 'sm' : 'md'"
                 variant="link"
-                class="m-2">
+                class="my-2 mx-0 w-30">
                     <b-dropdown-item
                     :disabled="current_artifact.info.level == current_artifact.info.max_level"
                     @click="current_artifact.info.level != current_artifact.info.max_level && upgrade(1)"
@@ -97,11 +98,12 @@
                 </button> -->
 
                 <b-dropdown
+                menu-class="w-100"
                 id="dropdown-left"
                 text="Reroll"
                 :size="screen < 576 ? 'sm' : 'md'"
                 variant="link"
-                class="m-2">
+                class="my-2 mx-0 w-30">
                     <b-dropdown-item
                     @click="current_artifact.info.rerolls.main.count === 0 && rerollMainStat()"
                     :disabled="current_artifact.info.rerolls.main.count != 0 || ['Flower of Life','Plume of Death'].includes(current_artifact.info.piece.type)"
@@ -119,7 +121,7 @@
 
                 <button
                 type="button"
-                class="btn btn-link text-light d-inline rounded-0 mx-1"
+                class="btn btn-link text-light d-inline rounded-0 mx-0 w-30"
                 :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                 @click="add()">
                     <i class="fas fa-plus fa-sm mr-1"></i>Add
@@ -238,6 +240,24 @@
             height:70px;
         }
     }
+
+
+    @media(max-width: 991px){
+        .roll-modal .roll-container::-webkit-scrollbar {
+            color:black;
+            width:2px;
+            height:2px;
+          }
+
+          .roll-modal .roll-container::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.5);
+          }
+
+
+          .roll-modal .roll-container::-webkit-scrollbar-thumb {
+            background: rgba(0,0,0,0.3);
+          }
+      }
 
     .roll-modal .action-container button,.roll-modal .action-container .dropdown-toggle{
         box-shadow: inset 0px 0px 10px black;
