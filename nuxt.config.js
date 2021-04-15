@@ -67,7 +67,9 @@ export default {
         theme_color: '#1c1c22'
     },
     workboxOptions: {
-        skipWaiting: true
+        skipWaiting: true,
+        runtimeCaching: ['https://genshin-impact.fandom.com/'
+        ]
     }
   },
 

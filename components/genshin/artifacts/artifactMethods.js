@@ -93,7 +93,7 @@ export const artifactMethods={
     add(self,roll_10x){
         let artifacts;
 
-        if(process.client && localStorage.artifacts){
+        if(localStorage.artifacts){
             artifacts=JSON.parse(localStorage.artifacts);
 
             artifacts.push(self.current_artifact);
@@ -104,7 +104,7 @@ export const artifactMethods={
         else{
             if(roll_10x) artifacts=[self.current_artifact];
 
-            if(process.client) localStorage.setItem('artifacts',JSON.stringify(artifacts));
+            localStorage.setItem('artifacts',JSON.stringify(artifacts));
             self.$store.commit('artifacts/setArtifacts',artifacts);
         }
 

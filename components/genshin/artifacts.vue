@@ -235,7 +235,7 @@
             let view=(sessionStorage.inventoryView || (screen < 776 ? 'images' : 'compressed'));
             this.$store.commit('artifacts/setView',view);
 
-            console.log('ach',this.$store.state.artifacts.achievements)
+            if(!localStorage.artifacts) localStorage.setItem('artifacts', JSON.stringify([]))
         },
         beforeMount(){
             this.setAchievements();

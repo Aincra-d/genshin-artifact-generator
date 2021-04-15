@@ -265,6 +265,13 @@
 							"On touch devices, inventory and achievements won't load automatically when the app loads to improve performance"
 						]
 					},
+					{
+						date: '2021.04.15',
+						types: ['fix'],
+						changes: [
+							"Fixed app crashing after trying to add artifact to inventory if it's empty. My apologies to everyone who couldn't use the app because of it."
+						]
+					},
 				]
 			}
 		},

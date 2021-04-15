@@ -92,25 +92,28 @@ export const updateAchievements={
         }
     },
     updateInventory(self){
-        let artifacts=JSON.parse(localStorage.artifacts);
-        let inventory_size=0;
+        if(!localStorage.artifacts) return
+        else{
+            let artifacts=JSON.parse(localStorage.artifacts);
+            let inventory_size=0;
 
-        self.achievements.inventory.forEach(counter => {
-            if(artifacts.length > counter.value && !counter.done){
-                counter.done=true;
-                inventory_size=counter.value;
-            }
-        });
-
-        if(inventory_size != 0){
-            self.$notify({
-                group: 'foo',
-                type: 'info',
-                duration: 5000,
-                title: `<h6>New achievement unlocked!</h6> Have over ${inventory_size} artifacts in your inventory.`
+            self.achievements.inventory.forEach(counter => {
+                if(artifacts.length > counter.value && !counter.done){
+                    counter.done=true;
+                    inventory_size=counter.value;
+                }
             });
 
-            self.$store.commit('artifacts/setAchievements',self.achievements);
+            if(inventory_size != 0){
+                self.$notify({
+                    group: 'foo',
+                    type: 'info',
+                    duration: 5000,
+                    title: `<h6>New achievement unlocked!</h6> Have over ${inventory_size} artifacts in your inventory.`
+                });
+
+                self.$store.commit('artifacts/setAchievements',self.achievements);
+            }
         }
     }
 }

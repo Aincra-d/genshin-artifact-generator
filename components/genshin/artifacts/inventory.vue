@@ -93,6 +93,9 @@
                 this.$refs.artifactModal.openModal(ref,id)
             }
         },
+        created(){
+            console.log(this.artifacts.length)
+        },
         mounted(){
             this.all_pages=Math.ceil(this.artifacts.length/50);
         }
