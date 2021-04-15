@@ -136,7 +136,8 @@
     import substatsJ from '~/static/substats.json';
     import mainstatsJ from '~/static/mainstats.json';
     import { updateAchievements } from '../updateAchievements.js';
-    import { artifactMethods } from '../artifactMethods.js';
+    const artifactMethods = () => import('../artifactMethods.js');
+    // import { artifactMethods } from '../artifactMethods.js';
 
     export default{
         name: 'rollModal',
@@ -182,20 +183,20 @@
             showArtifact(id){
                 this.current_artifact=this.artifacts.filter(artifact => artifact.id === id)[0];
                 this.toggled=true;
-                artifactMethods.setSubs(this);
+                artifactMethods().then( method  => method.artifactMethods.setSubs(this));
             },
             rerollMainStat(){
-                artifactMethods.rerollMainStat(this,false);
+                artifactMethods().then( method  => method.artifactMethods.rerollMainStat(this,false));
             },
             rerollSubStats(){
-                artifactMethods.rerollSubStats(this,false);
+                artifactMethods().then( method  => method.artifactMethods.rerollSubStats(this,false));
             },
             add(){
-                artifactMethods.add(this,true);
+                artifactMethods().then( method  => method.artifactMethods.add(this,true));
                 updateAchievements.updateInventory(this);
             },
             upgrade(upgrade_count){
-                artifactMethods.upgrade(this,false,true,upgrade_count);
+                artifactMethods().then( method  => method.artifactMethods.upgrade(this,false,true,upgrade_count));
                 updateAchievements.updateUpgrades(this);
             },
             showUpgrades(){

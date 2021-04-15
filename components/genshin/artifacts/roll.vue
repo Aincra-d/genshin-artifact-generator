@@ -129,6 +129,9 @@
     import setsJSON from '~/static/sets.json';
     import { uuid } from 'vue-uuid';
     import { updateAchievements } from './updateAchievements.js';
+
+    //artifactMethods().then( method  => method.artifactMethods.setSubs(this));
+    // const artifactMethods =  import('./artifactMethods.js');
     import { artifactMethods } from './artifactMethods.js';
     export default{
         name: 'roll',

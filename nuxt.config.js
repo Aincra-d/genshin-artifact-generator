@@ -68,7 +68,15 @@ export default {
     },
     workboxOptions: {
         skipWaiting: true,
-        runtimeCaching: ['https://genshin-impact.fandom.com/'
+            runtimeCaching: [
+          {
+            // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
+            urlPattern: 'https://static.wikia.nocookie.net/gensin-impact/images/.*',
+            // Defaults to `NetworkFirst` if omitted
+            // handler: 'NetworkFirst',
+            // Defaults to `GET` if omitted
+            // method: 'GET'
+          }
         ]
     }
   },
