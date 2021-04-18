@@ -274,10 +274,11 @@
 					},
 					{
 						date: '2021.04.18',
-						types: ['update'],
+						types: ['update','fix'],
 						changes: [
 							'Improved background logic',
-							'Improved performance'
+							'Improved performance',
+							'Fixed wrong achievement notification when earning new "Overall" achievement while rolling in domain'
 						]
 					},
 				]
