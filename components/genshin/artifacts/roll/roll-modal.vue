@@ -132,11 +132,14 @@
 </template>
 
 <script>
-    import artifact from '@/components/genshin/artifacts/artifact.vue';
+    const artifact = () => import('@/components/genshin/artifacts/artifact.vue');
     import substatsJ from '~/static/substats.json';
     import mainstatsJ from '~/static/mainstats.json';
-    import { updateAchievements } from '../updateAchievements.js';
+    // import { updateAchievements } from '../updateAchievements.js';
+
+    const updateAchievements = () => import('../updateAchievements.js');
     const artifactMethods = () => import('../artifactMethods.js');
+
     // import { artifactMethods } from '../artifactMethods.js';
 
     export default{
@@ -180,24 +183,24 @@
                     self.showArtifact(self.artifacts[0].id)
                 }, 50);
             },
-            showArtifact(id){
+            async showArtifact(id){
                 this.current_artifact=this.artifacts.filter(artifact => artifact.id === id)[0];
                 this.toggled=true;
-                artifactMethods().then( method  => method.artifactMethods.setSubs(this));
+                await artifactMethods().then( method  => method.artifactMethods.setSubs(this));
             },
-            rerollMainStat(){
-                artifactMethods().then( method  => method.artifactMethods.rerollMainStat(this,false));
+            async rerollMainStat(){
+                await artifactMethods().then( method  => method.artifactMethods.rerollMainStat(this,false));
             },
-            rerollSubStats(){
-                artifactMethods().then( method  => method.artifactMethods.rerollSubStats(this,false));
+            async rerollSubStats(){
+                await artifactMethods().then( method  => method.artifactMethods.rerollSubStats(this,false));
             },
-            add(){
-                artifactMethods().then( method  => method.artifactMethods.add(this,true));
-                updateAchievements.updateInventory(this);
+            async add(){
+                await artifactMethods().then( method  => method.artifactMethods.add(this,true));
+                await updateAchievements().then(update => update.updateAchievements.updateInventory(this));
             },
-            upgrade(upgrade_count){
-                artifactMethods().then( method  => method.artifactMethods.upgrade(this,false,true,upgrade_count));
-                updateAchievements.updateUpgrades(this);
+            async upgrade(upgrade_count){
+                await artifactMethods().then( method  => method.artifactMethods.upgrade(this,false,true,upgrade_count));
+                await updateAchievements().then(update => update.updateAchievements.updateUpgrades(this));
             },
             showUpgrades(){
                 this.$emit('show-upgrades',this.upgrades,this.current_artifact,this.old_main_value)

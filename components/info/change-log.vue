@@ -272,6 +272,14 @@
 							"Fixed app crashing after trying to add artifact to inventory if it's empty. My apologies to everyone who couldn't use the app because of it."
 						]
 					},
+					{
+						date: '2021.04.18',
+						types: ['update'],
+						changes: [
+							'Improved background logic',
+							'Improved performance'
+						]
+					},
 				]
 			}
 		},

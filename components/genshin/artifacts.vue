@@ -78,8 +78,8 @@
 
 <script>
     import artifactRoll from '@/components/genshin/artifacts/roll.vue';
-    import artifactInventory from '@/components/genshin/artifacts/inventory.vue';
-    import achievements from '@/components/genshin/artifacts/achievements.vue';
+    const artifactInventory = () => import('@/components/genshin/artifacts/inventory.vue');
+    const achievements = () => import('@/components/genshin/artifacts/achievements.vue');
     import substatsJSON from '~/static/substats.json';
     import domainsJSON from '~/static/domains.json';
     export default{

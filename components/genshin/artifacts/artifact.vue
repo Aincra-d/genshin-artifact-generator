@@ -23,8 +23,8 @@
 </template>
 
 <script>
-    import artifactBody from './artifact/artifactBody.vue';
-    import artifactImage from './artifact/artifactImage.vue';
+    const artifactBody = () => import('./artifact/artifactBody.vue');
+    const artifactImage = () => import('./artifact/artifactImage.vue');
     export default{
         name: 'artifact',
         props: {

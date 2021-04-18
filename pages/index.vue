@@ -30,6 +30,7 @@
 
 <script>
     import genshin from '@/components/genshin.vue';
+    // const infoModal = () => import('@/components/info-modal.vue');
     import infoModal from '@/components/info-modal.vue';
     export default {
         components: {
@@ -155,6 +156,15 @@
                 ]
             }
         },
+        // methods: {
+        //     openModal(){
+        //         this.opened=true;
+        //         let self=this;
+        //         setTimeout(function() {
+        //             self.$refs.infoModal.openModal();
+        //         }, 25);
+        //     }
+        // }
         created(){
             let self=this;
             setTimeout(function() {

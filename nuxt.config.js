@@ -67,17 +67,7 @@ export default {
         theme_color: '#1c1c22'
     },
     workboxOptions: {
-        skipWaiting: true,
-            runtimeCaching: [
-          {
-            // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
-            urlPattern: 'https://static.wikia.nocookie.net/gensin-impact/images/.*',
-            // Defaults to `NetworkFirst` if omitted
-            // handler: 'NetworkFirst',
-            // Defaults to `GET` if omitted
-            // method: 'GET'
-          }
-        ]
+        skipWaiting: true
     }
   },
 

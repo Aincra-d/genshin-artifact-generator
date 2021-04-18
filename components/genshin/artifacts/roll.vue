@@ -117,10 +117,10 @@
 </template>
 
 <script>
-    import artifact from '@/components/genshin/artifacts/artifact.vue';
+    const artifact = () => import('@/components/genshin/artifacts/artifact.vue');
     import artifactActions from '@/components/genshin/artifacts/roll/artifact-actions.vue';
-    import upgradeModal from '@/components/genshin/artifacts/roll/upgrade-modal.vue';
-    import rollModal from '@/components/genshin/artifacts/roll/roll-modal.vue';
+    const upgradeModal = () => import('@/components/genshin/artifacts/roll/upgrade-modal.vue');
+    const rollModal = () => import('@/components/genshin/artifacts/roll/roll-modal.vue');
     import domainSelect from './roll/domainSelect.vue';
     import rollSettings from './roll/rollSettings.vue';
     import substatsJSON from '~/static/substats.json';
@@ -128,11 +128,12 @@
     import mainstatsJSON from '~/static/mainstats.json';
     import setsJSON from '~/static/sets.json';
     import { uuid } from 'vue-uuid';
-    import { updateAchievements } from './updateAchievements.js';
+    // import { updateAchievements } from './updateAchievements.js';
+    const updateAchievements = () => import('./updateAchievements.js');
 
     //artifactMethods().then( method  => method.artifactMethods.setSubs(this));
-    // const artifactMethods =  import('./artifactMethods.js');
-    import { artifactMethods } from './artifactMethods.js';
+    const artifactMethods = () => import('./artifactMethods.js');
+    // import { artifactMethods } from './artifactMethods.js';
     export default{
         name: 'roll',
         components: {
@@ -201,11 +202,12 @@
 
                 this.$refs.rollModal.openModal();
             },
-            singleRoll(){
+            async singleRoll(){
                 this.rolled=true;
                 if(!this.roll_settings.roll_10x) this.artifacts=[];
                 this.sub_stats=this.all_subs;
-                artifactMethods.setSubs(this);
+                // await artifactMethods().then( method  => method.artifactMethods.setSubs(this));
+                this.setSubs();
                 let sets = this.sets;
 
                 if(!this.roll_settings.include_low_stars) sets=sets.filter(set => set.stars.includes(5));
@@ -294,24 +296,25 @@
                 this.updateCounter();
                 this.artifacts.push(artifact);
                 this.sub_stats=this.all_subs;
-                artifactMethods.setSubs(this);
+                // await artifactMethods().then( method  => method.artifactMethods.setSubs(this));
+                this.setSubs();
                 this.current_artifact=artifact;
 
-                updateAchievements.updateRolls(this);
+                await updateAchievements().then(update => update.updateAchievements.updateRolls(this));
             },
-            add(){
-               artifactMethods.add(this,false);
-               updateAchievements.updateInventory(this);
+            async add(){
+               await artifactMethods().then( method  => method.artifactMethods.add(this,false));
+               await updateAchievements().then(update => update.updateAchievements.updateInventory(this));
             },
-            rerollMainStat(){
-                artifactMethods.rerollMainStat(this,false);
+            async rerollMainStat(){
+                await artifactMethods().then( method  => method.artifactMethods.rerollMainStat(this,false));
             },
-            rerollSubStats(){
-                artifactMethods.rerollSubStats(this,false);
+            async rerollSubStats(){
+                await artifactMethods().then( method  => method.artifactMethods.rerollSubStats(this,false));
             },
-            upgrade(upgrade_count){
-                artifactMethods.upgrade(this,false,false,upgrade_count);
-                updateAchievements.updateUpgrades(this);
+            async upgrade(upgrade_count){
+                await artifactMethods().then( method  => method.artifactMethods.upgrade(this,false,false,upgrade_count));
+                await updateAchievements().then(update => update.updateAchievements.updateUpgrades(this));
             },
             updateCounter(){
                 let counter=process.client && (localStorage.roll_counter || 0);
@@ -423,10 +426,116 @@
                 });
 
                 this.domains=domains;
+            },
+            setSubs(){
+                this.all_subs=
+                [
+                    {
+                        "name": "HP",
+                        "values": {
+                            "1": [24],
+                            "2": [50,61,72],
+                            "3": [100,115,129,143],
+                            "4": [167,191,215,239],
+                            "5": [209,239,269,299]
+                        }
+                    },
+                    {
+                        "name": "ATK",
+                        "values": {
+                            "1": [2],
+                            "2": [3,4,5],
+                            "3": [7,8,9],
+                            "4": [11,12,14,16],
+                            "5": [14,16,18,19]
+                        }
+                    },
+                    {
+                        "name": "DEF",
+                        "values": {
+                            "1": [2],
+                            "2": [4,5,6],
+                            "3": [8,9,10,11],
+                            "4": [13,  15,  17,  19],
+                            "5": [16,  19,  21,  23]
+                        }
+                    },
+                    {
+                        "name": "Elemental Mastery",
+                        "values": {
+                            "1": [6],
+                            "2": [7,  8,  9],
+                            "3": [10,  11,  13,  14],
+                            "4": [13,  15,  17,  19],
+                            "5": [16,  19,  21,  23]
+                        }
+                    },
+                    {
+                        "name": "HP%",
+                        "values": {
+                            "1": [1.2,  1.5],
+                            "2": [1.6,  2,  2.3],
+                            "3": [2.5,  2.8,  3.2,  3.5],
+                            "4": [3.3,  3.7,  4.2,  4.7],
+                            "5": [4.1,  4.7,  5.3,  5.8]
+                        }
+                    },
+                    {
+                        "name": "ATK%",
+                        "values": {
+                            "1": [1.2,  1.5],
+                            "2": [1.6,  2,  2.3],
+                            "3": [2.5,  2.8,  3.2,  3.5],
+                            "4": [3.3,  3.7,  4.2,  4.7],
+                            "5": [4.1,  4.7,  5.3,  5.8]
+                        }
+                    },
+                    {
+                        "name": "DEF%",
+                        "values": {
+                            "1": [1.8],
+                            "2": [2,  2.5,  2.9],
+                            "3": [3.1,  3.5,  3.8,  4.4],
+                            "4": [4.1,  4.7,  5.3,  5.8],
+                            "5": [5.1,  5.8,  6.6,  7.3]
+                        }
+                    },
+                    {
+                        "name": "Energy Recharge%",
+                        "values": {
+                            "1": [1.3,  1.6],
+                            "2": [1.8,  2.2,  2.6],
+                            "3": [2.7,  3.1,  3.5,  3.9],
+                            "4": [3.6,  4.1,  4.7,  5.2],
+                            "5": [4.5,  5.2,  5.8,  6.5]
+                        }
+                    },
+                    {
+                        "name": "CRIT Rate%",
+                        "values": {
+                            "1": [0.8,  1.6],
+                            "2": [1.1,  1.3,  1.6],
+                            "3": [1.6,  1.9,  2.1,  2.3],
+                            "4": [2.2,  2.5,  2.8,  3.1],
+                            "5": [2.7,  3.1,  3.5,  3.9]
+                        }
+                    },
+                    {
+                        "name": "CRIT DMG%",
+                        "values": {
+                            "1": [1.6],
+                            "2": [2.2,  2.6,  3.1],
+                            "3": [3.3,  3.7,  4.2,  4.7],
+                            "4": [4.4,  5,  5.6,  6.2],
+                            "5": [5.4,  6.2,  7,  7.8]
+                        }
+                    }
+                ];
             }
         },
-        created(){
-            artifactMethods.setSubs(this);
+        async created(){
+            // await artifactMethods().then( method  => method.artifactMethods.setSubs(this));
+            this.setSubs();
             this.setRollStats();
             this.setDomains();
 

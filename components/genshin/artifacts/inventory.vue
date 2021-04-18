@@ -47,11 +47,12 @@
 </template>
 
 <script>
-    import artifact from '@/components/genshin/artifacts/artifact.vue';
+    const artifact = () => import('@/components/genshin/artifacts/artifact.vue');
     import manageInventory from '@/components/genshin/artifacts/inventory/manageInventory.vue';
     import inventoryFilters from '@/components/genshin/artifacts/inventory/filters.vue';
-    import artifactModal from '@/components/genshin/artifacts/inventory/artifactModal.vue';
-    import pagination from '@/components/genshin/artifacts/inventory/pagination.vue';
+    const artifactModal = () => import('@/components/genshin/artifacts/inventory/artifactModal.vue');
+    const pagination = () => import('@/components/genshin/artifacts/inventory/pagination.vue');
+
     export default{
         name: 'artifactInventory',
         components: {

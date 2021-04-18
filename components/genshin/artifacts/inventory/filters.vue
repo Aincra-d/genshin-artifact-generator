@@ -55,11 +55,11 @@
 </template>
 
 <script>
-    import filterByStars from './filters/filterByStars.vue';
-    import filterByMainStats from './filters/filterByMainStats.vue';
-    import filterBySubStats from './filters/filterBySubStats.vue';
-    import filterByTypes from './filters/filterByTypes.vue';
-    import filterBySets from './filters/filterBySets.vue';
+    const filterByStars = () => import('./filters/filterByStars.vue');
+    const filterByMainStats = () => import('./filters/filterByMainStats.vue');
+    const filterBySubStats = () => import('./filters/filterBySubStats.vue');
+    const filterByTypes = () => import('./filters/filterByTypes.vue');
+    const filterBySets = () => import('./filters/filterBySets.vue');
     export default{
         name: 'inventoryFilters',
         components: {
