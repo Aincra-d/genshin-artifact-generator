@@ -85,7 +85,7 @@ export const updateAchievements={
                 type: 'info',
                 duration: 5000,
                 title: `<h6>New achievement unlocked!</h6> Do over ${overall_rolls || domain_rolls} rolls`+
-                (self.selected_domain == '' ? '.' : ` in ${self.selected_domain}.`)
+                ((self.selected_domain != '' && overall_rolls === 0) ? ` in ${self.selected_domain}.` : '')+'.'
             });
 
             self.$store.commit('artifacts/setAchievements',self.achievements);

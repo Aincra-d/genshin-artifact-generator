@@ -245,8 +245,8 @@
 
 <style>
     body{
-        background-image: url('../../static/background-image.png');
-        /*background-image: url('../../static/site-background.png');*/
+        background-image: url('../../static/background-image.jpg');
+        /*background-image: url('../../static/site-background.jpg');*/
         background-size: cover;
         background-attachment: fixed;
         background-repeat: no-repeat;
@@ -277,7 +277,7 @@
         top:0;
         width: 100%;
         z-index: 10;
-        background-image: url('../../static/background-image.png');
+        background-image: url('../../static/background-image.jpg');
         background-size: cover;
         border: 0;
     }
