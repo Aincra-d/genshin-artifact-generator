@@ -2,6 +2,7 @@
     <div>
         <ui-modal
         v-if="client"
+        transition="scale-up"
         @close="restoreScroll"
         style="height:100vh;"
         alignTop
@@ -140,7 +141,6 @@
             artifact
         },
         created(){
-            console.log(this.artifacts);
             this.current_artifact=this.artifacts[0]
         },
         data(){

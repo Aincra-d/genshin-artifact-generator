@@ -1,6 +1,7 @@
 <template>
     <div>
         <ui-modal
+        transition="scale-up"
         @close="restoreScroll"
         style="height:100vh;"
         alignTop

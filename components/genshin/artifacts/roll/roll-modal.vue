@@ -2,6 +2,7 @@
     <div>
         <ui-modal
         v-if="client"
+        transition="scale-up"
         @close="restoreScroll"
         style="height:100vh;"
         alignTop

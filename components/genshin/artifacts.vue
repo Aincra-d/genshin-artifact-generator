@@ -220,9 +220,6 @@
                 }
             }
          },
-         created(){
-            console.log(this.artifacts)
-         },
          mounted(){
             window.addEventListener('resize',this.onResize);
             let artifacts=(localStorage.artifacts ? JSON.parse(localStorage.artifacts) : []).reverse();
