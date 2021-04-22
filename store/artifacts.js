@@ -130,7 +130,7 @@ export const mutations = {
             let ids=[];
 
             state.artifacts.forEach(artifact => {
-                if(!state.delete_ids.includes(artifact.id)){
+                if(!state.delete_ids.includes(artifact.id) && !artifact.info.locked){
                     ids.push(artifact.id)
                 }
             });

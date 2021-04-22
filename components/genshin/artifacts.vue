@@ -225,7 +225,6 @@
                 if(artifacts.length === 0 || ('locked' in artifacts[0].info)) return
                 
                 if(!('locked' in artifacts[0].info)){
-                    alert("sad")
                     artifacts.forEach(artifact => {
                         artifact.info.locked=false;
                     });
