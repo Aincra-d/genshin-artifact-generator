@@ -85,7 +85,7 @@
 
                     <button
                     type="button"
-                    class="btn btn-link text-light d-inline rounded-0 my-1 mx-0 w-30"
+                    class="btn btn-link text-light d-inline rounded-0 my-1 mx-0 w-30 shadowed"
                     :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                     :disabled="removed || current_artifact.info.locked"
                     @click="confirm_remove = !confirm_remove">
@@ -230,7 +230,7 @@
 </script>
 
 <style>
-    .artifact-modal button,.artifact-modal .dropdown-toggle{
+    .artifact-modal .shadowed,.artifact-modal .dropdown-toggle{
         box-shadow: inset 0px 0px 10px black;
         text-shadow: 0px 0px 10px black;
     }
