@@ -19,6 +19,7 @@
                 <artifact
                 v-if="client"
                 :inventory="false"
+                fromModal
                 class="d-inline-block col-12"
                 :artifact="current_artifact">
                 </artifact>
@@ -86,13 +87,13 @@
                     type="button"
                     class="btn btn-link text-light d-inline rounded-0 my-1 mx-0 w-30"
                     :class="screen < 576 ? 'btn-sm' : 'btn-md'"
-                    :disabled="removed"
+                    :disabled="removed || current_artifact.info.locked"
                     @click="confirm_remove = !confirm_remove">
                         <i class="fas fa-times fa-sm mr-1"></i> Remove
                     </button>
 
                     <div
-                    v-if="confirm_remove"
+                    v-if="confirm_remove && !current_artifact.info.locked"
                     class="text-center text-light">
                         <h6 class="text-warning font-weight-bold">
                             Are you sure you want to delete this artifact from your inventory?

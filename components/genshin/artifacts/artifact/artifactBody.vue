@@ -17,7 +17,7 @@
                 </button>
 
                 <b-form-checkbox
-                v-if="inventory && delete_artifacts"
+                v-if="inventory && delete_artifacts && !artifact.info.locked"
                 :checked="delete_ids.includes(artifact.id)"
                 size="lg"
                 type="button"
@@ -58,6 +58,15 @@
             </div>
 
             <div class="artifact-sub-info m-0 p-0">
+            	<button
+            	class="float-right border rounded m-2"
+            	:class="artifact.info.locked ? 'bg-dark border-0' : 'bg-light border-secondary'"
+            	@click="setLock()">
+            		<i
+            		class="fas"
+            		:class="artifact.info.locked ? 'fa-lock text-danger' : 'fa-lock text-secondary'"></i>
+            	</button>
+
                 <ul class="list-unstyled text-left font-weight-bold artifact-sub-stats ml-4 pt-3">
                     <li>
                         <h6
@@ -101,6 +110,10 @@
 			inventory: {
 				type: Boolean,
 				default: false
+			},
+			fromModal: {
+				type: Boolean,
+				default: false
 			}
 		},
 		computed: {
@@ -109,12 +122,23 @@
             },
             delete_ids(){
                 return this.$store.state.artifacts.delete_ids
+            },
+            artifacts(){
+            	return this.$store.state.artifacts.artifacts
             }
         },
         methods: {
         	addDeleteId(id){
                 this.$store.commit('artifacts/setDeleteIds',id);
             },
+            setLock(){
+            	this.artifact.info.locked=!this.artifact.info.locked;
+
+            	if(this.inventory || this.fromModal){
+	            	localStorage.setItem('artifacts', JSON.stringify(this.artifacts.reverse()));
+	            	this.$store.commit('artifacts/setArtifacts',this.artifacts.reverse());
+	            }
+            }
         }
 	}
 </script>

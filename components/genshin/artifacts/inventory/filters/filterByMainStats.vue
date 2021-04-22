@@ -56,19 +56,21 @@
                         Delete
                     </button> -->
 
-                    <b-dropdown-item
-                    :key="i"
-                    v-for="(main,i) in artifact_main_stats"
-                    @click.native.capture.stop="addMainStat(main.name)"
-                    class="font-xs-15">
-                        <i
-                        class="fa-sm"
-                        :class="main_stats.includes(main.name) ?
-                        'fas fa-check-square' : 'far fa-square'">
-                        </i>
+                    <div class="filter-options-container">
+                        <b-dropdown-item
+                        :key="i"
+                        v-for="(main,i) in artifact_main_stats"
+                        @click.native.capture.stop="addMainStat(main.name)"
+                        class="font-xs-15">
+                            <i
+                            class="fa-sm"
+                            :class="main_stats.includes(main.name) ?
+                            'fas fa-check-square' : 'far fa-square'">
+                            </i>
 
-                        {{ main.name }} ({{ main.count }})
-                    </b-dropdown-item>
+                            {{ main.name }} ({{ main.count }})
+                        </b-dropdown-item>
+                    </div>
                 </b-dropdown>
                 
                 <b-input-group-append class="d-inline">

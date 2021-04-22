@@ -281,6 +281,13 @@
 							'Fixed wrong achievement notification when earning new "Overall" achievement while rolling in domain'
 						]
 					},
+					{
+						date: '2021.04.22',
+						types: ['feature'],
+						changes: [
+							'Added option to lock artifacts when rolling and in inventory. Locked artifacts cannot be deleted from your inventory.'
+						]
+					},
 				]
 			}
 		},

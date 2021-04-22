@@ -113,7 +113,7 @@
 					},
 					{
 						done: false,
-						priority: 'high',
+						priority: 'medium',
 						summary: 'Add feedback/contact form'
 					},
 					{

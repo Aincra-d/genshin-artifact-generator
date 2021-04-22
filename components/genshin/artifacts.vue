@@ -218,6 +218,22 @@
                     let achievements=JSON.parse(localStorage.achievements);
                     this.$store.commit('artifacts/setAchievements',achievements);
                 }
+            },
+            setLocked(){
+                let artifacts=JSON.parse(localStorage.artifacts);
+                // console.log(('locked' in artifacts[0].info))
+                if(artifacts.length === 0 || ('locked' in artifacts[0].info)) return
+                
+                if(!('locked' in artifacts[0].info)){
+                    alert("sad")
+                    artifacts.forEach(artifact => {
+                        artifact.info.locked=false;
+                    });
+
+                    localStorage.setItem('artifacts', JSON.stringify(artifacts))
+                }
+
+                console.log(artifacts);
             }
          },
          mounted(){
@@ -232,7 +248,8 @@
             let view=(sessionStorage.inventoryView || (screen < 776 ? 'images' : 'compressed'));
             this.$store.commit('artifacts/setView',view);
 
-            if(!localStorage.artifacts) localStorage.setItem('artifacts', JSON.stringify([]))
+            if(!localStorage.artifacts) localStorage.setItem('artifacts', JSON.stringify([]));
+            this.setLocked();
         },
         beforeMount(){
             this.setAchievements();

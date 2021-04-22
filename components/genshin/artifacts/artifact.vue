@@ -5,6 +5,7 @@
             v-if="view != 'images'"
             :artifact="artifact"
             :inventory="inventory"
+            :fromModal="fromModal"
             :class="'stars-'+artifact.info.stars+' '+view+' '+(view == 'full' ? 'align-top' : '')"
             class="d-inline-block p-0 border border-light text-light border-0 artifact contain-info"
             @open-modal="$emit('open-modal','artifactModal',artifact.id)">
@@ -30,6 +31,10 @@
         props: {
             artifact: Object,
             inventory: Boolean,
+            fromModal: {
+                type: Boolean,
+                default: false
+            },
             view: String
         },
         components: {

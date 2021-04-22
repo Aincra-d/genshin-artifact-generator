@@ -67,7 +67,7 @@
             </button>
 
             <button
-            v-if="inventory && delete_artifacts"
+            v-if="inventory && delete_artifacts && !artifact.info.locked"
             type="button"
             class="btn text-light artifact-main-info d-inline
             rounded btn-md float-left py-0 px-1 mx-1"

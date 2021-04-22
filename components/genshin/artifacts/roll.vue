@@ -288,7 +288,8 @@
                         stars,
                         level: 0,
                         max_level,
-                        rerolls
+                        rerolls,
+                        locked: false
                     }
                     // rolls: 1
                 };
