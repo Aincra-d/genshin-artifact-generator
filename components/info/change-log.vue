@@ -69,6 +69,13 @@
 				logs: [],
 				changes: [
 					{
+						date: '2021.03.14',
+						types: [],
+						changes: [
+							'Genshin Impact Artifact Generator has been deployed!'
+						]
+					},
+					{
 						date: '2021.03.15',
 						types: ['feature','fix','update'],
 						changes: [
