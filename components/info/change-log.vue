@@ -297,9 +297,10 @@
 					},
 					{
 						date: '2021.04.23',
-						types: ['feature'],
+						types: ['feature','fix'],
 						changes: [
-							'Added option to filter inventory to locked/unlocked artifacts'
+							'Added option to filter inventory to locked/unlocked artifacts',
+							'Fixed inventory saving wrong artifacts after filtering (un)locked artifacts and (un)locking them'
 						]
 					},
 				]

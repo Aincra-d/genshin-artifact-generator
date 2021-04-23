@@ -133,10 +133,13 @@
             },
             setLock(){
             	this.artifact.info.locked=!this.artifact.info.locked;
+            	let artifacts=JSON.parse(localStorage.artifacts);
 
             	if(this.inventory || this.fromModal){
-	            	localStorage.setItem('artifacts', JSON.stringify(this.artifacts.reverse()));
-	            	this.$store.commit('artifacts/setArtifacts',this.artifacts.reverse());
+            		artifacts[artifacts.findIndex(artifact => artifact.id === this.artifact.id)].info.locked=!artifacts[artifacts.findIndex(artifact => artifact.id === this.artifact.id)].info.locked;
+
+	            	localStorage.setItem('artifacts', JSON.stringify(artifacts));
+	            	// this.$store.commit('artifacts/setArtifacts',this.artifacts.reverse());
 	            }
             }
         }
