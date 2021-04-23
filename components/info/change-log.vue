@@ -295,6 +295,13 @@
 							'Added option to lock artifacts when rolling and in inventory. Locked artifacts cannot be deleted from your inventory.'
 						]
 					},
+					{
+						date: '2021.04.23',
+						types: ['feature'],
+						changes: [
+							'Added option to filter inventory to locked/unlocked artifacts'
+						]
+					},
 				]
 			}
 		},
