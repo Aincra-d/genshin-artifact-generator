@@ -141,6 +141,12 @@
         overflow-y: auto;
     }
 
+    @media(max-width: 576px){
+        .filter-select .dropdown-menu{
+            /*left:-50%;*/
+        }
+    }
+
     .ui-select.is-multiple .ui-select__display-value{
         white-space: nowrap;
         max-width: 250px;

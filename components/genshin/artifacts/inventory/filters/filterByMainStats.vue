@@ -68,7 +68,13 @@
                             'fas fa-check-square' : 'far fa-square'">
                             </i>
 
-                            {{ main.name }} ({{ main.count }})
+                            <img
+                            v-if="main.image"
+                            v-lazy="main.image"
+                            :alt="main.name"
+                            style="width:20px; height:20px;">
+
+                            {{ (main.icon ? main.icon+' ' : '') }} {{ main.name }} ({{ main.count }})
                         </b-dropdown-item>
                     </div>
                 </b-dropdown>
@@ -107,6 +113,7 @@
 
 <script>
     import mainstatsJ from '~/static/mainstats.json';
+    import staticons from '~/static/staticons.json';
 
     export default{
         name: 'filterByMainStats',
@@ -120,7 +127,8 @@
             return {
                 artifact_main_stats: mainstatsJ.map(main => main.name),
                 main_stats: [],
-                toggled: false
+                toggled: false,
+                main_icons: staticons.main_icons
             }
         },
         computed: {
@@ -146,6 +154,8 @@
                 this.artifact_main_stats.forEach(main_stat => {
                     main_stats.push({
                         name: main_stat,
+                        icon: this.main_icons[this.main_icons.findIndex(icon => icon.name == main_stat)].icon,
+                        image: this.main_icons[this.main_icons.findIndex(icon => icon.name == main_stat)].image,
                         count: this.artifacts.filter(artifact => artifact.stats.main.name == main_stat).length
                     });
 

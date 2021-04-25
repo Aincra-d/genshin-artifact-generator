@@ -1,0 +1,114 @@
+{
+    "main_icons": [
+        {
+            "name": "HP",
+            "icon": "❤️"
+        },
+        {
+            "name": "ATK",
+            "icon": "⚔️"
+        },
+        {
+            "name": "HP%",
+            "icon": "❤️"
+        },
+        {
+            "name": "DEF%",
+            "icon": "🛡️"
+        },
+        {
+            "name": "ATK%",
+            "icon": "⚔️"
+        },
+        {
+            "name": "Elemental Mastery",
+            "icon": "🔥"
+        },
+        {
+            "name": "Energy Recharge%",
+            "icon": "⚡"
+        },
+        {
+            "name": "Physical DMG Bonus",
+            "icon": "🗡️"
+        },
+        {
+            "name": "Anemo DMG Bonus",
+            "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Element_Anemo.png"
+        },
+        {
+            "name": "Geo DMG Bonus",
+            "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Element_Geo.png"
+        },
+        {
+            "name": "Pyro DMG Bonus",
+            "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e8/Element_Pyro.png"
+        },
+        {
+            "name": "Cyro DMG Bonus",
+            "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Element_Cryo.png"
+        },
+        {
+            "name": "Electro DMG Bonus",
+            "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/73/Element_Electro.png"
+        },
+        {
+            "name": "Hydro DMG Bonus",
+            "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Element_Hydro.png"
+        },
+        {
+            "name": "CRIT Rate%",
+            "icon": "🎯"
+        },
+        {
+            "name": "CRIT DMG%",
+            "icon": "💯"
+        },
+        {
+            "name": "Healing Bonus",
+            "icon": "➕"
+        }
+    ],
+    "sub_icons": [
+        {
+            "name": "HP",
+            "icon": "❤️"
+        },
+        {
+            "name": "HP%",
+            "icon": "❤️"
+        },
+        {
+            "name": "DEF",
+            "icon": "🛡️"
+        },
+        {
+            "name": "DEF%",
+            "icon": "🛡️"
+        },
+        {
+            "name": "ATK",
+            "icon": "⚔️"
+        },
+        {
+            "name": "ATK%",
+            "icon": "⚔️"
+        },
+        {
+            "name": "Energy Recharge%",
+            "icon": "⚡"
+        },
+        {
+            "name": "Elemental Mastery",
+            "icon": "🔥"
+        },
+        {
+            "name": "CRIT Rate%",
+            "icon": "🎯"
+        },
+        {
+            "name": "CRIT DMG%",
+            "icon": "💯"
+        }
+    ]
+}

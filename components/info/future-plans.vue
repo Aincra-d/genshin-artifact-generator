@@ -123,7 +123,7 @@
 					},
 					{
 						done: false,
-						priority: 'medium',
+						priority: 'low',
 						summary: 'Add user statistics'
 					}
 				]

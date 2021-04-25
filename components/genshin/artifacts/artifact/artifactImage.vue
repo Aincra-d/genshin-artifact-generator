@@ -32,14 +32,16 @@
                         <span
                         :class="screen < 370 && 'font-xs-10'"
                         class="font-12 font-weight-bold">
-                            {{
-                                main_icons[main_icons.findIndex(main => main.name == artifact.stats.main.name)].icon
-                            }}
+                        	<span v-if="icons.main_icons[icons.main_icons.findIndex(main => main.name == artifact.stats.main.name)].icon">
+	                            {{
+	                                icons.main_icons[icons.main_icons.findIndex(main => main.name == artifact.stats.main.name)].icon
+	                            }}
+	                        </span>
 
                             <img
-                            v-if="main_icons[main_icons.findIndex(main => main.name == artifact.stats.main.name)].image != ''"
+                            v-else
                             style="height:15px;width:15px;"
-                            :src="main_icons[main_icons.findIndex(main => main.name == artifact.stats.main.name)].image"
+                            :src="icons.main_icons[icons.main_icons.findIndex(main => main.name == artifact.stats.main.name)].image"
                             :alt="artifact.stats.main.name">
 
                             <span>
@@ -54,7 +56,7 @@
                             :key="i"
                             v-for="(sub,i) in artifact.stats.subs">
                                 <span>
-                                    {{ sub_icons[sub_icons.findIndex(icon => icon.name == sub.name)].icon }}        
+                                    {{ icons.sub_icons[icons.sub_icons.findIndex(icon => icon.name == sub.name)].icon }}        
                                 </span>
 
                                 <span>
@@ -90,6 +92,8 @@
 </template>
 
 <script>
+	import staticons from '~/static/staticons.json';
+
 	export default{
 		name: 'artifactImage',
 		props: {
@@ -113,105 +117,7 @@
 		data(){
 			return {
 				toggled: false,
-                sub_icons: [
-                    { name: 'HP', icon: '❤️' },
-                    { name: 'HP%', icon: '❤️' },
-                    { name: 'DEF', icon: '🛡️' },
-                    { name: 'DEF%', icon: '🛡️' },
-                    { name: 'ATK', icon: '⚔️' },
-                    { name: 'ATK%', icon: '⚔️' },
-                    { name: 'Energy Recharge%', icon: '⚡' },
-                    { name: 'Elemental Mastery', icon: '🔥' },
-                    { name: 'CRIT Rate%', icon: '🎯' },
-                    { name: 'CRIT DMG%', icon: '💯' }
-                ],
-                main_icons: [
-                    {
-                        name: 'HP',
-                        icon: '❤️',
-                        image: ''
-                    },
-                    {
-                        name: 'ATK',
-                        icon: '⚔️',
-                        image: ''
-                    },
-                    {
-                        name: 'HP%',
-                        icon: '❤️',
-                        image: ''
-                    },
-                    {
-                        name: 'DEF%',
-                        icon: '🛡️',
-                        image: ''
-                    },
-                    {
-                        name: 'ATK%',
-                        icon: '⚔️',
-                        image: ''
-                    },
-                    {
-                        name: 'Elemental Mastery',
-                        icon: '🔥',
-                        image: ''
-                    },
-                    {
-                        name: 'Energy Recharge%',
-                        icon: '⚡',
-                        image: ''
-                    },
-                    {
-                        name: 'Physical DMG Bonus',
-                        icon: '🗡️',
-                        image: ''
-                    },
-                    {
-                        name: 'Anemo DMG Bonus',
-                        icon: '',
-                        image: 'https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Element_Anemo.png'
-                    },
-                    {
-                        name: 'Geo DMG Bonus',
-                        icon: '',
-                        image: 'https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Element_Geo.png'
-                    },
-                    {
-                        name: 'Pyro DMG Bonus',
-                        icon: '',
-                        image: 'https://static.wikia.nocookie.net/gensin-impact/images/e/e8/Element_Pyro.png'
-                    },
-                    {
-                        name: 'Cyro DMG Bonus',
-                        icon: '',
-                        image: 'https://static.wikia.nocookie.net/gensin-impact/images/8/88/Element_Cryo.png'
-                    },
-                    {
-                        name: 'Electro DMG Bonus',
-                        icon: '',
-                        image: 'https://static.wikia.nocookie.net/gensin-impact/images/7/73/Element_Electro.png'
-                    },
-                    {
-                        name: 'Hydro DMG Bonus',
-                        icon: '',
-                        image: 'https://static.wikia.nocookie.net/gensin-impact/images/3/35/Element_Hydro.png'
-                    },
-                    {
-                        name: 'CRIT Rate%',
-                        icon: '🎯',
-                        image: ''
-                    },
-                    {
-                        name: 'CRIT DMG%',
-                        icon: '💯',
-                        image: ''
-                    },
-                    {
-                        name: 'Healing Bonus',
-                        icon: '➕',
-                        image: ''
-                    }
-                ]
+				icons: staticons
 			}
 		},
 		methods: {

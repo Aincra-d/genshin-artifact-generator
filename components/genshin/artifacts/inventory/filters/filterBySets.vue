@@ -48,7 +48,7 @@
 
                     <input
                     type="text"
-                    class="w-100 py-1 mt-1"
+                    class="w-100 py-0 mt-1"
                     placeholder="Search/filters sets"
                     v-model="set_name">
 
@@ -62,6 +62,12 @@
                         :class="sets.includes(set.name) ?
                         'fas fa-check-square' : 'far fa-square'">
                         </i>
+
+                        <img
+                        v-lazy="set.image"
+                        :alt="set.name"
+                        style="width:25px; height:25px;"
+                        class="rounded">
 
                         {{ set.name }} ({{ set.count }})
                     </b-dropdown-item>
@@ -100,7 +106,7 @@
 </template>
 
 <script>
-    import setsJ from '~/static/sets.json';
+    import setsJSON from '~/static/sets.json';
 
     export default{
         name: 'filterBySets',
@@ -112,7 +118,8 @@
         },
         data(){
             return {
-                artifact_set_names: setsJ.map(set => set.name),
+                artifact_set_names: setsJSON.map(set => set.name),
+                all_sets: setsJSON,
                 set_name: '',
                 sets: [],
                 toggled: false
@@ -140,10 +147,11 @@
         methods: {
             setSets(){
                 let sets=[];
-                this.artifact_set_names.forEach(set => {
+                this.all_sets.forEach(set => {
                     sets.push({
-                        name: set,
-                        count: this.artifacts.filter(artifact => artifact.info.set.name == set).length
+                        name: set.name,
+                        image: set.image,
+                        count: this.artifacts.filter(artifact => artifact.info.set.name == set.name).length
                     });
 
                     this.artifact_set_names=sets;
@@ -199,5 +207,11 @@
 <style>
     .stars-filter div label{
         border-radius: 0;
+    }
+
+    @media(max-width: 576px){
+        .filter-select .dropdown-menu{
+            left:-25% !important;
+        }
     }
 </style>

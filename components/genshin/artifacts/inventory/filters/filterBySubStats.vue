@@ -68,7 +68,7 @@
                         'fas fa-check-square' : 'far fa-square'">
                         </i>
 
-                        {{ sub.name }} ({{ sub.count }})
+                        {{ sub.icon+' '+sub.name }} ({{ sub.count }})
                     </b-dropdown-item>
                 </b-dropdown>
                 
@@ -119,6 +119,7 @@
 
 <script>
     import substatsJ from '~/static/substats.json';
+    import staticons from '~/static/staticons.json';
 
     export default{
         name: 'filterBySubStats',
@@ -132,7 +133,8 @@
             return {
                 artifact_sub_stats: substatsJ.map(sub => sub.name),
                 sub_stats: [],
-                toggled: false
+                toggled: false,
+                sub_icons: staticons.sub_icons
             }
         },
         computed: {
@@ -165,6 +167,7 @@
                 this.artifact_sub_stats.forEach(sub_stat => {
                     sub_stats.push({
                         name: sub_stat,
+                        icon: this.sub_icons[this.sub_icons.findIndex(icon => icon.name == sub_stat)].icon,
                         count: this.artifacts.filter(artifact => artifact.stats.subs.map(sub => sub.name).includes(sub_stat)).length
                     });
 

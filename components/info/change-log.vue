@@ -303,6 +303,14 @@
 							'Fixed inventory saving wrong artifacts after filtering (un)locked artifacts and (un)locking them'
 						]
 					},
+					{
+						date: '2021.04.25',
+						types: ['fix','feature'],
+						changes: [
+							'Design issue fixes',
+							'Added icons and images to the following filter select options: main stat, sub stat, sets'
+						]
+					},
 				]
 			}
 		},

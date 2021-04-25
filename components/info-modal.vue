@@ -34,7 +34,7 @@
                     </b-tab>
                 </b-tabs>
 
-                <b>© 2021 Copyright: <i class="fab fa-discord"></i> Mommy Smirnoff♥#6672 at
+                <b>© 2021 Copyright: <i class="fab fa-discord"></i> The Cooler Smirnoff 😎#6672 at
                     <a href="https://discord.gg/genshinimpact" target="blank">
                         Genshin Impact Official
                     </a>

@@ -92,13 +92,13 @@
 
      @media(max-width: 370px){
         .artifact-thumb{
-            width:80px;
-            height:80px;
+            width:90px;
+            height:90px;
         }
 
         .artifact-thumb img{
-            width:70px;
-            height:70px;
+            width:80px;
+            height:80px;
         }
     }
 
@@ -108,7 +108,7 @@
 
     @media(max-width: 370px){
         .artifact-thumb{
-            overflow-y:auto;
+            overflow-y: hidden;
         }
 
         img.artifact-thumb{
