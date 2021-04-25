@@ -2,7 +2,15 @@
 	<div>
 		<div>
             <div class="w-100 text-left set-name">
-                <h5 class="ml-4 d-inline">
+                <h5 
+                :class="view == 'compressed' && artifact.info.locked ? 'ml-2' : 'ml-4'"
+                class="d-inline">
+                	<span
+	        		v-if="artifact.info.locked && view == 'compressed'"
+	        		class="float-left ml-1">
+	            		<i class="fas fa-lock fa-sm text-danger"></i>
+	            	</span>
+
                     {{
                         artifact.info.piece.name.length > 25 ? artifact.info.piece.name.substring(0, 22)+'...' : artifact.info.piece.name
                     }}
@@ -125,6 +133,9 @@
             },
             artifacts(){
             	return this.$store.state.artifacts.artifacts
+            },
+            view(){
+            	return this.$store.state.artifacts.view
             }
         },
         methods: {

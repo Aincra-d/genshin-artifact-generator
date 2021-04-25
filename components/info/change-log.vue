@@ -308,7 +308,8 @@
 						types: ['fix','feature'],
 						changes: [
 							'Design issue fixes',
-							'Added icons and images to the following filter select options: main stat, sub stat, sets'
+							'Added icons and images to the following filter select options: main stat, sub stat, sets',
+							'Added locked status icon to "Images only" and "Compressed cards" view'
 						]
 					},
 				]

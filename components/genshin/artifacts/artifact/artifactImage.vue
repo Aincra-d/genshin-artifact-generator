@@ -10,12 +10,34 @@
             rounded btn-md float-left py-0 px-2 mx-1"
             @click="/*$emit('open-modal','artifactModal',artifact.id)*/ toggled=!toggled">
                 <collapse-transition :duration="250" group>
+                	<span
+                	:key="1"
+	        		v-if="artifact.info.locked && !toggled"
+	        		class="position-absolute top-0 left-10">
+	            		<i class="fas fa-lock fa-sm text-danger"></i>
+	            	</span>
+
                     <img
                     :key="artifact.id"
                     v-if="!toggled"
                     class="mr-1 artifact-thumb"
                     v-lazy="artifact.info.piece.image"
                     :alt="artifact.info.piece.name">
+
+                    <!-- <div
+                	v-if="!toggled"
+                	:key="artifact.id">
+                		<span
+                		v-if="artifact.info.locked"
+                		class="position-absolute top-0 right-5">
+	                		<i class="fas fa-lock fa-sm text-danger"></i>
+	                	</span>
+
+	                    <img
+	                    class="mr-1 artifact-thumb"
+	                    v-lazy="artifact.info.piece.image"
+	                    :alt="artifact.info.piece.name">
+	                </div> -->
 
                     <div
                     v-else
