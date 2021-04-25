@@ -305,11 +305,12 @@
 					},
 					{
 						date: '2021.04.25',
-						types: ['fix','feature'],
+						types: ['fix','feature','update'],
 						changes: [
 							'Design issue fixes',
 							'Added icons and images to the following filter select options: main stat, sub stat, sets',
-							'Added locked status icon to "Images only" and "Compressed cards" view'
+							'Added locked status icon to "Images only" and "Compressed cards" view',
+							'Organized stats on main and sub stat filters'
 						]
 					},
 				]
