@@ -35,34 +35,36 @@
             </div>
 
             <div class="w-100 text-right artifact-main-info position-relative">
-                <img
-                class="mr-1"
-                style="height:150px;width:150px;"
-                v-lazy="artifact.info.piece.image"
-                :alt="artifact.info.piece.name">
+            	<div class="artifact-main-info-content">
+	                <img
+	                class="mr-1"
+	                style="height:150px;width:150px;"
+	                v-lazy="artifact.info.piece.image"
+	                :alt="artifact.info.piece.name">
 
-                <h6 class="position-absolute top-0 left-0 artifact-type ml-4">
-                    {{ artifact.info.piece.type }}
-                </h6>
+	                <h6 class="position-absolute top-0 left-0 artifact-type ml-4">
+	                    {{ artifact.info.piece.type }}
+	                </h6>
 
-                <div class="artifact-main-stat position-absolute bottom-0 left-0 text-left">
-                    <!-- {{ artifact.info.set.name }} -->
+	                <div class="artifact-main-stat position-absolute bottom-0 left-0 text-left">
+	                    <!-- {{ artifact.info.set.name }} -->
 
-                    <span class="font-15 font-weight-bold artifact-main-stat ml-4 mb-0">
-                        {{ artifact.stats.main.name.replace('%','') }}
-                    </span>
+	                    <span class="font-15 font-weight-bold artifact-main-stat ml-4 mb-0">
+	                        {{ artifact.stats.main.name.replace('%','') }}
+	                    </span>
 
-                    <h2 class="font-weight-bold text-light artifact-main-value ml-4 mt-0">
-                        {{ artifact.stats.main.value }}
-                    </h2>
+	                    <h2 class="font-weight-bold text-light artifact-main-value ml-4 mt-0">
+	                        {{ artifact.stats.main.value }}
+	                    </h2>
 
-                    <span class="ml-4 mt-2">
-                        <i
-                        :key="i"
-                        v-for="(star,i) in artifact.info.stars"
-                        class="fas fa-star text-warning fa-md mr-1"></i>
-                    </span>
-                </div>
+	                    <span class="ml-4 mt-2">
+	                        <i
+	                        :key="i"
+	                        v-for="(star,i) in artifact.info.stars"
+	                        class="fas fa-star text-warning fa-md mr-1"></i>
+	                    </span>
+	                </div>
+	            </div>
             </div>
 
             <div class="artifact-sub-info m-0 p-0">
