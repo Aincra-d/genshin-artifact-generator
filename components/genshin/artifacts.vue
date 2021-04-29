@@ -249,6 +249,30 @@
 
             if(!localStorage.artifacts) localStorage.setItem('artifacts', JSON.stringify([]));
             this.setLocked();
+
+            let roll_stats=localStorage.roll_stats && JSON.parse(localStorage.roll_stats);
+
+            if(roll_stats && !roll_stats.map(stat => stat.name).includes('Ridge Watch')){
+                roll_stats.push({
+                    name: 'Ridge watch',
+                    counter: 0
+                });
+
+                localStorage.setItem("roll_stats", JSON.stringify(roll_stats));
+            }
+
+            let achievements=localStorage.achievements && JSON.parse(localStorage.achievements);
+
+            if(achievements && !achievements.rolls.domains.map(domain => domain.name).includes('Ridge Watch')){
+                this.setRollNumbers();
+
+                achievements.rolls.domains.push({
+                    name: 'Ridge Watch',
+                    values: this.roll_numbers
+                });
+
+                localStorage.setItem("achievements", JSON.stringify(achievements));
+            }
         },
         beforeMount(){
             this.setAchievements();

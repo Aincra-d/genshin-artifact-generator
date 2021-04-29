@@ -357,6 +357,10 @@
                                 counter: 0
                             },
                             {
+                                name: "Ridge Watch",
+                                counter: 0
+                            },
+                            {
                                 name: "No domain",
                                 counter: 0
                             }
@@ -396,6 +400,10 @@
                     },
                     {
                         name: "Clear Pool and Mountain Cavern",
+                        counter: 0
+                    },
+                    {
+                        name: "Ridge Watch",
                         counter: 0
                     },
                     {

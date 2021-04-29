@@ -24,6 +24,10 @@
 		"sets": ["Gambler","Scholar","Bloodstained Chivalry","Noblesse Oblige"]
 	},
 	{
+		"name": "Ridge Watch",
+		"sets": ["Brave Heart","Martial Artist","Tenacity of the Millelith","Pale Flame"]
+	},
+	{
 		"name": "No domain",
 		"sets": ["Gladiator's Finale","Wanderer's Troupe","Instructor"]
 	}

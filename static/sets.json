@@ -1,7 +1,7 @@
 [
     {
         "name": "Adventurer",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Item_Adventurer_3-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ec/Item_Adventurer%27s_Flower.png",
         "pieces": [
             {
                 "name": "Adventurer's Flower",
@@ -37,7 +37,7 @@
     },
     {
         "name": "Lucky Dog",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Item_Lucky_Dog_3-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e0/Item_Lucky_Dog%27s_Clover.png",
         "pieces": [
             {
                 "name": "Lucky Dog's Clover",
@@ -73,7 +73,7 @@
     },
     {
         "name": "Traveling Doctor",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Item_Traveling_Doctor_3-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Item_Traveling_Doctor%27s_Silver_Lotus.png",
         "pieces": [
             {
                 "name": "Traveling Doctor's Medicine Pot",
@@ -109,7 +109,7 @@
     },
     {
         "name": "Instructor",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Instructor_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Item_Instructor%27s_Brooch.png",
         "pieces": [
             {
                 "name": "Instructor's Brooch",
@@ -145,7 +145,7 @@
     },
     {
         "name": "Berserker",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Item_Berserker_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c1/Item_Berserker%27s_Rose.png",
         "pieces": [
             {
                 "name": "Berserker's Rose",
@@ -181,7 +181,7 @@
     },
     {
         "name": "The Exile",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Item_The_Exile_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f9/Item_Exile%27s_Flower.png",
         "pieces": [
             {
                 "name": "Exile's Flower",
@@ -217,7 +217,7 @@
     },
     {
         "name": "Resolution of Sojourner",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Item_Resolution_of_Sojourner_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Item_Heart_of_Comradeship.png",
         "pieces": [
             {
                 "name": "Heart of Comradeship",
@@ -253,7 +253,7 @@
     },
     {
         "name": "Martial Artist",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e4/Item_Martial_Artist_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a7/Item_Martial_Artist%27s_Red_Flower.png",
         "pieces": [
             {
                 "name": "Martial Artist's Red Flower",
@@ -289,7 +289,7 @@
     },
     {
         "name": "Defender's Will",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Item_Defender%27s_Will_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/63/Item_Guardian%27s_Flower.png",
         "pieces": [
             {
                 "name": "Guardian's Flower",
@@ -325,7 +325,7 @@
     },
     {
         "name": "Tiny Miracle",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e8/Item_Tiny_Miracle_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/68/Item_Tiny_Miracle%27s_Flower.png",
         "pieces": [
             {
                 "name": "Tiny Miracle's Flower",
@@ -361,7 +361,7 @@
     },
     {
         "name": "Brave Heart",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/21/Item_Heart_of_Bravery_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9e/Item_Medal_of_the_Brave.png",
         "pieces": [
             {
                 "name": "Medal of the Brave",
@@ -397,7 +397,7 @@
     },
     {
         "name": "Gambler",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Item_Gambler_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/39/Item_Gambler%27s_Brooch.png",
         "pieces": [
             {
                 "name": "Gambler's Brooch",
@@ -433,7 +433,7 @@
     },
     {
         "name": "Scholar",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/be/Item_Scholar_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e5/Item_Scholar%27s_Bookmark.png",
         "pieces": [
             {
                 "name": "Scholar's Bookmark",
@@ -469,7 +469,7 @@
     },
     {
         "name": "Gladiator's Finale",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Item_Gladiator%27s_Finale_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Item_Gladiator%27s_Nostalgia.png",
         "pieces": [
             {
                 "name": "Gladiator's Nostalgia",
@@ -505,7 +505,7 @@
     },
     {
         "name": "Wanderer's Troupe",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Item_Wanderer%27s_Troupe_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Item_Troupe%27s_Dawnlight.png",
         "pieces": [
             {
                 "name": "Troupe's Dawnlight",
@@ -541,7 +541,7 @@
     },
     {
         "name": "Viridescent Venerer",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Item_Viridescent_Venerer_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/90/Item_In_Remembrance_of_Viridescent_Fields.png",
         "pieces": [
             {
                 "name": "In Remembrance of Viridescent Fields",
@@ -577,7 +577,7 @@
     },
     {
         "name": "Thundering Fury",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Item_Thundering_Fury_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/57/Item_Thunderbird%27s_Mercy.png",
         "pieces": [
             {
                 "name": "Thunderbird's Mercy",
@@ -613,7 +613,7 @@
     },
     {
         "name": "Thundersoother",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fc/Item_Thundersoother_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ef/Item_Thundersoother%27s_Heart.png",
         "pieces": [
             {
                 "name": "Thundersoother's Heart",
@@ -649,7 +649,7 @@
     },
     {
         "name": "Crimson Witch of Flames",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f8/Item_Crimson_Witch_of_Flames_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0f/Item_Witch%27s_Flower_of_Blaze.png",
         "pieces": [
             {
                 "name": "Witch's Flower of Blaze",
@@ -685,7 +685,7 @@
     },
     {
         "name": "Lavawalker",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/53/Item_Lavawalker_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Item_Lavawalker%27s_Resolution.png",
         "pieces": [
             {
                 "name": "Lavawalker's Resolution",
@@ -721,7 +721,7 @@
     },
     {
         "name": "Archaic Petra",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ae/Item_Archaic_Petra_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Item_Flower_of_Creviced_Cliff.png",
         "pieces": [
             {
                 "name": "Flower of Creviced Cliff",
@@ -757,7 +757,7 @@
     },
     {
         "name": "Retracing Bolide",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/87/Item_Retracing_Bolide_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a6/Item_Summer_Night%27s_Bloom.png",
         "pieces": [
             {
                 "name": "Summer Night's Bloom",
@@ -793,7 +793,7 @@
     },
     {
         "name": "Maiden Beloved",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Item_Maiden_Beloved_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Item_Maiden%27s_Distant_Love.png",
         "pieces": [
             {
                 "name": "Maiden's Distant Love",
@@ -829,7 +829,7 @@
     },
     {
         "name": "Noblesse Oblige",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c4/Item_Noblesse_Oblige_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/7/71/Item_Royal_Flora.png",
         "pieces": [
             {
                 "name": "Royal Flora",
@@ -865,7 +865,7 @@
     },
     {
         "name": "Bloodstained Chivalry",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/32/Item_Bloodstained_Chivalry_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5b/Item_Bloodstained_Flower_of_Iron.png",
         "pieces": [
             {
                 "name": "Bloodstained Flower of Iron",
@@ -901,7 +901,7 @@
     },
     {
         "name": "Icebreaker",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d8/Item_Icebreaker_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Item_Snowswept_Memory.png",
         "pieces": [
             {
                 "name": "Snowswept Memory",
@@ -937,7 +937,7 @@
     },
     {
         "name": "Ocean Conqueror",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cc/Item_Ocean_Conqueror_5-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Item_Gilded_Corsage.png",
         "pieces": [
             {
                 "name": "Gilded Corsage",
@@ -972,8 +972,80 @@
         "stars": [4,5]
     },
     {
+        "name": "Pale Flame",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e7/Item_Stainless_Bloom.png",
+        "pieces": [
+            {
+                "name": "Stainless Bloom",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e7/Item_Stainless_Bloom.png"
+            },
+            {
+                "name": "Wise Doctor's Pinion",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e8/Item_Wise_Doctor%27s_Pinion.png"
+            },
+            {
+                "name": "Moment of Cessation",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Item_Moment_of_Cessation.png"
+            },
+            {
+                "name": "Bloodstained Chevalier's Goblet",
+                "type": "Surpassing Cup",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4b/Item_Surpassing_Cup.png"
+            },
+            {
+                "name": "Mocking Mask",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Item_Mocking_Mask.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Physical DMG +25%",
+            "4_piece": "AfterWhen an Elemental Skill hits an opponent, ATK is increased by 9% for 7s. This effect stacks up to 2 times and can be triggered once every 0.3s. Once 2 stacks are reached, the 2-set effect is increased by 100%."
+        },
+        "stars": [4,5]
+    },
+    {
+        "name": "Tenacity of the Millelith",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Item_Flower_of_Accolades.png",
+        "pieces": [
+            {
+                "name": "Flower of Accolades",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Item_Flower_of_Accolades.png"
+            },
+            {
+                "name": "Ceremonial War-Plume",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/86/Item_Ceremonial_War-Plume.png"
+            },
+            {
+                "name": "Orichalceous Time-Dial",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_Orichalceous_Time-Dial.png"
+            },
+            {
+                "name": "Noble's Pledging Vessel",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f4/Item_Noble%27s_Pledging_Vessel.png"
+            },
+            {
+                "name": "General's Ancient Helm",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b9/Item_General%27s_Ancient_Helm.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "HP +20%",
+            "4_piece": "When an Elemental Skill hits an opponent, the ATK of all nearby party members is increased by 20% and their Shield Strength is increased by 30% for 3s. This effect can be triggered once every 0.5s. This effect can still be triggered even when the character who is using this artifact set is not on the field."
+        },
+        "stars": [4,5]
+    },
+    {
         "name": "Prayers for Wisdom",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/26/Item_Prayers_for_Wisdom_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Tiara_of_Thunder.png",
         "pieces": [
             {
                 "name": "Tiara of Thunder",
@@ -989,7 +1061,7 @@
     },
     {
         "name": "Prayers to Springtime",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Prayers_to_Springtime_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Tiara_of_Frost.png",
         "pieces": [
             {
                 "name": "Tiara of Frost",
@@ -1005,7 +1077,7 @@
     },
     {
         "name": "Prayers for Illumination",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a7/Item_Prayers_for_Illumination_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Tiara_of_Flame.png",
         "pieces": [
             {
                 "name": "Tiara of Flame",
@@ -1021,7 +1093,7 @@
     },
     {
         "name": "Prayers for Destiny",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/20/Item_Prayers_for_Destiny_4-star.png",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Item_Tiara_of_Torrents.png",
         "pieces": [
             {
                 "name": "Tiara of Torrents",

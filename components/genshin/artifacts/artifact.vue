@@ -133,6 +133,13 @@
         background-size: 240px;
     }
 
+    /*.images-only .artifact-main-info-content{
+        background-image: url('https://cdn.genshin.cc/assets/bg/item_tip.png') !important;
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: 150%;
+    }*/
+
     .artifact.images-only{
         overflow-x: hidden;
     }

@@ -313,6 +313,14 @@
 							'Organized stats on main and sub stat filters'
 						]
 					},
+					{
+						date: '2021.04.29',
+						types: ['update'],
+						changes: [
+							'New domain "Ridge Watch" has been added',
+							'New artifact sets "Pale Flame" and "Tenacity of the Millelith" have been added'
+						]
+					},
 				]
 			}
 		},
