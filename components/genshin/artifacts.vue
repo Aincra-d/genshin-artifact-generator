@@ -254,7 +254,7 @@
 
             if(roll_stats && !roll_stats.map(stat => stat.name).includes('Ridge Watch')){
                 roll_stats.push({
-                    name: 'Ridge watch',
+                    name: 'Ridge Watch',
                     counter: 0
                 });
 
