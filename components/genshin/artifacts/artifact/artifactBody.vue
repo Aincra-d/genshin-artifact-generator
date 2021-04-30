@@ -3,10 +3,10 @@
 		<div>
             <div class="w-100 text-left set-name">
                 <h5 
-                :class="view == 'compressed' && artifact.info.locked ? 'ml-2' : 'ml-4'"
+                :class="view == 'compressed' && artifact.info.locked && inventory ? 'ml-2' : 'ml-4'"
                 class="d-inline">
                 	<span
-	        		v-if="artifact.info.locked && view == 'compressed'"
+	        		v-if="artifact.info.locked && view == 'compressed' && inventory"
 	        		class="float-left ml-1">
 	            		<i class="fas fa-lock fa-sm text-danger"></i>
 	            	</span>
