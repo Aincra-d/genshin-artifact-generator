@@ -321,6 +321,14 @@
 							'New artifact sets "Pale Flame" and "Tenacity of the Millelith" have been added'
 						]
 					},
+					{
+						date: '2021.04.30',
+						types: ['fix','feature'],
+						changes: [
+							'Fixed locked icon\'s wrong appearance in artifact modal if it\' locked and the view is in "Compressed cards"',
+							'Added display animation to inventory filters'
+						]
+					},
 				]
 			}
 		},

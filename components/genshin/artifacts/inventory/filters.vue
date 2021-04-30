@@ -1,14 +1,14 @@
 <template>
     <div>
-        <filter-by-stars v-if="filters.by_star"></filter-by-stars>
+        <collapse-transition><filter-by-stars v-if="filters.by_star"></filter-by-stars></collapse-transition>
 
-        <filter-by-main-stats v-if="filters.by_main"></filter-by-main-stats>
+        <collapse-transition><filter-by-main-stats v-if="filters.by_main"></filter-by-main-stats></collapse-transition>
 
-        <filter-by-sub-stats v-if="filters.by_sub"></filter-by-sub-stats>
+        <collapse-transition><filter-by-sub-stats v-if="filters.by_sub"></filter-by-sub-stats></collapse-transition>
 
-        <filter-by-types v-if="filters.by_type"></filter-by-types>
+        <collapse-transition><filter-by-types v-if="filters.by_type"></filter-by-types></collapse-transition>
 
-        <filter-by-sets v-if="filters.by_set"></filter-by-sets>
+        <collapse-transition><filter-by-sets v-if="filters.by_set"></filter-by-sets></collapse-transition>
 
         <button
         v-if="delete_artifacts"

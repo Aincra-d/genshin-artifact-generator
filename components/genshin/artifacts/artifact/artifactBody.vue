@@ -213,26 +213,32 @@
 
     .artifact.stars-5 .set-name{
         background-color: #be6c32;
+        outline: 2px solid #a05c2e;
     }
 
     .artifact.stars-4 .set-name{
         background-color: #a256e1;
+        outline: 2px solid #8749bb;
     }
 
     .artifact.stars-3 .set-name{
         background-color: #5180cc;
+        outline: 2px solid #466aad;
     }
 
     .artifact.stars-2 .set-name{
         background-color: #288f72;
+        outline: 2px solid #267461;
     }
 
     .artifact.stars-1 .set-name{
         background-color: #72778b;
+        outline: 2px solid #606675;
     }
 
     .set-name{
         padding: 3px 0px 3px 0px;
+        outline-offset: -3.5px;
     }
 
     .set-name h5, .artifact-type{
