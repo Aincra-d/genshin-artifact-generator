@@ -65,7 +65,13 @@
                         'fas fa-check-square' : 'far fa-square'">
                         </i>
 
-                        {{ star.name }} <i class="fas fa-star text-warning fa-sm"></i> ({{ star.count }})
+                        <div
+                        :class="'stars-'+(i+1)"
+                        class="d-inline-block option-icon rounded">
+                            
+                        </div>
+
+                        {{ star.name }}-star ({{ star.count }})
                     </b-dropdown-item>
                 </b-dropdown>
 
@@ -204,5 +210,30 @@
 
     .star-filter .dropdown-menu{
         width: 220px;
+    }
+
+    .star-filter .option-icon{
+        width: 17.5px;
+        height: 17.5px;
+    }
+
+    .star-filter .option-icon.stars-5{
+        background-color: #be6c32;
+    }
+
+    .star-filter .option-icon.stars-4{
+        background-color: #a256e1;
+    }
+
+    .star-filter .option-icon.stars-3{
+        background-color: #5180cc;
+    }
+
+    .star-filter .option-icon.stars-2{
+        background-color: #288f72;
+    }
+
+    .star-filter .option-icon.stars-1{
+        background-color: #72778b;
     }
 </style>

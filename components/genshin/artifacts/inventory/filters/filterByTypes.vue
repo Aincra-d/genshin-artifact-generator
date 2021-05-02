@@ -18,7 +18,7 @@
                 :size="screen < 576 ? 'sm' : 'md'"
                 :text="types.length!=0 ? types.length+' type(s) selected' : 'Select artifact types'"
                 variant="light"
-                class="text-dark rounded-0 star-filter">
+                class="text-dark rounded-0">
                     <button
                     type="button"
                     :class="stack ? 'w-50' : 'w-30'"
@@ -64,6 +64,12 @@
                         :class="types.includes(type.name) ?
                         'fas fa-check-square' : 'far fa-square'">
                         </i>
+
+                        <img
+                        v-lazy="type.image"
+                        :alt="type.name"
+                        style="width:25px; height:25px;"
+                        class="rounded">
 
                         {{ type.name }} <i class="fas fa-type text-warning fa-sm"></i>({{ type.count }})
                     </b-dropdown-item>
@@ -112,7 +118,12 @@
         },
         data(){
             return {
-                artifact_types: ["Flower of Life","Plume of Death","Sands of Eon","Goblet of Eonothem","Circlet of Logos"],
+                artifact_types: [
+                { name : "Flower of Life", image: 'https://static.wikia.nocookie.net/gensin-impact/images/2/2d/Icon_Flower_of_Life.png' },
+                { name : "Plume of Death", image: 'https://static.wikia.nocookie.net/gensin-impact/images/8/8b/Icon_Plume_of_Death.png' },
+                { name : "Sands of Eon", image: 'https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Icon_Sands_of_Eon.png' },
+                { name : "Goblet of Eonothem", image: 'https://static.wikia.nocookie.net/gensin-impact/images/3/37/Icon_Goblet_of_Eonothem.png' },
+                { name : "Circlet of Logos", image: 'https://static.wikia.nocookie.net/gensin-impact/images/6/64/Icon_Circlet_of_Logos.png' }],
                 types: [],
                 toggled: false
             }
@@ -139,7 +150,8 @@
 
                 this.artifact_types.forEach(type => {
                     types.push({
-                        name: type,
+                        name: type.name,
+                        image: type.image,
                         count: this.artifacts.filter(artifact => artifact.info.piece.type == type).length
                     });
 

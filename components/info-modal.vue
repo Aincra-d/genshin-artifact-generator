@@ -47,6 +47,10 @@
                     </a>
 
                     <br>
+
+                    All data and pictures are taken from <a href="https://genshin-impact.fandom.com/">Genshin Impact Wiki</a>
+
+                    <br>
                     <br>
                 </b>
             </div>

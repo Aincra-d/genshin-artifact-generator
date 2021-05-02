@@ -329,6 +329,13 @@
 							'Added display animation to inventory filters'
 						]
 					},
+					{
+						date: '2021.05.02',
+						types: ['feature'],
+						changes: [
+							'Added icons and images to the following filter select options: stars, types',
+						]
+					},
 				]
 			}
 		},
