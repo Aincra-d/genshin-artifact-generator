@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div>
+		<div :disabled="delete_artifacts && artifact.info.locked">
             <div class="w-100 text-left set-name">
                 <h5 
                 :class="view == 'compressed' && artifact.info.locked && inventory ? 'ml-2' : 'ml-4'"
@@ -69,6 +69,7 @@
 
             <div class="artifact-sub-info m-0 p-0">
             	<button
+            	:disabled="delete_artifacts"
             	class="float-right border rounded m-2"
             	:class="artifact.info.locked ? 'bg-dark border-0' : 'bg-light border-secondary'"
             	@click="setLock()">

@@ -334,7 +334,8 @@
 						types: ['feature','update'],
 						changes: [
 							'Added icons and images to the following filter select options: stars, types',
-							'When deleting artifacts, locked artifats will be displayed as well, but they will be disabled with the lock icon also showing that they are locked'
+							'When deleting artifacts, locked artifats will be displayed in "Images only" view as well, but they will be disabled with the lock icon also showing that they are locked',
+							'In "Full cards" and "Compressed cards" views the locked status of artifacts can\'t be changed, the buttons will be disabled'
 						]
 					},
 				]
