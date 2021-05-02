@@ -331,9 +331,10 @@
 					},
 					{
 						date: '2021.05.02',
-						types: ['feature'],
+						types: ['feature','update'],
 						changes: [
 							'Added icons and images to the following filter select options: stars, types',
+							'When deleting artifacts, locked artifats will be displayed as well, but they will be disabled with the lock icon also showing that they are locked'
 						]
 					},
 				]

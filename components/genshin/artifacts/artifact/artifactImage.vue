@@ -91,10 +91,11 @@
             </button>
 
             <button
-            v-if="inventory && delete_artifacts && !artifact.info.locked"
+            v-if="inventory && delete_artifacts"
             type="button"
             class="btn text-light artifact-main-info d-inline
             rounded btn-md float-left py-0 px-1 mx-1"
+            :disabled="artifact.info.locked"
             @click="addDeleteId(artifact.id)">
                 <img
                 class="mr-1 artifact-thumb"
@@ -102,12 +103,19 @@
                 :alt="artifact.info.piece.name">
 
                 <b-form-checkbox
+                v-if="!artifact.info.locked"
                 :checked="delete_ids.includes(artifact.id)"
                 type="button"
                 size="lg"
                 class="btn text-light d-inline rounded-0 btn-md position-absolute top-0 right-0 py-0 px-1"
                 @change="addDeleteId(artifact.id)">
                 </b-form-checkbox>
+
+                <span
+                v-else
+        		class="position-absolute top-0 left-10">
+            		<i class="fas fa-lock fa-sm text-danger"></i>
+            	</span>
             </button>
         </div>
 	</div>
