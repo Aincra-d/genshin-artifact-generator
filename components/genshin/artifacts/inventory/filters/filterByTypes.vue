@@ -152,7 +152,7 @@
                     types.push({
                         name: type.name,
                         image: type.image,
-                        count: this.artifacts.filter(artifact => artifact.info.piece.type == type).length
+                        count: this.artifacts.filter(artifact => artifact.info.piece.type == type.name).length
                     });
 
                     this.artifact_types=types;
