@@ -23,7 +23,9 @@
         type="button"
         class="btn text-light"
         @click="delete_artifacts=!delete_artifacts">
-            <i class="fas fa-trash"></i>
+            <i
+            :class="delete_artifacts && 'text-danger'"
+            class="fas fa-trash"></i>
         </button>
 
         <button
