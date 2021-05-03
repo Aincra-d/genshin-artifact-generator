@@ -338,6 +338,13 @@
 							'In "Full cards" and "Compressed cards" views the locked status of artifacts can\'t be changed, the buttons will be disabled'
 						]
 					},
+					{
+						date: '2021.05.03',
+						types: ['update'],
+						changes: [
+							'Artifacts will not reload when entering deleting mode in inventory in "Images only" view'
+						]
+					},
 				]
 			}
 		},

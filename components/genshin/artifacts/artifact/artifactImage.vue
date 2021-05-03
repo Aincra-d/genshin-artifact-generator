@@ -4,15 +4,33 @@
         class="artifact images-only d-inline-block rounded position-relative"
         :class="'stars-'+artifact.info.stars">
             <button
-            v-if="inventory && !delete_artifacts"
+            v-if="inventory"
             type="button"
             class="btn d-flex text-light artifact-main-info artifact-thumb d-inline
-            rounded btn-md float-left py-0 px-2 mx-1"
-            @click="/*$emit('open-modal','artifactModal',artifact.id)*/ toggled=!toggled">
+            rounded btn-md float-left py-0 px-2 mx-1 position-relative"
+            :disabled="delete_artifacts && artifact.info.locked"
+            @click="/*$emit('open-modal','artifactModal',artifact.id)*/ delete_artifacts ? addDeleteId(artifact.id) : toggled=!toggled">
                 <collapse-transition :duration="250" group>
                 	<span
                 	:key="1"
 	        		v-if="artifact.info.locked && !toggled"
+	        		class="position-absolute top-0 left-10">
+	            		<i class="fas fa-lock fa-sm text-danger"></i>
+	            	</span>
+
+	            	<b-form-checkbox
+	            	:key="2"
+	                v-if="delete_artifacts && !artifact.info.locked"
+	                :checked="delete_ids.includes(artifact.id)"
+	                type="button"
+	                size="lg"
+	                class="btn text-light d-inline rounded-0 btn-md position-absolute top-0 right-0 p-0"
+	                @change="addDeleteId(artifact.id)">
+	                </b-form-checkbox>
+
+	                <span
+	                :key="3"
+	                v-if="delete_artifacts && artifact.info.locked"
 	        		class="position-absolute top-0 left-10">
 	            		<i class="fas fa-lock fa-sm text-danger"></i>
 	            	</span>
@@ -90,7 +108,7 @@
                 </collapse-transition>
             </button>
 
-            <button
+           <!--  <button
             v-if="inventory && delete_artifacts"
             type="button"
             class="btn text-light artifact-main-info d-inline
@@ -116,7 +134,7 @@
         		class="position-absolute top-0 left-10">
             		<i class="fas fa-lock fa-sm text-danger"></i>
             	</span>
-            </button>
+            </button> -->
         </div>
 	</div>
 </template>
