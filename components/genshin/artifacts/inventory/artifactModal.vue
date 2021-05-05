@@ -62,6 +62,7 @@
                     </b-dropdown>
 
                     <b-dropdown
+                    :disabled="current_artifact.info.locked"
                     menu-class="w-100"
                     id="dropdown-left"
                     text="Reroll"
