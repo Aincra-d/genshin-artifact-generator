@@ -37,7 +37,7 @@
 
                     <img
                     :key="artifact.id"
-                    v-if="!toggled"
+                    v-if="!toggled || delete_artifacts"
                     class="mr-1 artifact-thumb"
                     v-lazy="artifact.info.piece.image"
                     :alt="artifact.info.piece.name">
