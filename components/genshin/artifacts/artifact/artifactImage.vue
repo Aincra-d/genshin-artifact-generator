@@ -35,6 +35,15 @@
 	            		<i class="fas fa-lock fa-sm text-danger"></i>
 	            	</span>
 
+	            	<img
+	            	v-if="artifact.info.equipped && !toggled"
+	            	:key="4"
+	            	:src="artifact.info.equipped.image"
+	            	:alt="artifact.info.equipped.name"
+	            	style="width: 25px; height:25px;"
+	            	:class="!artifact.info.locked && delete_artifacts ? 'left-5' : 'right-5'"
+	        		class="position-absolute top-0 character-image top-2">
+
                     <img
                     :key="artifact.id"
                     v-if="!toggled || delete_artifacts"

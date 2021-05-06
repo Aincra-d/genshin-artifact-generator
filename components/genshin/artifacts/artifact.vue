@@ -96,7 +96,7 @@
             height:90px;
         }
 
-        .artifact-thumb img{
+        .artifact-thumb .artifact-thumb{
             width:80px;
             height:80px;
         }
@@ -124,6 +124,11 @@
         img.artifact-thumb{
             margin-left:-10px;
         }
+    }
+
+    .artifact.images-only .character-image{
+        box-shadow: 0px 0px 5px black;
+        border-radius: 50%;
     }
 
     .artifact-main-info-content{

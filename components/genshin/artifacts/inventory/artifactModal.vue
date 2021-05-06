@@ -41,7 +41,7 @@
                     text="Upgrade"
                     :size="screen < 576 ? 'sm' : 'md'"
                     variant="link"
-                    class="my-2 mx-0 w-30">
+                    class="my-2 mx-0 w-23">
                         <b-dropdown-item
                         :disabled="current_artifact.info.level == current_artifact.info.max_level"
                         @click="current_artifact.info.level != current_artifact.info.max_level && upgrade(1)"
@@ -68,7 +68,7 @@
                     text="Reroll"
                     :size="screen < 576 ? 'sm' : 'md'"
                     variant="link"
-                    class="my-2 mx-0 w-30">
+                    class="my-2 mx-0 w-23">
                         <b-dropdown-item
                         @click="current_artifact.info.rerolls.main.count === 0 && rerollMainStat()"
                         :disabled="removed || current_artifact.info.rerolls.main.count != 0 || ['Flower of Life','Plume of Death'].includes(current_artifact.info.piece.type)"
@@ -84,9 +84,30 @@
                         </b-dropdown-item>
                     </b-dropdown>
 
+                    <b-dropdown
+                    menu-class="w-100"
+                    id="dropdown-left"
+                    text="Equip"
+                    :size="screen < 576 ? 'sm' : 'md'"
+                    variant="link"
+                    class="my-2 mx-0 w-23 character-select">
+                        <b-dropdown-item
+                        :key="i"
+                        v-for="(character,i) in characters"
+                        @click="equipArtifact(character)"
+                        href="#">
+                            <img
+                            :src="character.image"
+                            :alt="character.name"
+                            style="width:25px; height:25px;">
+
+                            {{ character.name }}
+                        </b-dropdown-item>
+                    </b-dropdown>
+
                     <button
                     type="button"
-                    class="btn btn-link text-light d-inline rounded-0 my-1 mx-0 w-30 shadowed"
+                    class="btn btn-link text-light d-inline rounded-0 my-1 mx-0 w-23 shadowed"
                     :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                     :disabled="removed || current_artifact.info.locked"
                     @click="confirm_remove = !confirm_remove">
@@ -129,8 +150,9 @@
 
 <script>
     const artifact = () => import('@/components/genshin/artifacts/artifact.vue');
-    import substatsJ from '~/static/substats.json';
-    import mainstatsJ from '~/static/mainstats.json';
+    import substatsJSON from '~/static/substats.json';
+    import mainstatsJSON from '~/static/mainstats.json';
+    import charactersJSON from '~/static/characters.json';
     // import { updateAchievements } from '../updateAchievements.js';
     // import { artifactMethods } from '../artifactMethods.js';
 
@@ -151,8 +173,9 @@
                 max_upgrades: process.client && (localStorage.max_upgrades || 0),
                 // modal_bg_class: '',
                 all_subs: [],
-                main_stats: mainstatsJ,
-                sub_stats: substatsJ,
+                main_stats: mainstatsJSON,
+                sub_stats: substatsJSON,
+                characters: charactersJSON,
                 max_sub_counts: [1,2,4,4,4],
                 removed: false, 
                 confirm_remove: false,
@@ -188,6 +211,14 @@
             },
             async rerollSubStats(){
                 await artifactMethods().then(method => method.artifactMethods.rerollSubStats(this,false));
+            },
+            equipArtifact(character){
+                this.current_artifact.info.equipped={
+                    name: character.name,
+                    image: character.image
+                }
+
+                this.updateInventory(this.current_artifact);
             },
             remove(){
                 this.confirm_remove=false;
@@ -263,5 +294,10 @@
         .artifact-modal .ui-modal__body{
             max-height:100vh;
         }
+    }
+
+    .character-select .dropdown-menu{
+        max-height:300px;
+        overflow-y: auto;
     }
 </style>

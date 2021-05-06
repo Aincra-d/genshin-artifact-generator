@@ -136,6 +136,7 @@
         color:black;
         border-radius: 0;
     }
+    
     .filter-select .dropdown-menu{
         max-height:300px;
         overflow-y: auto;

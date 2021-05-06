@@ -3,7 +3,7 @@
 		<div :disabled="delete_artifacts && artifact.info.locked">
             <div class="w-100 text-left set-name">
                 <h5 
-                :class="view == 'compressed' && artifact.info.locked && inventory ? 'ml-2' : 'ml-4'"
+                :class="(view == 'compressed' && artifact.info.locked && inventory) || (view == 'full' && artifact.info.equipped && inventory) ? 'ml-2' : 'ml-4'"
                 class="d-inline">
                 	<span
 	        		v-if="artifact.info.locked && view == 'compressed' && inventory"
@@ -11,9 +11,18 @@
 	            		<i class="fas fa-lock fa-sm text-danger"></i>
 	            	</span>
 
-                    {{
-                        artifact.info.piece.name.length > 25 ? artifact.info.piece.name.substring(0, 22)+'...' : artifact.info.piece.name
-                    }}
+	            	<img
+	            	v-if="artifact.info.equipped && view == 'full' && inventory"
+	            	:src="artifact.info.equipped.image"
+	            	:alt="artifact.info.equipped.name"
+	            	style="width: 25px; height:25px;"
+	        		class="float-left character-image ml-1">
+
+                    <span>
+                    	{{
+	                        artifact.info.piece.name.length > 25 ? artifact.info.piece.name.substring(0, 22)+'...' : artifact.info.piece.name
+	                    }}
+                    </span>
                 </h5>
 
                 <button
