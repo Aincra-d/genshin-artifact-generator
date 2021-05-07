@@ -16,9 +16,9 @@
 
                 <b-dropdown
                 :size="screen < 576 ? 'sm' : 'md'"
-                :text="characters.length!=0 ? characters.length+' type(s) selected' : 'Select characters'"
+                :text="characters.length!=0 ? characters.length+' character(s) selected' : 'Select characters'"
                 variant="light"
-                class="text-dark rounded-0">
+                class="text-dark rounded-0 character-filter">
                     <button
                     type="button"
                     :class="stack ? 'w-50' : 'w-30'"
@@ -211,7 +211,7 @@
         border-radius: 0;
     }
 
-    .star-filter .dropdown-menu{
+    .character-filter .dropdown-menu{
         width: 230px;
     }
 </style>
