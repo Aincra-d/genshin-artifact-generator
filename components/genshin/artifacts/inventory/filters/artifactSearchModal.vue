@@ -46,6 +46,12 @@
                 class="mb-4"></filter-by-sets>
                 <hr :class="hr_styles">
 
+                <h6>Select characters</h6>
+                <filter-by-equipped
+                stack
+                class="mb-4"></filter-by-equipped>
+                <hr :class="hr_styles">
+
                 <div slot="footer" class="mt-3 p-2">
                     <button
                     type="button"
@@ -78,6 +84,7 @@
     import filterBySubStats from './filterBySubStats.vue';
     import filterByTypes from './filterByTypes.vue';
     import filterBySets from './filterBySets.vue';
+    import filterByEquipped from './filterByEquipped.vue';
     export default{
         name: 'artifactSearchModal',
         components: {
@@ -85,7 +92,8 @@
             'filter-by-main-stats': filterByMainStats,
             'filter-by-sub-stats': filterBySubStats,
             'filter-by-types': filterByTypes,
-            'filter-by-sets': filterBySets
+            'filter-by-sets': filterBySets,
+            'filter-by-equipped': filterByEquipped
         },
         computed: {
             active_filters(){
@@ -128,6 +136,7 @@
 
                     this.$store.commit('artifacts/setArtifacts',artifacts);
                 }
+
                 if(this.active_filters[1].length!=0){
                     artifacts=artifacts.filter(artifact => this.exclude_filters[1]
                         ? !this.active_filters[1].includes(artifact.stats.main.name)
@@ -135,6 +144,7 @@
 
                     this.$store.commit('artifacts/setArtifacts', artifacts);
                 }
+
                 if(this.active_filters[2].length!=0){
                     if(!this.exclude_filters[2]){
                             if(!this.match_subs){
@@ -154,6 +164,7 @@
                             this.$store.commit('artifacts/setArtifacts', artifacts);
                         }
                 }
+
                 if(this.active_filters[3].length!=0){
                     artifacts=artifacts.filter(artifact => this.exclude_filters[3]
                         ? !this.active_filters[3].includes(artifact.info.piece.type)
@@ -161,10 +172,19 @@
 
                     this.$store.commit('artifacts/setArtifacts', artifacts);
                 }
+
                 if(this.active_filters[4].length!=0){
                     artifacts=artifacts.filter(artifact => this.exclude_filters[4]
                         ? !this.active_filters[4].includes(artifact.info.set.name)
                         : this.active_filters[4].includes(artifact.info.set.name));
+
+                    this.$store.commit('artifacts/setArtifacts', artifacts);
+                }
+
+                if(this.active_filters[5].length!=0){
+                    artifacts=artifacts.filter(artifact => artifact.info.equipped !== false && this.exclude_filters[5]
+                        ? !this.active_filters[5].includes(artifact.info.equipped.name)
+                        : this.active_filters[5].includes(artifact.info.equipped.name));
 
                     this.$store.commit('artifacts/setArtifacts', artifacts);
                 }

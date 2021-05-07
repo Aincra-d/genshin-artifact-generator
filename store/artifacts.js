@@ -11,7 +11,8 @@ export const state = () => ({
         by_main: false,
         by_sub: false,
         by_type: false,
-        by_set: false
+        by_set: false,
+        by_character: false
     },
     active_filters: [
         {
@@ -36,6 +37,11 @@ export const state = () => ({
         },
         {
             type: 'sets',
+            exclude: false,
+            data: []
+        },
+        {
+            type: 'characters',
             exclude: false,
             data: []
         }

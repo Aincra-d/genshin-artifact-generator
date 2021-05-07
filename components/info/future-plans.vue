@@ -57,12 +57,12 @@
 						summary: 'Exclude option for inventory filters'
 					},
 					{
-						done: false,
+						done: true,
 						priority: 'medium',
 						summary: 'Option to equip artifacts on characters'
 					},
 					{
-						done: false,
+						done: true,
 						priority: 'medium',
 						summary: 'Filter artifacts equipped on selected character(s)'
 					},

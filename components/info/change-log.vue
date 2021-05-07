@@ -345,6 +345,16 @@
 							'Artifacts will not reload when entering deleting mode in inventory in "Images only" view'
 						]
 					},
+					{
+						date: '2021.05.07',
+						types: ['feature','update'],
+						changes: [
+							'Added option to equip artifacts on characters. To equip an artifact, open the artifact window and choose a character from the "Equip" select',
+							'Added character filter in inventory. You can filter your artifacts based on who\'s wearing them',
+							'To open the artifact window in "Full cards" and "Compressed cards" view, now you have click/touch their thumbnail image',
+							'Added image of character who\'s currently weaing it to artifacts in inventory'
+						]
+					},
 				]
 			}
 		},

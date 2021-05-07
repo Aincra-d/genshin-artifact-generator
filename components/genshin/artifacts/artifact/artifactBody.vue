@@ -3,20 +3,13 @@
 		<div :disabled="delete_artifacts && artifact.info.locked">
             <div class="w-100 text-left set-name">
                 <h5 
-                :class="(view == 'compressed' && artifact.info.locked && inventory) || (view == 'full' && artifact.info.equipped && inventory) ? 'ml-2' : 'ml-4'"
+                :class="(artifact.info.locked && (inventory || fromModal)) ? 'ml-1' : 'ml-4'"
                 class="d-inline">
                 	<span
-	        		v-if="artifact.info.locked && view == 'compressed' && inventory"
+	        		v-if="artifact.info.locked && (inventory || fromModal)"
 	        		class="float-left ml-1">
 	            		<i class="fas fa-lock fa-sm text-danger"></i>
 	            	</span>
-
-	            	<img
-	            	v-if="artifact.info.equipped && view == 'full' && inventory"
-	            	:src="artifact.info.equipped.image"
-	            	:alt="artifact.info.equipped.name"
-	            	style="width: 25px; height:25px;"
-	        		class="float-left character-image ml-1">
 
                     <span>
                     	{{
@@ -25,13 +18,20 @@
                     </span>
                 </h5>
 
-                <button
+                <img
+            	v-if="artifact.info.equipped && (inventory || fromModal)"
+            	:src="artifact.info.equipped.image"
+            	:alt="artifact.info.equipped.name"
+            	style="width: 25px; height:25px;"
+        		class="float-right character-image mr-1">
+
+               <!--  <button
                 v-if="inventory && !delete_artifacts"
                 type="button"
                 class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
                 @click="$emit('open-modal','artifactModal',artifact.id)">
                     <i class="fas fa-edit fa-sm"></i>
-                </button>
+                </button> -->
 
                 <b-form-checkbox
                 v-if="inventory && delete_artifacts && !artifact.info.locked"
@@ -46,10 +46,11 @@
             <div class="w-100 text-right artifact-main-info position-relative">
             	<div class="artifact-main-info-content">
 	                <img
-	                class="mr-1"
+	                class="mr-1 pointer"
 	                style="height:150px;width:150px;"
 	                v-lazy="artifact.info.piece.image"
-	                :alt="artifact.info.piece.name">
+	                :alt="artifact.info.piece.name"
+	                @click="inventory && $emit('open-modal','artifactModal',artifact.id)">
 
 	                <h6 class="position-absolute top-0 left-0 artifact-type ml-4">
 	                    {{ artifact.info.piece.type }}

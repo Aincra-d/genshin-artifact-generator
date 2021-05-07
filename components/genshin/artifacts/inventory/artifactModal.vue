@@ -101,7 +101,9 @@
                             :alt="character.name"
                             style="width:25px; height:25px;">
 
-                            {{ character.name }}
+                            <span :class="current_artifact.info.equipped !== false && (current_artifact.info.equipped.name == character.name && 'text-primary font-weight-bold')">
+                                {{ character.name }}
+                            </span>
                         </b-dropdown-item>
                     </b-dropdown>
 
@@ -111,7 +113,7 @@
                     :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                     :disabled="removed || current_artifact.info.locked"
                     @click="confirm_remove = !confirm_remove">
-                        <i class="fas fa-times fa-sm mr-1"></i> Remove
+                        <!-- <i class="fas fa-times fa-sm mr-1"></i> --> Remove
                     </button>
 
                     <div
@@ -219,6 +221,13 @@
                 }
 
                 this.updateInventory(this.current_artifact);
+
+                this.$notify({
+                    group: 'foo',
+                    type: 'success',
+                    duration: 1000,
+                    title: `<h6>Equipped artifact on <u>${character.name}</u>!</h6>`
+                });
             },
             remove(){
                 this.confirm_remove=false;

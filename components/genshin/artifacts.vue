@@ -233,6 +233,21 @@
                 }
 
                 console.log(artifacts);
+            },
+            setEquipped(){
+                let artifacts=JSON.parse(localStorage.artifacts);
+                // console.log(('equipped' in artifacts[0].info))
+                if(artifacts.length === 0 || ('equipped' in artifacts[0].info)) return
+                
+                if(!('equipped' in artifacts[0].info)){
+                    artifacts.forEach(artifact => {
+                        artifact.info.equipped=false;
+                    });
+
+                    localStorage.setItem('artifacts', JSON.stringify(artifacts))
+                }
+
+                console.log(artifacts);
             }
          },
          mounted(){
@@ -249,6 +264,7 @@
 
             if(!localStorage.artifacts) localStorage.setItem('artifacts', JSON.stringify([]));
             this.setLocked();
+            this.setEquipped();
 
             let roll_stats=localStorage.roll_stats && JSON.parse(localStorage.roll_stats);
 

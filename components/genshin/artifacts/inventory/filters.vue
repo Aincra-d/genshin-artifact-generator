@@ -10,6 +10,8 @@
 
         <collapse-transition><filter-by-sets v-if="filters.by_set"></filter-by-sets></collapse-transition>
 
+        <collapse-transition><filter-by-equipped v-if="filters.by_character"></filter-by-equipped></collapse-transition>
+
         <button
         v-if="delete_artifacts"
         type="button"
@@ -60,6 +62,7 @@
     const filterBySubStats = () => import('./filters/filterBySubStats.vue');
     const filterByTypes = () => import('./filters/filterByTypes.vue');
     const filterBySets = () => import('./filters/filterBySets.vue');
+    const filterByEquipped = () => import('./filters/filterByEquipped.vue');
     export default{
         name: 'inventoryFilters',
         components: {
@@ -67,7 +70,8 @@
             'filter-by-main-stats': filterByMainStats,
             'filter-by-sub-stats': filterBySubStats,
             'filter-by-types': filterByTypes,
-            'filter-by-sets': filterBySets
+            'filter-by-sets': filterBySets,
+            'filter-by-equipped': filterByEquipped
         },
         data(){
             return {
@@ -136,7 +140,7 @@
         color:black;
         border-radius: 0;
     }
-    
+
     .filter-select .dropdown-menu{
         max-height:300px;
         overflow-y: auto;

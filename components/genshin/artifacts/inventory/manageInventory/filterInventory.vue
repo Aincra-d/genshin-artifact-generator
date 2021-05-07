@@ -76,6 +76,10 @@
                     {
                         type: 'by_set',
                         title: 'Filter by set'
+                    },
+                    {
+                        type: 'by_character',
+                        title: 'Filter by characters'
                     }
                 ]
             }

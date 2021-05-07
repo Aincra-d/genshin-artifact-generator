@@ -289,7 +289,8 @@
                         level: 0,
                         max_level,
                         rerolls,
-                        locked: false
+                        locked: false,
+                        equipped: false
                     }
                     // rolls: 1
                 };
