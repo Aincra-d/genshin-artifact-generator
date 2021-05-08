@@ -214,20 +214,8 @@
             async rerollSubStats(){
                 await artifactMethods().then(method => method.artifactMethods.rerollSubStats(this,false));
             },
-            equipArtifact(character){
-                this.current_artifact.info.equipped={
-                    name: character.name,
-                    image: character.image
-                }
-
-                this.updateInventory(this.current_artifact);
-
-                this.$notify({
-                    group: 'foo',
-                    type: 'success',
-                    duration: 1000,
-                    title: `<h6>Equipped artifact on <u>${character.name}</u>!</h6>`
-                });
+            async equipArtifact(character){
+                await artifactMethods().then( method  => method.artifactMethods.equipArtifact(this,true,character)); 
             },
             remove(){
                 this.confirm_remove=false;
@@ -272,8 +260,8 @@
 
 <style>
     .artifact-modal .shadowed,.artifact-modal .dropdown-toggle{
-        box-shadow: inset 0px 0px 10px black;
-        text-shadow: 0px 0px 10px black;
+        box-shadow: inset 0px 0px 2px white;
+        text-shadow: inset 0px 0px 2px white;
     }
 
     .artifact-modal .ui-modal__body{

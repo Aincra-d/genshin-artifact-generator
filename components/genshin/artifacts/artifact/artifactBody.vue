@@ -3,13 +3,20 @@
 		<div :disabled="delete_artifacts && artifact.info.locked">
             <div class="w-100 text-left set-name">
                 <h5 
-                :class="(artifact.info.locked && (inventory || fromModal)) ? 'ml-1' : 'ml-4'"
+                :class="(artifact.info.locked || delete_artifacts && artifact.info.equipped && !artifact.info.locked) ? 'ml-1' : 'ml-4'"
                 class="d-inline">
                 	<span
-	        		v-if="artifact.info.locked && (inventory || fromModal)"
+	        		v-if="artifact.info.locked"
 	        		class="float-left ml-1">
 	            		<i class="fas fa-lock fa-sm text-danger"></i>
 	            	</span>
+
+	            	<img
+	            	v-if="artifact.info.equipped && delete_artifacts && !artifact.info.locked"
+	            	:src="artifact.info.equipped.image"
+	            	:alt="artifact.info.equipped.name"
+	            	style="width: 25px; height:25px;"
+	        		class="float-left character-image ml-1">
 
                     <span>
                     	{{
@@ -19,7 +26,7 @@
                 </h5>
 
                 <img
-            	v-if="artifact.info.equipped && (inventory || fromModal)"
+            	v-if="artifact.info.equipped && (!delete_artifacts || delete_artifacts && artifact.info.equipped && artifact.info.locked)"
             	:src="artifact.info.equipped.image"
             	:alt="artifact.info.equipped.name"
             	style="width: 25px; height:25px;"
@@ -38,7 +45,7 @@
                 :checked="delete_ids.includes(artifact.id)"
                 size="lg"
                 type="button"
-                class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-1"
+                class="btn text-light d-inline rounded-0 btn-md float-right py-0 px-0 pointer"
                 @change="addDeleteId(artifact.id)">
                 </b-form-checkbox>
             </div>
@@ -46,11 +53,12 @@
             <div class="w-100 text-right artifact-main-info position-relative">
             	<div class="artifact-main-info-content">
 	                <img
-	                class="mr-1 pointer"
+	                class="mr-1"
+	                :class="!delete_artifacts && inventory && 'pointer'"
 	                style="height:150px;width:150px;"
 	                v-lazy="artifact.info.piece.image"
 	                :alt="artifact.info.piece.name"
-	                @click="inventory && $emit('open-modal','artifactModal',artifact.id)">
+	                @click="(inventory && !delete_artifacts) && $emit('open-modal','artifactModal',artifact.id)">
 
 	                <h6 class="position-absolute top-0 left-0 artifact-type ml-4">
 	                    {{ artifact.info.piece.type }}

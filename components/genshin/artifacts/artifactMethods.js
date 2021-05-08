@@ -208,6 +208,39 @@ export const artifactMethods={
         if(from_inventory) self.updateInventory(artifact);
         if(!roll_10x && !from_inventory && self.roll_settings.show_upgrades) self.openModal();
     },
+    equipArtifact(self,from_inventory,character){
+        let removed=false;
+        let artifact;
+
+        if(from_inventory)
+            artifact=self.artifacts[self.artifacts.findIndex(artifact => artifact.id === self.artifact_id)];
+        else artifact=self.current_artifact;
+
+        artifact.info.equipped && artifact.info.equipped.name == character.name ? removed=true : removed=false;
+
+        if(!removed){
+            artifact.info.equipped={
+                name: character.name,
+                image: character.image
+            }
+        }
+        else{
+            artifact.info.equipped=false;
+        }
+
+        if(from_inventory) self.updateInventory(artifact);
+
+        let title=removed
+        ? `Removed artifact from <u>${character.name}</u>!`
+        : `Equipped artifact on <u>${character.name}</u>!`;
+
+        self.$notify({
+            group: 'foo',
+            type: 'success',
+            duration: 1000,
+            title: `<h6>${title}</h6>`
+        });
+    },
 	setSubs(self){
         self.all_subs=
         [

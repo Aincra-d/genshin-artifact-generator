@@ -182,7 +182,7 @@
 						types: ['feature','update'],
 						changes: [
 							'Moved "Exclude filters" option in inventory to filter dropdown',
-							'Small design changes'
+							'Design changes'
 						]
 					},
 					{
@@ -205,7 +205,7 @@
 						date: '2021.04.02',
 						types: ['update','feature','fix'],
 						changes: [
-							'Small design changes',
+							'Design changes',
 							'Both single and 10x options are available when opening the app',
 							'Updated plans',
 							'After doing a 10x roll, the first artifact is already visible',
@@ -354,6 +354,14 @@
 							'To open the artifact window in "Full cards" and "Compressed cards" view, now you have click/touch their thumbnail image',
 							'Added image of character who\'s currently weaing it to artifacts in inventory',
 							'Updated plans'
+						]
+					},
+					{
+						date: '2021.05.08',
+						types: ['feature','update'],
+						changes: [
+							'Added equip option to single and 10x artifact rolls',
+							'Design changes'
 						]
 					},
 				]

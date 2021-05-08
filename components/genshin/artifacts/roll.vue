@@ -29,7 +29,7 @@
                 <button
                 @click="singleRoll()"
                 class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2"
-                style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;">
+                style="box-shadow:inset 0px 0px 2px white;text-shadow:inset 0px 0px 2px white;">
                     <i
                     class="fas fa-redo"
                     style="font-size: 35px;"></i>
@@ -38,7 +38,7 @@
                 <button
                 @click="roll10x()"
                 class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2"
-                style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;">
+                style="box-shadow:inset 0px 0px 2px white;text-shadow:inset 0px 0px 2px white;">
                     <h4>
                         <i class="fas fa-redo fa-sm"></i> 10X
                     </h4>
@@ -50,7 +50,7 @@
                 v-if="artifacts.length === 0 || roll_settings.roll_10x"
                 @click="roll_settings.roll_10x ? roll10x() : singleRoll()"
                 class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2"
-                style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;">
+                style="box-shadow:inset 0px 0px 2px white;text-shadow:inset 0px 0px 2px white;">
                     <i
                     v-if="!roll_settings.roll_10x"
                     class="fas fa-redo"
@@ -69,7 +69,8 @@
                 @roll-artifact="singleRoll"
                 @add="add"
                 @reroll-main-stat="rerollMainStat"
-                @reroll-sub-stats="rerollSubStats">
+                @reroll-sub-stats="rerollSubStats"
+                @equip-artifact="equipArtifact">
                 </artifact-actions>
             </div>
         </div>
@@ -107,7 +108,7 @@
                    <li
                    :key="i"
                    v-for="(stat,i) in roll_stats"
-                   style="text-shadow: 0px 0px 10px black;">
+                   style="text-shadow:inset 0px 0px 2px white;">
                        {{ stat.name+' - '+stat.counter }}
                    </li> 
                 </ul>
@@ -317,6 +318,9 @@
             async upgrade(upgrade_count){
                 await artifactMethods().then( method  => method.artifactMethods.upgrade(this,false,false,upgrade_count));
                 await updateAchievements().then(update => update.updateAchievements.updateUpgrades(this));
+            },
+            async equipArtifact(character){
+                await artifactMethods().then( method  => method.artifactMethods.equipArtifact(this,false,character)); 
             },
             updateCounter(){
                 let counter=process.client && (localStorage.roll_counter || 0);
@@ -658,6 +662,6 @@
     }
 
     .include-low-stars, .roll-counter{
-        text-shadow: 0px 0px 2px black;
+        text-shadow:inset 0px 0px 2px black;
     }
 </style>

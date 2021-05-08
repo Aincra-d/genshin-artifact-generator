@@ -45,11 +45,11 @@
                 <button
                 v-if="single"
                 type="button"
-                class="btn btn-link text-light d-inline rounded-0 my-1 mx-0 w-30"
+                class="btn btn-link text-light d-inline rounded-0 my-1 ml-0 mr-0 w-23"
                 :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                 :disabled="current_artifact.info.level === current_artifact.info.max_level"
                 @click="current_artifact.info.level!=current_artifact.info.max_level && upgrade(1)">
-                    <i class="fas fa-arrow-up fa-sm"></i> Upgrade
+                    <!-- <i class="fas fa-arrow-up fa-sm"></i>  -->Upgrade
                 </button>
 
                 <b-dropdown
@@ -60,7 +60,7 @@
                 text="Upgrade"
                 :size="screen < 576 ? 'sm' : 'md'"
                 variant="link"
-                class="my-2 mx-0 w-30">
+                class="my-2 ml-0 mr-1 w-23">
                     <b-dropdown-item
                     :disabled="current_artifact.info.level == current_artifact.info.max_level"
                     @click="current_artifact.info.level != current_artifact.info.max_level && upgrade(1)"
@@ -104,7 +104,7 @@
                 text="Reroll"
                 :size="screen < 576 ? 'sm' : 'md'"
                 variant="link"
-                class="my-2 mx-0 w-30">
+                class="my-2 mx-0 w-23">
                     <b-dropdown-item
                     @click="current_artifact.info.rerolls.main.count === 0 && rerollMainStat()"
                     :disabled="current_artifact.info.rerolls.main.count != 0 || ['Flower of Life','Plume of Death'].includes(current_artifact.info.piece.type)"
@@ -120,12 +120,35 @@
                     </b-dropdown-item>
                 </b-dropdown>
 
+                <b-dropdown
+                menu-class="w-100"
+                id="dropdown-left"
+                text="Equip"
+                :size="screen < 576 ? 'sm' : 'md'"
+                variant="link"
+                class="my-2 mx-0 w-23 character-select">
+                    <b-dropdown-item
+                    :key="i"
+                    v-for="(character,i) in characters"
+                    @click="equipArtifact(character)"
+                    href="#">
+                        <img
+                        :src="character.image"
+                        :alt="character.name"
+                        style="width:25px; height:25px;">
+
+                        <span :class="current_artifact.info.equipped !== false && (current_artifact.info.equipped.name == character.name && 'text-primary font-weight-bold')">
+                            {{ character.name }}
+                        </span>
+                    </b-dropdown-item>
+                </b-dropdown>
+
                 <button
                 type="button"
-                class="btn btn-link text-light d-inline rounded-0 mx-0 w-30"
+                class="btn btn-link text-light d-inline rounded-0 mx-0 w-23"
                 :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                 @click="add()">
-                    <i class="fas fa-plus fa-sm mr-1"></i>Add
+                    <!-- <i class="fas fa-plus fa-sm mr-1"></i> -->Add
                 </button>
             </div>
         </ui-modal>
@@ -140,6 +163,8 @@
 
     const updateAchievements = () => import('../updateAchievements.js');
     const artifactMethods = () => import('../artifactMethods.js');
+
+    import charactersJSON from '~/static/characters.json';
 
     // import { artifactMethods } from '../artifactMethods.js';
 
@@ -165,6 +190,7 @@
                 all_subs: [],
                 upgrades: [],
                 old_main_value: 0,
+                characters: charactersJSON,
                 // achievements: process.client && (JSON.parse(localStorage.achievements) || {})
             }
         },
@@ -205,6 +231,9 @@
             },
             showUpgrades(){
                 this.$emit('show-upgrades',this.upgrades,this.current_artifact,this.old_main_value)
+            },
+            async equipArtifact(character){
+                await artifactMethods().then( method  => method.artifactMethods.equipArtifact(this,false,character)); 
             },
             restoreScroll(){
                 document.getElementsByTagName('body')[0].style.overflowY = 'auto';
@@ -265,8 +294,8 @@
       }
 
     .roll-modal .action-container button,.roll-modal .action-container .dropdown-toggle{
-        box-shadow: inset 0px 0px 10px black;
-        text-shadow: 0px 0px 10px black;
+        box-shadow: inset 0px 0px 2px white;
+        text-shadow: inset 0px 0px 2px white;
     }
 
     .roll-modal .roll-container .stars-5{
@@ -311,5 +340,10 @@
     }
     .ui-modal:not(.has-footer) .ui-modal__body{
         padding: 0;
+    }
+
+    .character-select .dropdown-menu{
+        max-height:300px;
+        overflow-y: auto;
     }
 </style>

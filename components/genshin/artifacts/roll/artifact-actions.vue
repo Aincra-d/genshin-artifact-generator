@@ -2,15 +2,22 @@
 	<div>
 		<div class="mb-3">
             <button
+            type="button"
+            class="btn btn-link text-light d-inline rounded-0 mx-1 shadowed"
+            :class="screen < 576 ? 'btn-sm' : 'btn-md'"
+            @click="$emit('add')">
+                <!-- <i class="fas fa-plus fa-sm mr-1"></i> -->Add
+            </button>
+
+            <button
             v-if="single"
             :dropleft="screen < 360"
             type="button"
-            class="btn btn-link text-light d-inline rounded-0 mx-1"
-            style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
+            class="btn btn-link text-light d-inline rounded-0 mx-1 shadowed"
             :class="screen < 576 ? 'btn-sm' : 'btn-md'"
             :disabled="artifact.info.level == artifact.info.max_level"
             @click="artifact.info.level!=artifact.info.max_level && $emit('upgrade',null)">
-                <i class="fas fa-arrow-up fa-sm"></i> Upgrade
+                <!-- <i class="fas fa-arrow-up fa-sm"></i> --> Upgrade
             </button>
 
             <b-dropdown
@@ -18,9 +25,9 @@
             :disabled="artifact.info.level == artifact.info.max_level"
             id="dropdown-left"
             text="Upgrade"
-            style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
             :size="screen < 576 ? 'sm' : 'md'"
-            variant="link">
+            variant="link"
+            class="shadowed">
                 <b-dropdown-item
                 :disabled="artifact.info.level == artifact.info.max_level"
                 @click="artifact.info.level != artifact.info.max_level && $emit('upgrade',1)"
@@ -40,22 +47,13 @@
                 </div>
             </b-dropdown>
 
-            <button
-            type="button"
-            class="btn btn-link text-light d-inline rounded-0 mx-1"
-            style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
-            :class="screen < 576 ? 'btn-sm' : 'btn-md'"
-            @click="$emit('roll-artifact')">
-                <i class="fas fa-redo fa-sm mr-1"></i> Roll
-            </button>
-
             <b-dropdown
             id="dropdown-left"
             text="Reroll"
             :dropright="screen < 360"
-            style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
             :size="screen < 576 ? 'sm' : 'md'"
-            variant="link">
+            variant="link"
+            class="shadowed">
                 <b-dropdown-item
                 @click="artifact.info.rerolls.main.count == 0 && $emit('reroll-main-stat')"
                 :disabled="artifact.info.rerolls.main.count == 1  || ['Flower of Life','Plume of Death'].includes(artifact.info.piece.type)"
@@ -71,19 +69,44 @@
                 </b-dropdown-item>
             </b-dropdown>
 
+            <b-dropdown
+            menu-class="w-100"
+            id="dropdown-left"
+            text="Equip"
+            :dropright="screen < 360"
+            :size="screen < 576 ? 'sm' : 'md'"
+            variant="link"
+            class="mx-0 character-select shadowed">
+                <b-dropdown-item
+                :key="i"
+                v-for="(character,i) in characters"
+                @click="$emit('equip-artifact',character)"
+                href="#">
+                    <img
+                    :src="character.image"
+                    :alt="character.name"
+                    style="width:25px; height:25px;">
+
+                    <span :class="artifact.info.equipped !== false && (artifact.info.equipped.name == character.name && 'text-primary font-weight-bold')">
+                        {{ character.name }}
+                    </span>
+                </b-dropdown-item>
+            </b-dropdown>
+
             <button
             type="button"
-            class="btn btn-link text-light d-inline rounded-0 mx-1"
-            style="box-shadow: 0px 0px 10px gray;text-shadow: 0px 0px 10px gray;"
+            class="btn btn-link text-light d-inline rounded-0 mx-1 shadowed"
             :class="screen < 576 ? 'btn-sm' : 'btn-md'"
-            @click="$emit('add')">
-                <i class="fas fa-plus fa-sm mr-1"></i>Add
+            @click="$emit('roll-artifact')">
+                <!-- <i class="fas fa-redo fa-sm mr-1"></i> --> Roll
             </button>
         </div>
 	</div>
 </template>
 
 <script>
+    import charactersJSON from '~/static/characters.json';
+
 	export default{
 		name: 'artifactActions',
 		props: {
@@ -94,6 +117,18 @@
             screen(){
                 return this.$store.state.artifacts.screen
             }
+        },
+        data(){
+            return {
+                characters: charactersJSON
+            }
         }
 	}
 </script>
+
+<style scoped>
+    .shadowed{
+        box-shadow:inset 0px 0px 2px white;
+        text-shadow:inset 0px 0px 2px white;
+    }
+</style>
