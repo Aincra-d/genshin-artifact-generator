@@ -46,6 +46,12 @@
                         Exclude
                     </button>
 
+                    <input
+                    type="text"
+                    class="w-100 py-0 mt-1"
+                    placeholder="Search/filter characters"
+                    v-model="character_name">
+
                     <!-- <button
                     v-if="!stack"
                     type="button"
@@ -56,7 +62,7 @@
 
                     <b-dropdown-item
                     :key="i"
-                    v-for="(character,i) in all_characters"
+                    v-for="(character,i) in character_names"
                     @click.native.capture.stop="addCharacter(character.name)"
                     class="font-xs-15">
                         <i
@@ -120,8 +126,10 @@
         },
         data(){
             return {
+                all_character_names: charactersJSON.map(character => character.name),
                 all_characters: charactersJSON,
                 characters: [],
+                character_name: '',
                 toggled: false
             }
         },
@@ -140,6 +148,9 @@
             screen(){
                 return this.$store.state.artifacts.screen
             },
+            character_names(){
+                return this.all_character_names.filter(character => character.name.toLowerCase().includes(this.character_name.toLowerCase()))
+            }
         },
         methods: {
             setCharacters(){
@@ -152,7 +163,7 @@
                         count: this.artifacts.filter(artifact => artifact.info.equipped.name && artifact.info.equipped.name == character.name).length
                     });
 
-                    this.all_characters=characters;
+                    this.all_character_names=characters;
                 });
             },
             addCharacter(character){
@@ -191,7 +202,7 @@
                 }
             },
             selectAll(){
-                this.all_characters.forEach(type => {
+                this.character_names.forEach(type => {
                     this.addCharacter(type.name);
                 });
             }
@@ -212,6 +223,6 @@
     }
 
     .character-filter .dropdown-menu{
-        width: 230px;
+        min-width: 230px;
     }
 </style>

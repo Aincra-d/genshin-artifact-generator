@@ -361,7 +361,8 @@
 						types: ['feature','update'],
 						changes: [
 							'Added equip option to single and 10x artifact rolls',
-							'Design changes'
+							'Design changes',
+							'Added search option to character filter in inventory'
 						]
 					},
 				]

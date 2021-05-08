@@ -18,7 +18,7 @@
                 :size="screen < 576 ? 'sm' : 'md'"
                 :text="sets.length!=0 ? sets.length+' set(s) selected' : 'Select artifact set(s)'"
                 variant="light"
-                class="text-dark rounded-0">
+                class="text-dark rounded-0 set-filter">
                     <button
                     type="button"
                     :class="stack ? 'w-50' : 'w-30'"
@@ -49,7 +49,7 @@
                     <input
                     type="text"
                     class="w-100 py-0 mt-1"
-                    placeholder="Search/filters sets"
+                    placeholder="Search/filter sets"
                     v-model="set_name">
 
                     <b-dropdown-item
@@ -213,5 +213,9 @@
         .filter-select .dropdown-menu{
             left:-25% !important;
         }
+    }
+
+    .set-filter .dropdown-menu{
+        min-width: 230px;
     }
 </style>
