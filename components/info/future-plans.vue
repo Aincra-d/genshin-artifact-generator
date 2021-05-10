@@ -125,6 +125,11 @@
 						done: false,
 						priority: 'low',
 						summary: 'Add user statistics'
+					},
+					{
+						done: false,
+						priority: 'medium',
+						summary: 'Add backup save option'
 					}
 				]
 			}
