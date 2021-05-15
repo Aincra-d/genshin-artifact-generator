@@ -94,6 +94,7 @@
             </b-dropdown>
 
             <button
+            :disabled="artifact.info.locked"
             type="button"
             class="btn btn-link text-light d-inline rounded-0 mx-1 shadowed"
             :class="screen < 576 ? 'btn-sm' : 'btn-md'"
