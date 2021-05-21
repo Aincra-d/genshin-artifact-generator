@@ -126,16 +126,16 @@
 						priority: 'low',
 						summary: 'Add user statistics'
 					},
-					{
-						done: false,
-						priority: 'medium',
-						summary: 'Add backup save option'
-					},
-					{
-						done: false,
-						priority: 'medium',
-						summary: 'Add option to restore data'
-					}
+					// {
+					// 	done: false,
+					// 	priority: 'medium',
+					// 	summary: 'Add backup save option'
+					// },
+					// {
+					// 	done: false,
+					// 	priority: 'medium',
+					// 	summary: 'Add option to restore data'
+					// }
 				]
 			}
 		},

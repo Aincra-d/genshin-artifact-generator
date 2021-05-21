@@ -40,16 +40,26 @@
                     </a>
                     <br>
 
-                    <i class="fas fa-envelope"></i>
+                    <ul class="list-unstyled">
+                        <li>
+                            <i class="fas fa-envelope fa-lg"></i>
 
-                    <a href="mailto:aincrad.mb@gmail.com" target="blank">
-                        aincrad.mb@gmail.com
-                    </a>
+                            <a href="mailto:aincrad.mb@gmail.com" target="blank">
+                                Contact me through E-mail
+                            </a>    
+                        </li>
 
-                    <br>
+                        <li>
+                            <i class="fab fa-github-square fa-lg"></i>
+
+                            <a href="https://github.com/Aincra-d/genshin-artifact-generator" target="blank">
+                                Visit me on GitHub
+                            </a>
+                        </li>
+                    </ul>
 
                     All data and pictures are taken from <a href="https://genshin-impact.fandom.com/">Genshin Impact Wiki</a>
-
+                    
                     <br>
                     <br>
                 </b>

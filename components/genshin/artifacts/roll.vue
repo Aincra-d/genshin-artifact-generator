@@ -28,8 +28,7 @@
             <div v-if="artifacts.length === 0 && !rolled">
                 <button
                 @click="singleRoll()"
-                class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2"
-                style="box-shadow:inset 0px 0px 2px white;text-shadow:inset 0px 0px 2px white;">
+                class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2 shadowed">
                     <i
                     class="fas fa-redo"
                     style="font-size: 35px;"></i>
@@ -37,8 +36,7 @@
 
                 <button
                 @click="roll10x()"
-                class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2"
-                style="box-shadow:inset 0px 0px 2px white;text-shadow:inset 0px 0px 2px white;">
+                class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2 shadowed">
                     <h4>
                         <i class="fas fa-redo fa-sm"></i> 10X
                     </h4>
@@ -49,8 +47,7 @@
                 <button
                 v-if="artifacts.length === 0 || roll_settings.roll_10x"
                 @click="roll_settings.roll_10x ? roll10x() : singleRoll()"
-                class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2"
-                style="box-shadow:inset 0px 0px 2px white;text-shadow:inset 0px 0px 2px white;">
+                class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2 shadowed">
                     <i
                     v-if="!roll_settings.roll_10x"
                     class="fas fa-redo"
@@ -663,5 +660,10 @@
 
     .include-low-stars, .roll-counter{
         text-shadow:inset 0px 0px 2px black;
+    }
+
+    .shadowed{
+        box-shadow:inset 0px 0px 2px white;
+        text-shadow:inset 0px 0px 2px white;
     }
 </style>
