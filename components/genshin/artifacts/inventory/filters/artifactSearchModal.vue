@@ -16,6 +16,10 @@
                     Search artifacts
                 </h3>
 
+                <p>
+                    Apply multiple conditions to filter your inventory.
+                </p>
+
                 <h6>Select artifact rarity</h6>
                 <filter-by-stars
                 stack

@@ -16,7 +16,10 @@
 	            	:src="artifact.info.equipped.image"
 	            	:alt="artifact.info.equipped.name"
 	            	style="width: 25px; height:25px;"
-	        		class="float-left character-image ml-1">
+	        		class="float-left character-image ml-1"
+	        		:class="inventory && 'pointer'"
+	        		v-tooltip.top-center="inventory && ('Show artifacts equipped on '+artifact.info.equipped.name)"
+        			@click="inventory && filterBycharacters(artifact.info.equipped)">
 
                     <span>
                     	{{
@@ -30,7 +33,10 @@
             	:src="artifact.info.equipped.image"
             	:alt="artifact.info.equipped.name"
             	style="width: 25px; height:25px;"
-        		class="float-right character-image mr-1">
+        		class="float-right character-image mr-1"
+        		:class="inventory && 'pointer'"
+        		v-tooltip.top-center="inventory && ('Show artifacts equipped on '+artifact.info.equipped.name)"
+        		@click="inventory && filterBycharacters(artifact.info.equipped)">
 
                <!--  <button
                 v-if="inventory && !delete_artifacts"
@@ -173,7 +179,18 @@
 	            	localStorage.setItem('artifacts', JSON.stringify(artifacts));
 	            	// this.$store.commit('artifacts/setArtifacts',this.artifacts.reverse());
 	            }
-            }
+            },
+            filterBycharacters(character){
+                this.$store.commit('artifacts/setActiveFilters',{type: 'characters', value: character});
+
+                this.resetArtifacts();
+                let artifacts=this.artifacts.filter(artifact => artifact.info.equipped.name == character.name);
+                this.$store.commit('artifacts/setArtifacts',artifacts);
+            },
+            resetArtifacts(){
+                let artifacts=JSON.parse(localStorage.artifacts).reverse();
+                this.$store.commit('artifacts/setArtifacts',artifacts);
+            },
         }
 	}
 </script>

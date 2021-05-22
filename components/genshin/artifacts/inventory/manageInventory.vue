@@ -20,6 +20,7 @@
         </button>
 
         <button
+        v-tooltip.top-center="'Choose artifacts to delete'"
         type="button"
         class="btn text-light"
         @click="delete_artifacts=!delete_artifacts">
@@ -29,6 +30,7 @@
         </button>
 
         <button
+        v-tooltip.top-center="'Show '+(!show_locked.show ? 'Locked' : (show_locked.type == 'locked' ? 'Unlocked' : 'All'))+' artifacts'"
         type="button"
         class="btn text-light"
         @click="showLocked(!show_locked.show ? 'locked' : (show_locked.type == 'locked' ? 'unlocked' : 'all'))">

@@ -26,6 +26,10 @@ export default {
     {
       src: '~/plugins/vue2-transitions.js',
       mode: 'client'
+    },
+    {
+      src: '~/plugins/v-tooltip.js',
+      mode: 'client'
     }
   ],
 
