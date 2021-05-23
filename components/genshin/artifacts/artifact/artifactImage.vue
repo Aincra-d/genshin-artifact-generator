@@ -49,7 +49,8 @@
                     v-if="!toggled || delete_artifacts"
                     class="mr-1 artifact-thumb"
                     v-lazy="artifact.info.piece.image"
-                    :alt="artifact.info.piece.name">
+                    :alt="artifact.info.piece.name"
+                    v-tooltip="inventory && {content: 'Show artifact stats', delay: {show:500}, hideOnTargetClick: true}">
 
                     <!-- <div
                 	v-if="!toggled"
@@ -74,7 +75,8 @@
                         style="margin-right:-20px"
                         type="button"
                         class="btn btn-sm text-light d-inline rounded-0 btn-md float-right py-0 pr-1"
-                        @click="$emit('open-modal','artifactModal',artifact.id)">
+                        @click="$emit('open-modal','artifactModal',artifact.id)"
+                        v-tooltip="inventory && {content: 'Manage artifact', delay: {show:250}, hideOnTargetClick: true}">
                             <i class="fas fa-edit fa-sm"></i>
                         </button>
 

@@ -64,7 +64,8 @@
 	                style="height:150px;width:150px;"
 	                v-lazy="artifact.info.piece.image"
 	                :alt="artifact.info.piece.name"
-	                @click="(inventory && !delete_artifacts) && $emit('open-modal','artifactModal',artifact.id)">
+	                @click="(inventory && !delete_artifacts) && $emit('open-modal','artifactModal',artifact.id)"
+	                v-tooltip="inventory && {content: 'Manage artifact', delay: {show:500}, hideOnTargetClick: true}">
 
 	                <h6 class="position-absolute top-0 left-0 artifact-type ml-4">
 	                    {{ artifact.info.piece.type }}

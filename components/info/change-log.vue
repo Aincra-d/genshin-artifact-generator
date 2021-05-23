@@ -369,7 +369,7 @@
 						date: '2021.05.22',
 						types: ['feature'],
 						changes: [
-							'Added tooltips to some elements',
+							'Added helpful tooltips to some elements',
 							'By clicking the image of the character wearing the artifact in "Compressed cards" and "Full cards" view, you can quickly filter your inventory to show artifacts which that character is wearing'
 						]
 					},

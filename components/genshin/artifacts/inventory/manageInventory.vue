@@ -4,15 +4,25 @@
         ref="artifactSearchModal">    
         </artifact-search-modal>
 
-        <sort-inventory class="d-inline"></sort-inventory>
+        <sort-inventory
+        v-tooltip="{content: 'Sort inventory', delay: {show:250}, hideOnTargetClick: true}"
+        class="d-inline">
+        </sort-inventory>
 
-        <filter-inventory class="d-inline"></filter-inventory>
+        <filter-inventory
+        v-tooltip="{content: 'Filter inventory', delay: {show:250}, hideOnTargetClick: true}"
+        class="d-inline">
+        </filter-inventory>
 
-        <change-view class="d-inline"></change-view>
+        <change-view
+        v-tooltip="{content: 'Change view', delay: {show:250}, hideOnTargetClick: true}"
+        class="d-inline">
+        </change-view>
 
         <!-- <inventory-settings class="d-inline"></inventory-settings> -->
 
         <button
+        v-tooltip="{content: 'Search artifacts', delay: {show:250}, hideOnTargetClick: true}"
         type="button"
         class="btn text-light"
         @click="openModal">
@@ -20,7 +30,7 @@
         </button>
 
         <button
-        v-tooltip.top-center="'Choose artifacts to delete'"
+        v-tooltip="{content: 'Delete artifacts', delay: {show:250}, hideOnTargetClick: true}"
         type="button"
         class="btn text-light"
         @click="delete_artifacts=!delete_artifacts">
@@ -30,7 +40,7 @@
         </button>
 
         <button
-        v-tooltip.top-center="'Show '+(!show_locked.show ? 'Locked' : (show_locked.type == 'locked' ? 'Unlocked' : 'All'))+' artifacts'"
+        v-tooltip="{content: ('Show '+(!show_locked.show ? 'locked' : (show_locked.type == 'locked' ? 'unlocked' : 'all'))+' artifacts'), delay: {show:250}, hideOnTargetClick: true}"
         type="button"
         class="btn text-light"
         @click="showLocked(!show_locked.show ? 'locked' : (show_locked.type == 'locked' ? 'unlocked' : 'all'))">
