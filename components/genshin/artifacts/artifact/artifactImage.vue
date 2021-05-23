@@ -50,7 +50,7 @@
                     class="mr-1 artifact-thumb"
                     v-lazy="artifact.info.piece.image"
                     :alt="artifact.info.piece.name"
-                    v-tooltip="inventory && {content: 'Show artifact stats', delay: {show:500}, hideOnTargetClick: true}">
+                    v-tooltip="inventory && !delete_artifacts && {content: 'Show artifact stats', delay: {show:500}, hideOnTargetClick: true}">
 
                     <!-- <div
                 	v-if="!toggled"
