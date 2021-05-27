@@ -39,17 +39,17 @@ export const updateAchievements={
             self.$notify({
                 group: 'foo',
                 type: 'info',
-                duration: 5000,
+                duration: 1500,
                 title: `<h6>New achievement unlocked!</h6> Upgrade ${new_max_upgrade} artifacts to max level</b>`
             });
         }
 
         if(new_sub_achievements.length > 0){
-            new_sub_achievements.forEach(achievement => {
+            new_sub_achievements.forEach((achievement,i) => {
                 self.$notify({
                     group: 'foo',
                     type: 'info',
-                    duration: 5000,
+                    duration: (i+1)*1500,
                     title: `<h6>New achievement unlocked!</h6> Upgrade a <b>${achievement.name}</b> sub stat over <b>${achievement.value}`+(achievement.name.includes('%') ? '%' : '')+'</b>'
                 });
             });
@@ -83,7 +83,7 @@ export const updateAchievements={
             self.$notify({
                 group: 'foo',
                 type: 'info',
-                duration: 5000,
+                duration: 1500,
                 title: `<h6>New achievement unlocked!</h6> Do over ${overall_rolls || domain_rolls} rolls`+
                 ((self.selected_domain != '' && overall_rolls === 0) ? ` in ${self.selected_domain}.` : '')+'.'
             });
@@ -108,7 +108,7 @@ export const updateAchievements={
                 self.$notify({
                     group: 'foo',
                     type: 'info',
-                    duration: 5000,
+                    duration: 1500,
                     title: `<h6>New achievement unlocked!</h6> Have over ${inventory_size} artifacts in your inventory.`
                 });
 
