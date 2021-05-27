@@ -140,7 +140,7 @@
             'upgrade-modal': upgradeModal,
             'roll-modal': rollModal,
             'domain-select': domainSelect,
-            'roll-settings': rollSettings,
+            'roll-settings': rollSettings
         },
         computed: {
             screen(){
