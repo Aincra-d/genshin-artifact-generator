@@ -119,8 +119,14 @@
                 </ul>
 
                 <div class="artifact-set-info text-left">
-                    <h6 class="artifact-set-name font-weight-bold ml-4">
+                    <h6
+                    class="artifact-set-name font-weight-bold ml-4 pointer"
+                    @click="toggled=!toggled">
                         {{ artifact.info.set.name }}:
+
+                        <i
+                        class="fas fa-sm"
+                        :class="toggled ? 'fa-angle-up' : 'fa-angle-down'"></i>
                     </h6>
 
                     <ul class="list-unstyled font-weight-bold text-left ml-4 artifact-set-effects w-90">
@@ -150,6 +156,11 @@
 			fromModal: {
 				type: Boolean,
 				default: false
+			}
+		},
+		data(){
+			return {
+				toggled: false
 			}
 		},
 		computed: {

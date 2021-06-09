@@ -117,7 +117,9 @@ export const artifactMethods={
 
         if(roll_10x){
             self.artifacts.splice(self.artifacts.findIndex(artifact => artifact.id === self.current_artifact.id),1);
-            self.current_artifact=self.artifacts[0];
+            if(self.artifacts.length!=0)
+                self.current_artifact=self.artifacts[0];
+            else self.$refs['rollModal'].close();
         }
         else self.singleRoll();
     },

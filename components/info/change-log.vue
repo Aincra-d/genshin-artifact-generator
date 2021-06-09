@@ -373,6 +373,13 @@
 							'By clicking the image of the character wearing the artifact in "Compressed cards" and "Full cards" view, you can quickly filter your inventory to show artifacts which that character is wearing'
 						]
 					},
+					{
+						date: '2021.06.09',
+						types: ['fix'],
+						changes: [
+							'Fixed the bug when doing 10x rolls and adding the last artifact to inventory, it doesn\'t get removed and the inventory data gets corrupted'
+						]
+					},
 				]
 			}
 		},
