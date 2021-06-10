@@ -380,6 +380,13 @@
 							'Fixed the bug when doing 10x rolls and adding the last artifact to inventory, it doesn\'t get removed and the inventory data gets corrupted'
 						]
 					},
+					{
+						date: '2021.06.10',
+						types: ['feature'],
+						changes: [
+							'With a button at the bottom of your inventory, you can quickly reset it to its original state'
+						]
+					},
 				]
 			}
 		},

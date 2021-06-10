@@ -37,6 +37,18 @@
             @update-current-page="updateCurrentPage">
             </pagination>
 
+            <br>
+
+            <div class="w-100 text-center">
+                <button
+                v-tooltip="{content: 'Set inventory back to its original state', delay: {show:250}, hideOnTargetClick: true}"
+                @click="resetInventory()"
+                type="button"
+                class="btn btn-light btn-sm">
+                    Reset inventory
+                </button>
+            </div>
+
             <p
             v-if="artifacts.length === 0"
             class="text-light h5">
@@ -89,6 +101,9 @@
             },
             updateCurrentPage(current_page){
                 this.current_page=current_page;
+            },
+            resetInventory(){
+                this.$store.commit('artifacts/setArtifacts',JSON.parse(localStorage.artifacts).reverse());
             },
             openModal(ref,id) {
                 this.$refs.artifactModal.openModal(ref,id)
