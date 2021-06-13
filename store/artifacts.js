@@ -56,6 +56,11 @@ export const state = () => ({
     achievements: [],
     inventory_loaded: false,
     achievements_loaded: false,
+    rng_test: {
+        selected_set: '',
+        selected_main: '',
+        selected_subs: []
+    }
     // rolled_artifacts: []
 });
 
@@ -156,5 +161,9 @@ export const mutations = {
         }
     },
 
-    setSelectedDomain: (state,name) => state.selected_domain=name
+    setSelectedDomain: (state,name) => state.selected_domain=name,
+
+    setRngTest(state,{type,value}){
+        state.rng_test['selected_'+type]=value;
+    }
 };
