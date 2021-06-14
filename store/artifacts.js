@@ -59,6 +59,7 @@ export const state = () => ({
     rng_test: {
         selected_set: '',
         selected_main: '',
+        selected_type: '',
         selected_subs: []
     }
     // rolled_artifacts: []

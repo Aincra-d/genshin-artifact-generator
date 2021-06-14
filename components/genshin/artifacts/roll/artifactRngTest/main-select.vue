@@ -1,23 +1,25 @@
 <template>
     <div>
         <div>
-            <b-input-group class="w-100 d-inline-block ml-3 ml-lg-0 filter-select text-center">
+            <b-input-group class="w-100 d-inline-block filter-select text-center">
                 <b-dropdown
                 :size="screen < 576 ? 'sm' : 'md'"
                 :text="selected_main!= '' ? selected_main : 'Choose main stat'"
                 variant="light"
-                class="text-dark rounded-0">
+                class="text-dark rounded-0"
+                :disabled="artifact_type == '' || artifact_subs.length != 0">
                     <div class="filter-options-container">
                         <b-dropdown-item
                         :key="i"
                         v-for="(main,i) in artifact_main_stats"
                         @click="selectMain(main.name)"
-                        class="font-xs-15">
+                        class="font-xs-15"
+                        :disabled="!main.types.includes(artifact_type)">
                             <i
-                        class="fa-sm"
-                        :class="main.name == selected_main ?
-                        'fas fa-circle' : 'far fa-circle'">
-                        </i>
+                            class="fa-sm"
+                            :class="main.name == selected_main ?
+                            'fas fa-circle' : 'far fa-circle'">
+                            </i>
 
                             <img
                             v-if="main.image"
@@ -48,7 +50,7 @@
         },
         data(){
             return {
-                artifact_main_stats: mainstatsJ.map(main => main.name),
+                artifact_main_stats: mainstatsJ,
                 selected_main: '',
                 toggled: false,
                 main_icons: staticons.main_icons
@@ -58,25 +60,40 @@
             screen(){
                 return this.$store.state.artifacts.screen
             },
+            artifact_type(){
+                return this.$store.state.artifacts.rng_test.selected_type
+            },
+            artifact_subs(){
+                return this.$store.state.artifacts.rng_test.selected_subs
+            },
+            artifact_main(){
+                return this.$store.state.artifacts.rng_test.selected_main
+            }
         },
         methods: {
             setMainStats(){
                 let main_stats=[];
+
+                // this.artifact_main_stats.filter(main => main.types.includes(piece.type)).map(main => main.name);
                 
                 this.artifact_main_stats.forEach(main_stat => {
                     main_stats.push({
-                        name: main_stat,
-                        icon: this.main_icons[this.main_icons.findIndex(icon => icon.name == main_stat)].icon,
-                        image: this.main_icons[this.main_icons.findIndex(icon => icon.name == main_stat)].image
+                        name: main_stat.name,
+                        icon: this.main_icons[this.main_icons.findIndex(icon => icon.name == main_stat.name)].icon,
+                        image: this.main_icons[this.main_icons.findIndex(icon => icon.name == main_stat.name)].image,
+                        types: main_stat.types
                     });
 
                     this.artifact_main_stats=main_stats;
                 });
+
+                if(this.artifact_main != ''){
+                    this.selected_main=this.artifact_main;
+                }
             },
             selectMain(name){
+                this.$store.commit('artifacts/setRngTest',{type: 'main', value: name == this.selected_main ? '' : name});
                 name == this.selected_main ? this.selected_main = '' : this.selected_main=name;
-
-                this.$store.commit('artifacts/setRngTest',{type: 'main', value: name});
             }
         },
         created(){

@@ -1,4 +1,104 @@
 export const artifactMethods={
+    singleRoll(self,uuid){
+        self.rolled=true;
+        if(!self.roll_settings.roll_10x) self.artifacts=[];
+        self.sub_stats=self.all_subs;
+        // await artifactMethods().then( method  => method.artifactMethods.setSubs(self));
+        self.setSubs();
+        let sets = self.sets;
+
+        if(!self.roll_settings.include_low_stars) sets=sets.filter(set => set.stars.includes(5));
+
+        if(self.selected_domain !== ""){
+            let domain_sets=self.domains.filter(domain => domain.name === self.selected_domain)[0].sets;
+
+            sets=sets.filter(set => domain_sets.includes(set.name));
+            // console.log(sets.map(set => set.name))
+        }
+
+        //SET MAIN STATS BASED ON THE TYPE OF THE ARTIFACT
+        let set=sets[Math.floor(Math.random() * sets.length)];
+        let piece=set.pieces[Math.floor(Math.random() * set.pieces.length)];
+        let subs=[];
+
+        let main_stats=self.main_stats.filter(main => main.types.includes(piece.type)).map(main => main.name);
+
+        let stars=set.stars[Math.floor(Math.random() * set.stars.length)];
+        let random_main=main_stats[Math.floor(Math.random() * main_stats.length)];
+
+        let main={
+            name: random_main,
+            // value: self.main_stats[stars-1].stats[random_main][0]
+            value: self.main_stats.filter(main => main.name == random_main)[0].values[stars][0]
+
+        };
+
+        self.sub_stats.splice(self.sub_stats.findIndex(sub => sub.name === main.name),1);
+
+
+        //SET THE NUMBER OF SUBSTATS
+        let sub_rolls;
+
+        switch (stars) {
+            case 5: sub_rolls=Math.random() < 0.2 ? 4 : 3; break;
+            case 4: sub_rolls=Math.random() < 0.4 ? 3 : 2; break;
+            case 3: sub_rolls=Math.random() < 0.8 ? 2 : 1; break;
+            case 2: sub_rolls=Math.random() < 0.9 ? 1 : 0; break;
+            case 1: sub_rolls=0; break;
+        }
+
+        //ROLL RANDOM SUBSTATS
+        for(let i=0; i<sub_rolls; i++){
+            let random_sub=self.sub_stats[Math.floor(Math.random() * self.sub_stats.length)];
+
+            subs.push({
+                name: random_sub.name,
+                value: random_sub.values[stars][Math.floor(
+                    Math.random() * random_sub.values[stars].length)],
+                level: 0
+            });
+            // self.sub_stats=self.sub_stats.filter(sub => sub.name != random_sub.name);
+            self.sub_stats.splice(self.sub_stats.findIndex(sub => sub.name === random_sub.name),1);
+        }
+
+        let rerolls={
+            main: {
+                count: 0
+            },
+            subs: {
+                count: 0
+            }
+        }
+
+        let max_level=stars*4;
+
+        //CREATE ARTIFACT OBJECT
+        let artifact={
+            id: uuid.v1(),
+            stats: {
+                main,
+                subs
+            },
+            info: {
+                'set': set,
+                piece,
+                stars,
+                level: 0,
+                max_level,
+                rerolls,
+                locked: false,
+                equipped: false
+            }
+            // rolls: 1
+        };
+
+        self.updateCounter();
+        self.artifacts.push(artifact);
+        self.sub_stats=self.all_subs;
+        // await artifactMethods().then( method  => method.artifactMethods.setSubs(self));
+        self.setSubs();
+        self.current_artifact=artifact;
+    },
 	rerollMainStat(self,from_inventory){
         let artifact;
 

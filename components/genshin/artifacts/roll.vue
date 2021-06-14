@@ -1,10 +1,12 @@
 <template>
     <div>
-        <artifact-rolls v-if="!rng_test">
-        </artifact-rolls>
+        <collapse-transition v-if="!rng_test" :duration="250">
+            <artifact-rolls></artifact-rolls>
+        </collapse-transition>
 
-        <artifact-rng-test v-else>
-        </artifact-rng-test>
+        <collapse-transition v-else :duration="250">
+            <artifact-rng-test></artifact-rng-test>
+        </collapse-transition>
 
         <br>
 

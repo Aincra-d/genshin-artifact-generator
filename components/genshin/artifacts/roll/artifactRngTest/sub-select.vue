@@ -6,13 +6,14 @@
                 :size="screen < 576 ? 'sm' : 'md'"
                 :text="selected_subs.length!=0 ? selected_subs.length+' stat(s) selected' : 'Select sub stat(s)'"
                 variant="light"
-                class="text-dark rounded-0">
+                class="text-dark rounded-0"
+                :disabled="artifact_main == ''">
                     <b-dropdown-item
                     :key="i"
                     v-for="(sub,i) in artifact_sub_stats"
                     @click.native.capture.stop="selectSub(sub.name)"
                     class="font-xs-15"
-                    :disabled="selected_subs.length === 4 && !selected_subs.includes(sub.name)">
+                    :disabled="(selected_subs.length === 4 && !selected_subs.includes(sub.name) || artifact_main == sub.name)">
                         <i
                         v-if="!selected_subs.includes(sub.name)"
                         class="far fa-square fa-sm">
@@ -54,6 +55,12 @@
             screen(){
                 return this.$store.state.artifacts.screen
             },
+            artifact_main(){
+                return this.$store.state.artifacts.rng_test.selected_main
+            },
+            artifact_subs(){
+                return this.$store.state.artifacts.rng_test.selected_subs
+            }
         },
         methods: {
             setSubStats(){
@@ -66,9 +73,13 @@
 
                     this.artifact_sub_stats=sub_stats;
                 });
+
+                if(this.artifact_subs.length != 0){
+                    this.selected_subs=this.artifact_subs;
+                }
             },
             selectSub(sub){
-                if(this.selected_subs.length < 4){
+                if(this.selected_subs.length < 4 && sub!=this.artifact_main){
                     this.selected_subs.includes(sub)
                     ? this.selected_subs.splice(this.selected_subs.findIndex(_sub => _sub == sub),1)
                     : this.selected_subs.push(sub);
