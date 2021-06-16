@@ -387,6 +387,13 @@
 							'With a button at the bottom of your inventory, you can quickly reset it to its original state'
 						]
 					},
+					{
+						date: '2021.06.16',
+						types: ['update'],
+						changes: [
+							'Changed wrong appearance of "Reset inventory" button. From now it will only appear once at least one filter has been applied'
+						]
+					},
 				]
 			}
 		},

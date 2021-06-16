@@ -222,6 +222,8 @@ export const artifactMethods={
             else self.$refs['rollModal'].close();
         }
         else self.singleRoll();
+
+        self.$store.commit('artifacts/setInventorySize');
     },
     upgrade(self,from_inventory,roll_10x,upgrade_count){
         if(upgrade_count === null) upgrade_count = 1;

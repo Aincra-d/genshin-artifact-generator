@@ -292,6 +292,7 @@
         },
         beforeMount(){
             this.setAchievements();
+            this.$store.commit('artifacts/setInventorySize');
         }
     }
 </script>

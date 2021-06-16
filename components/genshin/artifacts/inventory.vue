@@ -37,9 +37,15 @@
             @update-current-page="updateCurrentPage">
             </pagination>
 
-            <br>
+            <p
+            v-if="artifacts.length === 0"
+            class="text-light h5">
+                There are no artifacts in your inventory, or there are no results for your applied filter(s).
+            </p>
 
-            <div class="w-100 text-center">
+            <div
+            v-if="inventory_size != artifacts.length"
+            class="w-100 text-center mt-3">
                 <button
                 v-tooltip="{content: 'Set inventory back to its original state', delay: {show:250}, hideOnTargetClick: true}"
                 @click="resetInventory()"
@@ -49,11 +55,6 @@
                 </button>
             </div>
 
-            <p
-            v-if="artifacts.length === 0"
-            class="text-light h5">
-                There are no artifacts in your inventory, or there are no results for your applied filter(s).
-            </p>
         </div>
     </div>
 </template>
@@ -77,7 +78,7 @@
         data(){
             return {
                 current_page: 1,
-                per_page: 50,
+                per_page: 50
             }
         },
         computed: {
@@ -92,6 +93,9 @@
             },
             all_pages(){
                 return Math.ceil(this.artifacts.length/50);
+            },
+            inventory_size(){
+                return this.$store.state.artifacts.inventory_size
             }
         },
         methods: {

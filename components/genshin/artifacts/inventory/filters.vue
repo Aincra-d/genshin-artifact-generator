@@ -122,6 +122,8 @@
                     type: 'success',
                     title: '<h6>Deleted '+(original_size - artifacts.length)+' artifacts from inventory!</h6>'
                 });
+
+                this.$store.commit('artifacts/setInventorySize');
             }
         }
     }

@@ -238,6 +238,8 @@
                 });
 
                 this.$refs[this.ref].close();
+
+                this.$store.commit('artifacts/setInventorySize');
             },
             async upgrade(upgrade_count){
                 await artifactMethods().then(method => method.artifactMethods.upgrade(this,true,false,upgrade_count));

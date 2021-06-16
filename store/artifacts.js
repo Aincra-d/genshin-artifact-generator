@@ -61,7 +61,8 @@ export const state = () => ({
         selected_main: '',
         selected_type: '',
         selected_subs: []
-    }
+    },
+    inventory_size: 0
     // rolled_artifacts: []
 });
 
@@ -166,5 +167,7 @@ export const mutations = {
 
     setRngTest(state,{type,value}){
         state.rng_test['selected_'+type]=value;
-    }
+    },
+
+    setInventorySize: (state,size) => state.inventory_size=JSON.parse(localStorage.artifacts).length
 };
