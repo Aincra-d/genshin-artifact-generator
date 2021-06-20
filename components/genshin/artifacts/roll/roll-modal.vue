@@ -208,7 +208,7 @@
                 let self=this;
                 setTimeout(function() {
                     self.showArtifact(self.artifacts[0].id)
-                }, 50);
+                }, 100);
             },
             async showArtifact(id){
                 this.current_artifact=this.artifacts.filter(artifact => artifact.id === id)[0];

@@ -1,8 +1,8 @@
 <template>
     <div>
-        <collapse-transition v-if="!rng_test" :duration="250">
+        <!-- <collapse-transition :duration="250"> -->
             <artifact-rolls></artifact-rolls>
-        </collapse-transition>
+        <!-- </collapse-transition> -->
 
         <!-- <collapse-transition v-else :duration="250">
             <artifact-rng-test></artifact-rng-test>

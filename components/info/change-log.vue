@@ -389,7 +389,7 @@
 					},
 					{
 						date: '2021.06.16',
-						types: ['update'],
+						types: ['fix'],
 						changes: [
 							'Changed wrong appearance of "Reset inventory" button. From now it will only appear once at least one filter has been applied'
 						]
