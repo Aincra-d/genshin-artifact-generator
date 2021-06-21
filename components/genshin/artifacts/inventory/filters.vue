@@ -1,16 +1,34 @@
 <template>
     <div>
-        <collapse-transition><filter-by-stars v-if="filters.by_star"></filter-by-stars></collapse-transition>
+        <collapse-transition>
+            <filter-by-stars v-if="filters.by_star">
+            </filter-by-stars>
+        </collapse-transition>
 
-        <collapse-transition><filter-by-main-stats v-if="filters.by_main"></filter-by-main-stats></collapse-transition>
+        <collapse-transition>
+            <filter-by-main-stats v-if="filters.by_main">
+            </filter-by-main-stats>
+        </collapse-transition>
 
-        <collapse-transition><filter-by-sub-stats v-if="filters.by_sub"></filter-by-sub-stats></collapse-transition>
+        <collapse-transition>
+            <filter-by-sub-stats v-if="filters.by_sub">
+            </filter-by-sub-stats>
+        </collapse-transition>
 
-        <collapse-transition><filter-by-types v-if="filters.by_type"></filter-by-types></collapse-transition>
+        <collapse-transition>
+            <filter-by-types v-if="filters.by_type">
+            </filter-by-types>
+        </collapse-transition>
 
-        <collapse-transition><filter-by-sets v-if="filters.by_set"></filter-by-sets></collapse-transition>
+        <collapse-transition>
+            <filter-by-sets v-if="filters.by_set">
+            </filter-by-sets>
+        </collapse-transition>
 
-        <collapse-transition><filter-by-equipped v-if="filters.by_character"></filter-by-equipped></collapse-transition>
+        <collapse-transition>
+            <filter-by-equipped v-if="filters.by_character">
+            </filter-by-equipped>
+        </collapse-transition>
 
         <button
         v-if="delete_artifacts"

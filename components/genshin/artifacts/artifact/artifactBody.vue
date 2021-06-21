@@ -118,18 +118,24 @@
                     </li>
                 </ul>
 
-                <div class="artifact-set-info text-left">
+                <div
+                class="artifact-set-info text-left"
+                :class="!inventory && (!toggled && 'hidden')">
                     <h6
-                    class="artifact-set-name font-weight-bold ml-4 pointer"
+                    :class="!inventory && 'pointer'"
+                    class="artifact-set-name font-weight-bold ml-4"
                     @click="toggled=!toggled">
                         {{ artifact.info.set.name }}:
 
                         <i
+                        v-if="!inventory"
                         class="fas fa-sm"
                         :class="toggled ? 'fa-angle-up' : 'fa-angle-down'"></i>
                     </h6>
 
-                    <ul class="list-unstyled font-weight-bold text-left ml-4 artifact-set-effects w-90">
+                    <ul
+                    :class="!inventory && (!toggled && 'invisible')"
+                    class="list-unstyled font-weight-bold text-left ml-4 artifact-set-effects w-90">
                         <li>
                             2-Piece Set: {{ artifact.info.set.effects['2_piece'] }}
                         </li>
@@ -210,8 +216,7 @@
 <style scoped>
     .artifact{
         /*max-height: 400px;*/
-        overflow-y: auto;
-        overflow-x: hidden;
+        overflow: hidden;
     }
 
     ::-webkit-scrollbar {
@@ -226,6 +231,10 @@
     /* Handle */
     ::-webkit-scrollbar-thumb {
       background: #888;
+    }
+
+    .hidden{
+    	max-height:25px;
     }
 
     @media(min-width: 1200px){

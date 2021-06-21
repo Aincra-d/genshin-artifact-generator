@@ -394,6 +394,13 @@
 							'Changed wrong appearance of "Reset inventory" button. From now it will only appear once at least one filter has been applied'
 						]
 					},
+					{
+						date: '2021.06.21',
+						types: ['update'],
+						changes: [
+							'When rolling artifact or managing artifacts, set effects are hidden by default, improving usability for users with smaller devices. Effects can be toggled by clicking the the set name'
+						]
+					},
 				]
 			}
 		},

@@ -63,19 +63,6 @@
                     @click="applyFilters">
                         Apply filters
                     </button>
-
-                    <!-- <b-form-checkbox
-                    v-model="exclude_filters"
-                    button
-                    button-variant="outline-light"
-                    class="d-inline rounded-0"
-                    size="sm"
-                    name="buttons-2">
-                        <i
-                        class="fa-sm"
-                        :class="exclude_filters ? 'fas fa-check-square' : 'far fa-square'"></i>
-                        Exclude filters
-                    </b-form-checkbox> -->
                 </div>
             </div>
         </ui-modal>
@@ -102,11 +89,9 @@
         computed: {
             active_filters(){
                 return this.$store.state.artifacts.active_filters.map(filter => filter.data);
-                //returns stars,main_stats,sub_stats,types,sets
             },
             exclude_filters(type){
                 return this.$store.state.artifacts.active_filters.map(filter => filter.exclude);
-                //returns stars,main_stats,sub_stats,types,sets
             },
             match_subs: {
                 get(){
