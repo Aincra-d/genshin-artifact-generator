@@ -398,7 +398,7 @@
 						date: '2021.06.21',
 						types: ['update'],
 						changes: [
-							'When rolling artifact or managing artifacts, set effects are hidden by default, improving usability for users with smaller devices. Effects can be toggled by clicking the the set name'
+							'On mobile devices when rolling artifact or managing artifacts, set effects are hidden by default, improving usability for users with smaller devices. Effects can be toggled by clicking the the set name'
 						]
 					},
 				]
