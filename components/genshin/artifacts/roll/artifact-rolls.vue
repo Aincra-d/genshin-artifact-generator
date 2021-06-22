@@ -12,10 +12,10 @@
             </upgrade-modal>
 
             <roll-modal
-            v-if="roll_settings.roll_10x || !rolled"
+            v-if="settings.roll_10x || !rolled"
             ref="rollModal"
-            :show="roll_settings.show_upgrades"
-            :single="roll_settings.single_upgrades"
+            :show="settings.show_upgrades"
+            :single="settings.single_upgrades"
             :artifacts="artifacts"
             @show-upgrades="showUpgrades">    
             </roll-modal>
@@ -45,11 +45,11 @@
 
             <div v-else>
                 <button
-                v-if="artifacts.length === 0 || roll_settings.roll_10x"
-                @click="roll_settings.roll_10x ? roll10x() : singleRoll()"
+                v-if="artifacts.length === 0 || settings.roll_10x"
+                @click="settings.roll_10x ? roll10x() : singleRoll()"
                 class="btn text-light btn-link btn-md p-5 d-inline mx-1 rounded-0 mt-2 shadowed">
                     <i
-                    v-if="!roll_settings.roll_10x"
+                    v-if="!settings.roll_10x"
                     class="fas fa-redo"
                     style="font-size: 35px;"></i>
 
@@ -60,7 +60,7 @@
 
                 <artifact-actions
                 v-else
-                :single="roll_settings.single_upgrades"
+                :single="settings.single_upgrades"
                 :artifact="current_artifact"
                 @upgrade="upgrade"
                 @roll-artifact="singleRoll"
@@ -74,7 +74,7 @@
 
         <div>
             <artifact
-            v-if="!roll_settings.roll_10x"
+            v-if="!settings.roll_10x"
             style="max-width:500px"
             class="p-3 mx-auto"
             :key="artifact.id"
@@ -149,8 +149,8 @@
             selected_domain(){
                 return this.$store.state.artifacts.selected_domain
             },
-            roll_settings(){
-                return this.$store.state.artifacts.roll_settings
+            settings(){
+                return this.$store.state.artifacts.settings
             },
             achievements(){
                 return this.$store.state.artifacts.achievements
@@ -192,7 +192,7 @@
             },
             roll10x(){
                 this.artifacts=[];
-                this.roll_settings.roll_10x=true;
+                this.settings.roll_10x=true;
 
                 for(let i=0; i<10; i++){
                     this.singleRoll();

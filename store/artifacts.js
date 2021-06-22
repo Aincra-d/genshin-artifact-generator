@@ -47,11 +47,12 @@ export const state = () => ({
         }
     ],
     selected_domain: '',
-    roll_settings: {
+    settings: {
         include_low_stars: false,
         single_upgrades: false,
         roll_10x: false,
-        show_upgrades: true
+        show_upgrades: true,
+        show_set_effects: false
     },
     achievements: [],
     inventory_loaded: false,
@@ -75,8 +76,8 @@ export const mutations = {
     setInventoryLoaded: (state) => state.inventory_loaded=true,
     setAchievementsLoaded: (state) => state.achievements_loaded=true,
 
-    setRollSettings(state,name){
-        state.roll_settings[name]=!state.roll_settings[name];
+    setSettings(state,name){
+        state.settings[name]=!state.settings[name];
     },
     setArtifacts: (state,artifacts) => state.artifacts=artifacts,
 

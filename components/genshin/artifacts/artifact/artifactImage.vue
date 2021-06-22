@@ -51,22 +51,6 @@
                     v-lazy="artifact.info.piece.image"
                     :alt="artifact.info.piece.name"
                     v-tooltip="inventory && !delete_artifacts && {content: 'Show artifact stats', delay: {show:500}, hideOnTargetClick: true}">
-
-                    <!-- <div
-                	v-if="!toggled"
-                	:key="artifact.id">
-                		<span
-                		v-if="artifact.info.locked"
-                		class="position-absolute top-0 right-5">
-	                		<i class="fas fa-lock fa-sm text-danger"></i>
-	                	</span>
-
-	                    <img
-	                    class="mr-1 artifact-thumb"
-	                    v-lazy="artifact.info.piece.image"
-	                    :alt="artifact.info.piece.name">
-	                </div> -->
-
                     <div
                     v-else
                     :key="artifact.id"

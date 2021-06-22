@@ -401,6 +401,13 @@
 							'On mobile devices when rolling artifact or managing artifacts, set effects are hidden by default, improving usability for users with smaller devices. Effects can be toggled by clicking the the set name'
 						]
 					},
+					{
+						date: '2021.06.22',
+						types: ['feature','update'],
+						changes: [
+							'Changed "Roll settings" to "General site settings" and added option to display/hide set effects everywhere on all devices by default'
+						]
+					},
 				]
 			}
 		},

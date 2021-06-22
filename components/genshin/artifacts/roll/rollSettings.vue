@@ -2,13 +2,13 @@
 	<div>
 		<b-dropdown
         menu-class="w-100"
-        text="Artifact roll settings"
+        text="General site settings"
         variant="outline-light"
         class="text-dark rounded-0 border-0 outline-0 mx-auto">
-            <b-dropdown-item @click.native.capture.stop="setRollSettings('include_low_stars')">
+            <b-dropdown-item @click.native.capture.stop="setSettings('include_low_stars')">
                 <i
                 class="fa-sm"
-                :class="roll_settings.include_low_stars ?
+                :class="settings.include_low_stars ?
                 'fas fa-check-square' : 'far fa-square'">
                 </i>
 
@@ -19,10 +19,10 @@
 	            class="fas fa-question-circle fa-sm d-inline-block"></i>
             </b-dropdown-item>
 
-            <b-dropdown-item @click.native.capture.stop="setRollSettings('single_upgrades')">
+            <b-dropdown-item @click.native.capture.stop="setSettings('single_upgrades')">
                 <i
                 class="fa-sm"
-                :class="roll_settings.single_upgrades ?
+                :class="settings.single_upgrades ?
                 'fas fa-check-square' : 'far fa-square'">
                 </i>
                 
@@ -33,10 +33,10 @@
 	            class="fas fa-question-circle fa-sm d-inline-block"></i>
             </b-dropdown-item>
 
-            <b-dropdown-item @click.native.capture.stop="setRollSettings('show_upgrades')">
+            <b-dropdown-item @click.native.capture.stop="setSettings('show_upgrades')">
                 <i
                 class="fa-sm"
-                :class="roll_settings.show_upgrades ?
+                :class="settings.show_upgrades ?
                 'fas fa-check-square' : 'far fa-square'">
                 </i>
                 
@@ -47,10 +47,10 @@
 	            class="fas fa-question-circle fa-sm d-inline-block"></i>
             </b-dropdown-item>
 
-            <b-dropdown-item @click.native.capture.stop="setRollSettings('roll_10x')">
+            <b-dropdown-item @click.native.capture.stop="setSettings('roll_10x')">
                 <i
                 class="fa-sm"
-                :class="roll_settings.roll_10x ?
+                :class="settings.roll_10x ?
                 'fas fa-check-square' : 'far fa-square'">
                 </i>
                 
@@ -58,6 +58,20 @@
 
                 <i
                 v-tooltip="{content: 'Only do 10x artifact rolls', delay: {show:250}, hideOnTargetClick: true}"
+	            class="fas fa-question-circle fa-sm d-inline-block"></i>
+            </b-dropdown-item>
+
+            <b-dropdown-item @click.native.capture.stop="setSettings('show_set_effects')">
+                <i
+                class="fa-sm"
+                :class="settings.show_set_effects ?
+                'fas fa-check-square' : 'far fa-square'">
+                </i>
+                
+                <span>Show set effects</span>
+
+                <i
+                v-tooltip="{content: 'Show set effects by default', delay: {show:250}, hideOnTargetClick: true}"
 	            class="fas fa-question-circle fa-sm d-inline-block"></i>
             </b-dropdown-item>
         </b-dropdown>
@@ -68,13 +82,13 @@
 	export default{
 		name: 'rollSettings',
 		computed: {
-			roll_settings(){
-				return this.$store.state.artifacts.roll_settings
+			settings(){
+				return this.$store.state.artifacts.settings
 			}
 		},
 		methods: {
-			setRollSettings(name){
-				this.$store.commit('artifacts/setRollSettings',name);
+			setSettings(name){
+				this.$store.commit('artifacts/setSettings',name);
 
 				name == 'roll_10x' && this.$emit('emptyArtifacts');
 			}

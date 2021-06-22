@@ -1,13 +1,13 @@
 export const artifactMethods={
     singleRoll(self,uuid){
         self.rolled=true;
-        if(!self.roll_settings.roll_10x) self.artifacts=[];
+        if(!self.settings.roll_10x) self.artifacts=[];
         self.sub_stats=self.all_subs;
         // await artifactMethods().then( method  => method.artifactMethods.setSubs(self));
         self.setSubs();
         let sets = self.sets;
 
-        if(!self.roll_settings.include_low_stars) sets=sets.filter(set => set.stars.includes(5));
+        if(!self.settings.include_low_stars) sets=sets.filter(set => set.stars.includes(5));
 
         if(self.selected_domain !== ""){
             let domain_sets=self.domains.filter(domain => domain.name === self.selected_domain)[0].sets;
@@ -310,7 +310,7 @@ export const artifactMethods={
 
         if(roll_10x && self.show) self.showUpgrades();
         if(from_inventory) self.updateInventory(artifact);
-        if(!roll_10x && !from_inventory && self.roll_settings.show_upgrades) self.openModal();
+        if(!roll_10x && !from_inventory && self.settings.show_upgrades) self.openModal();
     },
     equipArtifact(self,from_inventory,character){
         let removed=false;
