@@ -25,15 +25,6 @@
                 </artifact>
 
                 <div slot="footer">
-                   <!--  <button
-                    type="button"
-                    class="btn btn-link text-light d-inline rounded-0 my-1"
-                    :class="screen < 576 ? 'btn-sm' : 'btn-md'"
-                    :disabled="removed || current_artifact.info.level === current_artifact.info.max_level"
-                    @click="current_artifact.info.level!=current_artifact.info.max_level && upgrade()">
-                        <i class="fas fa-arrow-up fa-sm"></i> Upgrade
-                    </button> -->
-
                     <b-dropdown
                     menu-class="w-100"
                     :disabled="current_artifact.info.level == current_artifact.info.max_level"
@@ -204,7 +195,7 @@
                 if(this.client){
                     this.current_artifact=this.artifacts.filter(artifact => artifact.id === id)[0];
                 }
-                // this.modal_bg_class='stars-'+this.artifacts[this.artifacts.findIndex(artifact => artifact.id === this.artifact_id)].info.stars;
+                
                 this.$refs[ref].open();
                 this.ref=ref;
             },

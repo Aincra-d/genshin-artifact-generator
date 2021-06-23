@@ -73,14 +73,16 @@
         </div>
 
         <div>
-            <artifact
-            v-if="!settings.roll_10x"
-            style="max-width:500px"
-            class="p-3 mx-auto"
-            :key="artifact.id"
-            v-for="artifact in artifacts"
-            :artifact="artifact">
-            </artifact>
+            <!-- <collapse-transition> -->
+                <artifact
+                v-if="!settings.roll_10x"
+                style="max-width:500px"
+                class="p-3 mx-auto"
+                :key="artifact.id"
+                v-for="artifact in artifacts"
+                :artifact="artifact">
+                </artifact>
+            <!-- </collapse-transition> -->
 
             <domain-select :domains="domains">
             </domain-select>

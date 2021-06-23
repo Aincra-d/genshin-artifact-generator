@@ -5,7 +5,9 @@
         text="General site settings"
         variant="outline-light"
         class="text-dark rounded-0 border-0 outline-0 mx-auto">
-            <b-dropdown-item class="position-relative" @click.native.capture.stop="setSettings('include_low_stars')">
+            <b-dropdown-item
+            class="position-relative"
+            @click.native.capture.stop="setSettings('include_low_stars')">
                 <i
                 class="fa-sm"
                 :class="settings.include_low_stars ?
@@ -19,7 +21,9 @@
 	            class="fas fa-question-circle position-absolute top-30 right-2 fa-sm d-inline-block"></i>
             </b-dropdown-item>
 
-            <b-dropdown-item class="position-relative" @click.native.capture.stop="setSettings('single_upgrades')">
+            <b-dropdown-item
+            class="position-relative"
+            @click.native.capture.stop="setSettings('single_upgrades')">
                 <i
                 class="fa-sm"
                 :class="settings.single_upgrades ?
@@ -33,7 +37,9 @@
 	            class="fas fa-question-circle position-absolute top-30 right-2 fa-sm d-inline-block"></i>
             </b-dropdown-item>
 
-            <b-dropdown-item class="position-relative" @click.native.capture.stop="setSettings('show_upgrades')">
+            <b-dropdown-item
+            class="position-relative"
+            @click.native.capture.stop="setSettings('show_upgrades')">
                 <i
                 class="fa-sm"
                 :class="settings.show_upgrades ?
@@ -47,7 +53,9 @@
 	            class="fas fa-question-circle position-absolute top-30 right-2 fa-sm d-inline-block"></i>
             </b-dropdown-item>
 
-            <b-dropdown-item class="position-relative" @click.native.capture.stop="setSettings('roll_10x')">
+            <b-dropdown-item
+            class="position-relative"
+            @click.native.capture.stop="setSettings('roll_10x')">
                 <i
                 class="fa-sm"
                 :class="settings.roll_10x ?
@@ -61,7 +69,9 @@
 	            class="fas fa-question-circle position-absolute top-30 right-2 fa-sm d-inline-block"></i>
             </b-dropdown-item>
 
-            <b-dropdown-item class="position-relative" @click.native.capture.stop="setSettings('show_set_effects')">
+            <b-dropdown-item
+            class="position-relative"
+            @click.native.capture.stop="setSettings('show_set_effects')">
                 <i
                 class="fa-sm"
                 :class="settings.show_set_effects ?

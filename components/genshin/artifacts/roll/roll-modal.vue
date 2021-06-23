@@ -31,12 +31,14 @@
             </div>
 
             <div class="artifact-container w-100 text-center mt-3">
-                <artifact
-                v-if="toggled"
-                :inventory="false"
-                class="d-inline-block col-12"
-                :artifact="current_artifact">
-                </artifact>
+                <collapse-transition>
+                    <artifact
+                    v-if="toggled"
+                    :inventory="false"
+                    class="d-inline-block col-12"
+                    :artifact="current_artifact">
+                    </artifact>
+                </collapse-transition>
             </div>
 
             <div
@@ -79,24 +81,6 @@
                         </b-dropdown-item>
                     </div>
                 </b-dropdown>
-
-                <!-- <button
-                type="button"
-                class="btn btn-link text-light d-inline rounded-0 my-1"
-                :class="screen < 576 ? 'btn-sm' : 'btn-md'"
-                :disabled="current_artifact.info.rerolls.main.count != 0 || ['Flower of Life','Plume of Death'].includes(current_artifact.info.piece.type)"
-                @click="current_artifact.info.rerolls.main.count === 0 && rerollMainStat()">
-                    <i class="fas fa-redo fa-sm mr-1"></i>Reroll main
-                </button>
-
-                <button
-                type="button"
-                class="btn btn-link text-light d-inline rounded-0 my-1"
-                :class="screen < 576 ? 'btn-sm' : 'btn-md'"
-                :disabled="current_artifact.info.rerolls.subs.count != 0"
-                @click="current_artifact.info.rerolls.subs.count === 0 && rerollSubStats()">
-                    <i class="fas fa-redo fa-sm mr-1"></i>Reroll subs
-                </button> -->
 
                 <b-dropdown
                 menu-class="w-100"
@@ -148,7 +132,7 @@
                 class="btn btn-link text-light d-inline rounded-0 mx-0 w-23"
                 :class="screen < 576 ? 'btn-sm' : 'btn-md'"
                 @click="add()">
-                    <!-- <i class="fas fa-plus fa-sm mr-1"></i> -->Add
+                    Add
                 </button>
             </div>
         </ui-modal>
@@ -190,8 +174,7 @@
                 all_subs: [],
                 upgrades: [],
                 old_main_value: 0,
-                characters: charactersJSON,
-                // achievements: process.client && (JSON.parse(localStorage.achievements) || {})
+                characters: charactersJSON
             }
         },
         computed: {
@@ -327,11 +310,6 @@
         background: -webkit-linear-gradient(to right, #525965,#6c7480, #7d8995);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #525965,#6c7480, #7d8995); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
-
-    /*.roll-modal .ui-modal__container, .roll-modal .ui-modal__body,.roll-modal .ui-modal__header{
-        background: transparent !important;
-        box-shadow: none;
-    }*/
 
     .roll-modal .ui-modal__body{
         background: #353b49 !important;
