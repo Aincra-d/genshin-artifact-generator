@@ -408,6 +408,13 @@
 							'Changed "Roll settings" to "General site settings" and added option to display/hide set effects everywhere on all devices by default'
 						]
 					},
+					{
+						date: '2021.06.25',
+						types: ['update'],
+						changes: [
+							'Added new characters: Ayaka, Kazuha, Sayu and Yoimiya'
+						]
+					},
 				]
 			}
 		},

@@ -130,5 +130,21 @@
 	{
 		"name": "Zhongli",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c2/Character_Zhongli_Thumb.png"
+	},
+	{
+		"name": "Ayaka",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f4/Character_Ayaka_Thumb.png"
+	},
+	{
+		"name": "Kazuha",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d5/Character_Kazuha_Thumb.png"
+	},
+	{
+		"name": "Sayu",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ec/Character_Sayu_Thumb.png"
+	},
+	{
+		"name": "Yoimiya",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/05/Character_Yoimiya_Thumb.png"
 	}
 ]
