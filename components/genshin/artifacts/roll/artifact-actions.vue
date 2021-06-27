@@ -77,20 +77,33 @@
             :size="screen < 576 ? 'sm' : 'md'"
             variant="link"
             class="mx-0 character-select shadowed">
-                <b-dropdown-item
+                <b-dropdown-group
                 :key="i"
-                v-for="(character,i) in characters"
-                @click="$emit('equip-artifact',character)"
-                href="#">
-                    <img
-                    :src="character.image"
-                    :alt="character.name"
-                    style="width:25px; height:25px;">
+                v-for="(element,i) in elements">
+                    <b-dropdown-header id="dropdown-header-label">
+                        <img
+                        style="width:20px; height:20px;"
+                        v-lazy="element.image"
+                        :alt="element.name">
 
-                    <span :class="artifact.info.equipped !== false && (artifact.info.equipped.name == character.name && 'text-primary font-weight-bold')">
-                        {{ character.name }}
-                    </span>
-                </b-dropdown-item>
+                        {{ element.name }}
+                    </b-dropdown-header>
+
+                    <b-dropdown-item
+                    :key="i"
+                    v-for="(character,i) in characters.filter(char => char.element == element.name)"
+                    @click="$emit('equip-artifact',character)"
+                    href="#">
+                        <img
+                        :src="character.image"
+                        :alt="character.name"
+                        style="width:25px; height:25px;">
+
+                        <span :class="artifact.info.equipped !== false && (artifact.info.equipped.name == character.name && 'text-primary font-weight-bold')">
+                            {{ character.name }}
+                        </span>
+                    </b-dropdown-item>
+                </b-dropdown-group>
             </b-dropdown>
 
             <button
@@ -106,6 +119,7 @@
 </template>
 
 <script>
+    import elements from '~/static/elements.json';
     import charactersJSON from '~/static/characters.json';
 
 	export default{
@@ -121,7 +135,8 @@
         },
         data(){
             return {
-                characters: charactersJSON
+                characters: charactersJSON,
+                elements: elements
             }
         }
 	}

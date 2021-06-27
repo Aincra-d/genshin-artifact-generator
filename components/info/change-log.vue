@@ -415,6 +415,13 @@
 							'Added new characters: Ayaka, Kazuha, Sayu and Yoimiya'
 						]
 					},
+					{
+						date: '2021.06.27',
+						types: ['feature'],
+						changes: [
+							'Grouped characters by their element/vision in equip dropdowns'
+						]
+					},
 				]
 			}
 		},

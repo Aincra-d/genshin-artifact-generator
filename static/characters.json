@@ -1,150 +1,187 @@
 [
 	{
 		"name": "Albedo",
+		"element": "Geo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/00/Character_Albedo_Thumb.png"
 	},
 	{
 		"name": "Amber",
+		"element": "Pyro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c6/Character_Amber_Thumb.png"
 	},
 	{
 		"name": "Barbara",
+		"element": "Hydro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/72/Character_Barbara_Thumb.png"
 	},
 	{
 		"name": "Beidou",
+		"element": "Electro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/61/Character_Beidou_Thumb.png"
 	},
 	{
 		"name": "Bennett",
+		"element": "Pyro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Character_Bennett_Thumb.png"
 	},
 	{
 		"name": "Chongyun",
+		"element": "Cryo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/68/Character_Chongyun_Thumb.png"
 	},
 	{
 		"name": "Diluc",
+		"element": "Pyro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/02/Character_Diluc_Thumb.png"
 	},
 	{
 		"name": "Diona",
+		"element": "Cryo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b9/Character_Diona_Thumb.png"
 	},
 	{
 		"name": "Eula",
+		"element": "Cryo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d3/Character_Eula_Thumb.png"
 	},
 	{
 		"name": "Fischl",
+		"element": "Electro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Character_Fischl_Thumb.png"
 	},
 	{
 		"name": "Ganyu",
+		"element": "Cryo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Character_Ganyu_Thumb.png"
 	},
 	{
 		"name": "Hu Tao",
+		"element": "Pyro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a4/Character_Hu_Tao_Thumb.png"
 	},
 	{
 		"name": "Jean",
+		"element": "Anemo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/89/Character_Jean_Thumb.png"
 	},
 	{
 		"name": "Kaeya",
+		"element": "Cryo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/3/33/Character_Kaeya_Thumb.png"
 	},
 	{
 		"name": "Keqing",
+		"element": "Electro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/06/Character_Keqing_Thumb.png"
 	},
 	{
 		"name": "Klee",
+		"element": "Pyro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c3/Character_Klee_Thumb.png"
 	},
 	{
 		"name": "Lisa",
+		"element": "Electro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Character_Lisa_Thumb.png"
 	},
 	{
 		"name": "Mona",
+		"element": "Hydro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a0/Character_Mona_Thumb.png"
 	},
 	{
 		"name": "Ningguang",
+		"element": "Geo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Character_Ningguang_Thumb.png"
 	},
 	{
 		"name": "Noelle",
+		"element": "Geo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Character_Noelle_Thumb.png"
 	},
 	{
 		"name": "Qiqi",
+		"element": "Cryo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d5/Character_Qiqi_Thumb.png"
 	},
 	{
 		"name": "Razor",
+		"element": "Electro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Character_Razor_Thumb.png"
 	},
 	{
 		"name": "Rosaria",
+		"element": "Cryo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Character_Rosaria_Thumb.png"
 	},
 	{
 		"name": "Sucrose",
+		"element": "Anemo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/61/Character_Sucrose_Thumb.png"
 	},
 	{
 		"name": "Tartaglia",
+		"element": "Hydro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/53/Character_Tartaglia_Thumb.png"
 	},
 	{
 		"name": "Traveler",
+		"element": "Anemo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/7/71/Character_Traveler_Thumb.png"
 	},
 	{
 		"name": "Venti",
+		"element": "Anemo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8d/Character_Venti_Thumb.png"
 	},
 	{
 		"name": "Xiangling",
+		"element": "Pyro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a0/Character_Xiangling_Thumb.png"
 	},
 	{
 		"name": "Xiao",
+		"element": "Anemo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b9/Character_Xiao_Thumb.png"
 	},
 	{
 		"name": "Xingqiu",
+		"element": "Hydro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Character_Xingqiu_Thumb.png"
 	},
 	{
 		"name": "Xinyan",
+		"element": "Pyro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/9d/Character_Xinyan_Thumb.png"
 	},
 	{
 		"name": "Yanfei",
+		"element": "Pyro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/1/1f/Character_Yanfei_Thumb.png"
 	},
 	{
 		"name": "Zhongli",
+		"element": "Geo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c2/Character_Zhongli_Thumb.png"
 	},
 	{
 		"name": "Ayaka",
+		"element": "Cryo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f4/Character_Ayaka_Thumb.png"
 	},
 	{
 		"name": "Kazuha",
+		"element": "Anemo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d5/Character_Kazuha_Thumb.png"
 	},
 	{
 		"name": "Sayu",
+		"element": "Anemo",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/e/ec/Character_Sayu_Thumb.png"
 	},
 	{
 		"name": "Yoimiya",
+		"element": "Pyro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/05/Character_Yoimiya_Thumb.png"
 	}
 ]

@@ -111,20 +111,33 @@
                 :size="screen < 576 ? 'sm' : 'md'"
                 variant="link"
                 class="my-2 mx-0 w-23 character-select">
-                    <b-dropdown-item
+                    <b-dropdown-group
                     :key="i"
-                    v-for="(character,i) in characters"
-                    @click="equipArtifact(character)"
-                    href="#">
-                        <img
-                        :src="character.image"
-                        :alt="character.name"
-                        style="width:25px; height:25px;">
+                    v-for="(element,i) in elements">
+                        <b-dropdown-header id="dropdown-header-label">
+                            <img
+                            style="width:20px; height:20px;"
+                            v-lazy="element.image"
+                            :alt="element.name">
 
-                        <span :class="current_artifact.info.equipped !== false && (current_artifact.info.equipped.name == character.name && 'text-primary font-weight-bold')">
-                            {{ character.name }}
-                        </span>
-                    </b-dropdown-item>
+                            {{ element.name }}
+                        </b-dropdown-header>
+
+                        <b-dropdown-item
+                        :key="i"
+                        v-for="(character,i) in characters.filter(char => char.element == element.name)"
+                        @click="equipArtifact(character)"
+                        href="#">
+                            <img
+                            :src="character.image"
+                            :alt="character.name"
+                            style="width:25px; height:25px;">
+
+                            <span :class="current_artifact.info.equipped !== false && (current_artifact.info.equipped.name == character.name && 'text-primary font-weight-bold')">
+                                {{ character.name }}
+                            </span>
+                        </b-dropdown-item>
+                    </b-dropdown-group>
                 </b-dropdown>
 
                 <button
@@ -148,6 +161,7 @@
     const updateAchievements = () => import('../updateAchievements.js');
     const artifactMethods = () => import('../artifactMethods.js');
 
+    import elements from '~/static/elements.json';
     import charactersJSON from '~/static/characters.json';
 
     // import { artifactMethods } from '../artifactMethods.js';
@@ -174,7 +188,8 @@
                 all_subs: [],
                 upgrades: [],
                 old_main_value: 0,
-                characters: charactersJSON
+                characters: charactersJSON,
+                elements: elements
             }
         },
         computed: {
