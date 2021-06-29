@@ -428,7 +428,7 @@
 						date: '2021.06.29',
 						types: ['feature'],
 						changes: [
-							'Added "Gold roll" option. Using this feature, you have 1 opportunity each day to generate a custom artifact to your needs/desires. You can select a 5* set, a piece type, and main and sub stats manually'
+							'Added "Gold roll" option. Using this feature, you have 1 opportunity each day to generate a custom artifact to your needs/desires. You can select a 5* set, a piece type, and main and sub stats manually. After doing so, you will be redirected to the roll page where you can manage it as any other randomly generated artifacts'
 						]
 					},
 				]

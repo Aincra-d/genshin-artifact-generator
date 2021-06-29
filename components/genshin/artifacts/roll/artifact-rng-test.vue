@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h6 class="text-light">
-			Generate one of your desired artifacts each day by selecting a 5* set, piece type, then main and sub stats
+			Generate one of your desired artifacts each day by selecting a 5* set, piece type, then main and sub stats manually.
 		</h6>
 
 		<div class="d-block d-sm-inline-block d-md-block d-xl-inline-block mb-3 mb-sm-0 mb-md-3 md-xl-0">
