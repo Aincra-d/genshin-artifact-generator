@@ -23,7 +23,7 @@
 
                     <span>
                     	{{
-	                        artifact.info.piece.name.length > 25 ? artifact.info.piece.name.substring(0, 22)+'...' : artifact.info.piece.name
+	                        artifact.info.piece.name.length > 23 ? artifact.info.piece.name.substring(0, 20)+'...' : artifact.info.piece.name
 	                    }}
                     </span>
                 </h5>
