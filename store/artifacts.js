@@ -57,12 +57,14 @@ export const state = () => ({
     achievements: [],
     inventory_loaded: false,
     achievements_loaded: false,
-    rng_test: {
+    gold_artifact: {
         selected_set: '',
         selected_main: '',
         selected_type: '',
         selected_subs: []
     },
+    gold_roll: {},
+    gold_rolled: false,
     inventory_size: 0
     // rolled_artifacts: []
 });
@@ -166,9 +168,13 @@ export const mutations = {
 
     setSelectedDomain: (state,name) => state.selected_domain=name,
 
-    setRngTest(state,{type,value}){
-        state.rng_test['selected_'+type]=value;
+    setGoldArtifact(state,{type,value}){
+        state.gold_artifact['selected_'+type]=value;
     },
 
-    setInventorySize: (state,size) => state.inventory_size=JSON.parse(localStorage.artifacts).length
+    setInventorySize: (state,size) => state.inventory_size=JSON.parse(localStorage.artifacts).length,
+
+    setGoldRoll: (state, artifact) => state.gold_roll=artifact,
+    
+    setGoldRolled: (state,rolled) => state.gold_rolled=rolled 
 };

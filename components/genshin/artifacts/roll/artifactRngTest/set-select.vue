@@ -6,7 +6,8 @@
                 :size="screen < 576 ? 'sm' : 'md'"
                 :text="selected_set!= '' ? selected_set : 'Choose artifact set'"
                 variant="light"
-                class="text-dark rounded-0 set-filter">
+                class="text-dark rounded-0 set-filter"
+                :disabled="artifact_type != ''">
                     <b-dropdown-item
                     :key="i"
                     v-for="(set,i) in artifact_set_names"
@@ -55,24 +56,26 @@
         computed: {
             screen(){
                 return this.$store.state.artifacts.screen
-            }
+            },
+            artifact_type(){
+                return this.$store.state.artifacts.gold_artifact.selected_type
+            },
         },
         methods: {
             setSets(){
                 let sets=[];
-                this.all_sets.forEach(set => {
+                this.all_sets.filter(set => set.stars.includes(5)).forEach(set => {
                     sets.push({
                         name: set.name,
                         image: set.image
                     });
-
-                    this.artifact_set_names=sets;
                 });
+
+                this.artifact_set_names=sets;
             },
             selectSet(name){
+                this.$store.commit('artifacts/setGoldArtifact',{type: 'set', value: name == this.selected_set ? '' : name});
                 name == this.selected_set ? this.selected_set = '' : this.selected_set=name;
-
-                this.$store.commit('artifacts/setRngTest',{type: 'set', value: name});
             }
         },
         created(){

@@ -56,10 +56,10 @@
                 return this.$store.state.artifacts.screen
             },
             artifact_main(){
-                return this.$store.state.artifacts.rng_test.selected_main
+                return this.$store.state.artifacts.gold_artifact.selected_main
             },
             artifact_subs(){
-                return this.$store.state.artifacts.rng_test.selected_subs
+                return this.$store.state.artifacts.gold_artifact.selected_subs
             }
         },
         methods: {
@@ -84,13 +84,13 @@
                     ? this.selected_subs.splice(this.selected_subs.findIndex(_sub => _sub == sub),1)
                     : this.selected_subs.push(sub);
 
-                    this.$store.commit('artifacts/setRngTest',{type: 'subs', value: this.selected_subs});
+                    this.$store.commit('artifacts/setGoldArtifact',{type: 'subs', value: this.selected_subs});
                 }
                 else{
                     if(this.selected_subs.includes(sub)){
                         this.selected_subs.splice(this.selected_subs.findIndex(_sub => _sub == sub),1);
 
-                        this.$store.commit('artifacts/setRngTest',{type: 'subs', value: this.selected_subs});
+                        this.$store.commit('artifacts/setGoldArtifact',{type: 'subs', value: this.selected_subs});
                     }
                 }
             }

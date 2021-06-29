@@ -289,6 +289,8 @@
 
                 localStorage.setItem("achievements", JSON.stringify(achievements));
             }
+
+            if(!localStorage.roll_date) localStorage.setItem('roll_date', 0);
         },
         beforeMount(){
             this.setAchievements();

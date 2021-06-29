@@ -15,7 +15,7 @@
 				:class="type == 'feature' ? 'btn-secondary' : 'btn-outline-secondary'"
 				class="btn btn-sm text-light w-32"
 				@click="filterUpdates('feature')">
-					<b class="text-primary">{}</b> Feature
+					<i class="fas fa-plus text-primary"></i> Feature
 				</button>
 			</li>
 
@@ -42,8 +42,9 @@
 					v-if="log.types.includes('fix')"
 					class="fas fa-bug text-success"></i>
 
-					<b v-if="log.types.includes('feature')"
-					class="text-primary">{}</b>
+					<i
+					v-if="log.types.includes('feature')"
+					class="fas fa-plus text-primary"></i>
 
 					<i v-if="log.types.includes('update')"
 					class="fas fa-exclamation-circle text-info"></i>
@@ -403,9 +404,10 @@
 					},
 					{
 						date: '2021.06.22',
-						types: ['feature','update'],
+						types: ['update','feature'],
 						changes: [
-							'Changed "Roll settings" to "General site settings" and added option to display/hide set effects everywhere on all devices by default'
+							'Changed "Roll settings" to "General site settings"',
+							'Added option to display/hide set effects everywhere on all devices by default'
 						]
 					},
 					{
@@ -420,6 +422,13 @@
 						types: ['feature'],
 						changes: [
 							'Grouped characters by their element/vision in equip dropdowns'
+						]
+					},
+					{
+						date: '2021.06.29',
+						types: ['feature'],
+						changes: [
+							'Added "Gold roll" option. Using this feature, you have 1 opportunity each day to generate a custom artifact to your needs/desires. You can select a 5* set, a piece type, and main and sub stats manually'
 						]
 					},
 				]

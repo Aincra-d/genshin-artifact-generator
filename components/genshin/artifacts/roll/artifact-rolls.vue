@@ -176,7 +176,7 @@
                 upgrades: [],
                 old_main_value: 0,
                 rolled: false,
-                loaded: false,
+                loaded: false
                 // achievements: process.client && (JSON.parse(localStorage.achievements) || {})
                 // roll_count: 0
             }
@@ -460,6 +460,12 @@
             setTimeout(function() {
                 self.loaded=true;
             }, 10);
+
+            if(this.$store.state.artifacts.gold_roll.id){
+                this.rolled=true;
+                this.artifacts.push(this.$store.state.artifacts.gold_roll);
+                this.current_artifact=this.$store.state.artifacts.gold_roll;
+            }
         }
     }
 </script>
