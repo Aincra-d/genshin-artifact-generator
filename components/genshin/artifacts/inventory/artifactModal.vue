@@ -330,4 +330,8 @@
         max-height:300px;
         overflow-y: auto;
     }
+
+    .toggled{
+        border-bottom:2px solid black;
+    }
 </style>
