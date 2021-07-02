@@ -431,6 +431,13 @@
 							'Added "Gold roll" option. Using this feature, you have 1 opportunity each day to generate a custom artifact to your needs/desires. You can select a 5* set, a piece type, and main and sub stats manually. After doing so, you will be redirected to the roll page where you can manage it as any other randomly generated artifacts'
 						]
 					},
+					{
+						date: '2021.07.02',
+						types: ['feature'],
+						changes: [
+							'Added option to filter characters by their element/vision in equip dropdowns'
+						]
+					},
 				]
 			}
 		},

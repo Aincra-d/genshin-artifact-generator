@@ -77,9 +77,21 @@
             :size="screen < 576 ? 'sm' : 'md'"
             variant="link"
             class="mx-0 character-select shadowed">
+                <div class="text-center mt-1 mb-2">
+                    <img
+                    class="pointer mr-1"
+                    :class="toggled_element == element.name && 'toggled'"
+                    style="width:20px; height:20px;"
+                    v-lazy="element.image"
+                    :alt="element.name"
+                    :key="i"
+                    v-for="(element,i) in elements"
+                    @click="filterElements(element.name)">
+                </div>
+
                 <b-dropdown-group
                 :key="i"
-                v-for="(element,i) in elements">
+                v-for="(element,i) in all_elements">
                     <b-dropdown-header id="dropdown-header-label">
                         <img
                         style="width:20px; height:20px;"
@@ -136,8 +148,26 @@
         data(){
             return {
                 characters: charactersJSON,
-                elements: elements
+                elements: elements,
+                all_elements: [],
+                toggled_element: '',
             }
+        },
+        methods: {
+            filterElements(name){
+                if(this.toggled_element == name){
+                    this.toggled_element='';
+                    this.all_elements=this.elements
+                    return
+                }
+
+                this.all_elements=this.elements;
+                this.all_elements=this.all_elements.filter(element => element.name == name);
+                this.toggled_element=name;
+            }
+        },
+        created(){
+            this.all_elements=this.elements;
         }
 	}
 </script>
@@ -146,5 +176,9 @@
     .shadowed{
         box-shadow:inset 0px 0px 2px white;
         text-shadow:inset 0px 0px 2px white;
+    }
+
+    .toggled{
+        border-bottom:2px solid black;
     }
 </style>

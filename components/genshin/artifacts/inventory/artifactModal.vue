@@ -82,9 +82,21 @@
                     :size="screen < 576 ? 'sm' : 'md'"
                     variant="link"
                     class="my-2 mx-0 w-23 character-select">
+                        <div class="text-center mt-1 mb-2">
+                            <img
+                            class="pointer mr-1"
+                            :class="toggled_element == element.name && 'toggled'"
+                            style="width:20px; height:20px;"
+                            v-lazy="element.image"
+                            :alt="element.name"
+                            :key="i"
+                            v-for="(element,i) in elements"
+                            @click="filterElements(element.name)">
+                        </div>
+
                         <b-dropdown-group
                         :key="i"
-                        v-for="(element,i) in elements">
+                        v-for="(element,i) in all_elements">
                             <b-dropdown-header id="dropdown-header-label">
                                 <img
                                 style="width:20px; height:20px;"
@@ -172,7 +184,8 @@
             artifact
         },
         created(){
-            this.current_artifact=this.artifacts[0]
+            this.current_artifact=this.artifacts[0];
+            this.all_elements=this.elements;
         },
         data(){
             return {
@@ -189,7 +202,8 @@
                 client: process.client ? true : false,
                 screen: 0,
                 upgrades: [],
-                elements: elements
+                elements: elements,
+                toggled_element: ''
                 // achievements: process.client && (JSON.parse(localStorage.achievements) || {})
             }
         },
@@ -256,6 +270,17 @@
                 artifacts[artifacts.findIndex(artifact => artifact.id === this.artifact_id)]=artifact;
 
                 localStorage.setItem('artifacts',JSON.stringify(artifacts));
+            },
+            filterElements(name){
+                if(this.toggled_element == name){
+                    this.toggled_element='';
+                    this.all_elements=this.elements
+                    return
+                }
+
+                this.all_elements=this.elements;
+                this.all_elements=this.all_elements.filter(element => element.name == name);
+                this.toggled_element=name;
             },
             restoreScroll(){
                 document.getElementsByTagName('body')[0].style.overflowY = 'auto';
