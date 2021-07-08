@@ -49,7 +49,7 @@
                     },
                     {
                         name: 'images',
-                        title: 'Images only',
+                        title: 'Tiles',
                         icon: 'fas fa-th'
                     },
                 ]

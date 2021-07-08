@@ -82,12 +82,12 @@
 	                <ul>
 	                    <li>Full cards - Each artifact will have all info displayed at once.</li>
 	                    <li>Compressed cards - You will only see the top section of each artifact by default. To see the sub stats and the rest, you need to scroll them(Default in desktop view).</li>
-	                    <li>Images only - You will only see the image of each artifact. For further details, click/touch them to open the popup window.(Default on touch devices).</li>
+	                    <li>Tiles - You will only see the image of each artifact. For further details, click/touch them to open the popup window.(Default on touch devices).</li>
 	                </ul>
 	            </li>
 
 	            <li>
-	                By clicking the button at the top-right corner of each artifact/the image of the artifact if you use "Images only" view, you can edit your artifacts, just like when you roll them, or choose to remove them from your inventory. <br>
+	                By clicking the button at the top-right corner of each artifact/the image of the artifact if you use "Tiles" view, you can edit your artifacts, just like when you roll them, or choose to remove them from your inventory. <br>
 	                <b>Note:</b> if you have already rerolled either the main or sub stats before adding to your inventory, those actions will be stored, thus disabling those options.
 	            </li>
 	        </ul>

@@ -239,7 +239,7 @@
 						date: '2021.04.07',
 						types: ['feature'],
 						changes: [
-							'Clicking/touching an artifact in "Images only" view will show the main and sub stats. You can also edit your artifact from there',
+							'Clicking/touching an artifact in "Tiles" view will show the main and sub stats. You can also edit your artifact from there',
 							'Added option to display selected filters'
 						]
 					},
@@ -310,7 +310,7 @@
 						changes: [
 							'Design issue fixes',
 							'Added icons and images to the following filter select options: main stat, sub stat, sets',
-							'Added locked status icon to "Images only" and "Compressed cards" view',
+							'Added locked status icon to "Tiles" and "Compressed cards" view',
 							'Organized stats on main and sub stat filters'
 						]
 					},
@@ -335,7 +335,7 @@
 						types: ['feature','update'],
 						changes: [
 							'Added icons and images to the following filter select options: stars, types',
-							'When deleting artifacts, locked artifats will be displayed in "Images only" view as well, but they will be disabled with the lock icon also showing that they are locked',
+							'When deleting artifacts, locked artifats will be displayed in "Tiles" view as well, but they will be disabled with the lock icon also showing that they are locked',
 							'In "Full cards" and "Compressed cards" views the locked status of artifacts can\'t be changed, the buttons will be disabled'
 						]
 					},
@@ -343,7 +343,7 @@
 						date: '2021.05.03',
 						types: ['update'],
 						changes: [
-							'Artifacts will not reload when entering deleting mode in inventory in "Images only" view'
+							'Artifacts will not reload when entering deleting mode in inventory in "Tiles" view'
 						]
 					},
 					{
