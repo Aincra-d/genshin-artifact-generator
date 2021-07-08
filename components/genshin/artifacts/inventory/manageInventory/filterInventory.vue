@@ -36,7 +36,7 @@
                 filter: [
                     {
                         type: 'by_star',
-                        title: 'Filter by stars'
+                        title: 'Filter by rarity'
                     },
                     {
                         type: 'by_main',
