@@ -268,6 +268,10 @@
                                 counter: 0
                             },
                             {
+                                name: "Momiji-Dyed Court",
+                                counter: 0
+                            },
+                            {
                                 name: "No domain",
                                 counter: 0
                             }
@@ -311,6 +315,10 @@
                     },
                     {
                         name: "Ridge Watch",
+                        counter: 0
+                    },
+                    {
+                        name: "Momiji-Dyed Court",
                         counter: 0
                     },
                     {
