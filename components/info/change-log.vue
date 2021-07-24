@@ -438,6 +438,14 @@
 							'Added option to filter characters by their element/vision in equip dropdowns'
 						]
 					},
+					{
+						date: '2021.07.24',
+						types: ['update'],
+						changes: [
+							'New domain "Momiji-Dyed Court" has been added',
+							'New artifact sets "Shimenawa\'s Reminiscence" and "Emblem of Severed Fate" have been added'
+						]
+					},
 				]
 			}
 		},

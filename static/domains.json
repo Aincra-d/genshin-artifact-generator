@@ -28,6 +28,10 @@
 		"sets": ["Brave Heart","Martial Artist","Tenacity of the Millelith","Pale Flame"]
 	},
 	{
+		"name": "Momiji-Dyed Court",
+		"sets": ["Resolution of Sojourner","Tiny Miracle","Shimenawa's Reminiscence","Emblem of Severed Fate"]
+	},
+	{
 		"name": "No domain",
 		"sets": ["Gladiator's Finale","Wanderer's Troupe","Instructor"]
 	}

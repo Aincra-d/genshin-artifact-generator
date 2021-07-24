@@ -468,6 +468,70 @@
         "stars": [3,4]
     },
     {
+        "name": "Prayers for Wisdom",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Tiara_of_Thunder.png",
+        "pieces": [
+            {
+                "name": "Tiara of Thunder",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Tiara_of_Thunder.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Affected by Electro for 40% less time.",
+            "4_piece": "None"
+        },
+        "stars": [4,4]
+    },
+    {
+        "name": "Prayers to Springtime",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Tiara_of_Frost.png",
+        "pieces": [
+            {
+                "name": "Tiara of Frost",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Tiara_of_Frost.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Affected by Cryo for 40% less time.",
+            "4_piece": "None"
+        },
+        "stars": [4,4]
+    },
+    {
+        "name": "Prayers for Illumination",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Tiara_of_Flame.png",
+        "pieces": [
+            {
+                "name": "Tiara of Flame",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Tiara_of_Flame.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Affected by Pyro for 40% less time.",
+            "4_piece": "None"
+        },
+        "stars": [4,4]
+    },
+    {
+        "name": "Prayers for Destiny",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Item_Tiara_of_Torrents.png",
+        "pieces": [
+            {
+                "name": "Tiara of Torrents",
+                "type": "Circlet of Logos",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Item_Tiara_of_Torrents.png"
+            }
+        ],
+        "effects":{
+            "2_piece": "Affected by Hydro for 40% less time.",
+            "4_piece": "None"
+        },
+        "stars": [4,4]
+    },
+    {
         "name": "Gladiator's Finale",
         "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Item_Gladiator%27s_Nostalgia.png",
         "pieces": [
@@ -1044,67 +1108,75 @@
         "stars": [4,5]
     },
     {
-        "name": "Prayers for Wisdom",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Tiara_of_Thunder.png",
+        "name": "Emblem of Severed Fate",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/53/Item_Magnificent_Tsuba.png",
         "pieces": [
             {
-                "name": "Tiara of Thunder",
+                "name": "Magnificent Tsuba",
+                "type": "Flower of Life",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/53/Item_Magnificent_Tsuba.png"
+            },
+            {
+                "name": "Sundered Feather",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d6/Item_Sundered_Feather.png"
+            },
+            {
+                "name": "Storm Cage",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e5/Item_Storm_Cage.png"
+            },
+            {
+                "name": "Scarlet Vessel",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/00/Item_Scarlet_Vessel.png"
+            },
+            {
+                "name": "Ornate Kabuto",
                 "type": "Circlet of Logos",
-                "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f6/Item_Tiara_of_Thunder.png"
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Item_Ornate_Kabuto.png"
             }
         ],
         "effects":{
-            "2_piece": "Affected by Electro for 40% less time.",
-            "4_piece": "None"
+            "2_piece": "Energy Recharge +20%",
+            "4_piece": "Increases Elemental Burst DMG by 25% of Energy Recharge. A maximum of 75% bonus DMG can be obtained in this way."
         },
-        "stars": [4,4]
+        "stars": [4,5]
     },
     {
-        "name": "Prayers to Springtime",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Tiara_of_Frost.png",
+        "name": "Shimenawa's Reminiscence",
+        "image": "https://static.wikia.nocookie.net/gensin-impact/images/c/c2/Item_Entangling_Bloom.png",
         "pieces": [
             {
-                "name": "Tiara of Frost",
+                "name": "Entangling Bloom",
+                "type": "Flower of Life",
+                "image": "httpshttps://static.wikia.nocookie.net/gensin-impact/images/c/c2/Item_Entangling_Bloom.png"
+            },
+            {
+                "name": "Shaft of Remembrance",
+                "type": "Plume of Death",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Item_Shaft_of_Remembrance.png"
+            },
+            {
+                "name": "Morning Dew's Moment",
+                "type": "Sands of Eon",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Item_Morning_Dew%27s_Moment.png"
+            },
+            {
+                "name": "Hopeful Heart",
+                "type": "Goblet of Eonothem",
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/86/Item_Hopeful_Heart.png"
+            },
+            {
+                "name": "Capricious Visage",
                 "type": "Circlet of Logos",
-                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Item_Tiara_of_Frost.png"
+                "image": "https://static.wikia.nocookie.net/gensin-impact/images/8/8f/Item_Capricious_Visage.png"
             }
         ],
         "effects":{
-            "2_piece": "Affected by Cryo for 40% less time.",
-            "4_piece": "None"
+            "2_piece": "ATK +18%",
+            "4_piece": "When casting an Elemental Skill, if the character has 15 or more Energy, they lose 15 Energy and Normal/Charged/Plunging Attack DMG is increased by 50% for 10s."
         },
-        "stars": [4,4]
-    },
-    {
-        "name": "Prayers for Illumination",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Tiara_of_Flame.png",
-        "pieces": [
-            {
-                "name": "Tiara of Flame",
-                "type": "Circlet of Logos",
-                "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Item_Tiara_of_Flame.png"
-            }
-        ],
-        "effects":{
-            "2_piece": "Affected by Pyro for 40% less time.",
-            "4_piece": "None"
-        },
-        "stars": [4,4]
-    },
-    {
-        "name": "Prayers for Destiny",
-        "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Item_Tiara_of_Torrents.png",
-        "pieces": [
-            {
-                "name": "Tiara of Torrents",
-                "type": "Circlet of Logos",
-                "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/0a/Item_Tiara_of_Torrents.png"
-            }
-        ],
-        "effects":{
-            "2_piece": "Affected by Hydro for 40% less time.",
-            "4_piece": "None"
-        },
-        "stars": [4,4]
+        "stars": [4,5]
     }
 ]

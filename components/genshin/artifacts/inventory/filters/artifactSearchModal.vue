@@ -20,40 +20,58 @@
                     Apply multiple conditions to filter your inventory.
                 </p>
 
+
+
                 <h6>Select artifact rarity</h6>
-                <filter-by-stars
-                stack
-                class="mb-4"></filter-by-stars>
+
+                <filter-by-stars stack class="mb-4">
+                </filter-by-stars>
+
                 <hr :class="hr_styles">
+
+
 
                 <h6>Select main stats</h6>
-                <filter-by-main-stats
-                stack
-                class="mb-4"></filter-by-main-stats>
+
+                <filter-by-main-stats stack class="mb-4">
+                </filter-by-main-stats>
+
                 <hr :class="hr_styles">
+
+
 
                 <h6>Select sub stats</h6>
-                <filter-by-sub-stats
-                stack
-                class="mb-4"></filter-by-sub-stats>
+
+                <filter-by-sub-stats stack class="mb-4">
+                </filter-by-sub-stats>
+
                 <hr :class="hr_styles">
+
+
 
                 <h6>Select artifact types</h6>
-                <filter-by-types
-                stack
-                class="mb-4"></filter-by-types>
+
+                <filter-by-types stack class="mb-4">
+                </filter-by-types>
+
                 <hr :class="hr_styles">
+
+
 
                 <h6>Select artifact sets</h6>
-                <filter-by-sets
-                stack
-                class="mb-4"></filter-by-sets>
+
+                <filter-by-sets stack class="mb-4">
+                </filter-by-sets>
+
                 <hr :class="hr_styles">
 
+
+
                 <h6>Select characters</h6>
-                <filter-by-equipped
-                stack
-                class="mb-4"></filter-by-equipped>
+
+                <filter-by-equipped stack class="mb-4">
+                </filter-by-equipped>
+
                 <hr :class="hr_styles">
 
                 <div slot="footer" class="mt-3 p-2">

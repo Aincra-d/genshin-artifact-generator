@@ -268,9 +268,9 @@
 
             let roll_stats=localStorage.roll_stats && JSON.parse(localStorage.roll_stats);
 
-            if(roll_stats && !roll_stats.map(stat => stat.name).includes('Ridge Watch')){
+            if(roll_stats && !roll_stats.map(stat => stat.name).includes('Momiji-Dyed Court')){
                 roll_stats.push({
-                    name: 'Ridge Watch',
+                    name: 'Momiji-Dyed Court',
                     counter: 0
                 });
 
@@ -279,11 +279,11 @@
 
             let achievements=localStorage.achievements && JSON.parse(localStorage.achievements);
 
-            if(achievements && !achievements.rolls.domains.map(domain => domain.name).includes('Ridge Watch')){
+            if(achievements && !achievements.rolls.domains.map(domain => domain.name).includes('Momiji-Dyed Court')){
                 this.setRollNumbers();
 
                 achievements.rolls.domains.push({
-                    name: 'Ridge Watch',
+                    name: 'Momiji-Dyed Court',
                     values: this.roll_numbers
                 });
 
