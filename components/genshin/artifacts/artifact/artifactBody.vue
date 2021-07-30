@@ -21,7 +21,7 @@
 	        		v-tooltip.top-center="inventory && ('Show artifacts equipped on '+artifact.info.equipped.name)"
         			@click="inventory && filterBycharacters(artifact.info.equipped)">
 
-                    <span class="artifact-piece-name">
+                    <span>
                     	{{
 	                        artifact.info.piece.name.length > 23 ? artifact.info.piece.name.substring(0, 20)+'...' : artifact.info.piece.name
 	                    }}
@@ -74,15 +74,15 @@
 	                <div class="artifact-main-stat position-absolute bottom-0 left-0 text-left">
 	                    <!-- {{ artifact.info.set.name }} -->
 
-	                    <span class="font-15 font-weight-bold artifact-main-stat artifact-main-stat-name ml-4 mb-0 ">
+	                    <span class="font-15 font-weight-bold artifact-main-stat ml-4 mb-0">
 	                        {{ artifact.stats.main.name.replace('%','') }}
 	                    </span>
 
-	                    <h2 class="font-weight-bold text-light artifact-main-value ml-4 mt-2">
+	                    <h2 class="font-weight-bold text-light artifact-main-value ml-4 mt-0">
 	                        {{ artifact.stats.main.value }}
 	                    </h2>
 
-	                    <span class="ml-4 mt-3">
+	                    <span class="ml-4 mt-2">
 	                        <i
 	                        :key="i"
 	                        v-for="(star,i) in artifact.info.stars"
@@ -106,7 +106,7 @@
                 <ul class="list-unstyled text-left font-weight-bold artifact-sub-stats ml-4 pt-3">
                     <li>
                         <h6
-                        class="d-inline text-light artifact-level bg-dark rounded font-weight-bold px-1 pt-1">
+                        class="d-inline text-light bg-dark rounded font-weight-bold px-1">
                             <h5 class="d-inline">+</h5>{{ artifact.info.level }}
                         </h6>
                     </li>
@@ -223,42 +223,7 @@
     .artifact{
         /*max-height: 400px;*/
         overflow: hidden;
-        font-family: 'MyWebFont';
     }
-
-    .artifact-main-stat-name, .artifact-main-value, .artifact-type{
-        line-height: 24px;
-    }
-
-    .artifact-main-stat-name{
-    	font-size: 18px;
-    }
-
-    .artifact-type{
-    	font-size: 14px;
-    }
-
-    .artifact-set-effects{
-    	font-size: 13px;
-    	line-height: 27px;
-    }
-
-    .artifact-set-name{
-    	font-size: 14px;
-    }
-
-    .artifact-main-value{
-    	font-size: 30px;
-    }
-
-    .artifact-piece-name{
-    	font-size: 17px;
-    }
-
-    .artifact-sub-stats, .artifact-level{
-    	font-size: 13px;
-    }
-
 
     ::-webkit-scrollbar {
       width: 2.5px;
@@ -373,17 +338,11 @@
         background: linear-gradient(to right, #525965,#6c7480, #7d8995); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
 
-    
     .artifact-sub-info{
         background-color: #ede5d8;
         color: #74737b;
+        font-family: 'Arvo', serif;
     }
-
-    @font-face {
-  font-family: 'MyWebFont';
-  src: local("MyWebFont") ,url('~assets/fonts/font.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
-}
-
 
     .artifact-main-stat{
         color: #b7a59b;
