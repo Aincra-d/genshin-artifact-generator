@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'HYWenHei-85W';
+    src: url('HYWenHei-HEW.eot');
+    src: url('HYWenHei-HEW.eot?#iefix') format('embedded-opentype'),
+        url('HYWenHei-HEW.woff') format('woff'),
+        url('HYWenHei-HEW.ttf') format('truetype'),
+        url('HYWenHei-HEW.svg#HYWenHei-HEW') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

@@ -54,7 +54,10 @@
         /*max-height: 400px;*/
         overflow-y: auto;
         overflow-x: hidden;
+        font-family: 'MyWebFont';
     }
+
+    
 
     ::-webkit-scrollbar {
       width: 2.5px;
@@ -210,8 +213,12 @@
     .artifact-sub-info{
         background-color: #ede5d8;
         color: #74737b;
-        font-family: 'Arvo', serif;
     }
+
+    @font-face {
+  font-family: 'MyWebFont';
+  src: local("MyWebFont") ,url('~assets/fonts/font.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
 
     .artifact-main-stat{
         color: #b7a59b;

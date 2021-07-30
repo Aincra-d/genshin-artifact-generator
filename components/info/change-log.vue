@@ -446,6 +446,13 @@
 							'New artifact sets "Shimenawa\'s Reminiscence" and "Emblem of Severed Fate" have been added'
 						]
 					},
+					{
+						date: '2021.07.30',
+						types: ['update'],
+						changes: [
+							'Changed artifact font styles to original Genshin font'
+						]
+					},
 				]
 			}
 		},
