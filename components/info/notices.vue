@@ -21,9 +21,7 @@
 		name: 'notices',
 		data(){
 			return {
-				notices: [
-					'Gold roll is temporarily unavailable due to bug fixes'
-				]
+				notices: []
 			}
 		}
 	}

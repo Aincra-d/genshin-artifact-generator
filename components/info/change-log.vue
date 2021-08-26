@@ -448,9 +448,10 @@
 					},
 					{
 						date: '2021.08.26',
-						types: ['update'],
+						types: ['update','fix'],
 						changes: [
-							'Added new characters: Aloy, Sara, Raiden and Kokomi'
+							'Added new characters: Aloy, Sara, Raiden and Kokomi',
+							'Fixed not working gold roll after doing a 10x roll'
 						]
 					},
 				]
