@@ -183,5 +183,25 @@
 		"name": "Yoimiya",
 		"element": "Pyro",
 		"image": "https://static.wikia.nocookie.net/gensin-impact/images/0/05/Character_Yoimiya_Thumb.png"
+	},
+	{
+		"name": "Aloy",
+		"element": "Cryo",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Character_Aloy_Thumb.png"
+	},
+	{
+		"name": "Sara",
+		"element": "Electro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/9/96/Character_Kujou_Sara_Thumb.png"
+	},
+	{
+		"name": "Raiden",
+		"element": "Electro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/5/52/Character_Raiden_Shogun_Thumb.png"
+	},
+	{
+		"name": "Kokomi",
+		"element": "Hydro",
+		"image": "https://static.wikia.nocookie.net/gensin-impact/images/c/cc/Character_Sangonomiya_Kokomi_Thumb.png"
 	}
 ]

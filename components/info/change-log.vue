@@ -446,6 +446,13 @@
 							'New artifact sets "Shimenawa\'s Reminiscence" and "Emblem of Severed Fate" have been added'
 						]
 					},
+					{
+						date: '2021.08.26',
+						types: ['update'],
+						changes: [
+							'Added new characters: Aloy, Sara, Raiden and Kokomi'
+						]
+					},
 				]
 			}
 		},
