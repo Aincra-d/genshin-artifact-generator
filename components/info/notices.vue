@@ -22,7 +22,7 @@
 		data(){
 			return {
 				notices: [
-					// 'Guide is currently not completely up to date, thus it is temporarily not available. It will be updated soon.'
+					'Gold roll is temporarily unavailable due to bug fixes'
 				]
 			}
 		}

@@ -4,7 +4,7 @@
             <artifact-rolls></artifact-rolls>
         </collapse-transition>
 
-        <collapse-transition v-else :duration="250">
+        <!-- <collapse-transition v-else :duration="250">
             <artifact-rng-test></artifact-rng-test>
         </collapse-transition>
 
@@ -18,19 +18,19 @@
             {{
                 gold_roll ? 'Back to artifact roll' : 'Gold roll(1 left today)'
             }}
-        </button>
+        </button> -->
     </div>
 </template>
 
 <script>
     import artifactRolls from './roll/artifact-rolls.vue';
-    import artifactRngTest from './roll/artifact-rng-test.vue';
+    // import artifactRngTest from './roll/artifact-rng-test.vue';
 
     export default{
         name: 'roll',
         components: {
             'artifact-rolls': artifactRolls,
-            'artifact-rng-test': artifactRngTest
+            // 'artifact-rng-test': artifactRngTest
         },
         computed: {
             gold_rolled_state(){
