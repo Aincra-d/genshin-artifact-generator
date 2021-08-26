@@ -17,9 +17,9 @@
                         <about></about>
                     </b-tab>
 
-                    <b-tab disabled title-link-class="text-secondary bg-transparent font-xs-12" title="Guide" lazy>
+                    <!-- <b-tab disabled title-link-class="text-secondary bg-transparent font-xs-12" title="Guide" lazy>
                         <guide></guide>
-                    </b-tab>
+                    </b-tab> -->
 
                     <b-tab title-link-class="text-light bg-transparent font-xs-12" title="Updates" lazy>
                         <change-log></change-log>
@@ -70,7 +70,7 @@
 
 <script>
     import about from '@/components/info/about.vue';
-    import guide from '@/components/info/guide.vue';
+    // import guide from '@/components/info/guide.vue';
     import changeLog from '@/components/info/change-log.vue';
     import futurePlans from '@/components/info/future-plans.vue';
     import notices from '@/components/info/notices.vue';
@@ -78,7 +78,7 @@
         name: 'infoModal',
         components: {
             about,
-            guide,
+            // guide,
             'change-log': changeLog,
             'future-plans': futurePlans,
             notices
