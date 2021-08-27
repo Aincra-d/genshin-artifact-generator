@@ -292,7 +292,7 @@
 
             if(!localStorage.roll_date) localStorage.setItem('roll_date', 0);
 
-            this.screen > 576 && this.$store.commit('artifacts/setSettings','show_set_effects');
+            screen > 576 && this.$store.commit('artifacts/setSettings','show_set_effects');
         },
         beforeMount(){
             this.setAchievements();
