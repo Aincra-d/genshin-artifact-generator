@@ -322,7 +322,7 @@
 
     @media(min-width: 576px){
         .artifact-modal .ui-modal__body{
-            max-height:100vh;
+            max-height:80vh;
         }
     }
 

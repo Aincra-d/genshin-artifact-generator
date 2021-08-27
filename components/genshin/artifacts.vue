@@ -232,7 +232,7 @@
                     localStorage.setItem('artifacts', JSON.stringify(artifacts))
                 }
 
-                console.log(artifacts);
+                // console.log(artifacts);
             },
             setEquipped(){
                 let artifacts=JSON.parse(localStorage.artifacts);
@@ -247,7 +247,7 @@
                     localStorage.setItem('artifacts', JSON.stringify(artifacts))
                 }
 
-                console.log(artifacts);
+                // console.log(artifacts);
             }
          },
          mounted(){
