@@ -7,7 +7,7 @@
         style="height:100vh;z-index: 999;"
         alignTop
         removeHeader
-        :alignTopMargin="screen < 991 ? 0 : 150"
+        :alignTopMargin="screen < 991 ? 0 : 50"
         :max-height="100"
         ref="upgradeModal"
         :class="'stars-'+artifact.info.stars"
@@ -151,7 +151,8 @@
 
     @media(min-width: 576px){
         .upgrade-modal .ui-modal__body{
-            max-height:100vh;
+            max-height: 80vh;
+            overflow-y: auto;
         }
     }
     .upgrade-modal.stars-5 .header{

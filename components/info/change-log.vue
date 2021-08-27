@@ -454,6 +454,13 @@
 							'Fixed not working gold roll after doing a 10x roll'
 						]
 					},
+					{
+						date: '2021.08.27',
+						types: ['fix'],
+						changes: [
+							'Design issue fixes'
+						]
+					},
 				]
 			}
 		},
