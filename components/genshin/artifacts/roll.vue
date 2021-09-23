@@ -16,7 +16,7 @@
         class="btn btn-light"
         @click="gold_roll=!gold_roll">
             {{
-                gold_roll ? 'Back to artifact roll' : 'Gold roll(1 left today)'
+                gold_roll ? 'Back to artifact roll' : 'Custom roll(1 left today)'
             }}
         </button>
     </div>

@@ -471,7 +471,7 @@
 
             if(this.$store.state.artifacts.gold_roll.id){
                 this.rolled=true;
-                this.$store.commit('artifacts/setSettings','roll_10x');
+                if(this.settings.roll_10x) this.$store.commit('artifacts/setSettings','roll_10x');
                 this.artifacts.push(this.$store.state.artifacts.gold_roll);
                 this.current_artifact=this.$store.state.artifacts.gold_roll;
             }
